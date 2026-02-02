@@ -1,0 +1,631 @@
+@charset "utf-8";
+@media screen and (min-width:1024px) {
+    header {
+        position: absolute;
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+    }
+
+    .header_center {
+        width: auto;
+        height: auto;
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header_center h1 {
+        background: url(../img/logo.png) no-repeat center/contain;
+        width: 120px;
+        height: 30px;
+        margin: 0;
+    }
+
+    .header_center .btn {
+        display: none;
+    }
+
+    nav {
+        display: flex !important;
+        position: static !important;
+        width: auto;
+        height: auto;
+        background: transparent;
+        align-items: center;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: none;
+    }
+
+    .nav_wrap {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        background: transparent;
+    }
+
+    .nav_wrap .nav_header {
+        display: none;
+    }
+
+    .nav_wrap .nav_body {
+        position: static;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav_wrap .nav_body h2 {
+        display: none;
+    }
+
+    .nav_wrap .nav_body ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        width: auto;
+    }
+
+    .nav_wrap .nav_body ul li {
+        padding: 0;
+        margin: 0;
+        border-bottom: none;
+    }
+
+    .nav_wrap .nav_body ul li a {
+        display: block;
+        color: var(--color-white);
+        font-family: var(--font-heading);
+        font-size: 1.3em;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 5px 0;
+        position: relative;
+    }
+
+    .nav_wrap .nav_body ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-accent);
+        transition: width var(--transition-normal);
+    }
+
+    .nav_wrap .nav_body ul li a:hover {
+        color: var(--color-accent);
+    }
+
+    .nav_wrap .nav_body ul li a:hover::after {
+        width: 100%;
+    }
+
+    .nav_wrap .language {
+        position: static;
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+    }
+
+    .nav_wrap .language a {
+        color: var(--color-white);
+        font-family: var(--font-body);
+        font-size: 1.2em;
+        font-weight: 400;
+        padding: 5px 8px;
+        line-height: 1;
+        transition: color var(--transition-normal);
+    }
+
+    .nav_wrap .language a:hover {
+        color: var(--color-accent);
+        background: transparent;
+    }
+
+    .nav_wrap .language span::before {
+        content: '|';
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.2em;
+        margin: 0;
+    }
+
+
+    /* header_visual */
+    .header_visual {
+        height: 900px;
+        overflow: visible;
+    }
+
+    .header_visual .slogan {
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+        top: 620px;
+    }
+
+    .header_visual .slogan h2 {
+        font-size: 5.5em;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .header_visual .slogan p {
+        font-size: 1.8em;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+        margin-top: 25px;
+        max-width: 600px;
+    }
+
+
+    /* about */
+    .about_section .about {
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+    }
+
+    .about_section .about h2 {
+        font-size: 5.5em;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .about_section .about p {
+        font-size: 1.8em;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+        max-width: 800px;
+    }
+
+    .about_section .about a {
+        font-size: 1.6em;
+    }
+
+
+    /* products */
+    .products_section {
+        padding-top: 200px;
+    }
+
+    .products_section h2 {
+        font-size: 9em;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin-bottom: 120px;
+    }
+
+    .products_section .products {
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+    }
+
+    .products_section .products .headphones,
+    .products_section .products .amplifiers {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 50px;
+    }
+
+    .products_section .products .speakers {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: 50px;
+    }
+
+    .products_section .products .speakers,
+    .products_section .products .amplifiers {
+        margin-top: 100px;
+    }
+
+    .products_section .products .headphone_text,
+    .products_section .products .amp_text {
+        flex: 1;
+        text-align: left;
+    }
+
+    .products_section .products .speaker_text {
+        flex: 1;
+        text-align: right;
+    }
+
+    .products_section .products .headphone_text span,
+    .products_section .products .amp_text span {
+        font-size: 12em;
+    }
+
+    .products_section .products .speaker_text span {
+        font-size: 12em;
+    }
+
+    .products_section .products .headphones h3,
+    .products_section .products .amplifiers h3 {
+        font-size: 2.4em;
+        margin: -32px 0 10px 0;
+    }
+
+    .products_section .products .speakers h3 {
+        font-size: 2.4em;
+        margin: -32px 0 10px 0;
+    }
+
+    .products_section .products .headphones strong,
+    .products_section .products .amplifiers strong {
+        display: block;
+        font-size: 4em;
+    }
+
+    .products_section .products .speakers strong {
+        display: block;
+        font-size: 4em;
+    }
+
+    .products_section .products .headphones p,
+    .products_section .products .amplifiers p {
+        font-size: 1.6em;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+
+    .products_section .products .speakers p {
+        font-size: 1.6em;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+
+    .products_section .products .headphones a,
+    .products_section .products .amplifiers a,
+    .products_section .products .speakers a {
+        font-size: 1.5em;
+        margin-top: 25px;
+    }
+
+    .products_section .products .headphones .headphone_img,
+    .products_section .products .speakers .speaker_image,
+    .products_section .products .amplifiers .amp_image {
+        width: 420px;
+        height: 420px;
+        flex-shrink: 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .products_section .products .headphones .headphone_img {
+        background-image: url(../img/marshall_headphone.jpg);
+    }
+
+    .products_section .products .speakers .speaker_image {
+        background-image: url(../img/marshall_speaker.jpg);
+    }
+
+    .products_section .products .amplifiers .amp_image {
+        background-image: url(../img/marshall_amp.jpg);
+    }
+
+
+    /* Artists */
+    .artists_section {
+        padding-top: 200px;
+    }
+
+    .artists_section .artists .artists_banner {
+        height: 450px;
+    }
+
+    .artists_section .artists .artists_banner .artists_text {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 60px;
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 80px 0;
+    }
+
+    .artists_section .artists .artists_banner h2 {
+        width: auto;
+        font-size: 5.5em;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .artists_section .artists .artists_banner h3 {
+        font-size: 2.2em;
+        line-height: 1.4;
+        letter-spacing: 0.01em;
+        margin-top: 15px;
+    }
+
+    .artists_text_left {
+        flex: 0 0 35%;
+        text-align: left;
+        margin-top: 0;
+    }
+
+    .artists_text_right {
+        flex: 0 0 55%;
+        margin-top: 60px;
+    }
+
+    .artists_text_right p {
+        font-size: 1.6em;
+        line-height: 1.6;
+    }
+
+
+    /* artist_content */
+    .artists_section .artist_content {
+        width: 100%;
+        margin: 80px auto 0;
+        padding: 0;
+    }
+
+    .artists_section .artist_content .artist1,
+    .artists_section .artist_content .artist3 {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .artists_section .artist_content .artist2,
+    .artists_section .artist_content .artist4 {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: stretch;
+    }
+
+    .artists_section .artist_content .artist2,
+    .artists_section .artist_content .artist3,
+    .artists_section .artist_content .artist4 {
+        margin-top: 0;
+    }
+
+    .artists_section .artist_content .artist1 .artist1_text,
+    .artists_section .artist_content .artist3 .artist3_text {
+        position: static;
+        width: 50%;
+        padding: 60px 60px 60px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .artists_section .artist_content .artist2 .artist2_text,
+    .artists_section .artist_content .artist4 .artist4_text {
+        position: static;
+        width: 50%;
+        padding: 60px 80px 60px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .artists_section .artist_content .artist1 span,
+    .artists_section .artist_content .artist2 span,
+    .artists_section .artist_content .artist3 span,
+    .artists_section .artist_content .artist4 span {
+        font-size: 9em;
+    }
+
+    .artists_section .artist_content .artist1 h3,
+    .artists_section .artist_content .artist2 h3,
+    .artists_section .artist_content .artist3 h3,
+    .artists_section .artist_content .artist4 h3 {
+        font-size: 2.8em;
+        margin-top: 10px;
+    }
+
+    .artists_section .artist_content .artist1 p,
+    .artists_section .artist_content .artist2 p,
+    .artists_section .artist_content .artist3 p,
+    .artists_section .artist_content .artist4 p {
+        font-size: 1.5em;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+
+    .artists_section .artist_content .artist1_image,
+    .artists_section .artist_content .artist2_image,
+    .artists_section .artist_content .artist3_image,
+    .artists_section .artist_content .artist4_image {
+        width: 50%;
+        min-height: 450px;
+        flex-shrink: 0;
+    }
+
+
+    /* social */
+    .social_section {
+        padding-top: 200px;
+    }
+
+    .social_section .social_text {
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+        padding: 0;
+    }
+
+    .social_section .social_text h2 {
+        font-size: 5.5em;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .social_section .social_text p {
+        font-size: 1.8em;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+    }
+
+    /* social_slider */
+    .social_section .swiper {
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+        height: 750px;
+    }
+
+    .social_section .swiper .social_heritage,
+    .social_section .swiper .social_story,
+    .social_section .swiper .social_community {
+        height: 420px;
+    }
+
+    .social_section .swiper .swiper-slide .heritage_text,
+    .social_section .swiper .swiper-slide .story_text,
+    .social_section .swiper .swiper-slide .community_text {
+        transform: translateY(420px);
+        height: 280px;
+        padding: 50px;
+    }
+
+    /* partnership */
+    .social_section .social_partership {
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+        height: 600px;
+    }
+
+    .social_section .social_partership .partership_text {
+        transform: translateY(300px);
+        height: 300px;
+        padding: 50px;
+    }
+
+
+    /* footer */
+    footer {
+        margin-top: 200px;
+    }
+
+    .footer_center {
+        width: var(--container-desktop);
+        max-width: var(--max-width);
+        display: block;
+    }
+
+    .footer_top {
+        padding: 60px 0 40px;
+        height: auto;
+        text-align: center;
+    }
+
+    .footer_logo {
+        width: 140px;
+        height: 35px;
+        margin: 0 auto 30px;
+    }
+
+    .footer_top .footer_top_text {
+        font-size: 1.8em;
+    }
+
+    /* footer-bottom */
+    .footer_bottom {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        margin-top: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        text-align: left;
+    }
+
+    .footer_section {
+        border-bottom: none;
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    .footer_bottom .footer_company h3,
+    .footer_bottom .footer_customer h3,
+    .footer_bottom .footer_account h3 {
+        font-size: 1.8em;
+        cursor: default;
+        padding: 0 0 15px;
+        display: block;
+    }
+
+    .dropdown_icon {
+        display: none;
+    }
+
+    .footer_bottom ul {
+        max-height: none;
+        overflow: visible;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer_section.active ul,
+    .footer_section ul {
+        max-height: none;
+        padding: 0;
+    }
+
+    .footer_bottom .footer_company .company_list,
+    .footer_bottom .footer_customer .customer_list,
+    .footer_bottom .footer_account .account_list {
+        display: block;
+        font-size: 1.3em;
+        text-align: left;
+    }
+
+    .footer_bottom ul li {
+        padding: 5px 0;
+    }
+
+    .footer_bottom .footer_social {
+        flex: 1;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+        text-align: left;
+    }
+
+    .footer_social h3 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    .social_icons {
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    .footer_center .copyright {
+        width: 100%;
+        padding: 30px 0;
+        margin-top: 30px;
+        font-size: 1.2em;
+        border-top: 1px solid var(--color-border);
+        border-bottom: none;
+        text-align: center;
+    }
+}

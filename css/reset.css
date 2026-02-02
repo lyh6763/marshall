@@ -1,0 +1,88 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+:root {
+    --color-primary: #E6DDCC;
+    --color-accent: #B38E2E;
+    --color-dark: #121212;
+    --color-bg: #2c2c2c;
+    --color-bg-light: #eee;
+    --color-bg-footer: #1f1f1f;
+    --color-text: #ddd;
+    --color-text-dark: #121212;
+    --color-text-gray: #888;
+    --color-text-muted: #848484;
+    --color-border: #333;
+    --color-white: #fff;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Noto Sans KR', sans-serif;
+    --font-display: 'Anton', sans-serif;
+
+    --container-mobile: 83.333%;
+    --container-tablet: 86.98%;
+    --container-desktop: 90%;
+    --container-wide: 75%;
+    --max-width: 1200px;
+    --max-width-wide: 1440px;
+
+    --transition-fast: 0.25s ease;
+    --transition-normal: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 0.625em;
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+h2, strong {
+    font-size: 2.4em;
+    line-height: 1.4;
+    font-family: var(--font-heading);
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+p {
+    font-size: 1.6em;
+    line-height: 1.5;
+    font-family: var(--font-body);
+}
+
+body {
+    line-height: 1;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.screen_out {
+    position: absolute;
+    left: -9999px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+a, a:link, a:visited, a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+
+ul, li {
+    list-style: none;
+}

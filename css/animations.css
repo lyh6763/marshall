@@ -1,0 +1,377 @@
+@charset "utf-8";
+
+.scroll-fade-up,
+.scroll-fade-left,
+.scroll-fade-right,
+.scroll-scale {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-fade-up {
+    transform: translateY(40px);
+}
+
+.scroll-fade-left {
+    transform: translateX(-40px);
+}
+
+.scroll-fade-right {
+    transform: translateX(40px);
+}
+
+.scroll-scale {
+    transform: scale(0.95);
+}
+
+.scroll-fade-up.is-visible,
+.scroll-fade-left.is-visible,
+.scroll-fade-right.is-visible,
+.scroll-scale.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+.delay-400 {
+    transition-delay: 0.4s;
+}
+
+.delay-500 {
+    transition-delay: 0.5s;
+}
+
+.anim-fast {
+    transition-duration: 0.5s;
+}
+
+.anim-slow {
+    transition-duration: 1.2s;
+}
+
+.anim-smooth {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anim-bounce {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.stagger-children.is-visible > *:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.stagger-children.is-visible > *:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.stagger-children.is-visible > *:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.stagger-children.is-visible > *:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.stagger-children.is-visible > *:nth-child(5) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.scroll-slide-in {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-slide-in.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-rotate-in {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scroll-rotate-in.is-visible {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.scroll-blur-in {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-blur-in.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-fade-up,
+    .scroll-fade-left,
+    .scroll-fade-right,
+    .scroll-scale,
+    .scroll-slide-in,
+    .scroll-rotate-in,
+    .scroll-blur-in,
+    .stagger-children > * {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .scroll-fade-up,
+    .scroll-fade-left,
+    .scroll-fade-right {
+        transition-duration: 0.5s;
+    }
+
+    .scroll-fade-left,
+    .scroll-fade-right {
+        transform: translateY(20px);
+    }
+}
+
+.products_section .products .headphone_img,
+.products_section .products .speaker_image,
+.products_section .products .amp_image {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.products_section .products .headphone_img::before,
+.products_section .products .speaker_image::before,
+.products_section .products .amp_image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(179, 142, 46, 0) 0%,
+        rgba(179, 142, 46, 0) 100%
+    );
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.products_section .products .headphone_img:hover,
+.products_section .products .speaker_image:hover,
+.products_section .products .amp_image:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 2px rgba(179, 142, 46, 0.3),
+        0 0 30px rgba(179, 142, 46, 0.4),
+        0 0 60px rgba(179, 142, 46, 0.2);
+}
+
+.products_section .products .headphone_img:hover::before,
+.products_section .products .speaker_image:hover::before,
+.products_section .products .amp_image:hover::before {
+    opacity: 1;
+    background: radial-gradient(
+        circle at center,
+        rgba(179, 142, 46, 0.15) 0%,
+        rgba(179, 142, 46, 0) 70%
+    );
+}
+
+@keyframes product-pulse {
+    0% {
+        box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 2px rgba(179, 142, 46, 0.3),
+            0 0 30px rgba(179, 142, 46, 0.4),
+            0 0 60px rgba(179, 142, 46, 0.2);
+    }
+    50% {
+        box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 2px rgba(179, 142, 46, 0.5),
+            0 0 40px rgba(179, 142, 46, 0.6),
+            0 0 80px rgba(179, 142, 46, 0.3);
+    }
+    100% {
+        box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 2px rgba(179, 142, 46, 0.3),
+            0 0 30px rgba(179, 142, 46, 0.4),
+            0 0 60px rgba(179, 142, 46, 0.2);
+    }
+}
+
+.products_section .products .headphone_img:hover,
+.products_section .products .speaker_image:hover,
+.products_section .products .amp_image:hover {
+    animation: product-pulse 2s ease-in-out infinite;
+}
+
+.products_section .products .headphone_img:active,
+.products_section .products .speaker_image:active,
+.products_section .products .amp_image:active {
+    transform: translateY(-6px) scale(1.03);
+    transition-duration: 0.1s;
+}
+
+@media screen and (max-width: 1024px) {
+    .products_section .products .headphone_img:hover,
+    .products_section .products .speaker_image:hover,
+    .products_section .products .amp_image:hover {
+        transform: translateY(-6px) scale(1.03);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .products_section .products .headphone_img,
+    .products_section .products .speaker_image,
+    .products_section .products .amp_image {
+        transition: transform 0.3s ease;
+    }
+
+    .products_section .products .headphone_img:active,
+    .products_section .products .speaker_image:active,
+    .products_section .products .amp_image:active {
+        transform: scale(0.98);
+    }
+
+    .products_section .products .headphone_img::before,
+    .products_section .products .speaker_image::before,
+    .products_section .products .amp_image::before {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .products_section .products .headphone_img,
+    .products_section .products .speaker_image,
+    .products_section .products .amp_image {
+        transition: none;
+        animation: none;
+    }
+
+    .products_section .products .headphone_img:hover,
+    .products_section .products .speaker_image:hover,
+    .products_section .products .amp_image:hover {
+        transform: none;
+        animation: none;
+    }
+}
+
+
+.products_section .products .headphones a,
+.products_section .products .speakers a,
+.products_section .products .amplifiers a {
+    position: relative;
+    overflow: hidden;
+}
+
+.products_section .products .headphones a::after,
+.products_section .products .speakers a::after,
+.products_section .products .amplifiers a::after {
+    background: var(--color-accent);
+}
+
+.products_section .products .headphones:hover a,
+.products_section .products .speakers:hover a,
+.products_section .products .amplifiers:hover a {
+    color: var(--color-accent);
+}
+
+.about_section .about a {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.about_section .about a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(179, 142, 46, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.about_section .about a:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.about_section .about a:hover {
+    background: var(--color-accent);
+    color: var(--color-dark);
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 20px rgba(179, 142, 46, 0.4),
+        0 0 40px rgba(179, 142, 46, 0.2);
+}
+
+.social_section .swiper-slide .more,
+.social_section .social_partership .more {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.social_section .swiper-slide .more:hover,
+.social_section .social_partership .more:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 8px 20px rgba(230, 221, 204, 0.4),
+        0 0 40px rgba(230, 221, 204, 0.2);
+    background: rgba(230, 221, 204, 0.95);
+}
+
+@media screen and (max-width: 768px) {
+    .about_section .about a:hover::before {
+        width: 0;
+        height: 0;
+    }
+}
