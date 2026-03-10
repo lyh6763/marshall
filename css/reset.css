@@ -86,3 +86,8 @@ a, a:link, a:visited, a:hover, a:active, a:focus {
 ul, li {
     list-style: none;
 }
+
+body {
+    line-height: 1;
+    overflow-x: hidden; /* 추가: 가로로 삐져나간 요소들을 숨김 처리 */
+}
