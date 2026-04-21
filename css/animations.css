@@ -13,11 +13,11 @@
 }
 
 .scroll-fade-left {
-    transform: translateX(-40px);
+    transform: translateY(40px);
 }
 
 .scroll-fade-right {
-    transform: translateX(40px);
+    transform: translateY(40px);
 }
 
 .scroll-scale {
@@ -106,13 +106,13 @@
 
 .scroll-slide-in {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateY(40px);
     transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .scroll-slide-in.is-visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
 .scroll-rotate-in {
@@ -167,139 +167,6 @@
         transform: translateY(20px);
     }
 }
-
-.products_section .products .headphone_img,
-.products_section .products .speaker_image,
-.products_section .products .amp_image {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.products_section .products .headphone_img::before,
-.products_section .products .speaker_image::before,
-.products_section .products .amp_image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-        circle at center,
-        rgba(179, 142, 46, 0) 0%,
-        rgba(179, 142, 46, 0) 100%
-    );
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.products_section .products .headphone_img:hover,
-.products_section .products .speaker_image:hover,
-.products_section .products .amp_image:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 0 2px rgba(179, 142, 46, 0.3),
-        0 0 30px rgba(179, 142, 46, 0.4),
-        0 0 60px rgba(179, 142, 46, 0.2);
-}
-
-.products_section .products .headphone_img:hover::before,
-.products_section .products .speaker_image:hover::before,
-.products_section .products .amp_image:hover::before {
-    opacity: 1;
-    background: radial-gradient(
-        circle at center,
-        rgba(179, 142, 46, 0.15) 0%,
-        rgba(179, 142, 46, 0) 70%
-    );
-}
-
-@keyframes product-pulse {
-    0% {
-        box-shadow:
-            0 20px 40px rgba(0, 0, 0, 0.4),
-            0 0 0 2px rgba(179, 142, 46, 0.3),
-            0 0 30px rgba(179, 142, 46, 0.4),
-            0 0 60px rgba(179, 142, 46, 0.2);
-    }
-    50% {
-        box-shadow:
-            0 20px 40px rgba(0, 0, 0, 0.4),
-            0 0 0 2px rgba(179, 142, 46, 0.5),
-            0 0 40px rgba(179, 142, 46, 0.6),
-            0 0 80px rgba(179, 142, 46, 0.3);
-    }
-    100% {
-        box-shadow:
-            0 20px 40px rgba(0, 0, 0, 0.4),
-            0 0 0 2px rgba(179, 142, 46, 0.3),
-            0 0 30px rgba(179, 142, 46, 0.4),
-            0 0 60px rgba(179, 142, 46, 0.2);
-    }
-}
-
-.products_section .products .headphone_img:hover,
-.products_section .products .speaker_image:hover,
-.products_section .products .amp_image:hover {
-    animation: product-pulse 2s ease-in-out infinite;
-}
-
-.products_section .products .headphone_img:active,
-.products_section .products .speaker_image:active,
-.products_section .products .amp_image:active {
-    transform: translateY(-6px) scale(1.03);
-    transition-duration: 0.1s;
-}
-
-@media screen and (max-width: 1024px) {
-    .products_section .products .headphone_img:hover,
-    .products_section .products .speaker_image:hover,
-    .products_section .products .amp_image:hover {
-        transform: translateY(-6px) scale(1.03);
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .products_section .products .headphone_img,
-    .products_section .products .speaker_image,
-    .products_section .products .amp_image {
-        transition: transform 0.3s ease;
-    }
-
-    .products_section .products .headphone_img:active,
-    .products_section .products .speaker_image:active,
-    .products_section .products .amp_image:active {
-        transform: scale(0.98);
-    }
-
-    .products_section .products .headphone_img::before,
-    .products_section .products .speaker_image::before,
-    .products_section .products .amp_image::before {
-        display: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .products_section .products .headphone_img,
-    .products_section .products .speaker_image,
-    .products_section .products .amp_image {
-        transition: none;
-        animation: none;
-    }
-
-    .products_section .products .headphone_img:hover,
-    .products_section .products .speaker_image:hover,
-    .products_section .products .amp_image:hover {
-        transform: none;
-        animation: none;
-    }
-}
-
 
 .products_section .products .headphones a,
 .products_section .products .speakers a,

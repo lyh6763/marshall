@@ -124,17 +124,23 @@
 
     .products_section .products .speakers,
     .products_section .products .amplifiers {
-        margin-top: 150px;
+        margin-top: 160px;
     }
 
     .products_section .products .headphone_text,
     .products_section .products .amp_text {
+        grid-template-columns: minmax(0, 1fr) 500px;
+        column-gap: 90px;
         flex: 1;
+        max-width: none;
         text-align: left;
     }
 
     .products_section .products .speaker_text {
+        grid-template-columns: 500px minmax(0, 1fr);
+        column-gap: 90px;
         flex: 1;
+        max-width: none;
         text-align: right;
     }
 
@@ -158,12 +164,12 @@
     .products_section .products .headphones strong,
     .products_section .products .amplifiers strong {
         display: block;
-        font-size: 5.5em;
+        font-size: 4.8em;
     }
 
     .products_section .products .speakers strong {
         display: block;
-        font-size: 5.5em;
+        font-size: 4.8em;
     }
 
     .products_section .products .headphones p,
@@ -189,8 +195,9 @@
     .products_section .products .headphones .headphone_img,
     .products_section .products .speakers .speaker_image,
     .products_section .products .amplifiers .amp_image {
-        width: 550px;
-        height: 550px;
+        width: 500px;
+        max-width: 500px;
+        height: 500px;
         flex-shrink: 0;
         background-repeat: no-repeat;
         background-position: center;
@@ -212,7 +219,7 @@
 
     /* Artists */
     .artists_section {
-        padding-top: 300px;
+        padding-top: 220px;
     }
 
     .artists_section .artists .artists_banner {

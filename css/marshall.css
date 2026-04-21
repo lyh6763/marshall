@@ -267,9 +267,12 @@ nav.is-open.is-visible {
     font-size: 3em;
     font-weight: 700;
     line-height: 1.1;
+    max-width: 10.5em;
+    margin: 0 auto;
     padding: 90px 0 0;
     text-transform: uppercase;
     color: var(--color-dark);
+    overflow-wrap: normal;
 }
 .about_section .about p {
     font-size: 1.6em;
@@ -316,7 +319,7 @@ nav.is-open.is-visible {
 
 .products_section .products .speakers,
 .products_section .products .amplifiers{
-    margin-top: 80px;
+    margin-top: 96px;
 }
 
 .products_section .products .headphone_text span,
@@ -409,32 +412,30 @@ nav.is-open.is-visible {
 .products_section .products .speakers .speaker_image,
 .products_section .products .amplifiers .amp_image{
     display: block;
-    width: 360px;
-    height: 360px;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     margin: 0 auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     position: relative;
-    z-index: -0;
 }
 
 .products_section .products .headphones .headphone_img{
     background-image: url(../img/marshall_headphone.jpg);
     margin: -15px auto 0 ;
-    z-index: -1;
 }
 
 .products_section .products .speakers .speaker_image{
     background-image: url(../img/marshall_speaker.jpg);
     margin: -20px auto 0;
-    z-index: -1;
 }
 
 .products_section .products .amplifiers .amp_image{
     background-image: url(../img/marshall_amp.jpg);
     margin: -20px auto 0;
-    z-index: -1;
 }
 
 
@@ -443,7 +444,7 @@ nav.is-open.is-visible {
     display: flex;
     justify-self: center;
     flex-direction: column;
-    padding-top: 200px;
+    padding-top: 150px;
 }
 .artists_section .artists {
     width: 100%;
@@ -858,6 +859,18 @@ footer {
     justify-content: space-between;
     align-items: center;
     transition: color var(--transition-normal);
+}
+
+.footer_toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    text-align: inherit;
+    cursor: inherit;
 }
 
 .footer_bottom .footer_company h3:hover,

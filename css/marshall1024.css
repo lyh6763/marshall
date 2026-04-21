@@ -236,17 +236,23 @@
 
     .products_section .products .speakers,
     .products_section .products .amplifiers {
-        margin-top: 100px;
+        margin-top: 128px;
     }
 
     .products_section .products .headphone_text,
     .products_section .products .amp_text {
+        grid-template-columns: minmax(0, 1fr) 420px;
+        column-gap: 60px;
         flex: 1;
+        max-width: none;
         text-align: left;
     }
 
     .products_section .products .speaker_text {
+        grid-template-columns: 420px minmax(0, 1fr);
+        column-gap: 60px;
         flex: 1;
+        max-width: none;
         text-align: right;
     }
 
@@ -305,6 +311,7 @@
     .products_section .products .speakers .speaker_image,
     .products_section .products .amplifiers .amp_image {
         width: 420px;
+        max-width: 420px;
         height: 420px;
         flex-shrink: 0;
         background-repeat: no-repeat;
@@ -327,7 +334,7 @@
 
     /* Artists */
     .artists_section {
-        padding-top: 200px;
+        padding-top: 160px;
     }
 
     .artists_section .artists .artists_banner {

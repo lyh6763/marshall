@@ -26,6 +26,13 @@
         let isMenuOpen = false;
         let lastFocused = null;
         let closeTimer = null;
+        let closeTransitionHandler = null;
+        let openFocusTimer = null;
+
+        function clearOpenFocusTimer() {
+            window.clearTimeout(openFocusTimer);
+            openFocusTimer = null;
+        }
 
         function syncA11y() {
             const navVisible = isDesktop() || (isMobile() && isMenuOpen);
@@ -35,6 +42,14 @@
 
         function openMenu() {
             if (!isMobile() || isMenuOpen) return;
+            window.clearTimeout(closeTimer);
+            closeTimer = null;
+            clearOpenFocusTimer();
+            if (closeTransitionHandler) {
+                nav.removeEventListener('transitionend', closeTransitionHandler);
+                closeTransitionHandler = null;
+            }
+
             isMenuOpen = true;
             lastFocused = document.activeElement;
 
@@ -49,18 +64,23 @@
             document.addEventListener('keydown', onKeydown);
             document.addEventListener('keydown', trapFocus);
 
-            window.setTimeout(() => {
+            openFocusTimer = window.setTimeout(() => {
+                openFocusTimer = null;
+                if (!isMenuOpen || !isMobile()) return;
                 closeBtn.focus();
             }, 300);
         }
 
         function finishClose() {
             nav.classList.remove(NAV_OPEN_CLASS);
+            closeTransitionHandler = null;
+            closeTimer = null;
         }
 
         function closeMenu({ restoreFocus = true } = {}) {
             if (!isMobile() || !isMenuOpen) return;
             isMenuOpen = false;
+            clearOpenFocusTimer();
 
             nav.classList.remove(NAV_VISIBLE_CLASS);
             document.body.style.overflow = '';
@@ -69,13 +89,17 @@
             document.removeEventListener('keydown', onKeydown);
             document.removeEventListener('keydown', trapFocus);
 
-            const onTransitionEnd = (event) => {
+            if (closeTransitionHandler) {
+                nav.removeEventListener('transitionend', closeTransitionHandler);
+            }
+
+            closeTransitionHandler = (event) => {
                 if (event.target !== nav) return;
-                nav.removeEventListener('transitionend', onTransitionEnd);
+                nav.removeEventListener('transitionend', closeTransitionHandler);
                 finishClose();
             };
 
-            nav.addEventListener('transitionend', onTransitionEnd);
+            nav.addEventListener('transitionend', closeTransitionHandler);
 
             window.clearTimeout(closeTimer);
             closeTimer = window.setTimeout(finishClose, 350);
@@ -143,6 +167,13 @@
             resizeTimer = window.setTimeout(() => {
                 if (isDesktop()) {
                     isMenuOpen = false;
+                    window.clearTimeout(closeTimer);
+                    closeTimer = null;
+                    clearOpenFocusTimer();
+                    if (closeTransitionHandler) {
+                        nav.removeEventListener('transitionend', closeTransitionHandler);
+                        closeTransitionHandler = null;
+                    }
                     nav.classList.remove(NAV_OPEN_CLASS, NAV_VISIBLE_CLASS);
                     document.body.style.overflow = '';
                 } else if (!isMenuOpen) {

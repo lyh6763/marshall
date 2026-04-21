@@ -261,6 +261,7 @@
         font-size: 5em;
         font-weight: 700;
         line-height: 1.1;
+        max-width: none;
         padding: 160px 0 0;
         text-transform: uppercase;
         color: var(--color-dark);
@@ -318,18 +319,50 @@
 
     .products_section .products .speakers,
     .products_section .products .amplifiers {
-        margin-top: 80px;
+        margin-top: 96px;
     }
 
     .products_section .products .headphone_text,
     .products_section .products .amp_text {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        column-gap: 30px;
+        align-items: center;
         flex: 1;
+        max-width: none;
         text-align: left;
     }
 
     .products_section .products .speaker_text {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        column-gap: 30px;
+        align-items: center;
         flex: 1;
+        max-width: none;
         text-align: right;
+    }
+
+    .products_section .products .headphone_text > :not(.headphone_img),
+    .products_section .products .amp_text > :not(.amp_image) {
+        grid-column: 1;
+    }
+
+    .products_section .products .speaker_text > :not(.speaker_image) {
+        grid-column: 2;
+    }
+
+    .products_section .products .headphones .headphone_img,
+    .products_section .products .amplifiers .amp_image {
+        grid-column: 2;
+        grid-row: 1 / span 5;
+        align-self: center;
+    }
+
+    .products_section .products .speakers .speaker_image {
+        grid-column: 1;
+        grid-row: 1 / span 5;
+        align-self: center;
     }
 
     .products_section .products .headphone_text span,
@@ -435,6 +468,7 @@
     .products_section .products .speakers .speaker_image,
     .products_section .products .amplifiers .amp_image {
         width: 300px;
+        max-width: 300px;
         height: 300px;
         flex-shrink: 0;
         background-repeat: no-repeat;
@@ -460,7 +494,7 @@
         display: flex;
         justify-self: center;
         flex-direction: column;
-        padding-top: 200px;
+        padding-top: 160px;
     }
     .artists_section .artists {
         width: 100%;

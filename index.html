@@ -39,10 +39,10 @@
                 <div class="nav_body">
                     <h2 class="screen_out">main navigation</h2>
                     <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Artists</a></li>
-                        <li><a href="#">Social</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#artists">Artists</a></li>
+                        <li><a href="#social">Social</a></li>
                     </ul>
                 </div>
 
@@ -71,7 +71,7 @@
 
     <main>
         <!-- about -->
-        <section class="about_section">
+        <section class="about_section" id="about">
             <div class="about">
                 <div class="about_text scroll-fade-up">
                     <h2>
@@ -89,7 +89,7 @@
         </section>
 
         <!-- products -->
-        <section class="products_section">
+        <section class="products_section" id="products">
             <h2 class="scroll-fade-up">Products</h2>
             <div class="products">
                 <!-- headphones -->
@@ -150,7 +150,7 @@
         </section>
 
         <!-- Artists -->
-        <section class="artists_section ">
+        <section class="artists_section " id="artists">
             <div class="artists">
                 <div class="artists_banner scroll-fade-up">
                     <div class="artists_text">
@@ -229,7 +229,7 @@
         </section>
 
         <!-- social -->
-        <section class="social_section">
+        <section class="social_section" id="social">
             <div class="social_text scroll-fade-up">
                 <h2>Social</h2>
                 <p>
@@ -303,10 +303,12 @@
             <div class="footer_bottom">
                 <div class="footer_section footer_company">
                     <h3>
-                        회사
-                        <span class="dropdown_icon"></span>
+                        <button type="button" class="footer_toggle" aria-expanded="false" aria-controls="footer-company-list">
+                            회사
+                            <span class="dropdown_icon" aria-hidden="true"></span>
+                        </button>
                     </h3>
-                    <ul class="company_list">
+                    <ul class="company_list" id="footer-company-list">
                         <li><a href="#">Marshall 소개</a></li>
                         <li><a href="#">Marshall Group 소개</a></li>
                         <li><a href="#">채용</a></li>
@@ -315,10 +317,12 @@
 
                 <div class="footer_section footer_customer">
                     <h3>
-                        고객지원
-                        <span class="dropdown_icon"></span>
+                        <button type="button" class="footer_toggle" aria-expanded="false" aria-controls="footer-customer-list">
+                            고객지원
+                            <span class="dropdown_icon" aria-hidden="true"></span>
+                        </button>
                     </h3>
-                    <ul class="customer_list">
+                    <ul class="customer_list" id="footer-customer-list">
                         <li><a href="#">반품</a></li>
                         <li><a href="#">배송 및 조회</a></li>
                         <li><a href="#">주문 및 결제</a></li>
@@ -329,10 +333,12 @@
 
                 <div class="footer_section footer_account">
                     <h3>
-                        계정
-                        <span class="dropdown_icon"></span>
+                        <button type="button" class="footer_toggle" aria-expanded="false" aria-controls="footer-account-list">
+                            계정
+                            <span class="dropdown_icon" aria-hidden="true"></span>
+                        </button>
                     </h3>
-                    <ul class="account_list">
+                    <ul class="account_list" id="footer-account-list">
                         <li><a href="#">로그인/가입하기</a></li>
                         <li><a href="#">제품 등록</a></li>
                     </ul>
