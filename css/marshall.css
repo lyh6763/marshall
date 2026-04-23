@@ -267,11 +267,12 @@ nav.is-open.is-visible {
     font-size: 3em;
     font-weight: 700;
     line-height: 1.1;
-    max-width: 10.5em;
+    max-width: 8.5em;
     margin: 0 auto;
     padding: 90px 0 0;
     text-transform: uppercase;
     color: var(--color-dark);
+    text-wrap: balance;
     overflow-wrap: normal;
 }
 .about_section .about p {
@@ -279,7 +280,8 @@ nav.is-open.is-visible {
     line-height: 1.4;
     color: var(--color-dark);
     margin: 20px auto 50px;
-    word-break: keep-all;
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 .about_section .about a {
     width: 192px;
