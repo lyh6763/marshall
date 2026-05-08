@@ -174,7 +174,8 @@
         align-items: center;
     }
 
-    .nav_wrap .language a {
+    .nav_wrap .language a,
+    .nav_wrap .language .language_current {
         color: var(--color-dark);
         font-family: var(--font-body);
         font-size: 1.8em;
@@ -189,12 +190,12 @@
         color: var(--color-accent);
     }
 
-    .nav_wrap .language span {
+    .nav_wrap .language .language_divider {
         display: flex;
         align-items: center;
     }
 
-    .nav_wrap .language span::before {
+    .nav_wrap .language .language_divider::before {
         content: '|';
         display: inline-block;
         color: #999;
@@ -205,10 +206,10 @@
 
     /* header_visual */
     .header_visual {
-        background: url(../img/head_img.jpg) no-repeat 65%/cover;
+        background: var(--color-bg);
         width: 100%;
         height: 954px;
-        overflow: visible;
+        overflow: hidden;
     }
 
     .header_visual .slogan {
@@ -302,8 +303,7 @@
         margin: 0 auto;
     }
 
-    .products_section .products .headphones,
-    .products_section .products .amplifiers {
+    .products_section .products :is(.headphones, .amplifiers) {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -322,8 +322,7 @@
         margin-top: 96px;
     }
 
-    .products_section .products .headphone_text,
-    .products_section .products .amp_text {
+    .products_section .products :is(.headphone_text, .amp_text) {
         display: grid;
         grid-template-columns: minmax(0, 1fr) 300px;
         column-gap: 30px;
@@ -343,8 +342,7 @@
         text-align: right;
     }
 
-    .products_section .products .headphone_text > :not(.headphone_img),
-    .products_section .products .amp_text > :not(.amp_image) {
+    .products_section .products :is(.headphone_text, .amp_text) > :not(.headphone_img, .amp_image) {
         grid-column: 1;
     }
 
@@ -352,8 +350,7 @@
         grid-column: 2;
     }
 
-    .products_section .products .headphones .headphone_img,
-    .products_section .products .amplifiers .amp_image {
+    .products_section .products :is(.headphone_img, .amp_image) {
         grid-column: 2;
         grid-row: 1 / span 5;
         align-self: center;
@@ -365,8 +362,7 @@
         align-self: center;
     }
 
-    .products_section .products .headphone_text span,
-    .products_section .products .amp_text span {
+    .products_section .products :is(.headphone_text, .speaker_text, .amp_text) span {
         display: block;
         font-size: 10em;
         line-height: 1;
@@ -374,31 +370,14 @@
         color: rgba(255, 255, 255, .3);
     }
 
-    .products_section .products .speaker_text span {
-        display: block;
-        font-size: 10em;
-        line-height: 1;
-        font-family: var(--font-display);
-        color: rgba(255, 255, 255, .3);
-    }
-
-    .products_section .products .headphones h3,
-    .products_section .products .amplifiers h3 {
+    .products_section .products :is(.headphones, .speakers, .amplifiers) h3 {
         text-transform: uppercase;
         color: var(--color-accent);
         font-size: 2em;
         margin: -25px 0 8px 0;
     }
 
-    .products_section .products .speakers h3 {
-        text-transform: uppercase;
-        color: var(--color-accent);
-        font-size: 2em;
-        margin: -25px 0 8px 0;
-    }
-
-    .products_section .products .headphones strong,
-    .products_section .products .amplifiers strong {
+    .products_section .products :is(.headphones, .speakers, .amplifiers) strong {
         display: block;
         line-height: 1.1;
         color: var(--color-primary);
@@ -406,16 +385,7 @@
         font-size: 2.8em;
     }
 
-    .products_section .products .speakers strong {
-        display: block;
-        line-height: 1.1;
-        color: var(--color-primary);
-        text-transform: uppercase;
-        font-size: 2.8em;
-    }
-
-    .products_section .products .headphones p,
-    .products_section .products .amplifiers p {
+    .products_section .products :is(.headphones, .speakers, .amplifiers) p {
         font-size: 1.5em;
         line-height: 1.5;
         color: var(--color-text);
@@ -423,17 +393,7 @@
         margin-top: 15px;
     }
 
-    .products_section .products .speakers p {
-        font-size: 1.5em;
-        line-height: 1.5;
-        color: var(--color-text);
-        word-break: keep-all;
-        margin-top: 15px;
-    }
-
-    .products_section .products .headphones a,
-    .products_section .products .speakers a,
-    .products_section .products .amplifiers a {
+    .products_section .products :is(.headphones, .speakers, .amplifiers) a {
         display: inline-block;
         color: var(--color-white);
         text-decoration: none;
@@ -443,9 +403,7 @@
         position: relative;
     }
 
-    .products_section .products .headphones a::after,
-    .products_section .products .speakers a::after,
-    .products_section .products .amplifiers a::after {
+    .products_section .products :is(.headphones, .speakers, .amplifiers) a::after {
         content: "";
         position: absolute;
         left: 0;
@@ -458,15 +416,11 @@
         transform: scaleX(0);
     }
 
-    .products_section .products .headphones a:hover::after,
-    .products_section .products .speakers a:hover::after,
-    .products_section .products .amplifiers a:hover::after {
+    .products_section .products :is(.headphones, .speakers, .amplifiers) a:hover::after {
         transform: scaleX(1);
     }
 
-    .products_section .products .headphones .headphone_img,
-    .products_section .products .speakers .speaker_image,
-    .products_section .products .amplifiers .amp_image {
+    .products_section .products :is(.headphone_img, .speaker_image, .amp_image) {
         width: 300px;
         max-width: 300px;
         height: 300px;
@@ -474,18 +428,6 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-    }
-
-    .products_section .products .headphones .headphone_img {
-        background-image: url(../img/marshall_headphone.jpg);
-    }
-
-    .products_section .products .speakers .speaker_image {
-        background-image: url(../img/marshall_speaker.jpg);
-    }
-
-    .products_section .products .amplifiers .amp_image {
-        background-image: url(../img/marshall_amp.jpg);
     }
 
 
@@ -503,7 +445,7 @@
     .artists_section .artists .artists_banner {
         margin: 0 auto;
         position: relative;
-        background: url(../img/artist_banner.jpg) no-repeat center/cover;
+        background: var(--color-dark);
     }
 
     .artists_section .artists .artists_banner h2 {
@@ -635,238 +577,6 @@
         background-size: cover;
         background-repeat: no-repeat;
         flex-shrink: 0;
-    }
-
-    .artists_section .artist_content .artist1_image {
-        background-image: url(../img/artist01.jpg);
-    }
-
-    .artists_section .artist_content .artist2_image {
-        background-image: url(../img/artist02.jpg);
-    }
-
-    .artists_section .artist_content .artist3_image {
-        background-image: url(../img/artist03.jpg);
-    }
-
-    .artists_section .artist_content .artist4_image {
-        background-image: url(../img/artist04.jpg);
-    }
-
-
-    /* social */
-    .social_section {
-        padding-top: 150px;
-    }
-    .social_section .social_text {
-        width: 100%;
-        padding: 0 40px;
-        margin: 0 auto;
-        box-sizing: border-box;
-    }
-    .social_section .social_text h2 {
-        font-size: 5em;
-        text-transform: uppercase;
-        color: var(--color-primary);
-        text-align: center;
-    }
-    .social_section .social_text p {
-        font-size: 1.6em;
-        line-height: 1.5;
-        color: var(--color-text);
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    /* social_slider */
-    .social_section .swiper {
-        width: var(--container-mobile);
-        height: 700px;
-        margin-top: 80px;
-    }
-    .social_section .swiper .swiper-wrapper {
-        margin: 0 auto;
-    }
-
-    /* heritage */
-    .social_section .swiper .social_heritage {
-        background: url(../img/social_heritage.jpg) no-repeat center/cover;
-        width: 100%;
-        height: 360px;
-        position: relative;
-    }
-    .social_section .swiper .swiper-slide .heritage_text {
-        position: absolute;
-        transform: translateY(360px);
-        width: 100%;
-        height: 280px;
-        background: var(--color-dark);
-        padding: 35px;
-    }
-    .social_section .swiper .swiper-slide .heritage_text h3 {
-        font-size: 3em;
-        line-height: 1.1;
-        font-weight: bold;
-        color: var(--color-primary);
-    }
-    .social_section .swiper .swiper-slide .heritage_text p {
-        font-size: 1.6em;
-        line-height: 1.3;
-        color: var(--color-text);
-        margin-top: 10px;
-        word-break: keep-all;
-    }
-    .social_section .swiper .swiper-slide .heritage_text .more {
-        display: inline-block;
-        width: 140px;
-        height: 40px;
-        background: var(--color-primary);
-        color: var(--color-dark);
-        text-align: center;
-        line-height: 40px;
-        font-size: 16px;
-        font-weight: 600;
-        margin-top: 40px;
-    }
-
-    /* story */
-    .social_section .swiper .social_story {
-        height: 360px;
-        background: url(../img/social_story.jpg) no-repeat center/cover;
-        position: relative;
-    }
-    .social_section .swiper .swiper-slide .story_text {
-        position: absolute;
-        transform: translateY(360px);
-        width: 100%;
-        height: 280px;
-        padding: 35px;
-        background: var(--color-dark);
-    }
-    .social_section .swiper .swiper-slide .story_text h3 {
-        font-size: 3em;
-        line-height: 1.1;
-        font-weight: bold;
-        color: var(--color-primary);
-    }
-    .social_section .swiper .swiper-slide .story_text p {
-        font-size: 1.6em;
-        line-height: 1.3;
-        color: var(--color-text);
-        margin-top: 10px;
-        word-break: keep-all;
-    }
-    .social_section .swiper .swiper-slide .story_text .more {
-        display: inline-block;
-        width: 140px;
-        height: 40px;
-        background: var(--color-primary);
-        color: var(--color-dark);
-        text-align: center;
-        line-height: 40px;
-        font-size: 16px;
-        font-weight: 600;
-        margin-top: 20px;
-    }
-
-    /* community */
-    .social_section .swiper .social_community {
-        height: 360px;
-        background: url(../img/social_community.jpg) no-repeat center/cover;
-        position: relative;
-    }
-    .social_section .swiper .swiper-slide .community_text {
-        position: absolute;
-        transform: translateY(360px);
-        height: 280px;
-        padding: 35px;
-        background: var(--color-dark);
-    }
-    .social_section .swiper .swiper-slide .community_text h3 {
-        font-size: 3em;
-        line-height: 1.1;
-        font-weight: bold;
-        color: var(--color-primary);
-    }
-    .social_section .swiper .swiper-slide .community_text p {
-        font-size: 1.6em;
-        line-height: 1.3;
-        color: var(--color-text);
-        margin-top: 10px;
-        word-break: keep-all;
-    }
-    .social_section .swiper .swiper-slide .community_text .more {
-        display: inline-block;
-        width: 140px;
-        height: 40px;
-        background: var(--color-primary);
-        color: var(--color-dark);
-        text-align: center;
-        line-height: 40px;
-        font-size: 16px;
-        font-weight: 600;
-        margin-top: 20px;
-    }
-
-    .social_section .swiper .swiper-scrollbar {
-        background: rgba(255, 255, 255, .3);
-        height: 4px;
-        position: absolute;
-        border-radius: 1px;
-    }
-
-    .social_section .swiper .swiper-scrollbar-drag {
-        background: rgba(255, 255, 255, .7);
-        height: 6px;
-        border-radius: 1px;
-    }
-
-    /* partership */
-    .social_section .social_partership {
-        width: var(--container-mobile);
-        height: 640px;
-        margin: 150px auto 0;
-        background: url(../img/social_parter.jpg) no-repeat center/cover;
-        position: relative;
-    }
-
-    .social_section .social_partership .partership_text {
-        position: absolute;
-        transform: translateY(320px);
-        width: 100%;
-        height: 320px;
-        background: rgba(18, 18, 18, .6);
-        padding: 50px;
-    }
-
-    .social_section .social_partership .partership_text h3 {
-        font-size: 3em;
-        font-family: var(--font-heading);
-        line-height: 1;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: var(--color-primary);
-    }
-
-    .social_section .social_partership .partership_text p {
-        font-size: 1.6rem;
-        line-height: 1.5;
-        color: var(--color-text);
-        margin-top: 10px;
-        word-break: keep-all;
-    }
-
-    .social_section .social_partership .partership_text .more {
-        display: inline-block;
-        width: 140px;
-        height: 40px;
-        background: var(--color-primary);
-        color: var(--color-dark);
-        text-align: center;
-        line-height: 40px;
-        font-size: 16px;
-        font-weight: 600;
-        margin-top: 40px;
     }
 
     /* footer */
