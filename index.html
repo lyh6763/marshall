@@ -14,10 +14,10 @@
     <title>Marshall</title>
 </head>
 
-<body>
+<body id="top">
     <header>
         <div class="header_center">
-            <h1><a href="#">Marshall</a></h1>
+            <h1><a href="#top">Marshall</a></h1>
             <button type="button" class="btn" aria-expanded="false" aria-controls="site-nav">
                 <span>메뉴 열기</span>
                 <span></span>
@@ -28,7 +28,7 @@
         <nav id="site-nav" aria-hidden="true" aria-label="주요 메뉴">
             <div class="nav_wrap">
                 <div class="nav_header">
-                    <h1><a href="#">Marshall</a></h1>
+                    <h1><a href="#top">Marshall</a></h1>
                     <button type="button" class="close_btn" aria-label="메뉴 닫기">
                         <span>메뉴닫기</span>
                         <span></span>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="nav_body">
-                    <h2 class="screen_out">main navigation</h2>
+                    <h2 class="screen_out">주요 메뉴</h2>
                     <ul>
                         <li><a href="#about">About</a></li>
                         <li><a href="#products">Products</a></li>
@@ -47,9 +47,9 @@
                 </div>
 
                 <div class="language">
-                    <a href="#">한국어</a>
-                    <span></span>
-                    <a href="#">English </a>
+                    <strong class="language_current" aria-current="true">한국어</strong>
+                    <span class="language_divider"></span>
+                    <a href="https://www.marshall.com/us/en" target="_blank" rel="noopener noreferrer">English</a>
                 </div>
             </div>
         </nav>
@@ -57,6 +57,29 @@
     </header>
 
     <div class="header_visual">
+        <picture>
+            <source
+                type="image/avif"
+                srcset="img/optimized/head_img-960.avif 960w, img/optimized/head_img-1440.avif 1440w, img/optimized/head_img-1920.avif 1920w"
+                sizes="100vw"
+            >
+            <source
+                type="image/webp"
+                srcset="img/optimized/head_img-960.webp 960w, img/optimized/head_img-1440.webp 1440w, img/optimized/head_img-1920.webp 1920w"
+                sizes="100vw"
+            >
+            <img
+                class="hero_image"
+                src="img/optimized/head_img-1440.jpg"
+                srcset="img/optimized/head_img-960.jpg 960w, img/optimized/head_img-1440.jpg 1440w, img/optimized/head_img-1920.jpg 1920w"
+                sizes="100vw"
+                width="2880"
+                height="1431"
+                alt="Marshall 앰프와 무대 분위기를 담은 히어로 이미지"
+                fetchpriority="high"
+                decoding="async"
+            >
+        </picture>
         <div class="slogan scroll-fade-up">
             <h2>
                 Rock 'n' roll is<br>
@@ -82,7 +105,7 @@
                         스튜디오, 가정에서나 이동 중에도 누릴 수 있도록 10년마다 기술을 발전시키며 최고의 오디오라는 명성을 지켜왔습니다.
                     </p>
 
-                    <a href="#">더 알아보기</a>
+                    <a href="https://www.marshall.com/us/en/about-marshall" target="_blank" rel="noopener noreferrer" aria-label="Marshall 소개 더 알아보기">더 알아보기</a>
                 </div>
 
             </div>
@@ -104,9 +127,24 @@
                             Marshall 헤드폰은 맞춤 튜닝된
                             다이내믹 드라이버가 탑재되어 우렁찬 저음, 부드러운 중음, 화려한 고음을 전달합니다. Marshall만의 고품질 시그니처 사운드를 지금 바로 경험해 보세요.
                         </p>
-                        <a href="#">더 알아보기</a>
+                        <a href="https://www.marshall.com/us/en/headphones" target="_blank" rel="noopener noreferrer" aria-label="Marshall 헤드폰 제품 더 알아보기">더 알아보기</a>
 
-                        <div class="headphone_img"></div>
+                        <div class="headphone_img">
+                            <picture>
+                                <source type="image/avif" srcset="img/optimized/marshall_headphone-360.avif 360w, img/optimized/marshall_headphone-600.avif 600w" sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw">
+                                <source type="image/webp" srcset="img/optimized/marshall_headphone-360.webp 360w, img/optimized/marshall_headphone-600.webp 600w" sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw">
+                                <img
+                                    src="img/optimized/marshall_headphone-600.jpg"
+                                    srcset="img/optimized/marshall_headphone-360.jpg 360w, img/optimized/marshall_headphone-600.jpg 600w"
+                                    sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw"
+                                    width="600"
+                                    height="600"
+                                    alt="Marshall 헤드폰 제품 이미지"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </picture>
+                        </div>
                     </div>
 
                 </div>
@@ -123,9 +161,24 @@
                             Marshall의 스피커는 공간을 채우는 풍부한 사운드와 클래식한 디자인의 결합입니다. 홈 스테레오부터 포터블 블루투스 스피커까지, 어떤 환경에서도 진정한
                             Marshall 사운드를 선사합니다.
                         </p>
-                        <a href="#">더 알아보기</a>
+                        <a href="https://www.marshall.com/us/en/speakers" target="_blank" rel="noopener noreferrer" aria-label="Marshall 스피커 제품 더 알아보기">더 알아보기</a>
 
-                        <div class="speaker_image"></div>
+                        <div class="speaker_image">
+                            <picture>
+                                <source type="image/avif" srcset="img/optimized/marshall_speaker-360.avif 360w, img/optimized/marshall_speaker-600.avif 600w" sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw">
+                                <source type="image/webp" srcset="img/optimized/marshall_speaker-360.webp 360w, img/optimized/marshall_speaker-600.webp 600w" sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw">
+                                <img
+                                    src="img/optimized/marshall_speaker-600.jpg"
+                                    srcset="img/optimized/marshall_speaker-360.jpg 360w, img/optimized/marshall_speaker-600.jpg 600w"
+                                    sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw"
+                                    width="600"
+                                    height="600"
+                                    alt="Marshall 스피커 제품 이미지"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </picture>
+                        </div>
                     </div>
                 </div>
 
@@ -135,15 +188,30 @@
                         <span>03</span>
                         <h3>Amplifiers</h3>
                         <strong>
-                            Amplifier your sound
+                            Amplify your sound
                         </strong>
                         <p>
                             1962년부터 이어져 온 Marshall 앰프의 전통. 스튜디오부터 무대까지, 수많은 전설적 뮤지션들이 선택한 사운드를 당신의 손끝에서
                             느껴보세요. 시그니처 톤과 뛰어난 내구성으로 여전히 업계 표준을 정의합니다.
                         </p>
-                        <a href="#">더 알아보기</a>
+                        <a href="https://www.marshall.com/us/en/amplifiers" target="_blank" rel="noopener noreferrer" aria-label="Marshall 앰프 제품 더 알아보기">더 알아보기</a>
 
-                        <div class="amp_image"></div>
+                        <div class="amp_image">
+                            <picture>
+                                <source type="image/avif" srcset="img/optimized/marshall_amp-360.avif 360w, img/optimized/marshall_amp-600.avif 600w" sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw">
+                                <source type="image/webp" srcset="img/optimized/marshall_amp-360.webp 360w, img/optimized/marshall_amp-600.webp 600w" sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw">
+                                <img
+                                    src="img/optimized/marshall_amp-600.jpg"
+                                    srcset="img/optimized/marshall_amp-360.jpg 360w, img/optimized/marshall_amp-600.jpg 600w"
+                                    sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw"
+                                    width="600"
+                                    height="600"
+                                    alt="Marshall 앰프 제품 이미지"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </picture>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -153,6 +221,29 @@
         <section class="artists_section " id="artists">
             <div class="artists">
                 <div class="artists_banner scroll-fade-up">
+                    <picture>
+                        <source
+                            type="image/avif"
+                            srcset="img/optimized/artist_banner-768.avif 768w, img/optimized/artist_banner-1440.avif 1440w, img/optimized/artist_banner-1920.avif 1920w"
+                            sizes="100vw"
+                        >
+                        <source
+                            type="image/webp"
+                            srcset="img/optimized/artist_banner-768.webp 768w, img/optimized/artist_banner-1440.webp 1440w, img/optimized/artist_banner-1920.webp 1920w"
+                            sizes="100vw"
+                        >
+                        <img
+                            class="artists_banner_image"
+                            src="img/optimized/artist_banner-1440.jpg"
+                            srcset="img/optimized/artist_banner-768.jpg 768w, img/optimized/artist_banner-1440.jpg 1440w, img/optimized/artist_banner-1920.jpg 1920w"
+                            sizes="100vw"
+                            width="3844"
+                            height="996"
+                            alt="Marshall 아티스트 무대 분위기를 담은 배너 이미지"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </picture>
                     <div class="artists_text">
                         <!-- 왼쪽 제목 영역 -->
                         <div class="artists_text_left">
@@ -183,7 +274,22 @@
                         </p>
                     </div>
 
-                    <div class="artist1_image"></div>
+                    <div class="artist1_image">
+                        <picture>
+                            <source type="image/avif" srcset="img/optimized/artist01-360.avif 360w, img/optimized/artist01-600.avif 600w" sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw">
+                            <source type="image/webp" srcset="img/optimized/artist01-360.webp 360w, img/optimized/artist01-600.webp 600w" sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw">
+                            <img
+                                src="img/optimized/artist01-600.jpg"
+                                srcset="img/optimized/artist01-360.jpg 360w, img/optimized/artist01-600.jpg 600w"
+                                sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw"
+                                width="600"
+                                height="600"
+                                alt="무대 위에서 연주하는 Marshall 아티스트 이미지"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
+                    </div>
                 </div>
 
                 <div class="artist2 scroll-fade-right">
@@ -195,7 +301,22 @@
                         </p>
                     </div>
 
-                    <div class="artist2_image"></div>
+                    <div class="artist2_image">
+                        <picture>
+                            <source type="image/avif" srcset="img/optimized/artist02-360.avif 360w, img/optimized/artist02-600.avif 600w" sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw">
+                            <source type="image/webp" srcset="img/optimized/artist02-360.webp 360w, img/optimized/artist02-600.webp 600w" sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw">
+                            <img
+                                src="img/optimized/artist02-600.jpg"
+                                srcset="img/optimized/artist02-360.jpg 360w, img/optimized/artist02-600.jpg 600w"
+                                sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw"
+                                width="600"
+                                height="600"
+                                alt="Marshall 사운드를 사용하는 아티스트 공연 이미지"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
+                    </div>
                 </div>
 
                 <div class="artist3 scroll-fade-left">
@@ -208,7 +329,22 @@
                         </p>
                     </div>
 
-                    <div class="artist3_image"></div>
+                    <div class="artist3_image">
+                        <picture>
+                            <source type="image/avif" srcset="img/optimized/artist03-360.avif 360w, img/optimized/artist03-600.avif 600w" sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw">
+                            <source type="image/webp" srcset="img/optimized/artist03-360.webp 360w, img/optimized/artist03-600.webp 600w" sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw">
+                            <img
+                                src="img/optimized/artist03-600.jpg"
+                                srcset="img/optimized/artist03-360.jpg 360w, img/optimized/artist03-600.jpg 600w"
+                                sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw"
+                                width="600"
+                                height="600"
+                                alt="새로운 음악을 선보이는 Marshall 아티스트 이미지"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
+                    </div>
                 </div>
 
                 <div class="artist4 scroll-fade-right">
@@ -222,7 +358,22 @@
                         </p>
                     </div>
 
-                    <div class="artist4_image"></div>
+                    <div class="artist4_image">
+                        <picture>
+                            <source type="image/avif" srcset="img/optimized/artist04-360.avif 360w, img/optimized/artist04-600.avif 600w" sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw">
+                            <source type="image/webp" srcset="img/optimized/artist04-360.webp 360w, img/optimized/artist04-600.webp 600w" sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw">
+                            <img
+                                src="img/optimized/artist04-600.jpg"
+                                srcset="img/optimized/artist04-360.jpg 360w, img/optimized/artist04-600.jpg 600w"
+                                sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw"
+                                width="600"
+                                height="600"
+                                alt="Marshall 장비와 함께하는 창작자 이미지"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
+                    </div>
                 </div>
             </div>
 
@@ -241,34 +392,79 @@
             <div class="social_slider_wrap swiper scroll-scale">
                 <div class="social_slider swiper-wrapper">
                     <div class="social_heritage swiper-slide">
+                        <picture>
+                            <source type="image/avif" srcset="img/optimized/social_heritage-360.avif 360w, img/optimized/social_heritage-741.avif 741w" sizes="(min-width: 1024px) 1200px, 83vw">
+                            <source type="image/webp" srcset="img/optimized/social_heritage-360.webp 360w, img/optimized/social_heritage-741.webp 741w" sizes="(min-width: 1024px) 1200px, 83vw">
+                            <img
+                                class="slide_image"
+                                src="img/optimized/social_heritage-741.jpg"
+                                srcset="img/optimized/social_heritage-360.jpg 360w, img/optimized/social_heritage-741.jpg 741w"
+                                sizes="(min-width: 1024px) 1200px, 83vw"
+                                width="741"
+                                height="741"
+                                alt="Marshall 헤리티지 콘텐츠 이미지"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
                         <div class="heritage_text">
                             <h3>HERITAGE</h3>
                             <p>
                                 60년이 넘는 역사를 자랑하는 만큼 Marshall에게는 많은 이야기들이 숨겨져 있습니다. 1962년으로 거슬러 올라가 Marshall로부터 직접 들어보세요.
                             </p>
-                            <a href="#" class="more">더 알아보기</a>
+                            <a href="https://www.marshall.com/us/en/backstage/heritage" class="more" target="_blank" rel="noopener noreferrer" aria-label="Marshall 헤리티지 콘텐츠 더 알아보기">더 알아보기</a>
                         </div>
                     </div>
 
                     <div class="social_story swiper-slide">
+                        <picture>
+                            <source type="image/avif" srcset="img/optimized/social_story-360.avif 360w, img/optimized/social_story-741.avif 741w" sizes="(min-width: 1024px) 1200px, 83vw">
+                            <source type="image/webp" srcset="img/optimized/social_story-360.webp 360w, img/optimized/social_story-741.webp 741w" sizes="(min-width: 1024px) 1200px, 83vw">
+                            <img
+                                class="slide_image"
+                                src="img/optimized/social_story-741.jpg"
+                                srcset="img/optimized/social_story-360.jpg 360w, img/optimized/social_story-741.jpg 741w"
+                                sizes="(min-width: 1024px) 1200px, 83vw"
+                                width="741"
+                                height="741"
+                                alt="Marshall 스토리 콘텐츠 이미지"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
                         <div class="story_text">
                             <h3>STORY</h3>
                             <p>
                                 음악과 관련된 모든 이야기들이 담겨 있는 시리즈를 만나보세요. 여기서만 공개되는 뮤지션의 투어 생활을 들여다보거나, 가장 좋아하는 아티스트들의 연주 스타일을
                                 배울 수 있는 내용까지 여러분을 초대합니다.
                             </p>
-                            <a href="#" class="more">더 알아보기</a>
+                            <a href="https://www.marshall.com/us/en/backstage" class="more" target="_blank" rel="noopener noreferrer" aria-label="Marshall 스토리 콘텐츠 더 알아보기">더 알아보기</a>
                         </div>
                     </div>
 
                     <div class="social_community swiper-slide">
+                        <picture>
+                            <source type="image/avif" srcset="img/optimized/social_community-360.avif 360w, img/optimized/social_community-741.avif 741w" sizes="(min-width: 1024px) 1200px, 83vw">
+                            <source type="image/webp" srcset="img/optimized/social_community-360.webp 360w, img/optimized/social_community-741.webp 741w" sizes="(min-width: 1024px) 1200px, 83vw">
+                            <img
+                                class="slide_image"
+                                src="img/optimized/social_community-741.jpg"
+                                srcset="img/optimized/social_community-360.jpg 360w, img/optimized/social_community-741.jpg 741w"
+                                sizes="(min-width: 1024px) 1200px, 83vw"
+                                width="741"
+                                height="741"
+                                alt="Marshall 커뮤니티 콘텐츠 이미지"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
                         <div class="community_text">
                             <h3>COMMUNITY</h3>
                             <p>
                                 Jim Marshall은 음악이 변화시키는 힘을 가지고 있다고 믿었고, 모두에게 기회가 주어져야 한다는 철학을 남겼습니다. 그것이 오늘날까지 계속해서 신인들을
                                 지원하고 음악 커뮤니티의 포용성을 높이기 위해 힘쓰고 있는 이유입니다.
                             </p>
-                            <a href="#" class="more">더 알아보기</a>
+                            <a href="https://www.marshall.com/us/en/backstage" class="more" target="_blank" rel="noopener noreferrer" aria-label="Marshall 커뮤니티 콘텐츠 더 알아보기">더 알아보기</a>
                         </div>
                     </div>
 
@@ -279,13 +475,28 @@
                 </div>
             </div>
 
-            <div class="social_partership scroll-fade-up">
-                <div class="partership_text">
-                    <h3>partnership</h3>
+            <div class="social_partnership scroll-fade-up">
+                <picture>
+                    <source type="image/avif" srcset="img/optimized/social_partnership-640.avif 640w, img/optimized/social_partnership-1155.avif 1155w" sizes="(min-width: 1920px) 1440px, (min-width: 1024px) 1200px, 83vw">
+                    <source type="image/webp" srcset="img/optimized/social_partnership-640.webp 640w, img/optimized/social_partnership-1155.webp 1155w" sizes="(min-width: 1920px) 1440px, (min-width: 1024px) 1200px, 83vw">
+                    <img
+                        class="partnership_image"
+                        src="img/optimized/social_partnership-1155.jpg"
+                        srcset="img/optimized/social_partnership-640.jpg 640w, img/optimized/social_partnership-1155.jpg 1155w"
+                        sizes="(min-width: 1920px) 1440px, (min-width: 1024px) 1200px, 83vw"
+                        width="1155"
+                        height="750"
+                        alt="Marshall 파트너십 콘텐츠 이미지"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </picture>
+                <div class="partnership_text">
+                    <h3>PARTNERSHIP</h3>
                     <p>
                         경계를 허물고 혁신을 일으키는 것이 바로 음악이기에, 다양한 크리에이티브와 지속적인 파트너십 및 콜라보레이션을 활발하게 진행하고 있습니다.
                     </p>
-                    <a href="#" class="more">더 알아보기</a>
+                    <a href="https://www.marshall.com/us/en/backstage/partnerships" class="more" target="_blank" rel="noopener noreferrer" aria-label="Marshall 파트너십 콘텐츠 더 알아보기">더 알아보기</a>
                 </div>
             </div>
         </section>
@@ -309,9 +520,9 @@
                         </button>
                     </h3>
                     <ul class="company_list" id="footer-company-list">
-                        <li><a href="#">Marshall 소개</a></li>
-                        <li><a href="#">Marshall Group 소개</a></li>
-                        <li><a href="#">채용</a></li>
+                        <li><a href="https://www.marshall.com/us/en/about-marshall" target="_blank" rel="noopener noreferrer">Marshall 소개</a></li>
+                        <li><a href="https://group.marshall.com/" target="_blank" rel="noopener noreferrer">Marshall Group 소개</a></li>
+                        <li><a href="https://careers.marshall.com/" target="_blank" rel="noopener noreferrer">채용</a></li>
                     </ul>
                 </div>
 
@@ -323,11 +534,11 @@
                         </button>
                     </h3>
                     <ul class="customer_list" id="footer-customer-list">
-                        <li><a href="#">반품</a></li>
-                        <li><a href="#">배송 및 조회</a></li>
-                        <li><a href="#">주문 및 결제</a></li>
-                        <li><a href="#">보증 및 수리</a></li>
-                        <li><a href="#">문의하기</a></li>
+                        <li><a href="https://www.marshall.com/us/en/support/returns" target="_blank" rel="noopener noreferrer">반품</a></li>
+                        <li><a href="https://www.marshall.com/us/en/support/track-order" target="_blank" rel="noopener noreferrer">배송 및 조회</a></li>
+                        <li><a href="https://www.marshall.com/us/en/support/orders" target="_blank" rel="noopener noreferrer">주문 및 결제</a></li>
+                        <li><a href="https://www.marshall.com/us/en/support/warranty" target="_blank" rel="noopener noreferrer">보증 및 수리</a></li>
+                        <li><a href="https://www.marshall.com/us/en/support/contact-us" target="_blank" rel="noopener noreferrer">문의하기</a></li>
                     </ul>
                 </div>
 
@@ -339,17 +550,17 @@
                         </button>
                     </h3>
                     <ul class="account_list" id="footer-account-list">
-                        <li><a href="#">로그인/가입하기</a></li>
-                        <li><a href="#">제품 등록</a></li>
+                        <li><a href="https://www.marshall.com/kr/en/MyAccount/Register" target="_blank" rel="noopener noreferrer">로그인/가입하기</a></li>
+                        <li><a href="https://www.marshall.com/us/en/register-products" target="_blank" rel="noopener noreferrer">제품 등록</a></li>
                     </ul>
                 </div>
 
                 <div class="footer_social">
                     <h3>소셜 미디어</h3>
                     <div class="social_icons">
-                        <a href="#" title="X"></a>
-                        <a href="#" title="Instagram"></a>
-                        <a href="#" title="Facebook"></a>
+                        <a href="https://x.com/marshallamps" aria-label="X에서 Marshall 보기" title="X" target="_blank" rel="noopener noreferrer"></a>
+                        <a href="https://www.instagram.com/marshallamps/" aria-label="Instagram에서 Marshall 보기" title="Instagram" target="_blank" rel="noopener noreferrer"></a>
+                        <a href="https://www.facebook.com/marshallamps/" aria-label="Facebook에서 Marshall 보기" title="Facebook" target="_blank" rel="noopener noreferrer"></a>
                     </div>
                 </div>
             </div>

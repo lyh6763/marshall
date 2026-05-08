@@ -221,14 +221,14 @@
 }
 
 .social_section .swiper-slide .more,
-.social_section .social_partership .more {
+.social_section .social_partnership .more {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .social_section .swiper-slide .more:hover,
-.social_section .social_partership .more:hover {
+.social_section .social_partnership .more:hover {
     transform: translateY(-2px) scale(1.05);
     box-shadow:
         0 8px 20px rgba(230, 221, 204, 0.4),

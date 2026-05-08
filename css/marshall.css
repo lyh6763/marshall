@@ -186,7 +186,8 @@ nav.is-open.is-visible {
     text-align: right;
 }
 
-.nav_wrap .language a {
+.nav_wrap .language a,
+.nav_wrap .language .language_current {
     color: var(--color-dark);
     font-family: var(--font-body);
     font-size: 1.8em;
@@ -201,7 +202,7 @@ nav.is-open.is-visible {
     color: var(--color-accent);
 }
 
-.nav_wrap .language span::before {
+.nav_wrap .language .language_divider::before {
     content: '|';
     display: inline-block;
     color: var(--color-dark);
@@ -214,11 +215,29 @@ nav.is-open.is-visible {
 
 /* header_visual */
 .header_visual {
-    background: url(../img/head_img.jpg) no-repeat 65%/cover;
+    background: var(--color-bg);
     width: 100%;
     height: 812px;
-    overflow: visible;
+    overflow: hidden;
     position: relative;
+}
+
+.header_visual .hero_image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 65% center;
+}
+
+.header_visual picture,
+.artists_section .artists .artists_banner picture {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .header_visual .slogan {
@@ -230,6 +249,7 @@ nav.is-open.is-visible {
     right: 35px;
     margin: 0 auto;
     text-align: left;
+    z-index: 1;
 }
 .header_visual .slogan h2 {
     font-size: 3em;
@@ -312,9 +332,7 @@ nav.is-open.is-visible {
     margin: 0 auto;
 }
 
-.products_section .products .headphone_text,
-.products_section .products .speaker_text,
-.products_section .products .amp_text{
+.products_section .products :is(.headphone_text, .speaker_text, .amp_text) {
     max-width: 900px;
     margin: 0 auto;
 }
@@ -324,9 +342,7 @@ nav.is-open.is-visible {
     margin-top: 96px;
 }
 
-.products_section .products .headphone_text span,
-.products_section .products .speaker_text span,
-.products_section .products .amp_text span{
+.products_section .products :is(.headphone_text, .speaker_text, .amp_text) span {
     display: block;
     font-size: 10em;
     line-height: 1;
@@ -334,8 +350,7 @@ nav.is-open.is-visible {
     color: rgba(255, 255, 255, .3);
 }
 
-.products_section .products .headphones h3,
-.products_section .products .amplifiers h3{
+.products_section .products :is(.headphones, .amplifiers) h3 {
     text-transform: uppercase;
     color: var(--color-accent);
     font-size: 2em;
@@ -349,18 +364,14 @@ nav.is-open.is-visible {
     margin: -26px 0px 0px 0;
 }
 
-.products_section .products .headphones strong,
-.products_section .products .speakers strong,
-.products_section .products .amplifiers strong{
+.products_section .products :is(.headphones, .speakers, .amplifiers) strong {
     line-height: 1;
     color: var(--color-primary);
     text-transform: uppercase;
     font-size: 3em;
 }
 
-.products_section .products .headphones p,
-.products_section .products .speakers p,
-.products_section .products .amplifiers p{
+.products_section .products :is(.headphones, .speakers, .amplifiers) p {
     font-size: 1.6em;
     line-height: 1.4;
     color: var(--color-text);
@@ -368,9 +379,7 @@ nav.is-open.is-visible {
     word-break: keep-all;
 }
 
-.products_section .products .headphones a,
-.products_section .products .speakers a,
-.products_section .products .amplifiers a{
+.products_section .products :is(.headphones, .speakers, .amplifiers) a {
     display: inline-block;
     color: var(--color-white);
     text-decoration: none;
@@ -380,9 +389,7 @@ nav.is-open.is-visible {
     position: relative;
 }
 
-.products_section .products .headphones a::after,
-.products_section .products .speakers a::after,
-.products_section .products .amplifiers a::after{
+.products_section .products :is(.headphones, .speakers, .amplifiers) a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -395,9 +402,7 @@ nav.is-open.is-visible {
     transform: scaleX(0);
 }
 
-.products_section .products .headphones a:hover::after,
-.products_section .products .speakers a:hover::after,
-.products_section .products .amplifiers a:hover::after{
+.products_section .products :is(.headphones, .speakers, .amplifiers) a:hover::after {
     transform: scaleX(1);
 }
 
@@ -410,9 +415,7 @@ nav.is-open.is-visible {
     text-align: right;
 }
 
-.products_section .products .headphones .headphone_img,
-.products_section .products .speakers .speaker_image,
-.products_section .products .amplifiers .amp_image{
+.products_section .products :is(.headphone_img, .speaker_image, .amp_image) {
     display: block;
     width: 100%;
     max-width: 360px;
@@ -423,20 +426,31 @@ nav.is-open.is-visible {
     background-position: center;
     background-size: cover;
     position: relative;
+    overflow: hidden;
+}
+
+.products_section .products :is(.headphone_img, .speaker_image, .amp_image) img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.products_section .products :is(.headphone_img, .speaker_image, .amp_image) picture,
+.artists_section .artist_content :is(.artist1_image, .artist2_image, .artist3_image, .artist4_image) picture,
+.social_section .swiper .swiper-slide picture,
+.social_section .social_partnership picture {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .products_section .products .headphones .headphone_img{
-    background-image: url(../img/marshall_headphone.jpg);
     margin: -15px auto 0 ;
 }
 
-.products_section .products .speakers .speaker_image{
-    background-image: url(../img/marshall_speaker.jpg);
-    margin: -20px auto 0;
-}
-
+.products_section .products .speakers .speaker_image,
 .products_section .products .amplifiers .amp_image{
-    background-image: url(../img/marshall_amp.jpg);
     margin: -20px auto 0;
 }
 
@@ -455,7 +469,17 @@ nav.is-open.is-visible {
 .artists_section .artists .artists_banner {
     margin: 0 auto;
     position: relative;
-    background: url(../img/artist_banner.jpg) no-repeat center/cover;
+    background: var(--color-dark);
+    overflow: hidden;
+}
+
+.artists_section .artists .artists_banner .artists_banner_image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .artists_section .artists .artists_banner h2 {
@@ -474,6 +498,8 @@ nav.is-open.is-visible {
 }
 
 .artists_section .artists .artists_banner .artists_text{
+    position: relative;
+    z-index: 1;
     width: 100%;
     margin: 0 auto;
     padding: 80px;
@@ -561,7 +587,7 @@ nav.is-open.is-visible {
     width: 100%;
     height: 300px;
     margin: 40px 0 0;
-    background: url(../img/artist01.jpg) no-repeat center top/cover;
+    overflow: hidden;
 }
 
 .artists_section .artist_content .artist2_image,
@@ -572,18 +598,18 @@ nav.is-open.is-visible {
     background-position: center top;
     background-size: cover;
     margin-top: 40px;
+    overflow: hidden;
 }
 
-.artists_section .artist_content .artist2_image{
-    background-image: url(../img/artist02.jpg);
-}
-
-.artists_section .artist_content .artist3_image{
-    background-image: url(../img/artist03.jpg);
-}
-
-.artists_section .artist_content .artist4_image{
-    background-image: url(../img/artist04.jpg);
+.artists_section .artist_content .artist1_image img,
+.artists_section .artist_content .artist2_image img,
+.artists_section .artist_content .artist3_image img,
+.artists_section .artist_content .artist4_image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
 }
 
 
@@ -621,124 +647,63 @@ nav.is-open.is-visible {
    margin: 0 auto;
 }
 
-/* heritage */
-.social_section .swiper .social_heritage {
-    background: url(../img/social_heritage.jpg) no-repeat center/cover;
-    width: 100%;
+.social_section .swiper .swiper-slide {
+    background: var(--color-dark);
     height: 360px;
     position: relative;
+    overflow: visible;
 }
-.social_section .swiper .swiper-slide .heritage_text {
+
+.social_section .swiper .swiper-slide .slide_image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.social_section .swiper .swiper-slide :is(.heritage_text, .story_text, .community_text) {
     position: absolute;
+    top: 0;
+    left: 0;
     transform: translateY(360px);
     width: 100%;
     height: 280px;
     background: var(--color-dark);
     padding: 35px;
 }
-.social_section .swiper .swiper-slide .heritage_text h3 {
+
+.social_section .swiper .swiper-slide :is(.heritage_text, .story_text, .community_text) h3 {
     font-size: 3em;
     line-height: 1.1;
     font-weight: bold;
     color: var(--color-primary);
 }
-.social_section .swiper .swiper-slide .heritage_text p {
+
+.social_section .swiper .swiper-slide :is(.heritage_text, .story_text, .community_text) p {
     font-size: 1.6em;
     line-height: 1.3;
     color: var(--color-text);
     margin-top: 10px;
     word-break: keep-all;
 }
+
+.social_section .swiper .swiper-slide .more {
+    display: inline-block;
+    width: 140px;
+    height: 40px;
+    background: var(--color-primary);
+    color: var(--color-dark);
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.social_section .swiper .swiper-slide :is(.story_text, .community_text) .more {
+    margin-top: 20px;
+}
+
 .social_section .swiper .swiper-slide .heritage_text .more {
-    display: inline-block;
-    width: 140px;
-    height: 40px;
-    background: var(--color-primary);
-    color: var(--color-dark);
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    font-weight: 600;
     margin-top: 40px;
-}
-
-/* story */
-.social_section .swiper .social_story {
-    height: 360px;
-    background: url(../img/social_story.jpg) no-repeat center/cover;
-    position: relative;
-}
-.social_section .swiper .swiper-slide .story_text {
-    position: absolute;
-    transform: translateY(360px);
-    width: 100%;
-    height: 280px;
-    padding: 35px;
-    background: var(--color-dark);
-}
-.social_section .swiper .swiper-slide .story_text h3 {
-    font-size: 3em;
-    line-height: 1.1;
-    font-weight: bold;
-    color: var(--color-primary);
-}
-.social_section .swiper .swiper-slide .story_text p {
-    font-size: 1.6em;
-    line-height: 1.3;
-    color: var(--color-text);
-    margin-top: 10px;
-    word-break: keep-all;
-}
-.social_section .swiper .swiper-slide .story_text .more {
-    display: inline-block;
-    width: 140px;
-    height: 40px;
-    background: var(--color-primary);
-    color: var(--color-dark);
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 20px;
-}
-
-/* community */
-.social_section .swiper .social_community {
-    height: 360px;
-    background: url(../img/social_community.jpg) no-repeat center/cover;
-    position: relative;
-}
-.social_section .swiper .swiper-slide .community_text {
-    position: absolute;
-    transform: translateY(360px);
-    height: 280px;
-    padding: 35px;
-    background: var(--color-dark);
-}
-.social_section .swiper .swiper-slide .community_text h3 {
-    font-size: 3em;
-    line-height: 1.1;
-    font-weight: bold;
-    color: var(--color-primary);
-}
-.social_section .swiper .swiper-slide .community_text p {
-    font-size: 1.6em;
-    line-height: 1.3;
-    color: var(--color-text);
-    margin-top: 10px;
-    word-break: keep-all;
-}
-.social_section .swiper .swiper-slide .community_text .more {
-    display: inline-block;
-    width: 140px;
-    height: 40px;
-    background: var(--color-primary);
-    color: var(--color-dark);
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 20px;
 }
 
 .social_section .swiper .swiper-scrollbar {
@@ -754,17 +719,27 @@ nav.is-open.is-visible {
     border-radius: 1px;
 }
 
-/* partership */
-.social_section .social_partership {
+/* partnership */
+.social_section .social_partnership {
     width: var(--container-mobile);
     height: 640px;
     margin: 150px auto 0;
-    background: url(../img/social_parter.jpg) no-repeat center/cover;
+    background: var(--color-dark);
     position: relative;
+    overflow: hidden;
 }
 
-.social_section .social_partership .partership_text {
+.social_section .social_partnership .partnership_image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.social_section .social_partnership .partnership_text {
     position: absolute;
+    top: 0;
+    left: 0;
     transform: translateY(320px);
     width: 100%;
     height: 320px;
@@ -772,7 +747,7 @@ nav.is-open.is-visible {
     padding: 50px;
 }
 
-.social_section .social_partership .partership_text h3 {
+.social_section .social_partnership .partnership_text h3 {
     font-size: 3em;
     font-family: var(--font-heading);
     line-height: 1;
@@ -781,7 +756,7 @@ nav.is-open.is-visible {
     color: var(--color-primary);
 }
 
-.social_section .social_partership .partership_text p {
+.social_section .social_partnership .partnership_text p {
     font-size: 1.6rem;
     line-height: 1.5;
     color: var(--color-text);
@@ -789,7 +764,7 @@ nav.is-open.is-visible {
     word-break: keep-all;
 }
 
-.social_section .social_partership .partership_text .more {
+.social_section .social_partnership .partnership_text .more {
     display: inline-block;
     width: 140px;
     height: 40px;
