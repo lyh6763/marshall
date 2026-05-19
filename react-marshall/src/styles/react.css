@@ -1,0 +1,50 @@
+.social_section .swiper {
+    overflow: hidden;
+}
+
+.social_section .swiper .swiper-wrapper {
+    display: flex;
+    transition: transform var(--transition-normal);
+    will-change: transform;
+}
+
+.social_section .swiper .swiper-slide {
+    flex: 0 0 100%;
+}
+
+.react_slider_controls {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 14px;
+}
+
+.react_slider_controls button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(230, 221, 204, 0.5);
+    color: var(--color-primary);
+    font-size: 28px;
+    line-height: 1;
+    transition: color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.react_slider_controls button:hover:not(:disabled) {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.react_slider_controls button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.social_section .swiper .swiper-scrollbar {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.social_section .swiper .swiper-scrollbar-drag {
+    transition: transform var(--transition-normal);
+}
