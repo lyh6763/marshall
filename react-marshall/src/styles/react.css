@@ -1,50 +1,543 @@
-.social_section .swiper {
-    overflow: hidden;
+.react_experiment {
+    min-height: 100vh;
 }
 
-.social_section .swiper .swiper-wrapper {
+.react_experiment :is(button, a):focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.product_tools,
+.product_compare,
+.artist_tools,
+.editorial_carousel {
+    width: var(--container-mobile);
+    max-width: var(--max-width);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.product_tools,
+.artist_tools {
+    display: grid;
+    gap: 14px;
+    margin-top: -64px;
+    margin-bottom: 64px;
+}
+
+.product_filters,
+.artist_filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.product_filters button,
+.artist_filters button,
+.product_actions button,
+.product_compare button,
+.artist_content button,
+.editorial_carousel button {
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid rgba(230, 221, 204, 0.28);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    transition:
+        background var(--transition-normal),
+        border-color var(--transition-normal),
+        color var(--transition-normal);
+}
+
+.product_filters button:hover,
+.artist_filters button:hover,
+.product_actions button:hover,
+.product_compare button:hover,
+.artist_content button:hover,
+.editorial_carousel button:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.product_filters button.is-active,
+.artist_filters button.is-active,
+.product_actions button.is-active,
+.artist_content button.is-active,
+.editorial_carousel_dots button.is-active,
+.editorial_carousel_status button[aria-pressed="true"] {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.product_result,
+.product_compare_empty {
+    color: var(--color-text-muted);
+    font-size: 1.3rem;
+}
+
+.product_specs,
+.artist_meta {
+    display: grid;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.product_specs div,
+.artist_meta div,
+.product_compare_grid div {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 12px;
+    align-items: baseline;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(230, 221, 204, 0.16);
+}
+
+.product_specs dt,
+.artist_meta dt,
+.product_compare dt {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.product_specs dd,
+.artist_meta dd,
+.product_compare dd {
+    color: var(--color-text);
+    font-size: 1.3rem;
+    line-height: 1.45;
+    word-break: keep-all;
+}
+
+.product_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.products_section .products :is(.headphones, .speakers, .amplifiers) .product_actions a {
+    margin-top: 0;
+}
+
+.product_compare {
+    margin-top: 72px;
+    padding: 18px;
+    border-top: 1px solid rgba(230, 221, 204, 0.22);
+    border-bottom: 1px solid rgba(230, 221, 204, 0.22);
+}
+
+.product_compare_header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+}
+
+.product_compare_header strong {
+    color: var(--color-primary);
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.product_compare_header span {
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+}
+
+.product_compare_grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.product_compare_grid article {
+    padding: 16px;
+    border: 1px solid rgba(230, 221, 204, 0.18);
+    background: rgba(18, 18, 18, 0.22);
+}
+
+.product_compare_grid h3 {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.product_compare_grid p {
+    margin-top: 10px;
+    color: var(--color-text);
+    font-size: 1.4rem;
+    word-break: keep-all;
+}
+
+.product_compare_grid dl {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.product_compare_grid button {
+    min-height: 36px;
+    margin-top: 16px;
+}
+
+.artist_tools {
+    margin-top: 80px;
+}
+
+.artist_focus {
+    padding: 18px;
+    border-top: 1px solid rgba(230, 221, 204, 0.22);
+    border-bottom: 1px solid rgba(230, 221, 204, 0.22);
+}
+
+.artist_focus span {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.artist_focus h3 {
+    margin-top: 8px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.artist_focus p {
+    margin-top: 8px;
+    color: var(--color-text-muted);
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+.artist_content button {
+    width: max-content;
+    min-width: 96px;
+    margin-top: 18px;
+}
+
+.social_section {
+    overflow-x: hidden;
+}
+
+.editorial_carousel {
+    margin-top: 80px;
+    outline: none;
+}
+
+.editorial_carousel_status {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.editorial_carousel_status span {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.editorial_carousel_status strong {
+    color: var(--color-primary);
+    font-size: 2rem;
+    line-height: 1.1;
+}
+
+.editorial_carousel_status button {
+    min-width: 72px;
+}
+
+.editorial_carousel_viewport {
+    overflow: hidden;
+    background: var(--color-dark);
+}
+
+.editorial_carousel_track {
     display: flex;
     transition: transform var(--transition-normal);
     will-change: transform;
 }
 
-.social_section .swiper .swiper-slide {
+.editorial_slide {
+    display: grid;
+    grid-template-rows: 320px auto;
     flex: 0 0 100%;
+    min-width: 100%;
+    background: var(--color-dark);
 }
 
-.react_slider_controls {
-    display: flex;
+.editorial_slide picture,
+.editorial_slide .slide_image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.editorial_slide .slide_image {
+    object-fit: cover;
+}
+
+.editorial_slide_text {
+    display: grid;
     gap: 12px;
-    justify-content: flex-end;
+    align-content: center;
+    min-height: 280px;
+    padding: 28px;
+}
+
+.editorial_slide_text span {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.editorial_slide_text h3 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.editorial_slide_text p {
+    color: var(--color-text);
+    font-size: 1.5rem;
+    line-height: 1.55;
+    word-break: keep-all;
+}
+
+.editorial_slide_text .more {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 42px;
+    margin-top: 8px;
+    background: var(--color-primary);
+    color: var(--color-dark);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.editorial_carousel_controls {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    gap: 10px;
+    align-items: center;
     margin-top: 14px;
 }
 
-.react_slider_controls button {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(230, 221, 204, 0.5);
-    color: var(--color-primary);
-    font-size: 28px;
+.editorial_carousel_controls > button {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    font-size: 2.6rem;
     line-height: 1;
-    transition: color var(--transition-normal), border-color var(--transition-normal);
 }
 
-.react_slider_controls button:hover:not(:disabled) {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
+.editorial_carousel_dots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
 }
 
-.react_slider_controls button:disabled {
-    opacity: 0.35;
-    cursor: default;
+.editorial_carousel_dots button {
+    min-width: 0;
+    overflow: hidden;
 }
 
-.social_section .swiper .swiper-scrollbar {
-    width: 100%;
-    bottom: 0;
-    left: 0;
+.editorial_carousel_dots span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.social_section .swiper .swiper-scrollbar-drag {
-    transition: transform var(--transition-normal);
+@media screen and (max-width: 767px) {
+    .products_section {
+        overflow-x: hidden;
+    }
+
+    .products_section .products,
+    .product_tools,
+    .product_compare,
+    .artist_tools,
+    .editorial_carousel {
+        width: calc(100vw - 96px);
+        max-width: calc(100vw - 96px);
+    }
+
+    .products_section .products :is(.headphones, .speakers, .amplifiers),
+    .products_section .products :is(.headphone_text, .speaker_text, .amp_text) {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .products_section .products .speaker_text {
+        text-align: left;
+    }
+
+    .products_section .products :is(.headphones, .speakers, .amplifiers) strong,
+    .products_section .products :is(.headphones, .speakers, .amplifiers) p,
+    .artist_focus h3,
+    .artist_focus p,
+    .artist_meta dd,
+    .editorial_carousel_status strong,
+    .editorial_slide_text p {
+        overflow-wrap: break-word;
+        word-break: keep-all;
+    }
+
+    .products_section .products :is(.headphones, .speakers, .amplifiers) strong {
+        font-size: 2.6em;
+        line-height: 1.12;
+    }
+
+    .product_compare_header,
+    .editorial_carousel_status {
+        display: block;
+    }
+
+    .product_compare_header span,
+    .editorial_carousel_status strong,
+    .editorial_carousel_status button {
+        display: block;
+        margin-top: 8px;
+    }
+
+    .editorial_carousel_dots {
+        justify-content: center;
+        grid-template-columns: repeat(3, 36px);
+    }
+
+    .editorial_carousel_dots button {
+        width: 36px;
+        min-width: 36px;
+        padding: 0;
+    }
+
+    .editorial_carousel_dots span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .product_tools,
+    .product_compare,
+    .artist_tools,
+    .editorial_carousel {
+        width: var(--container-tablet);
+    }
+
+    .product_tools,
+    .artist_tools {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+    }
+
+    .product_filters,
+    .artist_filters {
+        grid-template-columns: repeat(4, minmax(90px, 1fr));
+    }
+
+    .product_result {
+        text-align: right;
+    }
+
+    .product_specs {
+        max-width: 440px;
+    }
+
+    .products_section .products .speaker_text .product_specs,
+    .products_section .products .speaker_text .product_actions {
+        justify-self: end;
+        width: min(100%, 440px);
+    }
+
+    .product_compare {
+        padding: 24px;
+    }
+
+    .product_compare_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .artist_focus {
+        width: min(420px, 100%);
+    }
+
+    .editorial_slide {
+        grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+        grid-template-rows: 480px;
+    }
+
+    .editorial_slide_text {
+        min-height: 0;
+        padding: 42px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .product_tools,
+    .product_compare,
+    .artist_tools,
+    .editorial_carousel {
+        width: var(--container-desktop);
+    }
+
+    .editorial_slide {
+        grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+        grid-template-rows: 520px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .editorial_slide {
+        grid-template-columns: minmax(0, 1.2fr) minmax(380px, 0.8fr);
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .product_tools,
+    .product_compare,
+    .artist_tools,
+    .editorial_carousel {
+        width: var(--container-wide);
+        max-width: var(--max-width-wide);
+    }
+
+    .editorial_slide {
+        grid-template-rows: 560px;
+    }
+
+    .editorial_slide_text {
+        padding: 64px;
+    }
 }

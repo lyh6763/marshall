@@ -1,12 +1,12 @@
 # Marshall React Experiment
 
-정적 HTML/CSS/Vanilla JS로 만든 Marshall 포트폴리오를 React/Vite 구조로 옮겨 본 개인 실험본입니다.
+정적 HTML/CSS/Vanilla JS로 만든 Marshall 포트폴리오를 React/Vite 구조로 옮긴 개인 실험본입니다.
 
-## 목적
+## 방향
 
-- 원본 사이트의 디자인과 콘텐츠 흐름을 유지하면서 React 컴포넌트 구조로 재구성
-- 메뉴, 푸터 아코디언, 소셜 슬라이더 같은 인터랙션을 React state/hook 기반으로 분리
-- 기존 이미지 접근성 개선(`picture/img`, alt, dimensions, JPG/WebP/AVIF)을 React 컴포넌트에서도 유지
+- 원본 정적 사이트를 대체하지 않는 별도 React playground입니다.
+- 기존 Marshall 이미지와 헤리티지를 유지하되, 필터/비교/캐러셀 같은 핵심 인터랙션만 React state 기반으로 실험합니다.
+- 시각 방향은 과한 콘셉트 UI가 아니라 포트폴리오 평가에 안전한 premium editorial 톤을 우선합니다.
 
 ## 실행
 
@@ -21,12 +21,20 @@ npm run dev
 npm run build
 ```
 
+OneDrive 경로에서 `spawn EPERM`이 발생하면 같은 명령을 권한 상승 환경에서 다시 실행합니다.
+
 ## 구조
 
-- `src/App.jsx`: 페이지 섹션과 주요 인터랙션
-- `src/data.jsx`: 제품, 아티스트, 소셜, 푸터 링크 데이터
+- `src/App.jsx`: 페이지 섹션과 React 인터랙션
+- `src/data.jsx`: 제품, 아티스트, 소셜, 푸터 데이터
 - `src/components/Picture.jsx`: JPG/WebP/AVIF responsive image 컴포넌트
 - `src/hooks/`: 스크롤 애니메이션과 반응형 상태 hook
-- `src/styles/`: 원본 CSS를 React 앱 public asset 경로에 맞춰 복사한 스타일
+- `src/styles/`: 원본 CSS와 React 실험본 보완 스타일
+- `docs/UI_UX_GUIDE.md`: React 실험본 UI/UX 기준
 
-이 앱은 원본 정적 사이트를 대체하지 않고, React 전환 연습과 포트폴리오 확장 실험을 위한 별도 버전입니다.
+## 현재 실험
+
+- Products 필터와 Compare Deck
+- Artists 필터와 Focus 요약
+- Social React carousel
+- 이미지 접근성 구조 유지: `picture/img`, `alt`, `width`, `height`

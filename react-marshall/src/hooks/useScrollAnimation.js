@@ -4,11 +4,24 @@ const SELECTOR = '.scroll-fade-up, .scroll-fade-left, .scroll-fade-right, .scrol
 
 export function useScrollAnimation() {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealReducedMotionTargets = () => {
       document.querySelectorAll(SELECTOR).forEach((element) => {
         element.classList.add('is-visible');
       });
-      return undefined;
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      revealReducedMotionTargets();
+
+      const mutationObserver = new MutationObserver(revealReducedMotionTargets);
+      mutationObserver.observe(document.body, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+        attributeFilter: ['class']
+      });
+
+      return () => mutationObserver.disconnect();
     }
 
     const observer = new IntersectionObserver(
@@ -25,10 +38,25 @@ export function useScrollAnimation() {
       }
     );
 
-    document.querySelectorAll(SELECTOR).forEach((element) => {
-      observer.observe(element);
+    const observeTargets = () => {
+      document.querySelectorAll(`${SELECTOR}:not(.is-visible)`).forEach((element) => {
+        observer.observe(element);
+      });
+    };
+
+    observeTargets();
+
+    const mutationObserver = new MutationObserver(observeTargets);
+    mutationObserver.observe(document.body, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+      attributeFilter: ['class']
     });
 
-    return () => observer.disconnect();
+    return () => {
+      mutationObserver.disconnect();
+      observer.disconnect();
+    };
   }, []);
 }
