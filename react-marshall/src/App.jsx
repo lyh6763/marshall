@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import Picture from './components/Picture.jsx';
+import PlaceholderMedia from './components/PlaceholderMedia.jsx';
 import {
   artistFilters,
   artists,
@@ -17,7 +17,65 @@ const externalProps = {
   rel: 'noopener noreferrer'
 };
 
-function Header() {
+const routeChangeEvent = 'marshall-route-change';
+
+function useRoute() {
+  const [path, setPath] = useState(() => window.location.pathname || '/');
+
+  useEffect(() => {
+    const syncPath = () => setPath(window.location.pathname || '/');
+
+    window.addEventListener('popstate', syncPath);
+    window.addEventListener(routeChangeEvent, syncPath);
+
+    return () => {
+      window.removeEventListener('popstate', syncPath);
+      window.removeEventListener(routeChangeEvent, syncPath);
+    };
+  }, []);
+
+  return path;
+}
+
+function navigateTo(href) {
+  const url = new URL(href, window.location.origin);
+  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  const target = `${url.pathname}${url.search}${url.hash}`;
+
+  if (current !== target) {
+    window.history.pushState({}, '', target);
+  }
+
+  window.dispatchEvent(new Event(routeChangeEvent));
+
+  window.setTimeout(() => {
+    if (url.hash) {
+      document.querySelector(url.hash)?.scrollIntoView({ block: 'start' });
+      return;
+    }
+
+    window.scrollTo({ top: 0, left: 0 });
+  }, 0);
+}
+
+function InternalLink({ href, children, onClick, ...props }) {
+  return (
+    <a
+      href={href}
+      onClick={(event) => {
+        onClick?.(event);
+        if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        navigateTo(href);
+      }}
+      {...props}
+    >
+      {children}
+    </a>
+  );
+}
+
+function Header({ currentPath }) {
   const width = useWindowWidth();
   const isDesktop = width >= 1024;
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +145,7 @@ function Header() {
   return (
     <header>
       <div className="header_center">
-        <h1><a href="#top">Marshall</a></h1>
+        <h1><InternalLink href="/">Marshall</InternalLink></h1>
         <button
           ref={menuButtonRef}
           type="button"
@@ -111,7 +169,7 @@ function Header() {
       >
         <div className="nav_wrap">
           <div className="nav_header">
-            <h1><a href="#top">Marshall</a></h1>
+            <h1><InternalLink href="/" onClick={() => closeMenu({ restoreFocus: false })}>Marshall</InternalLink></h1>
             <button
               ref={closeButtonRef}
               type="button"
@@ -130,7 +188,12 @@ function Header() {
             <ul>
               {navItems.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} onClick={() => closeMenu({ restoreFocus: false })}>{item.label}</a>
+                  <InternalLink
+                    href={item.href}
+                    onClick={() => closeMenu({ restoreFocus: false })}
+                  >
+                    {item.label}
+                  </InternalLink>
                 </li>
               ))}
             </ul>
@@ -150,17 +213,11 @@ function Header() {
 function Hero() {
   return (
     <div className="header_visual">
-      <Picture
+      <PlaceholderMedia
         className="hero_image"
-        base="/img/optimized/head_img"
-        widths={[960, 1440, 1920]}
-        srcWidth={1440}
-        sizes="100vw"
-        width="2880"
-        height="1431"
-        alt="Marshall 앰프와 무대 분위기를 담은 히어로 이미지"
-        loading="eager"
-        fetchPriority="high"
+        label="Hero"
+        role="대표 비주얼"
+        ratio="2 / 1"
       />
       <div className="slogan scroll-fade-up">
         <h2>Rock 'n' roll is<br />a state of mind</h2>
@@ -177,8 +234,8 @@ function About() {
         <div className="about_text scroll-fade-up">
           <h2>Live Loud, Play True</h2>
           <p>
-            1962년 창립 이래로, Marshall은 다양한 음악 장르에서 중요한 역할을 해왔으며 여러 세대에 걸쳐 획기적인 음악을 형성하는 데 기여해왔습니다.
-            이 React 실험본은 그 헤리티지를 유지하되, 제품 탐색과 콘텐츠 이동을 더 명료한 인터랙션으로 다듬는 개인 작업입니다.
+            1962년 창립 이래로 Marshall은 다양한 음악 장르와 세대를 지나며 독보적인 사운드의 기준을 만들어왔습니다.
+            이 화면은 그 헤리티지를 바탕으로 제품, 아티스트, 커뮤니티 이야기를 차분하게 탐색할 수 있도록 정리한 에디토리얼입니다.
           </p>
           <a href="https://www.marshall.com/us/en/about-marshall" aria-label="Marshall 소개 더 알아보기" {...externalProps}>더 알아보기</a>
         </div>
@@ -220,7 +277,8 @@ function Products() {
             </button>
           ))}
         </div>
-        <p className="product_result" aria-live="polite">{visibleProducts.length} product{visibleProducts.length === 1 ? '' : 's'} shown</p>
+        <p className="product_result" aria-live="polite">총 {visibleProducts.length}개 제품</p>
+        <InternalLink className="product_index_link" href="/products">전체 제품 보기</InternalLink>
       </div>
 
       <div className="products">
@@ -260,14 +318,10 @@ function Products() {
                   </button>
                 </div>
                 <div className={product.imageClass}>
-                  <Picture
-                    base={product.image.base}
-                    widths={[360, 600]}
-                    srcWidth={600}
-                    sizes="(min-width: 1920px) 500px, (min-width: 1024px) 420px, (min-width: 768px) 300px, 83vw"
-                    width="600"
-                    height="600"
-                    alt={product.image.alt}
+                  <PlaceholderMedia
+                    label={product.title}
+                    role="제품 이미지"
+                    ratio="1 / 1"
                   />
                 </div>
               </div>
@@ -278,8 +332,8 @@ function Products() {
 
       <div className="product_compare" aria-live="polite">
         <div className="product_compare_header">
-          <strong>Compare Deck</strong>
-          <span>{comparedProducts.length}/2 selected</span>
+          <strong>비교 덱</strong>
+          <span>{comparedProducts.length}/2 선택됨</span>
         </div>
         {comparedProducts.length > 0 ? (
           <div className="product_compare_grid">
@@ -297,7 +351,7 @@ function Products() {
                     <dd>{product.specs.fit}</dd>
                   </div>
                 </dl>
-                <button type="button" onClick={() => toggleCompare(product.key)}>Remove</button>
+                <button type="button" onClick={() => toggleCompare(product.key)}>제거</button>
               </article>
             ))}
           </div>
@@ -319,15 +373,11 @@ function Artists() {
     <section className="artists_section" id="artists">
       <div className="artists">
         <div className="artists_banner scroll-fade-up">
-          <Picture
+          <PlaceholderMedia
             className="artists_banner_image"
-            base="/img/optimized/artist_banner"
-            widths={[768, 1440, 1920]}
-            srcWidth={1440}
-            sizes="100vw"
-            width="3844"
-            height="996"
-            alt="Marshall 아티스트 무대 분위기를 담은 배너 이미지"
+            label="Artists"
+            role="아티스트 배너"
+            ratio="4 / 1"
           />
           <div className="artists_text">
             <div className="artists_text_left"><h2>Artists</h2></div>
@@ -357,7 +407,7 @@ function Artists() {
           ))}
         </div>
         <article className="artist_focus">
-          <span>Focus</span>
+          <span>선택한 아티스트</span>
           <h3>{featuredArtist.signal}</h3>
           <p>{featuredArtist.venue}</p>
         </article>
@@ -386,18 +436,14 @@ function Artists() {
                 aria-pressed={featuredArtist.key === artist.key}
                 onClick={() => setFeaturedKey(artist.key)}
               >
-                Focus
+                포커스 선택
               </button>
             </div>
             <div className={`${artist.key}_image`}>
-              <Picture
-                base={artist.imageBase}
-                widths={[360, 600]}
-                srcWidth={600}
-                sizes="(min-width: 1920px) 600px, (min-width: 768px) 50vw, 83vw"
-                width="600"
-                height="600"
-                alt={artist.alt}
+              <PlaceholderMedia
+                label={artist.signal}
+                role="아티스트 이미지"
+                ratio="1 / 1"
               />
             </div>
           </div>
@@ -410,15 +456,11 @@ function Artists() {
 function SocialSlide({ slide, isActive }) {
   return (
     <article className="editorial_slide" aria-hidden={!isActive}>
-      <Picture
+      <PlaceholderMedia
         className="slide_image"
-        base={slide.imageBase}
-        widths={[360, 741]}
-        srcWidth={741}
-        sizes="(min-width: 1024px) 540px, 83vw"
-        width="741"
-        height="741"
-        alt={slide.alt}
+        label={slide.title}
+        role="스토리 이미지"
+        ratio="1 / 1"
       />
       <div className="editorial_slide_text">
         <span>{slide.label}</span>
@@ -475,7 +517,7 @@ function SocialSlider() {
         <span>{String(current + 1).padStart(2, '0')} / {String(slideCount).padStart(2, '0')}</span>
         <strong>{activeSlide.title}</strong>
         <button type="button" aria-pressed={isAuto} onClick={() => setIsAuto((value) => !value)}>
-          {isAuto ? 'Pause' : 'Auto'}
+          {isAuto ? '자동 정지' : '자동 재생'}
         </button>
       </div>
 
@@ -520,15 +562,11 @@ function Social() {
       <SocialSlider />
 
       <div className="social_partnership scroll-fade-up">
-        <Picture
+        <PlaceholderMedia
           className="partnership_image"
-          base="/img/optimized/social_partnership"
-          widths={[640, 1155]}
-          srcWidth={1155}
-          sizes="(min-width: 1920px) 1440px, (min-width: 1024px) 1200px, 83vw"
-          width="1155"
-          height="750"
-          alt="Marshall 파트너십 콘텐츠 이미지"
+          label="Partnership"
+          role="캠페인 이미지"
+          ratio="3 / 2"
         />
         <div className="partnership_text">
           <h3>PARTNERSHIP</h3>
@@ -537,6 +575,240 @@ function Social() {
         </div>
       </div>
     </section>
+  );
+}
+
+function AboutPage() {
+  const notes = [
+    {
+      title: 'Heritage',
+      body: '1962년부터 이어진 Marshall의 사운드 언어를 짧은 에디토리얼 흐름으로 정리할 예정입니다.'
+    },
+    {
+      title: 'Tone',
+      body: '거친 출력, 따뜻한 질감, 무대 위 존재감처럼 브랜드를 이루는 감각 키워드를 다룹니다.'
+    },
+    {
+      title: 'Culture',
+      body: '제품보다 먼저 남는 태도와 커뮤니티의 이야기를 이후 콘텐츠로 확장합니다.'
+    }
+  ];
+
+  return (
+    <main className="subpage_main detail_subpage about_subpage">
+      <section className="subpage_hero">
+        <div className="subpage_hero_text scroll-fade-up">
+          <span>About</span>
+          <h2>소리가 태도가 되는 순간</h2>
+          <p>
+            Marshall의 역사를 촘촘하게 복제하기보다, 브랜드가 어떤 방식으로 음악 문화 안에 자리 잡았는지 정리하는 상세 페이지 초안입니다.
+          </p>
+          <InternalLink href="/#about">메인 소개 섹션으로 돌아가기</InternalLink>
+        </div>
+        <PlaceholderMedia
+          className="subpage_hero_media"
+          label="About"
+          role="헤리티지 대표 이미지"
+          ratio="16 / 9"
+        />
+      </section>
+
+      <section className="subpage_detail_section" aria-label="About 상세 메모">
+        <div className="subpage_collection_header scroll-fade-up">
+          <div>
+            <span>Draft Notes</span>
+            <h2>정리할 이야기</h2>
+          </div>
+        </div>
+        <div className="subpage_detail_grid">
+          {notes.map((note) => (
+            <article key={note.title} className="subpage_detail_card scroll-fade-up">
+              <span>{note.title}</span>
+              <h3>{note.title}</h3>
+              <p>{note.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function ProductsPage() {
+  const [activeFilter, setActiveFilter] = useState('all');
+  const visibleProducts = products.filter((product) => activeFilter === 'all' || product.filters.includes(activeFilter));
+
+  return (
+    <main className="subpage_main products_subpage">
+      <section className="subpage_hero">
+        <div className="subpage_hero_text scroll-fade-up">
+          <span>Products</span>
+          <h2>사운드를 고르는 세 가지 방식</h2>
+          <p>
+            헤드폰, 스피커, 앰프를 목적과 공간에 따라 다시 묶은 시작 페이지입니다.
+            이후 상세 페이지가 붙을 수 있도록 제품별 slug와 요약 정보를 함께 정리했습니다.
+          </p>
+          <InternalLink href="/#products">메인 제품 섹션으로 돌아가기</InternalLink>
+        </div>
+        <PlaceholderMedia
+          className="subpage_hero_media"
+          label="Products"
+          role="컬렉션 대표 이미지"
+          ratio="16 / 9"
+        />
+      </section>
+
+      <section className="subpage_collection" aria-label="제품 컬렉션">
+        <div className="subpage_collection_header scroll-fade-up">
+          <div>
+            <span>Collection</span>
+            <h2>제품 라인업</h2>
+          </div>
+          <div className="product_filters" role="group" aria-label="제품군 필터">
+            {productFilters.map((filter) => (
+              <button
+                key={filter.key}
+                type="button"
+                className={activeFilter === filter.key ? 'is-active' : ''}
+                aria-pressed={activeFilter === filter.key}
+                onClick={() => setActiveFilter(filter.key)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="subpage_product_grid">
+          {visibleProducts.map((product) => (
+            <article key={product.key} className="subpage_product_card scroll-fade-up">
+              <PlaceholderMedia
+                label={product.title}
+                role={product.heroLabel}
+                ratio="4 / 3"
+              />
+              <div className="subpage_product_card_text">
+                <span>{product.number} / {product.heroLabel}</span>
+                <h3>{product.title}</h3>
+                <p>{product.summary}</p>
+                <dl>
+                  <div>
+                    <dt>Use</dt>
+                    <dd>{product.specs.use}</dd>
+                  </div>
+                  <div>
+                    <dt>Tone</dt>
+                    <dd>{product.specs.tone}</dd>
+                  </div>
+                  <div>
+                    <dt>Fit</dt>
+                    <dd>{product.specs.fit}</dd>
+                  </div>
+                </dl>
+                <a href={product.href} aria-label={product.aria} {...externalProps}>공식 제품 보기</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function ArtistsPage() {
+  return (
+    <main className="subpage_main detail_subpage artists_subpage">
+      <section className="subpage_hero">
+        <div className="subpage_hero_text scroll-fade-up">
+          <span>Artists</span>
+          <h2>무대가 사운드를 기억하는 방식</h2>
+          <p>
+            아티스트 상세 페이지는 각 인물의 서사보다 사운드의 결, 무대 환경, 작업 태도를 먼저 훑는 방향으로 시작합니다.
+          </p>
+          <InternalLink href="/#artists">메인 아티스트 섹션으로 돌아가기</InternalLink>
+        </div>
+        <PlaceholderMedia
+          className="subpage_hero_media"
+          label="Artists"
+          role="아티스트 대표 이미지"
+          ratio="16 / 9"
+        />
+      </section>
+
+      <section className="subpage_detail_section" aria-label="아티스트 상세 메모">
+        <div className="subpage_collection_header scroll-fade-up">
+          <div>
+            <span>Lineup</span>
+            <h2>아티스트 노트</h2>
+          </div>
+        </div>
+        <div className="subpage_detail_grid">
+          {artists.map((artist) => (
+            <article key={artist.key} className="subpage_detail_card scroll-fade-up">
+              <PlaceholderMedia
+                label={artist.signal}
+                role="아티스트 이미지"
+                ratio="4 / 3"
+              />
+              <div>
+                <span>{artist.number} / {artist.venue}</span>
+                <h3>{artist.signal}</h3>
+                <p>{artist.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function SocialPage() {
+  return (
+    <main className="subpage_main detail_subpage social_subpage">
+      <section className="subpage_hero">
+        <div className="subpage_hero_text scroll-fade-up">
+          <span>Social</span>
+          <h2>커뮤니티로 이어지는 백스테이지</h2>
+          <p>
+            Social 상세 페이지는 heritage, story, community 콘텐츠를 묶는 허브로 시작합니다. 지금은 카드 구조와 흐름만 러프하게 잡아둡니다.
+          </p>
+          <InternalLink href="/#social">메인 소셜 섹션으로 돌아가기</InternalLink>
+        </div>
+        <PlaceholderMedia
+          className="subpage_hero_media"
+          label="Social"
+          role="커뮤니티 대표 이미지"
+          ratio="16 / 9"
+        />
+      </section>
+
+      <section className="subpage_detail_section" aria-label="소셜 콘텐츠 상세 메모">
+        <div className="subpage_collection_header scroll-fade-up">
+          <div>
+            <span>Stories</span>
+            <h2>콘텐츠 허브</h2>
+          </div>
+        </div>
+        <div className="subpage_detail_grid">
+          {socialSlides.map((slide) => (
+            <article key={slide.key} className="subpage_detail_card scroll-fade-up">
+              <PlaceholderMedia
+                label={slide.title}
+                role="스토리 이미지"
+                ratio="4 / 3"
+              />
+              <div>
+                <span>{slide.label}</span>
+                <h3>{slide.title}</h3>
+                <p>{slide.body}</p>
+                <a href={slide.href} aria-label={slide.aria} {...externalProps}>공식 콘텐츠 보기</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
 
@@ -596,25 +868,51 @@ function Footer() {
           </div>
         </div>
 
-        <p className="copyright">© 2026 Marshall React Experiment. Personal playground.</p>
+        <p className="copyright">© 2026 Marshall Editorial Study.</p>
       </div>
     </footer>
   );
 }
 
 export default function App() {
+  const currentPath = useRoute();
+  const routePath = currentPath.replace(/\/$/, '') || '/';
+  const routeTitles = {
+    '/about': 'About | Marshall Editorial Study',
+    '/products': 'Products | Marshall Editorial Study',
+    '/artists': 'Artists | Marshall Editorial Study',
+    '/social': 'Social | Marshall Editorial Study'
+  };
+
   useScrollAnimation();
+
+  useEffect(() => {
+    document.title = routeTitles[routePath] || 'Marshall Editorial Study';
+  }, [routePath]);
+
+  const renderRoute = () => {
+    if (routePath === '/about') return <AboutPage />;
+    if (routePath === '/products') return <ProductsPage />;
+    if (routePath === '/artists') return <ArtistsPage />;
+    if (routePath === '/social') return <SocialPage />;
+
+    return (
+      <>
+        <Hero />
+        <main>
+          <About />
+          <Products />
+          <Artists />
+          <Social />
+        </main>
+      </>
+    );
+  };
 
   return (
     <div id="top" className="react_experiment">
-      <Header />
-      <Hero />
-      <main>
-        <About />
-        <Products />
-        <Artists />
-        <Social />
-      </main>
+      <Header currentPath={currentPath} />
+      {renderRoute()}
       <Footer />
     </div>
   );

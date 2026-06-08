@@ -1,8 +1,8 @@
 export const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Products', href: '#products' },
-  { label: 'Artists', href: '#artists' },
-  { label: 'Social', href: '#social' }
+  { label: 'About', href: '/about' },
+  { label: 'Products', href: '/products' },
+  { label: 'Artists', href: '/artists' },
+  { label: 'Social', href: '/social' }
 ];
 
 export const productFilters = [
@@ -15,9 +15,12 @@ export const productFilters = [
 export const products = [
   {
     key: 'headphones',
+    slug: 'headphones',
     number: '01',
     title: 'Headphones',
     headline: 'Sound that Moves with you',
+    summary: '이동 중에도 Marshall의 질감을 유지하는 개인 청취 라인입니다.',
+    heroLabel: 'Portable Listening',
     body: 'Marshall 헤드폰은 맞춤 튜닝된 다이내믹 드라이버로 우렁찬 저음, 부드러운 중음, 화려한 고음을 전달합니다. 이동 중에도 선명한 시그니처 사운드를 경험할 수 있습니다.',
     href: 'https://www.marshall.com/us/en/headphones',
     aria: 'Marshall 헤드폰 제품 더 알아보기',
@@ -36,9 +39,12 @@ export const products = [
   },
   {
     key: 'speakers',
+    slug: 'speakers',
     number: '02',
     title: 'Speakers',
     headline: 'Room-filling Presence',
+    summary: '거실, 작업실, 야외까지 공간을 채우는 스피커 라인입니다.',
+    heroLabel: 'Room Sound',
     body: 'Marshall 스피커는 공간을 채우는 풍부한 사운드와 클래식한 디자인의 결합입니다. 홈 스테레오부터 포터블 블루투스 스피커까지 다양한 환경에 어울립니다.',
     href: 'https://www.marshall.com/us/en/speakers',
     aria: 'Marshall 스피커 제품 더 알아보기',
@@ -57,9 +63,12 @@ export const products = [
   },
   {
     key: 'amplifiers',
+    slug: 'amplifiers',
     number: '03',
     title: 'Amplifiers',
     headline: 'Amplify your sound',
+    summary: '스튜디오와 무대를 위한 Marshall 사운드의 중심축입니다.',
+    heroLabel: 'Stage Output',
     body: '1962년부터 이어져 온 Marshall 앰프의 전통은 스튜디오와 무대에서 여전히 강한 존재감을 남깁니다. 시그니처 톤과 뛰어난 내구성으로 사운드의 기준을 세워왔습니다.',
     href: 'https://www.marshall.com/us/en/amplifiers',
     aria: 'Marshall 앰프 제품 더 알아보기',

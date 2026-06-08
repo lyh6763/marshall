@@ -2,8 +2,8 @@
 
 ## Design Goal
 
-- React 실험본은 원본 Marshall 사이트를 대체하지 않는 포트폴리오용 playground다.
-- 시각 톤은 과한 실험실/네온/계측기 UI가 아니라, 큰 이미지와 명확한 타이포그래피 중심의 premium editorial이다.
+- React 실험본은 원본 Marshall 사이트를 대체하지 않는 개인 playground다.
+- 시각 톤은 과한 실험실/네온/계측기 UI가 아니라, 오래 반복해서 만져볼 수 있는 차분한 editorial UI다.
 - 추가 기능은 콘텐츠를 돕는 수준으로만 둔다. 기능이 섹션의 주인공이 되면 안 된다.
 
 ## Hard Rules
@@ -13,6 +13,7 @@
 - 카드 안에 또 다른 카드가 들어가는 구조를 만들지 않는다.
 - 기능 설명 문구를 화면에 길게 노출하지 않는다.
 - 이미지가 부족하다는 이유로 같은 이미지를 분위기용 배경으로 반복하지 않는다.
+- placeholder는 임시 레이아웃 확인용으로만 쓰고, 완성 이미지처럼 꾸미지 않는다.
 
 ## Layout And Breakpoints
 
@@ -38,14 +39,24 @@
 
 ## Image Curation
 
-- Hero: `head_img`만 사용한다. 다른 섹션에서 분위기용으로 반복하지 않는다.
-- Products: 각 제품의 정면 제품 이미지 세트를 유지한다.
-- Artists: 아티스트 카드와 배너 이미지는 섹션 목적에만 사용한다.
-- Social: `heritage`, `story`, `community`, `partnership` 이미지를 각각 해당 콘텐츠에만 사용한다.
-- 모든 이미지는 `Picture` 컴포넌트를 사용하고 `alt`, `width`, `height`를 유지한다.
+- 현재 단계에서는 실제 이미지 대신 `PlaceholderMedia`를 사용할 수 있다.
+- placeholder는 섹션명, 이미지 역할, 권장 비율만 보여준다.
+- Hero, Products, Artists, Social, Partnership 위치는 각각 다른 placeholder 라벨을 사용한다.
+- 기존 최적화 이미지 데이터와 파일은 삭제하지 않는다. 실제 이미지 큐레이션이 끝나면 `Picture` 컴포넌트로 되돌릴 수 있어야 한다.
+- 실제 이미지로 교체할 때는 `Picture` 컴포넌트를 사용하고 `alt`, `width`, `height`를 유지한다.
+
+## Subpage Planning
+
+- 외부 라우터 의존성은 아직 추가하지 않고, 현재는 pathname 기반 전환으로 `/about`, `/products`, `/artists`, `/social` 러프 초안을 제공한다.
+- 향후 각 서브 페이지를 목록/상세 구조로 확장한다.
+- `/about`은 브랜드 헤리티지와 톤 정리를 담당한다.
+- `/products`는 제품 목록 시작본을 담당하며, 상세 페이지는 다음 단계에서 붙인다.
+- `/artists`는 아티스트 목록과 아티스트 상세를 담당한다.
+- `/social`은 heritage, story, community 콘텐츠 허브를 담당한다.
+- 제품 데이터에는 상세 페이지 확장을 고려해 `slug`, `summary`, `heroLabel` 필드를 둔다.
 
 ## Copy Tone
 
 - 문구는 짧고 명확하게 쓴다.
 - “실험”, “playground”는 README나 보조 문맥에서만 쓰고, 화면의 주요 콘텐츠 카피에는 남발하지 않는다.
-- 브랜드 공식 문구처럼 보이는 과장 표현보다, 포트폴리오 설명에 적합한 차분한 한국어를 우선한다.
+- 브랜드 공식 문구처럼 보이는 과장 표현보다, 오래 읽어도 부담 없는 차분한 한국어를 우선한다.
