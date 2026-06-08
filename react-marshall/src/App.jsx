@@ -601,7 +601,7 @@ function AboutPage() {
           <span>About</span>
           <h2>소리가 태도가 되는 순간</h2>
           <p>
-            Marshall의 역사를 촘촘하게 복제하기보다, 브랜드가 어떤 방식으로 음악 문화 안에 자리 잡았는지 정리하는 상세 페이지 초안입니다.
+            Marshall의 역사를 촘촘하게 복제하기보다, 브랜드가 어떤 방식으로 음악 문화 안에 자리 잡았는지 차분하게 따라갑니다.
           </p>
           <InternalLink href="/#about">메인 소개 섹션으로 돌아가기</InternalLink>
         </div>
@@ -646,7 +646,7 @@ function ProductsPage() {
           <h2>사운드를 고르는 세 가지 방식</h2>
           <p>
             헤드폰, 스피커, 앰프를 목적과 공간에 따라 다시 묶은 시작 페이지입니다.
-            이후 상세 페이지가 붙을 수 있도록 제품별 slug와 요약 정보를 함께 정리했습니다.
+            제품마다 다른 사용 장면과 톤의 결을 비교하며 자신에게 맞는 방향을 고를 수 있습니다.
           </p>
           <InternalLink href="/#products">메인 제품 섹션으로 돌아가기</InternalLink>
         </div>
@@ -723,7 +723,7 @@ function ArtistsPage() {
           <span>Artists</span>
           <h2>무대가 사운드를 기억하는 방식</h2>
           <p>
-            아티스트 상세 페이지는 각 인물의 서사보다 사운드의 결, 무대 환경, 작업 태도를 먼저 훑는 방향으로 시작합니다.
+            각 아티스트의 이름보다 먼저 남는 사운드의 결, 무대 환경, 작업 태도를 중심으로 이야기를 정리합니다.
           </p>
           <InternalLink href="/#artists">메인 아티스트 섹션으로 돌아가기</InternalLink>
         </div>
@@ -771,7 +771,7 @@ function SocialPage() {
           <span>Social</span>
           <h2>커뮤니티로 이어지는 백스테이지</h2>
           <p>
-            Social 상세 페이지는 heritage, story, community 콘텐츠를 묶는 허브로 시작합니다. 지금은 카드 구조와 흐름만 러프하게 잡아둡니다.
+            Heritage, Story, Community 콘텐츠를 한 흐름으로 묶어 Marshall을 둘러싼 음악 문화의 장면들을 살펴봅니다.
           </p>
           <InternalLink href="/#social">메인 소셜 섹션으로 돌아가기</InternalLink>
         </div>
@@ -874,6 +874,51 @@ function Footer() {
   );
 }
 
+function ScrollTopButton() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const updateVisibility = () => {
+      setIsVisible(window.scrollY > 520);
+    };
+
+    updateVisibility();
+    const intervalId = window.setInterval(updateVisibility, 250);
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    document.addEventListener('scroll', updateVisibility, { passive: true, capture: true });
+
+    return () => {
+      window.clearInterval(intervalId);
+      window.removeEventListener('scroll', updateVisibility);
+      document.removeEventListener('scroll', updateVisibility, { capture: true });
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    });
+  };
+
+  return (
+    <button
+      type="button"
+      className={`scroll_top_button ${isVisible ? 'is-visible' : ''}`}
+      aria-label="맨 위로 이동"
+      aria-hidden={!isVisible}
+      tabIndex={isVisible ? 0 : -1}
+      onPointerDown={scrollToTop}
+      onClick={scrollToTop}
+    >
+      <span aria-hidden="true">↑</span>
+      <em>Top</em>
+    </button>
+  );
+}
+
 export default function App() {
   const currentPath = useRoute();
   const routePath = currentPath.replace(/\/$/, '') || '/';
@@ -914,6 +959,7 @@ export default function App() {
       <Header currentPath={currentPath} />
       {renderRoute()}
       <Footer />
+      <ScrollTopButton />
     </div>
   );
 }
