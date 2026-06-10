@@ -55,6 +55,120 @@ const picturePresets = {
   }
 };
 
+const wallOfSoundScenes = [
+  {
+    key: 'feedback-rush',
+    label: '01',
+    mode: 'Feedback Rush',
+    headline: '앰프 앞 30cm',
+    subtitle: '소리가 몸으로 먼저 들어오는 짧고 강한 순간입니다.',
+    productKey: 'amplifiers',
+    artistKey: 'artist2',
+    storyKey: 'story',
+    gain: 11,
+    bpm: 168,
+    flash: 'LOUD',
+    levels: [96, 72, 88, 64, 100, 82, 58, 92, 76, 98, 68, 86]
+  },
+  {
+    key: 'neon-room',
+    label: '02',
+    mode: 'Neon Room',
+    headline: '방 안을 밀어내는 저음',
+    subtitle: '스피커가 공간을 장악하고, 공기가 살짝 뒤로 밀리는 조합입니다.',
+    productKey: 'speakers',
+    artistKey: 'artist3',
+    storyKey: 'community',
+    gain: 9,
+    bpm: 124,
+    flash: 'ROOM',
+    levels: [62, 90, 74, 96, 54, 84, 100, 78, 68, 92, 58, 88]
+  },
+  {
+    key: 'night-sprint',
+    label: '03',
+    mode: 'Night Sprint',
+    headline: '밤길을 찢고 지나가는 리듬',
+    subtitle: '헤드폰 안에서 드럼과 기타가 앞다퉈 튀어나오는 장면입니다.',
+    productKey: 'headphones',
+    artistKey: 'artist1',
+    storyKey: 'heritage',
+    gain: 10,
+    bpm: 152,
+    flash: 'MOVE',
+    levels: [78, 100, 66, 88, 72, 94, 60, 82, 98, 70, 90, 64]
+  },
+  {
+    key: 'aftershock',
+    label: '04',
+    mode: 'Aftershock',
+    headline: '무대가 끝난 뒤 남는 잔향',
+    subtitle: '커뮤니티의 장면과 오래된 헤리티지가 뒤섞여 천천히 번집니다.',
+    productKey: 'speakers',
+    artistKey: 'artist4',
+    storyKey: 'community',
+    gain: 8,
+    bpm: 108,
+    flash: 'ECHO',
+    levels: [54, 76, 92, 68, 86, 58, 80, 96, 62, 84, 70, 90]
+  }
+];
+
+const productMainCopy = {
+  headphones: {
+    eyebrow: 'Personal Output',
+    title: 'Headphones',
+    body: '혼자 듣는 순간을 빠르게 밀어 올리는 이동형 사운드입니다.',
+    detail: '선명한 고음, 단단한 저음, 가까운 질감'
+  },
+  speakers: {
+    eyebrow: 'Room Output',
+    title: 'Speakers',
+    body: '방의 분위기와 사람의 움직임까지 같이 바꾸는 공간형 사운드입니다.',
+    detail: '넓은 스테레오, 따뜻한 존재감, 실내 중심'
+  },
+  amplifiers: {
+    eyebrow: 'Stage Output',
+    title: 'Amplifiers',
+    body: '연주자의 손끝에서 바로 튀어나오는 거칠고 직접적인 출력입니다.',
+    detail: '드라이브, 압력, 무대 앞 존재감'
+  }
+};
+
+const artistMainCopy = {
+  artist1: {
+    title: 'Night Runner',
+    body: '빠른 리듬과 개인적인 청취 장면을 연결합니다.'
+  },
+  artist2: {
+    title: 'Stage Driver',
+    body: '앰프 앞에서 가장 크게 살아나는 에너지를 담당합니다.'
+  },
+  artist3: {
+    title: 'Room Shaper',
+    body: '공간 전체를 하나의 청취 장면처럼 만드는 흐름입니다.'
+  },
+  artist4: {
+    title: 'After Hours',
+    body: '잔향, 기록, 커뮤니티의 온도를 천천히 남깁니다.'
+  }
+};
+
+const storyMainCopy = {
+  heritage: {
+    title: 'Heritage',
+    body: '오래된 사운드 언어를 지금의 화면 구조로 다시 펼칩니다.'
+  },
+  story: {
+    title: 'Backstage',
+    body: '제품보다 조금 더 가까운 곳에서 사람과 장면을 보여줍니다.'
+  },
+  community: {
+    title: 'Community',
+    body: '혼자 듣는 경험이 다른 사람의 장면과 만나는 지점입니다.'
+  }
+};
+
 function MediaImage({ base, alt, variant, className, pictureClassName, loading, fetchPriority }) {
   return (
     <Picture
@@ -67,6 +181,19 @@ function MediaImage({ base, alt, variant, className, pictureClassName, loading, 
       {...picturePresets[variant]}
     />
   );
+}
+
+function getSceneBundle(scene) {
+  return {
+    product: products.find((item) => item.key === scene.productKey) || products[0],
+    artist: artists.find((item) => item.key === scene.artistKey) || artists[0],
+    story: socialSlides.find((item) => item.key === scene.storyKey) || socialSlides[0]
+  };
+}
+
+function findSceneIndexBy(field, key) {
+  const nextIndex = wallOfSoundScenes.findIndex((scene) => scene[field] === key);
+  return nextIndex >= 0 ? nextIndex : 0;
 }
 
 const routeChangeEvent = 'marshall-route-change';
@@ -298,9 +425,369 @@ function About() {
   );
 }
 
-function Products() {
+function HomePage({ scene, sceneIndex, onSceneChange }) {
+  const [isKicking, setIsKicking] = useState(false);
+  const { product, artist, story } = getSceneBundle(scene);
+  const productCopy = productMainCopy[product.key] || productMainCopy.headphones;
+  const artistCopy = artistMainCopy[artist.key] || artistMainCopy.artist1;
+  const storyCopy = storyMainCopy[story.key] || storyMainCopy.heritage;
+
+  useEffect(() => {
+    if (!isKicking) return undefined;
+    const timer = window.setTimeout(() => setIsKicking(false), 620);
+
+    return () => window.clearTimeout(timer);
+  }, [isKicking]);
+
+  const changeScene = (nextIndex) => {
+    onSceneChange(nextIndex);
+    setIsKicking(true);
+  };
+
+  const cycleScene = () => {
+    onSceneChange();
+    setIsKicking(true);
+  };
+
+  return (
+    <main className={`home_playground ${isKicking ? 'is-kicking' : ''}`}>
+      <section className="playground_hero" aria-labelledby="home-playground-title">
+        <div className="playground_hero_text scroll-fade-up">
+          <span>Marshall Playroom</span>
+          <h2 id="home-playground-title">Pick a scene. Make it loud.</h2>
+          <p>
+            제품을 고르는 목록 대신 하나의 장면을 조립하는 화면입니다. 버튼 하나로 제품, 아티스트,
+            스토리가 동시에 바뀌고 페이지의 리듬도 같이 반응합니다.
+          </p>
+          <div className="playground_actions">
+            <button type="button" onClick={cycleScene} aria-label="다음 사운드 장면으로 전환">
+              Shuffle Scene
+            </button>
+            <InternalLink href="/products">전체 제품 보기</InternalLink>
+          </div>
+        </div>
+
+        <div className="playground_stage scroll-scale" aria-live="polite">
+          <MediaImage
+            base={product.image.base}
+            alt={`${productCopy.title} 대표 이미지`}
+            variant="productSquare"
+            pictureClassName="stage_media"
+            className="stage_image"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="stage_overlay">
+            <span>{scene.label} / {scene.mode}</span>
+            <strong>{scene.flash}</strong>
+            <p>{scene.headline}</p>
+          </div>
+          <div className="stage_meter" aria-label={`Gain ${scene.gain}, tempo ${scene.bpm} bpm`}>
+            <b>{scene.gain}</b>
+            <span>gain</span>
+            <em>{scene.bpm} bpm</em>
+          </div>
+        </div>
+      </section>
+
+      <section className="scene_switchboard" aria-label="사운드 장면 선택">
+        <div className="scene_switchboard_header scroll-fade-up">
+          <span>Scene Switchboard</span>
+          <p>누르면 메인 페이지의 이미지와 카드 구성이 함께 바뀝니다.</p>
+        </div>
+        <div className="scene_switches" role="group" aria-label="메인 사운드 장면">
+          {wallOfSoundScenes.map((item, index) => (
+            <button
+              key={item.key}
+              type="button"
+              className={index === sceneIndex ? 'is-active' : ''}
+              aria-pressed={index === sceneIndex}
+              onClick={() => changeScene(index)}
+            >
+              <span>{item.label}</span>
+              <strong>{item.mode}</strong>
+              <em>{item.headline}</em>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="signal_triptych" aria-label="선택된 장면 구성">
+        <article className="signal_card signal_product scroll-fade-up">
+          <span>{productCopy.eyebrow}</span>
+          <h3>{productCopy.title}</h3>
+          <p>{productCopy.body}</p>
+          <em>{productCopy.detail}</em>
+        </article>
+        <article className="signal_card signal_artist scroll-fade-up">
+          <MediaImage
+            base={artist.imageBase}
+            alt={`${artistCopy.title} 아티스트 이미지`}
+            variant="productSquare"
+            pictureClassName="signal_card_media"
+            className="signal_image"
+          />
+          <div>
+            <span>Artist Signal</span>
+            <h3>{artistCopy.title}</h3>
+            <p>{artistCopy.body}</p>
+          </div>
+        </article>
+        <article className="signal_card signal_story scroll-fade-up">
+          <MediaImage
+            base={story.imageBase}
+            alt={`${storyCopy.title} 스토리 이미지`}
+            variant="socialSquare"
+            pictureClassName="signal_card_media"
+            className="signal_image"
+          />
+          <div>
+            <span>Story Feed</span>
+            <h3>{storyCopy.title}</h3>
+            <p>{storyCopy.body}</p>
+          </div>
+        </article>
+      </section>
+
+      <section className="product_dock" id="products" aria-labelledby="product-dock-title">
+        <div className="section_kicker scroll-fade-up">
+          <span>Product Dock</span>
+          <h2 id="product-dock-title">세 가지 출력 방식</h2>
+        </div>
+        <div className="dock_grid">
+          {products.map((item) => {
+            const copy = productMainCopy[item.key] || productMainCopy.headphones;
+            const nextIndex = findSceneIndexBy('productKey', item.key);
+
+            return (
+              <button
+                key={item.key}
+                type="button"
+                className={`dock_card scroll-fade-up ${item.key === product.key ? 'is-active' : ''}`}
+                aria-pressed={item.key === product.key}
+                onClick={() => changeScene(nextIndex)}
+              >
+                <MediaImage
+                  base={item.image.base}
+                  alt={`${copy.title} 제품 이미지`}
+                  variant="productSquare"
+                  pictureClassName="dock_card_media"
+                  className="dock_image"
+                />
+                <span>{copy.eyebrow}</span>
+                <strong>{copy.title}</strong>
+                <em>{copy.detail}</em>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="artist_tape" id="artists" aria-labelledby="artist-tape-title">
+        <div className="section_kicker scroll-fade-up">
+          <span>Artist Tape</span>
+          <h2 id="artist-tape-title">장면을 움직이는 네 가지 신호</h2>
+        </div>
+        <div className="artist_tape_grid">
+          {artists.map((item) => {
+            const copy = artistMainCopy[item.key] || artistMainCopy.artist1;
+            const nextIndex = findSceneIndexBy('artistKey', item.key);
+
+            return (
+              <button
+                key={item.key}
+                type="button"
+                className={`artist_tape_card scroll-fade-up ${item.key === artist.key ? 'is-active' : ''}`}
+                aria-pressed={item.key === artist.key}
+                onClick={() => changeScene(nextIndex)}
+              >
+                <MediaImage
+                  base={item.imageBase}
+                  alt={`${copy.title} 아티스트 이미지`}
+                  variant="productSquare"
+                  pictureClassName="artist_tape_media"
+                  className="artist_tape_image"
+                />
+                <span>{item.number}</span>
+                <strong>{copy.title}</strong>
+                <em>{copy.body}</em>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="story_wave" id="social" aria-labelledby="story-wave-title">
+        <div className="section_kicker scroll-fade-up">
+          <span>Story Wave</span>
+          <h2 id="story-wave-title">콘텐츠는 장면의 여운으로 배치합니다</h2>
+        </div>
+        <div className="story_wave_grid">
+          {socialSlides.map((item) => {
+            const copy = storyMainCopy[item.key] || storyMainCopy.heritage;
+            const nextIndex = findSceneIndexBy('storyKey', item.key);
+
+            return (
+              <article key={item.key} className={`story_wave_card scroll-fade-up ${item.key === story.key ? 'is-active' : ''}`}>
+                <MediaImage
+                  base={item.imageBase}
+                  alt={`${copy.title} 콘텐츠 이미지`}
+                  variant="socialSquare"
+                  pictureClassName="story_wave_media"
+                  className="story_wave_image"
+                />
+                <div>
+                  <span>{item.label}</span>
+                  <h3>{copy.title}</h3>
+                  <p>{copy.body}</p>
+                  <button type="button" onClick={() => changeScene(nextIndex)} aria-pressed={item.key === story.key}>
+                    이 흐름 보기
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="heritage_strip" id="about" aria-labelledby="heritage-strip-title">
+        <div className="heritage_strip_text scroll-fade-up">
+          <span>About</span>
+          <h2 id="heritage-strip-title">낡은 복제가 아니라, 만지면서 변하는 한 장의 사운드 보드.</h2>
+          <p>
+            이 메인 페이지는 제품 소개, 아티스트 이미지, 스토리 콘텐츠를 독립된 섹션으로 세우기보다
+            하나의 선택 상태에 묶어 탐색합니다.
+          </p>
+        </div>
+        <InternalLink className="heritage_strip_link scroll-fade-up" href="/about">
+          About 상세 보기
+        </InternalLink>
+      </section>
+    </main>
+  );
+}
+
+function WallOfSound({ scene, sceneIndex, onBlast }) {
+  const [isBlasting, setIsBlasting] = useState(false);
+  const product = products.find((item) => item.key === scene.productKey) || products[0];
+  const artist = artists.find((item) => item.key === scene.artistKey) || artists[0];
+  const story = socialSlides.find((item) => item.key === scene.storyKey) || socialSlides[0];
+
+  useEffect(() => {
+    if (!isBlasting) return undefined;
+    const timer = window.setTimeout(() => setIsBlasting(false), 900);
+
+    return () => window.clearTimeout(timer);
+  }, [isBlasting]);
+
+  const triggerBlast = () => {
+    setIsBlasting(false);
+    window.requestAnimationFrame(() => {
+      onBlast();
+      setIsBlasting(true);
+    });
+  };
+
+  return (
+    <section className={`wall_of_sound_section ${isBlasting ? 'is-blasting' : ''}`} aria-labelledby="wall-of-sound-title">
+      <div className="wall_of_sound_header">
+        <div>
+          <span>Wall of Sound</span>
+          <h2 id="wall-of-sound-title">Gain to 11</h2>
+          <p>버튼을 누를 때마다 제품, 아티스트, 스토리가 한 덩어리로 터지면서 다른 사운드 장면으로 전환됩니다.</p>
+        </div>
+        <button type="button" className="wall_blast_button" onClick={triggerBlast} aria-pressed={isBlasting}>
+          터뜨리기
+        </button>
+      </div>
+
+      <div className="wall_of_sound_stage" aria-live="polite">
+        <div className="wall_noise_grid" aria-hidden="true">
+          {scene.levels.map((level, index) => (
+            <span
+              key={`${scene.key}-${index}`}
+              style={{
+                '--level': `${level}%`,
+                '--delay': `${index * 42}ms`
+              }}
+            >
+              {scene.flash}
+            </span>
+          ))}
+        </div>
+
+        <div className="wall_centerpiece">
+          <span>{scene.label} / {scene.mode}</span>
+          <strong>{scene.gain}</strong>
+          <em>gain</em>
+          <b>{scene.bpm} bpm</b>
+        </div>
+
+        <div className="wall_scene_copy">
+          <span>{scene.mode}</span>
+          <h3>{scene.headline}</h3>
+          <p>{scene.subtitle}</p>
+        </div>
+      </div>
+
+      <div className="wall_signal_strip" aria-label="현재 사운드 조합">
+        <article>
+          <span>Product</span>
+          <strong>{product.title}</strong>
+          <p>{product.specs.tone}</p>
+        </article>
+        <article>
+          <span>Artist</span>
+          <strong>{artist.signal}</strong>
+          <p>{artist.venue}</p>
+        </article>
+        <article>
+          <span>Story</span>
+          <strong>{story.title}</strong>
+          <p>{story.label}</p>
+        </article>
+      </div>
+
+      <div className="wall_equalizer" aria-label="사운드 레벨 시각화">
+        {scene.levels.map((level, index) => (
+          <i
+            key={`bar-${scene.key}-${index}`}
+            style={{
+              '--level': `${level}%`,
+              '--delay': `${index * 34}ms`
+            }}
+          >
+            <span className="screen_out">{index + 1}번 레벨 {level}</span>
+          </i>
+        ))}
+      </div>
+
+      <div className="wall_scene_picker" role="group" aria-label="사운드 장면 선택">
+        {wallOfSoundScenes.map((item, index) => (
+          <button
+            key={item.key}
+            type="button"
+            className={index === sceneIndex ? 'is-active' : ''}
+            aria-pressed={index === sceneIndex}
+            onClick={() => {
+              if (index === sceneIndex) return;
+              onBlast(index);
+              setIsBlasting(true);
+            }}
+          >
+            <span>{item.label}</span>
+            {item.mode}
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Products({ featuredProductKey }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [compareKeys, setCompareKeys] = useState([]);
+  const featuredProduct = products.find((product) => product.key === featuredProductKey) || products[0];
   const visibleProducts = products.filter((product) => activeFilter === 'all' || product.filters.includes(activeFilter));
   const comparedProducts = products.filter((product) => compareKeys.includes(product.key));
 
@@ -317,6 +804,11 @@ function Products() {
   return (
     <section className="products_section" id="products">
       <h2 className="scroll-fade-up">Products</h2>
+      <div className="scene_bridge_note scroll-fade-up">
+        <span>Scene Product</span>
+        <strong>{featuredProduct.title}</strong>
+        <p>{featuredProduct.summary}</p>
+      </div>
       <div className="product_tools scroll-fade-up" aria-label="제품 필터와 비교">
         <div className="product_filters" role="group" aria-label="제품군 필터">
           {productFilters.map((filter) => (
@@ -340,7 +832,7 @@ function Products() {
           const isCompared = compareKeys.includes(product.key);
 
           return (
-            <div key={product.key} className={`${product.key} ${index === 1 ? 'scroll-fade-right' : 'scroll-fade-left'}`}>
+            <div key={product.key} className={`${product.key} ${product.key === featuredProductKey ? 'is-scene-match' : ''} ${index === 1 ? 'scroll-fade-right' : 'scroll-fade-left'}`}>
               <div className={product.textClass}>
                 <span>{product.number}</span>
                 <h3>{product.title}</h3>
@@ -417,11 +909,18 @@ function Products() {
   );
 }
 
-function Artists() {
+function Artists({ featuredArtistKey }) {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [featuredKey, setFeaturedKey] = useState(artists[0].key);
+  const [featuredKey, setFeaturedKey] = useState(featuredArtistKey || artists[0].key);
   const visibleArtists = artists.filter((artist) => activeFilter === 'all' || artist.filters.includes(activeFilter));
   const featuredArtist = visibleArtists.find((artist) => artist.key === featuredKey) || visibleArtists[0] || artists[0];
+
+  useEffect(() => {
+    if (featuredArtistKey) {
+      setFeaturedKey(featuredArtistKey);
+      setActiveFilter('all');
+    }
+  }, [featuredArtistKey]);
 
   return (
     <section className="artists_section" id="artists">
@@ -469,7 +968,7 @@ function Artists() {
 
       <div className="artist_content">
         {visibleArtists.map((artist) => (
-          <div key={artist.key} className={`${artist.key} ${artist.direction} is-visible`}>
+          <div key={artist.key} className={`${artist.key} ${artist.key === featuredArtistKey ? 'is-scene-match' : ''} ${artist.direction} is-visible`}>
             <div className={`${artist.key}_text`}>
               <span>{artist.number}</span>
               <h3>{artist.title}</h3>
@@ -527,8 +1026,9 @@ function SocialSlide({ slide, isActive }) {
   );
 }
 
-function SocialSlider() {
-  const [current, setCurrent] = useState(0);
+function SocialSlider({ featuredStoryKey }) {
+  const initialIndex = Math.max(0, socialSlides.findIndex((slide) => slide.key === featuredStoryKey));
+  const [current, setCurrent] = useState(initialIndex);
   const [isAuto, setIsAuto] = useState(false);
   const slideCount = socialSlides.length;
   const activeSlide = socialSlides[current];
@@ -546,6 +1046,13 @@ function SocialSlider() {
 
     return () => window.clearInterval(timer);
   }, [isAuto, slideCount]);
+
+  useEffect(() => {
+    const nextIndex = socialSlides.findIndex((slide) => slide.key === featuredStoryKey);
+    if (nextIndex >= 0) {
+      setCurrent(nextIndex);
+    }
+  }, [featuredStoryKey]);
 
   const onKeyDown = (event) => {
     if (event.key === 'ArrowLeft') {
@@ -606,15 +1113,17 @@ function SocialSlider() {
   );
 }
 
-function Social() {
+function Social({ featuredStoryKey }) {
+  const featuredStory = socialSlides.find((slide) => slide.key === featuredStoryKey) || socialSlides[0];
+
   return (
     <section className="social_section" id="social">
       <div className="social_text scroll-fade-up">
         <h2>Social</h2>
-        <p>음악 산업의 뿌리 깊은 유산과 공동체, 그리고 뮤지션들의 이야기를 한 곳에서 탐색해보세요.</p>
+        <p>현재 장면은 {featuredStory.title} 콘텐츠로 이어집니다. 음악 산업의 유산과 공동체, 뮤지션들의 이야기를 한 곳에서 탐색해보세요.</p>
       </div>
 
-      <SocialSlider />
+      <SocialSlider featuredStoryKey={featuredStoryKey} />
 
       <div className="social_partnership scroll-fade-up">
         <MediaImage
@@ -986,6 +1495,8 @@ function ScrollTopButton() {
 
 export default function App() {
   const currentPath = useRoute();
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const currentScene = wallOfSoundScenes[sceneIndex];
   const routePath = currentPath.replace(/\/$/, '') || '/';
   const routeTitles = {
     '/about': 'About | Marshall Editorial Study',
@@ -1000,23 +1511,20 @@ export default function App() {
     document.title = routeTitles[routePath] || 'Marshall Editorial Study';
   }, [routePath]);
 
+  const blastScene = (nextIndex) => {
+    setSceneIndex((index) => {
+      if (typeof nextIndex === 'number') return nextIndex;
+      return (index + 1) % wallOfSoundScenes.length;
+    });
+  };
+
   const renderRoute = () => {
     if (routePath === '/about') return <AboutPage />;
     if (routePath === '/products') return <ProductsPage />;
     if (routePath === '/artists') return <ArtistsPage />;
     if (routePath === '/social') return <SocialPage />;
 
-    return (
-      <>
-        <Hero />
-        <main>
-          <About />
-          <Products />
-          <Artists />
-          <Social />
-        </main>
-      </>
-    );
+    return <HomePage scene={currentScene} sceneIndex={sceneIndex} onSceneChange={blastScene} />;
   };
 
   return (

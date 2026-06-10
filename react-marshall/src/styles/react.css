@@ -18,6 +18,458 @@
     max-width: 100%;
 }
 
+.main_experience {
+    display: flow-root;
+}
+
+.home_playground {
+    --home-gutter: var(--container-mobile);
+    display: grid;
+    gap: 76px;
+    padding: 96px 0 92px;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(216, 29, 35, 0.22), transparent 28%),
+        linear-gradient(180deg, rgba(230, 221, 204, 0.05), transparent 420px),
+        var(--color-dark);
+}
+
+.playground_hero,
+.scene_switchboard,
+.signal_triptych,
+.product_dock,
+.artist_tape,
+.story_wave,
+.heritage_strip {
+    width: var(--home-gutter);
+    max-width: var(--max-width);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.playground_hero {
+    display: grid;
+    gap: 26px;
+    align-items: end;
+    min-height: calc(100vh - 112px);
+}
+
+.playground_hero_text {
+    display: grid;
+    gap: 18px;
+    max-width: 860px;
+    z-index: 1;
+}
+
+.playground_hero_text > span,
+.scene_switchboard_header span,
+.section_kicker span,
+.signal_card span,
+.stage_overlay span,
+.heritage_strip_text span {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.playground_hero_text h2 {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: clamp(6.2rem, 17vw, 18rem);
+    line-height: 0.78;
+    text-transform: uppercase;
+}
+
+.playground_hero_text p,
+.scene_switchboard_header p,
+.heritage_strip_text p {
+    max-width: 620px;
+    color: var(--color-text);
+    font-size: 1.55rem;
+    line-height: 1.6;
+    word-break: keep-all;
+}
+
+.playground_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.playground_actions button,
+.playground_actions a,
+.scene_switches button,
+.dock_card,
+.artist_tape_card,
+.story_wave_card button,
+.heritage_strip_link {
+    min-height: 44px;
+    border: 1px solid rgba(230, 221, 204, 0.26);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    transition:
+        border-color var(--transition-normal),
+        background var(--transition-normal),
+        color var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+.playground_actions button,
+.playground_actions a,
+.story_wave_card button,
+.heritage_strip_link {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    padding: 0 16px;
+}
+
+.playground_actions button,
+.scene_switches button.is-active,
+.dock_card.is-active,
+.artist_tape_card.is-active,
+.story_wave_card.is-active button {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.playground_actions a:hover,
+.scene_switches button:hover,
+.dock_card:hover,
+.artist_tape_card:hover,
+.story_wave_card button:hover,
+.heritage_strip_link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.playground_stage {
+    position: relative;
+    min-height: 420px;
+    overflow: hidden;
+    border: 1px solid rgba(230, 221, 204, 0.2);
+    background:
+        linear-gradient(135deg, rgba(230, 221, 204, 0.08), transparent 46%),
+        var(--color-black);
+}
+
+.stage_media {
+    display: block;
+    width: min(74vw, 620px);
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    background: transparent;
+}
+
+.stage_image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(0.92);
+    transition: transform 620ms ease, filter 620ms ease;
+}
+
+.home_playground.is-kicking .stage_image {
+    filter: saturate(1.24) contrast(1.08);
+    transform: scale(0.98) rotate(-1.5deg);
+}
+
+.stage_overlay {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+    display: grid;
+    gap: 8px;
+    max-width: 520px;
+    padding: 16px;
+    background: rgba(18, 18, 18, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+.stage_overlay strong {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(4.4rem, 12vw, 11rem);
+    line-height: 0.84;
+}
+
+.stage_overlay p {
+    color: var(--color-text);
+    font-size: 1.45rem;
+    line-height: 1.45;
+    word-break: keep-all;
+}
+
+.stage_meter {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: grid;
+    place-items: center;
+    width: 116px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid rgba(230, 221, 204, 0.32);
+    border-radius: 50%;
+    background: rgba(18, 18, 18, 0.72);
+}
+
+.stage_meter b {
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 5.4rem;
+    line-height: 0.7;
+}
+
+.stage_meter span,
+.stage_meter em {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+.scene_switchboard {
+    display: grid;
+    gap: 18px;
+}
+
+.scene_switchboard_header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.scene_switches {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.scene_switches button {
+    display: grid;
+    gap: 6px;
+    min-height: 106px;
+    padding: 14px;
+    text-align: left;
+}
+
+.scene_switches span,
+.dock_card span,
+.artist_tape_card span,
+.story_wave_card span {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.scene_switches strong,
+.dock_card strong,
+.artist_tape_card strong {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.scene_switches em,
+.dock_card em,
+.artist_tape_card em {
+    color: currentColor;
+    font-size: 1.2rem;
+    font-style: normal;
+    line-height: 1.35;
+    opacity: 0.72;
+    word-break: keep-all;
+}
+
+.signal_triptych {
+    display: grid;
+    gap: 12px;
+}
+
+.signal_card {
+    display: grid;
+    gap: 14px;
+    min-width: 0;
+    padding: 18px;
+    border-top: 1px solid rgba(230, 221, 204, 0.22);
+    background: rgba(230, 221, 204, 0.035);
+}
+
+.signal_card h3 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 6.4rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.signal_card p {
+    color: var(--color-text);
+    font-size: 1.45rem;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+.signal_card em {
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+.signal_card_media {
+    display: block;
+    align-self: start;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.signal_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section_kicker {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.section_kicker h2,
+.heritage_strip_text h2 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(3.8rem, 10vw, 9rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    word-break: keep-all;
+}
+
+.dock_grid,
+.artist_tape_grid,
+.story_wave_grid {
+    display: grid;
+    gap: 12px;
+}
+
+.dock_card,
+.artist_tape_card {
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+    padding: 12px;
+    text-align: left;
+    background: rgba(18, 18, 18, 0.32);
+}
+
+.dock_card.is-active:hover,
+.artist_tape_card.is-active:hover {
+    color: var(--color-dark);
+}
+
+.dock_card_media,
+.artist_tape_media {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: rgba(230, 221, 204, 0.05);
+}
+
+.dock_image,
+.artist_tape_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.dock_card:hover .dock_image,
+.artist_tape_card:hover .artist_tape_image {
+    transform: scale(1.04);
+}
+
+.story_wave_card {
+    display: grid;
+    gap: 16px;
+    padding: 14px;
+    border: 1px solid rgba(230, 221, 204, 0.18);
+    background: rgba(230, 221, 204, 0.035);
+}
+
+.story_wave_card.is-active {
+    border-color: var(--color-accent);
+}
+
+.story_wave_media {
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.story_wave_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story_wave_card div {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+}
+
+.story_wave_card h3 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    line-height: 0.95;
+    text-transform: uppercase;
+}
+
+.story_wave_card p {
+    color: var(--color-text);
+    font-size: 1.4rem;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+.story_wave_card button {
+    width: max-content;
+    margin-top: 4px;
+    padding: 0 14px;
+}
+
+.heritage_strip {
+    display: grid;
+    gap: 18px;
+    align-items: end;
+    padding: 24px 0;
+    border-top: 1px solid rgba(230, 221, 204, 0.22);
+    border-bottom: 1px solid rgba(230, 221, 204, 0.22);
+}
+
+.heritage_strip_text {
+    display: grid;
+    gap: 12px;
+}
+
+.home_playground :is(.dock_card, .artist_tape_card, .scene_switches button, .story_wave_card button) {
+    cursor: pointer;
+}
+
 .placeholder_media {
     display: grid;
     place-content: center;
@@ -66,6 +518,8 @@
 
 .product_tools,
 .product_compare,
+.scene_bridge_note,
+.wall_of_sound_section,
 .artist_tools,
 .editorial_carousel {
     width: var(--container-mobile);
@@ -91,6 +545,8 @@
 
 .product_filters button,
 .artist_filters button,
+.wall_scene_picker button,
+.wall_blast_button,
 .product_actions button,
 .product_compare button,
 .artist_content button,
@@ -109,6 +565,8 @@
 
 .product_filters button:hover,
 .artist_filters button:hover,
+.wall_scene_picker button:hover,
+.wall_blast_button:hover,
 .product_actions button:hover,
 .product_compare button:hover,
 .artist_content button:hover,
@@ -119,6 +577,7 @@
 
 .product_filters button.is-active,
 .artist_filters button.is-active,
+.wall_scene_picker button.is-active,
 .product_actions button.is-active,
 .artist_content button.is-active,
 .editorial_carousel_dots button.is-active,
@@ -132,6 +591,39 @@
 .product_compare_empty {
     color: var(--color-text-muted);
     font-size: 1.3rem;
+}
+
+.scene_bridge_note {
+    display: grid;
+    gap: 8px;
+    margin-top: -70px;
+    margin-bottom: 54px;
+    padding: 18px;
+    border-left: 3px solid var(--color-accent);
+    background: rgba(230, 221, 204, 0.04);
+}
+
+.scene_bridge_note span {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.scene_bridge_note strong {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.scene_bridge_note p {
+    color: var(--color-text);
+    font-size: 1.4rem;
+    line-height: 1.5;
+    word-break: keep-all;
 }
 
 .product_index_link {
@@ -196,6 +688,283 @@
     gap: 12px;
     align-items: center;
     margin-top: 18px;
+}
+
+.wall_of_sound_section {
+    position: relative;
+    margin-top: 120px;
+    margin-bottom: -24px;
+    padding: 28px 0 32px;
+    border-top: 1px solid rgba(230, 221, 204, 0.2);
+    border-bottom: 1px solid rgba(230, 221, 204, 0.2);
+}
+
+.wall_of_sound_header {
+    display: grid;
+    gap: 18px;
+}
+
+.wall_of_sound_header span,
+.wall_centerpiece span,
+.wall_scene_copy span,
+.wall_signal_strip span {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.wall_of_sound_header h2 {
+    margin-top: 10px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(6.4rem, 17vw, 18rem);
+    line-height: 0.8;
+    text-transform: uppercase;
+}
+
+.wall_of_sound_header p,
+.wall_scene_copy p,
+.wall_signal_strip p {
+    color: var(--color-text);
+    word-break: keep-all;
+}
+
+.wall_of_sound_header p {
+    max-width: 680px;
+    margin-top: 18px;
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+.wall_blast_button {
+    width: max-content;
+    min-height: 48px;
+    background: var(--color-accent);
+    color: var(--color-dark);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.wall_blast_button[aria-pressed="true"] {
+    transform: translateY(1px) scale(0.98);
+}
+
+.wall_of_sound_stage {
+    position: relative;
+    display: grid;
+    min-height: 520px;
+    margin-top: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(230, 221, 204, 0.22);
+    background:
+        linear-gradient(120deg, rgba(216, 29, 35, 0.22), transparent 38%),
+        linear-gradient(300deg, rgba(230, 166, 57, 0.18), transparent 42%),
+        var(--color-dark);
+    isolation: isolate;
+}
+
+.wall_noise_grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    z-index: -1;
+}
+
+.wall_noise_grid span {
+    display: grid;
+    place-items: center;
+    min-height: 130px;
+    border-right: 1px solid rgba(230, 221, 204, 0.08);
+    border-bottom: 1px solid rgba(230, 221, 204, 0.08);
+    color: rgba(230, 221, 204, 0.12);
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    animation: wall-pulse 1600ms ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.wall_centerpiece {
+    align-self: center;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    width: min(340px, 76vw);
+    aspect-ratio: 1 / 1;
+    border: 2px solid rgba(230, 221, 204, 0.44);
+    background: rgba(18, 18, 18, 0.62);
+    box-shadow:
+        0 0 0 10px rgba(230, 221, 204, 0.035),
+        0 0 80px rgba(216, 29, 35, 0.28);
+    transform: rotate(-3deg);
+}
+
+.wall_centerpiece strong {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: clamp(11rem, 22vw, 22rem);
+    line-height: 0.75;
+}
+
+.wall_centerpiece em,
+.wall_centerpiece b {
+    color: var(--color-text-muted);
+    font-style: normal;
+    font-size: 1.3rem;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.wall_scene_copy {
+    align-self: end;
+    max-width: 760px;
+    padding: 28px;
+}
+
+.wall_scene_copy h3 {
+    margin-top: 10px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(3.4rem, 9vw, 9rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.wall_scene_copy p {
+    max-width: 560px;
+    margin-top: 16px;
+    font-size: 1.6rem;
+    line-height: 1.55;
+}
+
+.wall_signal_strip {
+    display: grid;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.wall_signal_strip article {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid rgba(230, 221, 204, 0.16);
+    background: rgba(230, 221, 204, 0.035);
+}
+
+.wall_signal_strip strong {
+    display: block;
+    margin-top: 8px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+}
+
+.wall_signal_strip p {
+    margin-top: 8px;
+    color: var(--color-text-muted);
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.wall_equalizer {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 6px;
+    align-items: end;
+    height: 94px;
+    margin-top: 14px;
+}
+
+.wall_equalizer i {
+    display: block;
+    height: var(--level);
+    min-height: 12px;
+    background: var(--color-accent);
+    transform-origin: bottom;
+    animation: wall-bar 720ms ease-in-out infinite alternate;
+    animation-delay: var(--delay);
+}
+
+.wall_scene_picker {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.wall_scene_picker button {
+    display: grid;
+    justify-items: start;
+    gap: 4px;
+    min-height: 54px;
+    text-align: left;
+}
+
+.wall_scene_picker span {
+    color: inherit;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.products_section .products :is(.headphones, .speakers, .amplifiers).is-scene-match,
+.artists_section .artist_content :is(.artist1, .artist2, .artist3, .artist4).is-scene-match {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 12px;
+}
+
+.products_section .products :is(.headphones, .speakers, .amplifiers).is-scene-match :is(h3, strong),
+.artists_section .artist_content :is(.artist1, .artist2, .artist3, .artist4).is-scene-match h3 {
+    color: var(--color-accent);
+}
+
+.wall_of_sound_section.is-blasting .wall_centerpiece {
+    animation: wall-kick 420ms ease-out;
+}
+
+.wall_of_sound_section.is-blasting .wall_noise_grid span {
+    color: rgba(230, 221, 204, 0.24);
+    background: rgba(216, 29, 35, 0.16);
+}
+
+@keyframes wall-pulse {
+    0%,
+    100% {
+        opacity: 0.34;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.86;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes wall-bar {
+    from {
+        transform: scaleY(0.72);
+    }
+    to {
+        transform: scaleY(1.08);
+    }
+}
+
+@keyframes wall-kick {
+    0% {
+        transform: rotate(-3deg) scale(1);
+    }
+    45% {
+        transform: rotate(2deg) scale(1.08);
+    }
+    100% {
+        transform: rotate(-3deg) scale(1);
+    }
 }
 
 .products_section .products :is(.headphones, .speakers, .amplifiers) .product_actions a {
@@ -758,6 +1527,8 @@
     .artists_section .artist_content,
     .product_tools,
     .product_compare,
+    .scene_bridge_note,
+    .wall_of_sound_section,
     .artist_tools,
     .editorial_carousel,
     .subpage_hero,
@@ -837,11 +1608,13 @@
     }
 
     .product_compare_header,
+    .wall_of_sound_header,
     .editorial_carousel_status {
         display: block;
     }
 
     .product_compare_header span,
+    .wall_blast_button,
     .editorial_carousel_status strong,
     .editorial_carousel_status button {
         display: block;
@@ -873,8 +1646,60 @@
 }
 
 @media screen and (min-width: 768px) {
+    .home_playground {
+        --home-gutter: var(--container-tablet);
+        gap: 96px;
+        padding-top: 86px;
+    }
+
+    .playground_hero {
+        grid-template-columns: minmax(0, 0.92fr) minmax(330px, 0.8fr);
+        min-height: calc(100vh - 128px);
+    }
+
+    .playground_stage {
+        min-height: 560px;
+    }
+
+    .stage_media {
+        width: min(44vw, 580px);
+        margin-top: 24px;
+    }
+
+    .scene_switches {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .signal_triptych {
+        grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .signal_product {
+        grid-row: span 2;
+        align-content: end;
+        min-height: 460px;
+    }
+
+    .dock_grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .artist_tape_grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .story_wave_grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .heritage_strip {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
     .product_tools,
     .product_compare,
+    .scene_bridge_note,
+    .wall_of_sound_section,
     .artist_tools,
     .editorial_carousel,
     .subpage_hero,
@@ -886,6 +1711,19 @@
     .product_tools {
         grid-template-columns: minmax(0, 1fr) auto auto;
         align-items: center;
+    }
+
+    .wall_of_sound_header {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+    }
+
+    .wall_signal_strip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .wall_scene_picker {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .artist_tools {
@@ -950,8 +1788,42 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .home_playground {
+        --home-gutter: var(--container-desktop);
+        gap: 120px;
+        padding-top: 64px;
+        padding-bottom: 128px;
+    }
+
+    .playground_hero_text h2 {
+        max-width: 760px;
+    }
+
+    .playground_stage {
+        min-height: 650px;
+    }
+
+    .signal_triptych {
+        grid-template-columns: 1.15fr 0.85fr 0.85fr;
+    }
+
+    .signal_product {
+        grid-row: auto;
+    }
+
+    .signal_card {
+        min-height: 420px;
+        padding: 24px;
+    }
+
+    .story_wave_card {
+        grid-template-rows: auto 1fr;
+    }
+
     .product_tools,
     .product_compare,
+    .scene_bridge_note,
+    .wall_of_sound_section,
     .artist_tools,
     .editorial_carousel,
     .subpage_hero,
@@ -972,14 +1844,46 @@
 }
 
 @media screen and (min-width: 1440px) {
+    .home_playground {
+        gap: 140px;
+    }
+
+    .playground_hero {
+        grid-template-columns: minmax(0, 0.86fr) minmax(460px, 0.74fr);
+    }
+
+    .playground_stage {
+        min-height: 690px;
+    }
+
+    .stage_media {
+        width: min(34vw, 620px);
+    }
+
     .editorial_slide {
         grid-template-columns: minmax(0, 1.2fr) minmax(380px, 0.8fr);
     }
 }
 
 @media screen and (min-width: 1920px) {
+    .home_playground {
+        --home-gutter: var(--container-wide);
+    }
+
+    .playground_hero,
+    .scene_switchboard,
+    .signal_triptych,
+    .product_dock,
+    .artist_tape,
+    .story_wave,
+    .heritage_strip {
+        max-width: var(--max-width-wide);
+    }
+
     .product_tools,
     .product_compare,
+    .scene_bridge_note,
+    .wall_of_sound_section,
     .artist_tools,
     .editorial_carousel,
     .subpage_hero,
