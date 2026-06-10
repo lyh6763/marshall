@@ -8,6 +8,16 @@
     outline-offset: 4px;
 }
 
+.react_experiment picture {
+    background: var(--color-dark);
+}
+
+.react_experiment picture img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
 .placeholder_media {
     display: grid;
     place-content: center;
@@ -359,6 +369,13 @@
     object-fit: cover;
 }
 
+.header_visual .hero_image,
+.artists_section .artists .artists_banner .artists_banner_image,
+.social_section .social_partnership .partnership_image {
+    height: 100%;
+    object-fit: cover;
+}
+
 .header_visual .placeholder_media.hero_image,
 .artists_section .artists .artists_banner .placeholder_media.artists_banner_image,
 .social_section .social_partnership .placeholder_media.partnership_image,
@@ -573,6 +590,29 @@
 
 .subpage_hero_media {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.subpage_hero_picture,
+.subpage_card_picture {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.subpage_hero_picture {
+    aspect-ratio: 16 / 9;
+}
+
+.subpage_card_picture {
+    aspect-ratio: 4 / 3;
+}
+
+.subpage_card_media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .subpage_collection,
@@ -632,7 +672,7 @@
     margin-bottom: 22px;
 }
 
-.subpage_detail_card > .placeholder_media + div {
+.subpage_detail_card > :is(.placeholder_media, picture) + div {
     margin-top: 22px;
 }
 

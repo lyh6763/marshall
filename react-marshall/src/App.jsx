@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import PlaceholderMedia from './components/PlaceholderMedia.jsx';
+import Picture from './components/Picture.jsx';
 import {
   artistFilters,
   artists,
@@ -16,6 +16,58 @@ const externalProps = {
   target: '_blank',
   rel: 'noopener noreferrer'
 };
+
+const picturePresets = {
+  hero: {
+    widths: [960, 1440, 1920],
+    sizes: '100vw',
+    srcWidth: 1440,
+    width: 1440,
+    height: 716
+  },
+  productSquare: {
+    widths: [360, 600],
+    sizes: '(min-width: 1440px) 500px, (min-width: 768px) 300px, 100vw',
+    srcWidth: 600,
+    width: 600,
+    height: 600
+  },
+  artistBanner: {
+    widths: [768, 1440, 1920],
+    sizes: '100vw',
+    srcWidth: 1440,
+    width: 1440,
+    height: 373
+  },
+  socialSquare: {
+    widths: [360, 741],
+    sizes: '(min-width: 1024px) 58vw, 100vw',
+    srcWidth: 741,
+    width: 741,
+    height: 741
+  },
+  partnership: {
+    widths: [640, 1155],
+    sizes: '(min-width: 1024px) 840px, 100vw',
+    srcWidth: 1155,
+    width: 1155,
+    height: 750
+  }
+};
+
+function MediaImage({ base, alt, variant, className, pictureClassName, loading, fetchPriority }) {
+  return (
+    <Picture
+      base={base}
+      alt={alt}
+      className={className}
+      pictureClassName={pictureClassName}
+      loading={loading}
+      fetchPriority={fetchPriority}
+      {...picturePresets[variant]}
+    />
+  );
+}
 
 const routeChangeEvent = 'marshall-route-change';
 
@@ -213,11 +265,13 @@ function Header({ currentPath }) {
 function Hero() {
   return (
     <div className="header_visual">
-      <PlaceholderMedia
+      <MediaImage
+        base="/img/optimized/head_img"
+        alt="Marshall 무대와 장비 분위기를 보여주는 대표 이미지"
+        variant="hero"
         className="hero_image"
-        label="Hero"
-        role="대표 비주얼"
-        ratio="2 / 1"
+        loading="eager"
+        fetchPriority="high"
       />
       <div className="slogan scroll-fade-up">
         <h2>Rock 'n' roll is<br />a state of mind</h2>
@@ -318,10 +372,10 @@ function Products() {
                   </button>
                 </div>
                 <div className={product.imageClass}>
-                  <PlaceholderMedia
-                    label={product.title}
-                    role="제품 이미지"
-                    ratio="1 / 1"
+                  <MediaImage
+                    base={product.image.base}
+                    alt={product.image.alt}
+                    variant="productSquare"
                   />
                 </div>
               </div>
@@ -373,11 +427,11 @@ function Artists() {
     <section className="artists_section" id="artists">
       <div className="artists">
         <div className="artists_banner scroll-fade-up">
-          <PlaceholderMedia
+          <MediaImage
+            base="/img/optimized/artist_banner"
+            alt="Marshall 아티스트와 무대 분위기를 보여주는 배너 이미지"
+            variant="artistBanner"
             className="artists_banner_image"
-            label="Artists"
-            role="아티스트 배너"
-            ratio="4 / 1"
           />
           <div className="artists_text">
             <div className="artists_text_left"><h2>Artists</h2></div>
@@ -440,10 +494,10 @@ function Artists() {
               </button>
             </div>
             <div className={`${artist.key}_image`}>
-              <PlaceholderMedia
-                label={artist.signal}
-                role="아티스트 이미지"
-                ratio="1 / 1"
+              <MediaImage
+                base={artist.imageBase}
+                alt={artist.alt}
+                variant="productSquare"
               />
             </div>
           </div>
@@ -456,11 +510,12 @@ function Artists() {
 function SocialSlide({ slide, isActive }) {
   return (
     <article className="editorial_slide" aria-hidden={!isActive}>
-      <PlaceholderMedia
+      <MediaImage
+        base={slide.imageBase}
+        alt={slide.alt}
+        variant="socialSquare"
         className="slide_image"
-        label={slide.title}
-        role="스토리 이미지"
-        ratio="1 / 1"
+        loading="eager"
       />
       <div className="editorial_slide_text">
         <span>{slide.label}</span>
@@ -562,11 +617,11 @@ function Social() {
       <SocialSlider />
 
       <div className="social_partnership scroll-fade-up">
-        <PlaceholderMedia
+        <MediaImage
+          base="/img/optimized/social_partnership"
+          alt="Marshall 파트너십 캠페인 이미지"
+          variant="partnership"
           className="partnership_image"
-          label="Partnership"
-          role="캠페인 이미지"
-          ratio="3 / 2"
         />
         <div className="partnership_text">
           <h3>PARTNERSHIP</h3>
@@ -605,11 +660,12 @@ function AboutPage() {
           </p>
           <InternalLink href="/#about">메인 소개 섹션으로 돌아가기</InternalLink>
         </div>
-        <PlaceholderMedia
+        <MediaImage
+          base="/img/optimized/head_img"
+          alt="Marshall 헤리티지와 사운드 문화를 보여주는 대표 이미지"
+          variant="hero"
+          pictureClassName="subpage_hero_picture"
           className="subpage_hero_media"
-          label="About"
-          role="헤리티지 대표 이미지"
-          ratio="16 / 9"
         />
       </section>
 
@@ -650,11 +706,12 @@ function ProductsPage() {
           </p>
           <InternalLink href="/#products">메인 제품 섹션으로 돌아가기</InternalLink>
         </div>
-        <PlaceholderMedia
+        <MediaImage
+          base="/img/optimized/marshall_speaker"
+          alt="Marshall 제품 컬렉션을 대표하는 스피커 이미지"
+          variant="productSquare"
+          pictureClassName="subpage_hero_picture"
           className="subpage_hero_media"
-          label="Products"
-          role="컬렉션 대표 이미지"
-          ratio="16 / 9"
         />
       </section>
 
@@ -682,10 +739,12 @@ function ProductsPage() {
         <div className="subpage_product_grid">
           {visibleProducts.map((product) => (
             <article key={product.key} className="subpage_product_card scroll-fade-up">
-              <PlaceholderMedia
-                label={product.title}
-                role={product.heroLabel}
-                ratio="4 / 3"
+              <MediaImage
+                base={product.image.base}
+                alt={product.image.alt}
+                variant="productSquare"
+                pictureClassName="subpage_card_picture"
+                className="subpage_card_media"
               />
               <div className="subpage_product_card_text">
                 <span>{product.number} / {product.heroLabel}</span>
@@ -727,11 +786,12 @@ function ArtistsPage() {
           </p>
           <InternalLink href="/#artists">메인 아티스트 섹션으로 돌아가기</InternalLink>
         </div>
-        <PlaceholderMedia
+        <MediaImage
+          base="/img/optimized/artist_banner"
+          alt="Marshall 아티스트 콘텐츠를 대표하는 무대 이미지"
+          variant="artistBanner"
+          pictureClassName="subpage_hero_picture"
           className="subpage_hero_media"
-          label="Artists"
-          role="아티스트 대표 이미지"
-          ratio="16 / 9"
         />
       </section>
 
@@ -745,10 +805,12 @@ function ArtistsPage() {
         <div className="subpage_detail_grid">
           {artists.map((artist) => (
             <article key={artist.key} className="subpage_detail_card scroll-fade-up">
-              <PlaceholderMedia
-                label={artist.signal}
-                role="아티스트 이미지"
-                ratio="4 / 3"
+              <MediaImage
+                base={artist.imageBase}
+                alt={artist.alt}
+                variant="productSquare"
+                pictureClassName="subpage_card_picture"
+                className="subpage_card_media"
               />
               <div>
                 <span>{artist.number} / {artist.venue}</span>
@@ -775,11 +837,12 @@ function SocialPage() {
           </p>
           <InternalLink href="/#social">메인 소셜 섹션으로 돌아가기</InternalLink>
         </div>
-        <PlaceholderMedia
+        <MediaImage
+          base="/img/optimized/social_community"
+          alt="Marshall 커뮤니티 콘텐츠를 대표하는 이미지"
+          variant="socialSquare"
+          pictureClassName="subpage_hero_picture"
           className="subpage_hero_media"
-          label="Social"
-          role="커뮤니티 대표 이미지"
-          ratio="16 / 9"
         />
       </section>
 
@@ -793,10 +856,12 @@ function SocialPage() {
         <div className="subpage_detail_grid">
           {socialSlides.map((slide) => (
             <article key={slide.key} className="subpage_detail_card scroll-fade-up">
-              <PlaceholderMedia
-                label={slide.title}
-                role="스토리 이미지"
-                ratio="4 / 3"
+              <MediaImage
+                base={slide.imageBase}
+                alt={slide.alt}
+                variant="socialSquare"
+                pictureClassName="subpage_card_picture"
+                className="subpage_card_media"
               />
               <div>
                 <span>{slide.label}</span>

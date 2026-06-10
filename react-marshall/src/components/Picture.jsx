@@ -7,13 +7,14 @@ export default function Picture({
   height,
   alt,
   className,
+  pictureClassName,
   loading = 'lazy',
   fetchPriority
 }) {
   const srcSet = (extension) => widths.map((item) => `${base}-${item}.${extension} ${item}w`).join(', ');
 
   return (
-    <picture>
+    <picture className={pictureClassName}>
       <source type="image/avif" srcSet={srcSet('avif')} sizes={sizes} />
       <source type="image/webp" srcSet={srcSet('webp')} sizes={sizes} />
       <img

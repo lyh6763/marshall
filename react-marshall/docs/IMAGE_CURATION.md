@@ -45,3 +45,16 @@
 - 텍스트 위에 이미지가 올라가는 hero/banner 슬롯은 중앙에 복잡한 피사체가 몰리지 않는 이미지를 우선합니다.
 - 제품 이미지는 예쁜 분위기보다 제품군 식별성이 먼저입니다.
 - 아티스트/소셜 이미지는 스톡 사진처럼 보이는 군중 이미지보다 Marshall, 장비, 사운드 맥락이 읽히는 장면을 우선합니다.
+
+## Current Application
+
+| Slot | Applied Asset | Crop Intent | Follow-up Need |
+| --- | --- | --- | --- |
+| Main hero | `head_img-*` | 넓은 대표 장면으로 사용합니다. 텍스트가 올라가는 hero라 중앙보다 가장자리 피사체를 우선합니다. | 전용 hero 이미지가 생기면 교체합니다. |
+| Main products | `marshall_headphone-*`, `marshall_speaker-*`, `marshall_amp-*` | 1:1 제품 식별 컷으로 사용합니다. | 제품별 사용 장면 이미지가 생기면 상세 카드에 우선 적용합니다. |
+| Main artists banner | `artist_banner-*` | 4:1 배너로 cover 처리합니다. | 현재 적합하므로 보류 사유 없음. |
+| Main artist cards | `artist01-*` to `artist04-*` | 1:1 아티스트 카드 이미지로 사용합니다. | 장르별 톤 차이를 더 분명히 보여주는 이미지가 있으면 교체합니다. |
+| Main social carousel | `social_heritage-*`, `social_story-*`, `social_community-*` | 1:1 스토리 카드 이미지로 사용합니다. | 현재 적합하므로 보류 사유 없음. |
+| Main partnership | `social_partnership-*` | 3:2 캠페인 이미지로 사용합니다. | 현재 적합하므로 보류 사유 없음. |
+| Subpage heroes | `head_img-*`, `marshall_speaker-*`, `artist_banner-*`, `social_community-*` | 16:9 hero 프레임에 맞춰 cover 처리합니다. | `/about`, `/products`, `/social`은 향후 전용 hero 이미지가 생기면 교체합니다. |
+| Subpage collection cards | 제품, 아티스트, 소셜 기존 에셋 | 4:3 카드 프레임에 맞춰 cover 처리합니다. | 카드별 상세 이미지가 생기면 중복 사용을 줄입니다. |
