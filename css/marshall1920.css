@@ -4,7 +4,7 @@
     header,
     .slogan,
     .editorial_section,
-    .about_section .section_grid,
+    .signal_section .section_grid,
     .culture_banner_text,
     .culture_grid,
     .footer_center {
@@ -57,14 +57,12 @@
     }
 
     .section_intro h2,
-    .section_content h2,
-    .portfolio_notes h2 {
+    .section_content h2 {
         font-size: 11.2rem;
     }
 
     .section_intro > p:last-child,
-    .section_content > p,
-    .portfolio_notes > p {
+    .section_content > p {
         font-size: 2rem;
     }
 
@@ -84,8 +82,7 @@
 
     .product_copy p:last-child,
     .culture_card p,
-    .community_text p:not(.eyebrow),
-    .note_grid p {
+    .community_text p:not(.eyebrow) {
         font-size: 1.8rem;
     }
 
@@ -121,14 +118,6 @@
 
     .community_text h3 {
         font-size: 5.8rem;
-    }
-
-    .note_grid {
-        gap: 24px;
-    }
-
-    .note_grid article {
-        padding: 30px;
     }
 
     .footer_center {

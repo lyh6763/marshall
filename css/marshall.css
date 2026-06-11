@@ -189,8 +189,7 @@ nav.is-open.is-visible {
 }
 
 .section_intro h2,
-.section_content h2,
-.portfolio_notes h2 {
+.section_content h2 {
     margin-top: 10px;
     color: var(--color-primary);
     font-size: clamp(3.8rem, 13vw, 6.4rem);
@@ -201,8 +200,7 @@ nav.is-open.is-visible {
 }
 
 .section_intro > p:last-child,
-.section_content > p,
-.portfolio_notes > p {
+.section_content > p {
     margin-top: 24px;
     color: var(--color-text-muted);
     font-size: 1.6rem;

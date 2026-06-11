@@ -93,25 +93,26 @@
 
     .language {
         margin: 0;
-        color: rgba(230, 221, 204, 0.68);
+        color: var(--color-text-muted);
         font-size: 1.2rem;
     }
 
     .language span::before {
-        background: rgba(230, 221, 204, 0.28);
+        background: var(--color-border);
     }
 
     .header_visual {
         min-height: 900px;
         background:
             linear-gradient(90deg, rgba(8, 8, 8, 0.96) 0%, rgba(8, 8, 8, 0.65) 36%, rgba(8, 8, 8, 0.08) 78%),
+            radial-gradient(circle at 74% 42%, rgba(0, 212, 255, 0.14), transparent 28rem),
             linear-gradient(180deg, rgba(10, 10, 10, 0) 66%, var(--color-bg) 100%),
-            url(../img/head_img.jpg) no-repeat center/cover;
+            url(../img/live-signal-hero.png) no-repeat center/cover;
     }
 
     .slogan,
     .editorial_section,
-    .about_section .section_grid,
+    .signal_section .section_grid,
     .culture_banner_text,
     .culture_grid,
     .footer_center {
@@ -142,12 +143,11 @@
     }
 
     .section_intro h2,
-    .section_content h2,
-    .portfolio_notes h2 {
+    .section_content h2 {
         font-size: clamp(6.8rem, 7vw, 10rem);
     }
 
-    .about_section {
+    .signal_section {
         padding: var(--section-gap-desktop) 0;
     }
 
@@ -223,10 +223,6 @@
 
     .community_text h3 {
         font-size: 4.8rem;
-    }
-
-    .portfolio_section {
-        padding-bottom: var(--section-gap-desktop);
     }
 
     .footer_center {

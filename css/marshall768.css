@@ -5,7 +5,7 @@
     .nav_wrap,
     .slogan,
     .editorial_section,
-    .about_section .section_grid,
+    .signal_section .section_grid,
     .culture_banner_text,
     .culture_grid,
     .footer_center {
@@ -58,15 +58,15 @@
 
     .section_intro h2,
     .section_content h2,
-    .portfolio_notes h2 {
+    .section_content h2 {
         font-size: clamp(5.4rem, 8vw, 8.4rem);
     }
 
-    .about_section {
+    .signal_section {
         padding: var(--section-gap-tablet) 0;
     }
 
-    .story_points {
+    .signal_steps {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
@@ -125,15 +125,6 @@
         flex-direction: column;
         justify-content: center;
         padding: 42px;
-    }
-
-    .note_grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
-    }
-
-    .portfolio_section {
-        padding-bottom: var(--section-gap-tablet);
     }
 
     .footer_center {
