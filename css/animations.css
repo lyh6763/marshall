@@ -168,77 +168,32 @@
     }
 }
 
-.products_section .products .headphones a,
-.products_section .products .speakers a,
-.products_section .products .amplifiers a {
-    position: relative;
-    overflow: hidden;
-}
-
-.products_section .products .headphones a::after,
-.products_section .products .speakers a::after,
-.products_section .products .amplifiers a::after {
-    background: var(--color-accent);
-}
-
-.products_section .products .headphones:hover a,
-.products_section .products .speakers:hover a,
-.products_section .products .amplifiers:hover a {
-    color: var(--color-accent);
-}
-
-.about_section .about a {
+.button_primary,
+.button_secondary,
+.social_section .swiper-slide .more {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.about_section .about a::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(179, 142, 46, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.4s ease, height 0.4s ease;
+.product_card,
+.culture_card,
+.community_slide {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.about_section .about a:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.about_section .about a:hover {
-    background: var(--color-accent);
-    color: var(--color-dark);
-    transform: translateY(-2px);
+.product_card:hover,
+.culture_card:hover,
+.community_slide:hover {
+    border-color: rgba(0, 212, 255, 0.35);
     box-shadow:
-        0 8px 20px rgba(179, 142, 46, 0.4),
-        0 0 40px rgba(179, 142, 46, 0.2);
+        0 0 0 1px rgba(0, 212, 255, 0.08),
+        0 24px 70px rgba(0, 0, 0, 0.35);
 }
 
-.social_section .swiper-slide .more,
-.social_section .social_partership .more {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.social_section .swiper-slide .more:hover,
-.social_section .social_partership .more:hover {
+.social_section .swiper-slide .more:hover {
     transform: translateY(-2px) scale(1.05);
     box-shadow:
-        0 8px 20px rgba(230, 221, 204, 0.4),
-        0 0 40px rgba(230, 221, 204, 0.2);
-    background: rgba(230, 221, 204, 0.95);
-}
-
-@media screen and (max-width: 768px) {
-    .about_section .about a:hover::before {
-        width: 0;
-        height: 0;
-    }
+        0 8px 20px rgba(0, 212, 255, 0.2),
+        0 0 36px rgba(0, 212, 255, 0.18);
 }

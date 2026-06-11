@@ -281,7 +281,7 @@ nav.is-open.is-visible {
         linear-gradient(90deg, rgba(5, 5, 5, 0.96) 0%, rgba(5, 5, 5, 0.72) 44%, rgba(5, 5, 5, 0.12) 100%),
         radial-gradient(circle at 72% 45%, rgba(0, 212, 255, 0.16), transparent 24rem),
         linear-gradient(180deg, rgba(5, 5, 5, 0) 58%, var(--color-bg) 100%),
-        url(../img/live-signal-hero.png) no-repeat center/cover;
+        url(../img/live-signal-hero.webp) no-repeat center/cover;
 }
 
 .header_visual::before {
@@ -301,6 +301,7 @@ nav.is-open.is-visible {
     position: absolute;
     right: 24px;
     bottom: 28px;
+    display: none;
     color: rgba(0, 212, 255, 0.6);
     font-family: var(--font-heading);
     font-size: 1.1rem;
@@ -327,14 +328,18 @@ nav.is-open.is-visible {
     text-shadow: 0 0 28px rgba(215, 25, 32, 0.25);
 }
 
+.mobile_break {
+    display: inline;
+}
+
 .slogan > p:not(.eyebrow) {
-    max-width: 620px;
+    max-width: 30rem;
     margin-top: 24px;
     color: var(--color-text);
     font-size: 1.7rem;
     line-height: 1.7;
     overflow-wrap: anywhere;
-    word-break: normal;
+    word-break: keep-all;
 }
 
 .hero_actions {
@@ -351,7 +356,7 @@ nav.is-open.is-visible {
     background:
         linear-gradient(180deg, rgba(5, 5, 5, 0.18), rgba(5, 5, 5, 0.9)),
         linear-gradient(135deg, rgba(0, 212, 255, 0.08), transparent 36%),
-        url(../img/live-signal-texture.png) no-repeat center/cover,
+        url(../img/live-signal-texture.webp) no-repeat center/cover,
         linear-gradient(180deg, #0D1013 0%, #07090B 100%);
     color: var(--color-primary);
 }
@@ -601,7 +606,7 @@ nav.is-open.is-visible {
     opacity: 0.42;
     background:
         linear-gradient(90deg, var(--color-bg), transparent 28%, transparent 72%, var(--color-bg)),
-        url(../img/live-signal-texture.png) no-repeat center/cover;
+        url(../img/live-signal-texture.webp) no-repeat center/cover;
 }
 
 .community_slide {

@@ -26,12 +26,17 @@
         bottom: 112px;
     }
 
+    .mobile_break {
+        display: none;
+    }
+
     .slogan h2 {
         font-size: clamp(7rem, 10vw, 9.4rem);
         max-width: 760px;
     }
 
     .slogan > p:not(.eyebrow) {
+        max-width: 620px;
         font-size: 1.9rem;
     }
 
