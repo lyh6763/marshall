@@ -1,93 +1,120 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap');
 
 :root {
     --color-primary: #E6DDCC;
     --color-accent: #B38E2E;
     --color-dark: #121212;
-    --color-bg: #2c2c2c;
-    --color-bg-light: #eee;
-    --color-bg-footer: #1f1f1f;
-    --color-text: #ddd;
-    --color-text-dark: #121212;
-    --color-text-gray: #888;
-    --color-text-muted: #848484;
-    --color-border: #333;
+    --color-bg: #171717;
+    --color-bg-soft: #22201d;
+    --color-bg-light: #EEE8DD;
+    --color-bg-footer: #101010;
+    --color-text: #E1DED6;
+    --color-text-dark: #171717;
+    --color-text-muted: #A8A099;
+    --color-border: rgba(230, 221, 204, 0.18);
     --color-white: #fff;
 
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Noto Sans KR', sans-serif;
     --font-display: 'Anton', sans-serif;
 
-    --container-mobile: 83.333%;
-    --container-tablet: 86.98%;
-    --container-desktop: 90%;
-    --container-wide: 75%;
-    --max-width: 1200px;
-    --max-width-wide: 1440px;
+    --container-mobile: min(88vw, 560px);
+    --container-tablet: min(88vw, 900px);
+    --container-desktop: min(90vw, 1180px);
+    --container-wide: min(76vw, 1480px);
 
-    --transition-fast: 0.25s ease;
+    --section-gap-mobile: 96px;
+    --section-gap-tablet: 128px;
+    --section-gap-desktop: 160px;
+
+    --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
-    font-size: 0.625em;
-    line-height: 1.5;
-    color: var(--color-text);
+    font-size: 62.5%;
+    scroll-behavior: smooth;
     background: var(--color-bg);
 }
 
-h2, strong {
-    font-size: 2.4em;
-    line-height: 1.4;
+body {
+    min-width: 320px;
+    overflow-x: hidden;
+    color: var(--color-text);
+    background:
+        radial-gradient(circle at 20% 0%, rgba(179, 142, 46, 0.12), transparent 30rem),
+        linear-gradient(180deg, #111 0%, var(--color-bg) 40%, #151515 100%);
+    font-family: var(--font-body);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+img,
+picture,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+strong {
     font-family: var(--font-heading);
-    font-weight: bold;
     color: var(--color-primary);
 }
 
 p {
-    font-size: 1.6em;
-    line-height: 1.5;
-    font-family: var(--font-body);
+    word-break: keep-all;
 }
 
-body {
-    line-height: 1;
-}
-
-button {
-    background: none;
-    border: none;
-    cursor: pointer;
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
 }
 
 .screen_out {
     position: absolute;
-    left: -9999px;
-}
-
-a {
-    text-decoration: none;
-    color: var(--color-white);
-}
-
-a, a:link, a:visited, a:hover, a:active, a:focus {
-    text-decoration: none;
-}
-
-ul, li {
-    list-style: none;
-}
-
-body {
-    line-height: 1;
-    overflow-x: hidden; /* 추가: 가로로 삐져나간 요소들을 숨김 처리 */
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
 }

@@ -8,11 +8,18 @@
         new Swiper('.swiper', {
             direction: 'horizontal',
             slidesPerGroup: 1,
+            autoHeight: true,
             freeMode: false,
-            mousewheel: true,
+            mousewheel: {
+                forceToAxis: true
+            },
             loop: false,
             slidesPerView: 1,
             spaceBetween: 30,
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true
+            },
 
             scrollbar: {
                 el: '.swiper-scrollbar',
