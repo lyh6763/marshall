@@ -281,9 +281,9 @@ nav.is-open.is-visible {
     min-height: 820px;
     background:
         linear-gradient(90deg, rgba(5, 5, 5, 0.96) 0%, rgba(5, 5, 5, 0.72) 44%, rgba(5, 5, 5, 0.12) 100%),
-        radial-gradient(circle at 76% 48%, rgba(215, 25, 32, 0.28), transparent 28rem),
+        radial-gradient(circle at 72% 45%, rgba(0, 212, 255, 0.16), transparent 24rem),
         linear-gradient(180deg, rgba(5, 5, 5, 0) 58%, var(--color-bg) 100%),
-        url(../img/head_img.jpg) no-repeat 58% center/cover;
+        url(../img/live-signal-hero.png) no-repeat center/cover;
 }
 
 .header_visual::before {
@@ -351,7 +351,9 @@ nav.is-open.is-visible {
     width: 100%;
     padding: var(--section-gap-mobile) 0;
     background:
+        linear-gradient(180deg, rgba(5, 5, 5, 0.18), rgba(5, 5, 5, 0.9)),
         linear-gradient(135deg, rgba(0, 212, 255, 0.08), transparent 36%),
+        url(../img/live-signal-texture.png) no-repeat center/cover,
         linear-gradient(180deg, #0D1013 0%, #07090B 100%);
     color: var(--color-primary);
 }
@@ -586,6 +588,22 @@ nav.is-open.is-visible {
     width: 100%;
     margin-top: 48px;
     padding-bottom: 36px;
+}
+
+.social_section {
+    position: relative;
+}
+
+.social_section::before {
+    content: "";
+    position: absolute;
+    inset: 64px -6vw auto -6vw;
+    height: 360px;
+    z-index: -1;
+    opacity: 0.42;
+    background:
+        linear-gradient(90deg, var(--color-bg), transparent 28%, transparent 72%, var(--color-bg)),
+        url(../img/live-signal-texture.png) no-repeat center/cover;
 }
 
 .community_slide {
