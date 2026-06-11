@@ -2,17 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap');
 
 :root {
-    --color-primary: #E6DDCC;
-    --color-accent: #B38E2E;
-    --color-dark: #121212;
-    --color-bg: #171717;
-    --color-bg-soft: #22201d;
-    --color-bg-light: #EEE8DD;
-    --color-bg-footer: #101010;
-    --color-text: #E1DED6;
-    --color-text-dark: #171717;
-    --color-text-muted: #A8A099;
-    --color-border: rgba(230, 221, 204, 0.18);
+    --color-primary: #F2F4F5;
+    --color-accent: #D71920;
+    --color-signal: #00D4FF;
+    --color-dark: #050505;
+    --color-bg: #050505;
+    --color-bg-soft: #14171A;
+    --color-bg-light: #0D1013;
+    --color-bg-footer: #030303;
+    --color-text: #F2F4F5;
+    --color-text-dark: #F2F4F5;
+    --color-text-muted: #8C9299;
+    --color-border: rgba(242, 244, 245, 0.14);
     --color-white: #fff;
 
     --font-heading: 'Montserrat', sans-serif;
@@ -54,8 +55,9 @@ body {
     overflow-x: hidden;
     color: var(--color-text);
     background:
-        radial-gradient(circle at 20% 0%, rgba(179, 142, 46, 0.12), transparent 30rem),
-        linear-gradient(180deg, #111 0%, var(--color-bg) 40%, #151515 100%);
+        radial-gradient(circle at 82% 8%, rgba(215, 25, 32, 0.2), transparent 34rem),
+        radial-gradient(circle at 10% 34%, rgba(0, 212, 255, 0.12), transparent 28rem),
+        linear-gradient(180deg, #050505 0%, #0B0D10 48%, #050505 100%);
     font-family: var(--font-body);
     font-size: 1.6rem;
     line-height: 1.5;
