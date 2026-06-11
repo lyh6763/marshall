@@ -8,7 +8,7 @@
         new Swiper('.swiper', {
             direction: 'horizontal',
             slidesPerGroup: 1,
-            autoHeight: true,
+            autoHeight: false,
             freeMode: false,
             mousewheel: {
                 forceToAxis: true

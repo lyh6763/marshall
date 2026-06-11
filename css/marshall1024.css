@@ -215,10 +215,12 @@
 
     .community_slide {
         grid-template-columns: 52% minmax(0, 1fr);
+        height: 500px;
     }
 
     .community_slide img {
-        min-height: 500px;
+        height: 100%;
+        min-height: 0;
     }
 
     .community_text {

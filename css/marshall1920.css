@@ -108,8 +108,13 @@
         gap: 38px;
     }
 
+    .community_slide {
+        height: 560px;
+    }
+
     .community_slide img {
-        min-height: 580px;
+        height: 100%;
+        min-height: 0;
     }
 
     .community_text {

@@ -593,6 +593,13 @@ nav.is-open.is-visible {
     padding-bottom: 36px;
 }
 
+.social_slider,
+.social_slider_wrap .swiper-wrapper,
+.social_slider .swiper-wrapper {
+    height: auto;
+    align-items: stretch;
+}
+
 .social_section {
     position: relative;
 }
@@ -610,7 +617,9 @@ nav.is-open.is-visible {
 }
 
 .community_slide {
-    height: auto;
+    height: 560px;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     border: 1px solid var(--color-border);
     background:
@@ -620,11 +629,16 @@ nav.is-open.is-visible {
 
 .community_slide img {
     width: 100%;
-    aspect-ratio: 16 / 11;
+    height: 260px;
+    aspect-ratio: auto;
     object-fit: cover;
+    flex: 0 0 auto;
 }
 
 .community_text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     padding: 28px;
 }
 
@@ -642,7 +656,8 @@ nav.is-open.is-visible {
 }
 
 .community_text .more {
-    margin-top: 24px;
+    align-self: flex-start;
+    margin-top: auto;
 }
 
 .swiper-scrollbar {
