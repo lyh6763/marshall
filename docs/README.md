@@ -1,41 +1,43 @@
-# MARSHALL 리디자인
+# Marshall Live Signal Lab
 
-Marshall 브랜드의 스토리와 제품/아티스트/커뮤니티를 **원페이지 스토리 흐름**으로 전달하는 포트폴리오 프로젝트입니다.
+Marshall의 무대 에너지와 사운드 장비 이미지를 **Neo Studio + Red Stage** 방향으로 재해석한 원페이지 브랜드 시안입니다.
+
+화면 안에서는 포트폴리오 설명문을 덜어내고, 실제 브랜드 사이트처럼 짧고 직접적인 카피를 사용합니다. 구조와 작업 의도는 이 문서와 별도 포트폴리오 정리 단계에서 설명합니다.
 
 ## 프로젝트 개요
-- 유형: 개인 포트폴리오 리디자인 프로젝트
-- 기간: 2025.12 제작 / 2026.02, 2026.04 품질 개선
-- 역할: 원페이지 UX 흐름 및 정보 구조 설계, 반응형 UI 퍼블리싱, Vanilla JS 인터랙션 구현, 접근성/레이아웃 QA 개선
-- 산출물: 원페이지 웹사이트 + JS 모듈(네비게이션/스크롤 애니메이션/슬라이더)
-
-## 목표
-- About → Products → Artists → Social로 이어지는 서사형 흐름 구성
-- 강렬한 히어로와 섹션별 스토리 텍스트로 브랜드 톤 전달
+- 유형: 대체 브랜드 사이트 시안
+- 콘셉트: Live Signal Lab
+- 방향: 블랙/차콜 기반, Stage Red 포인트, Signal Cyan 보조 포인트
+- 역할: 정보 구조 설계, 반응형 퍼블리싱, Vanilla JS 인터랙션, 접근성/QA 개선
+- 산출물: HTML/CSS/JS 기반 원페이지 사이트
 
 ## 페이지 구조
-- Hero: 슬로건/리드 문구
-- About: 브랜드 소개
-- Products: Headphones / Speakers / Amplifiers
-- Artists: 아티스트 스토리 섹션
-- Social: Heritage/Story/Community 슬라이더 + Partnership
-- Footer: 회사/고객지원/계정/소셜
+- Hero: Live Signal Lab 첫 인상과 CTA
+- Signal Chain: 소리의 흐름을 스튜디오 UI처럼 구성
+- Gear Line: Headphones / Speakers / Amplifiers 제품군
+- Stage Mode: 라이브 무대와 컨트롤룸 분위기
+- Community: 팬, 백스테이지, 레코드 숍 문화를 담은 캐러셀
+- Footer: 링크 그룹, 계정, 소셜, 모바일 아코디언
 
 ## 주요 구현
-- 모바일 네비게이션 오버레이(열림/닫힘, ESC 닫기, 포커스 트랩)
-- IntersectionObserver 기반 스크롤 애니메이션
-- Swiper 슬라이더 + 스크롤바
-- 반응형 전용 CSS 분리(768/1024/1920)
+- 스크롤 후 fixed 상태로 전환되는 헤더
+- 모바일 내비게이션 오버레이, ESC 닫기, 포커스 트랩
+- IntersectionObserver 기반 등장 애니메이션
+- Swiper 커뮤니티 캐러셀
+- 커뮤니티 슬라이드 높이 정규화
+- 768 / 1024 / 1920 기준 반응형 CSS 분리
+- WebP 히어로/텍스처 자산 적용
 
 ## 기술 스택
-- HTML5 / CSS3 / Vanilla JS
-- Swiper (CDN)
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Swiper CDN
 
-## 접근성
-- aria-expanded / aria-controls / aria-hidden 적용
-- 키보드 탭 이동 및 포커스 트랩
-
-## 설계 기준
-- 문제 정의: Marshall의 제품/아티스트/커뮤니티 콘텐츠를 브랜드 스토리 중심의 원페이지 흐름으로 재구성
-- 타겟 사용자: 음악과 오디오 라이프스타일에 관심 있는 사용자 및 퍼블리싱 역량을 확인하는 포트폴리오 평가자
-- 톤&무드: 다크한 배경, 크림/골드 포인트, 강한 타이포그래피로 Marshall의 록 헤리티지 표현
-- 개선 포인트: 모바일 메뉴 접근성, 제품 이미지 비율, 섹션 간 여백 리듬, 푸터 아코디언 상태 동기화
+## 확인 항목
+- JS 문법 검사: `node --check js/*.js`
+- HTML 파싱 확인
+- UTF-8 replacement character 확인
+- 이미지 참조 누락 확인
+- 390px, 1440px 화면 스크린샷 확인
+- 메뉴, ESC 닫기, 포커스 이동, footer accordion, Swiper 동작 확인
