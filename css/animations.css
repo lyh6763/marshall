@@ -1,5 +1,22 @@
 @charset "utf-8";
 
+/* No-JS fallback: reveal all scroll-animated content when scripting is
+   unavailable so the page never renders blank below the hero. The .js
+   class is added to <html> by an inline script in the document head. */
+html:not(.js) .scroll-fade-up,
+html:not(.js) .scroll-fade-left,
+html:not(.js) .scroll-fade-right,
+html:not(.js) .scroll-scale,
+html:not(.js) .scroll-slide-in,
+html:not(.js) .scroll-rotate-in,
+html:not(.js) .scroll-blur-in,
+html:not(.js) .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+}
+
 .scroll-fade-up,
 .scroll-fade-left,
 .scroll-fade-right,
