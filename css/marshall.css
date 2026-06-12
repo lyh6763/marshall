@@ -667,7 +667,7 @@ nav.is-open.is-visible {
 .social_section::before {
     content: "";
     position: absolute;
-    inset: 64px -6vw auto -6vw;
+    inset: 64px 0 auto 0;
     height: 360px;
     z-index: -1;
     opacity: 0.42;
