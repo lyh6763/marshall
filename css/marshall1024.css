@@ -7,6 +7,12 @@
         transform: translateX(-50%);
     }
 
+    header.is-fixed {
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+    }
+
     .header_center {
         width: auto;
         height: 112px;
@@ -16,6 +22,17 @@
     .header_center h1 {
         width: 144px;
         height: 38px;
+    }
+
+    header.is-fixed .header_center {
+        width: var(--container-desktop);
+        height: 76px;
+        margin: 0 auto;
+    }
+
+    header.is-fixed .header_center h1 {
+        width: 124px;
+        height: 32px;
     }
 
     .btn {
@@ -35,6 +52,11 @@
         background: transparent;
         color: var(--color-primary);
         transition: none;
+    }
+
+    header.is-fixed nav {
+        right: calc((100% - var(--container-desktop)) / 2);
+        height: 76px;
     }
 
     .nav_wrap {

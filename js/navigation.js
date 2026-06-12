@@ -17,11 +17,12 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector('header');
         const nav = document.querySelector('nav');
         const menuBtn = document.querySelector('.header_center .btn');
         const closeBtn = document.querySelector('.nav_wrap .close_btn');
 
-        if (!nav || !menuBtn || !closeBtn) return;
+        if (!header || !nav || !menuBtn || !closeBtn) return;
 
         let isMenuOpen = false;
         let lastFocused = null;
@@ -32,6 +33,10 @@
         function clearOpenFocusTimer() {
             window.clearTimeout(openFocusTimer);
             openFocusTimer = null;
+        }
+
+        function syncHeaderPosition() {
+            header.classList.toggle('is-fixed', window.scrollY > 80);
         }
 
         function syncA11y() {
@@ -180,6 +185,7 @@
                     nav.classList.remove(NAV_OPEN_CLASS, NAV_VISIBLE_CLASS);
                 }
                 syncA11y();
+                syncHeaderPosition();
             }, 200);
         });
 
@@ -187,5 +193,7 @@
             nav.classList.remove(NAV_OPEN_CLASS, NAV_VISIBLE_CLASS);
         }
         syncA11y();
+        syncHeaderPosition();
+        window.addEventListener('scroll', syncHeaderPosition, { passive: true });
     });
 })();
