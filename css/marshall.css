@@ -63,8 +63,8 @@ header.is-fixed .header_center h1 {
 
 .btn,
 .close_btn {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
 }
 
 .btn {
@@ -183,6 +183,13 @@ nav.is-open.is-visible {
     font-weight: 700;
 }
 
+.language a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 4px;
+}
+
 .language span::before {
     content: "";
     width: 1px;
@@ -244,7 +251,7 @@ nav.is-open.is-visible {
 }
 
 .section_label span {
-    color: rgba(0, 212, 255, 0.18);
+    color: var(--color-numeral);
     font-family: var(--font-display);
     font-size: 6.4rem;
     line-height: 0.85;
@@ -472,7 +479,7 @@ nav.is-open.is-visible {
 
 .product_copy > span {
     display: block;
-    color: rgba(215, 25, 32, 0.36);
+    color: var(--color-numeral);
     font-family: var(--font-display);
     font-size: 8rem;
     line-height: 0.9;
@@ -627,7 +634,7 @@ nav.is-open.is-visible {
 }
 
 .culture_card span {
-    color: rgba(0, 212, 255, 0.28);
+    color: var(--color-numeral);
     font-family: var(--font-display);
     font-size: 5.4rem;
     line-height: 0.9;
@@ -861,27 +868,30 @@ footer {
 .social_icons {
     display: flex;
     justify-content: center;
-    gap: 18px;
-    margin-top: 18px;
+    gap: 6px;
+    margin-top: 12px;
 }
 
 .social_icons a {
-    width: 28px;
-    height: 28px;
+    width: 44px;
+    height: 44px;
     display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 26px;
     transition: transform var(--transition-fast);
 }
 
 .social_icons a:nth-of-type(1) {
-    background: url(../img/social_X.png) no-repeat center/contain;
+    background-image: url(../img/social_X.png);
 }
 
 .social_icons a:nth-of-type(2) {
-    background: url(../img/social_insta.png) no-repeat center/contain;
+    background-image: url(../img/social_insta.png);
 }
 
 .social_icons a:nth-of-type(3) {
-    background: url(../img/social_facebook.png) no-repeat center/contain;
+    background-image: url(../img/social_facebook.png);
 }
 
 .social_icons a:hover {
