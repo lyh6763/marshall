@@ -3,6 +3,9 @@
 작업 흐름과 확인한 내용을 간단히 기록합니다.
 
 ## 2026-06-12
+- 모바일/데스크톱 visual QA 진행
+- `<picture>`와 WebP `srcset`을 적용하고 이미지 wrapper 비율 문제 보정
+- 메뉴 ESC 닫기, 푸터 아코디언, Swiper 키보드 이동, 콘솔 오류 확인
 - 최근 커밋 기준으로 작업 상태 확인
 - `fix: normalize community carousel slide height` 이후 Community 캐러셀 높이 문제 해결 확인
 - `feat: add fixed header on scroll`로 헤더가 첫 화면에서는 absolute, 스크롤 후 fixed 상태로 전환되도록 구현

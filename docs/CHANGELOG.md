@@ -3,6 +3,8 @@
 프로젝트의 주요 변경 사항을 기록합니다.
 
 ## 2026-06-12
+- Visual QA 후 제품/아티스트/커뮤니티 이미지를 WebP `srcset`으로 최적화
+- 참조되지 않는 Live Signal Lab PNG 원본 제거
 - Live Signal Lab 문서 구조와 설명 업데이트
 - fixed-on-scroll 헤더 구현 내용 반영
 - Community 캐러셀 카드 높이 정규화 내용 반영

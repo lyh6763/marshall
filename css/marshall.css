@@ -519,7 +519,9 @@ nav.is-open.is-visible {
 }
 
 .product_media img {
+    display: block;
     width: 100%;
+    height: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     transition: transform 0.7s ease;
@@ -527,6 +529,22 @@ nav.is-open.is-visible {
 
 .product_card:hover .product_media img {
     transform: scale(1.04);
+}
+
+.product_media picture,
+.culture_card picture,
+.community_slide picture {
+    display: block;
+    overflow: hidden;
+}
+
+.product_media picture,
+.culture_card picture {
+    width: 100%;
+}
+
+.product_media picture {
+    aspect-ratio: 1 / 1;
 }
 
 /* culture */
@@ -538,10 +556,16 @@ nav.is-open.is-visible {
     min-height: 520px;
     display: flex;
     align-items: flex-end;
-    background:
+    background-image:
         linear-gradient(180deg, rgba(5, 5, 5, 0.08), rgba(5, 5, 5, 0.94)),
         radial-gradient(circle at 68% 32%, rgba(215, 25, 32, 0.34), transparent 30rem),
-        url(../img/artist_banner.jpg) no-repeat 58% center/cover;
+        image-set(
+            url(../img/artist_banner-1600.webp) type("image/webp"),
+            url(../img/artist_banner.jpg) type("image/jpeg")
+        );
+    background-repeat: no-repeat;
+    background-position: center, center, 58% center;
+    background-size: cover;
 }
 
 .culture_banner_text {
@@ -581,13 +605,25 @@ nav.is-open.is-visible {
 }
 
 .culture_card img {
+    display: block;
     width: 100%;
+    height: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
 }
 
 .culture_card div {
     padding-top: 22px;
+}
+
+.culture_card picture {
+    aspect-ratio: 4 / 3;
+}
+
+@media screen and (min-width: 1024px) {
+    .culture_card picture {
+        aspect-ratio: 1 / 1;
+    }
 }
 
 .culture_card span {
@@ -651,12 +687,25 @@ nav.is-open.is-visible {
         var(--color-bg-soft);
 }
 
-.community_slide img {
+.community_slide picture {
     width: 100%;
     height: 260px;
+    flex: 0 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .community_slide picture {
+        height: 100%;
+        min-height: 0;
+    }
+}
+
+.community_slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
     aspect-ratio: auto;
     object-fit: cover;
-    flex: 0 0 auto;
 }
 
 .community_text {
