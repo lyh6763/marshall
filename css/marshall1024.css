@@ -19,7 +19,7 @@
         margin: 0;
     }
 
-    .header_center h1 {
+    .brand_logo {
         width: 144px;
         height: 38px;
     }
@@ -30,7 +30,7 @@
         margin: 0 auto;
     }
 
-    header.is-fixed .header_center h1 {
+    header.is-fixed .brand_logo {
         width: 124px;
         height: 32px;
     }
@@ -113,27 +113,15 @@
         transform: scaleX(1);
     }
 
-    .language {
-        margin: 0;
-        color: var(--color-text-muted);
-        font-size: 1.2rem;
-    }
-
-    .language span::before {
-        background: var(--color-border);
-    }
-
     .header_visual {
-        min-height: 900px;
+        min-height: 960px;
         background:
-            linear-gradient(90deg, rgba(8, 8, 8, 0.96) 0%, rgba(8, 8, 8, 0.65) 36%, rgba(8, 8, 8, 0.08) 78%),
-            radial-gradient(circle at 74% 42%, rgba(0, 212, 255, 0.14), transparent 28rem),
-            linear-gradient(180deg, rgba(10, 10, 10, 0) 66%, var(--color-bg) 100%),
-            url(../img/live-signal-hero.webp) no-repeat center/cover;
-    }
-
-    .header_visual::after {
-        display: block;
+            linear-gradient(90deg, rgba(7, 6, 4, 0.96) 0%, rgba(7, 6, 4, 0.7) 44%, rgba(7, 6, 4, 0.06) 78%),
+            linear-gradient(180deg, rgba(7, 6, 4, 0.02) 62%, var(--color-bg) 100%),
+            image-set(
+                url(../img/hero-stage-v2.webp) type("image/webp"),
+                url(../img/hero-stage-v2.jpg) type("image/jpeg")
+            ) center/cover no-repeat;
     }
 
     .slogan,
@@ -146,12 +134,26 @@
     }
 
     .slogan {
-        bottom: 132px;
+        bottom: 86px;
     }
 
-    .slogan h2 {
-        max-width: 820px;
-        font-size: clamp(8rem, 8vw, 11.4rem);
+    .slogan h1 {
+        max-width: 1000px;
+        font-size: clamp(11rem, 10.5vw, 15rem);
+    }
+
+    .hero_side_note {
+        position: absolute;
+        right: 24px;
+        bottom: 130px;
+        display: block;
+        color: rgba(241, 232, 215, 0.62);
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
     }
 
     .editorial_section {
@@ -178,25 +180,38 @@
     }
 
     .products {
-        gap: 40px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: 22px;
     }
 
     .product_card {
-        grid-template-columns: minmax(0, 1fr) 420px;
-        gap: 68px;
-        padding: 46px;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
     }
 
-    .product_card_reverse {
-        grid-template-columns: 420px minmax(0, 1fr);
+    .product_card:nth-child(2) {
+        margin-top: 84px;
+    }
+
+    .product_card:last-child {
+        grid-column: auto;
+        display: flex;
+    }
+
+    .product_card:last-child .product_media {
+        order: -1;
     }
 
     .product_copy > span {
-        font-size: 11rem;
+        font-size: 8.2rem;
     }
 
     .product_copy strong {
-        font-size: clamp(3.8rem, 4vw, 5.8rem);
+        font-size: clamp(3.4rem, 3.3vw, 4.8rem);
     }
 
     .culture_section {
@@ -284,18 +299,18 @@
     }
 
     .footer_bottom ul,
-    .footer_section.active ul {
+    .footer_section[open] ul {
         max-height: none;
         overflow: visible;
         padding-bottom: 0;
     }
 
-    .footer_social {
+    .footer_official {
         padding: 0;
         text-align: left;
     }
 
-    .social_icons {
+    .official_link {
         justify-content: flex-start;
     }
 

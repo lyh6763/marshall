@@ -16,7 +16,7 @@
         height: 128px;
     }
 
-    .header_center h1 {
+    .brand_logo {
         width: 172px;
         height: 44px;
     }
@@ -34,15 +34,15 @@
     }
 
     .slogan {
-        bottom: 170px;
+        bottom: 110px;
     }
 
-    .slogan h2 {
-        max-width: 1040px;
-        font-size: 13.6rem;
+    .slogan h1 {
+        max-width: 1420px;
+        font-size: 17rem;
     }
 
-    .slogan > p:not(.eyebrow) {
+    .hero_bottom > p {
         max-width: 720px;
         font-size: 2.2rem;
     }
@@ -67,20 +67,15 @@
     }
 
     .product_card {
-        grid-template-columns: minmax(0, 1fr) 520px;
-        gap: 90px;
-        padding: 58px;
-    }
-
-    .product_card_reverse {
-        grid-template-columns: 520px minmax(0, 1fr);
+        gap: 0;
+        padding: 0;
     }
 
     .product_copy strong {
-        font-size: 6.4rem;
+        font-size: 5.2rem;
     }
 
-    .product_copy p:last-child,
+    .product_copy > p:last-of-type,
     .culture_card p,
     .community_text p:not(.eyebrow) {
         font-size: 1.8rem;

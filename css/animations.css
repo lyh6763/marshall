@@ -170,6 +170,19 @@ html:not(.js) .stagger-children > * {
         filter: none;
         transition: none;
     }
+
+    .social_slider {
+        scroll-behavior: auto;
+    }
+
+    .signal_progress_track i,
+    .signal_steps li {
+        transition: none;
+    }
+
+    .js .signal_steps li.is-active {
+        transform: none;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -187,7 +200,7 @@ html:not(.js) .stagger-children > * {
 
 .button_primary,
 .button_secondary,
-.social_section .swiper-slide .more {
+.community_slide .more {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -202,15 +215,15 @@ html:not(.js) .stagger-children > * {
 .product_card:hover,
 .culture_card:hover,
 .community_slide:hover {
-    border-color: rgba(0, 212, 255, 0.35);
+    border-color: rgba(214, 179, 106, 0.38);
     box-shadow:
-        0 0 0 1px rgba(0, 212, 255, 0.08),
+        0 0 0 1px rgba(214, 179, 106, 0.1),
         0 24px 70px rgba(0, 0, 0, 0.35);
 }
 
-.social_section .swiper-slide .more:hover {
+.community_slide .more:hover {
     transform: translateY(-2px) scale(1.05);
     box-shadow:
-        0 8px 20px rgba(0, 212, 255, 0.2),
-        0 0 36px rgba(0, 212, 255, 0.18);
+        0 8px 20px rgba(214, 179, 106, 0.2),
+        0 0 36px rgba(214, 179, 106, 0.18);
 }

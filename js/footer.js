@@ -2,68 +2,42 @@
     'use strict';
 
     document.addEventListener('DOMContentLoaded', () => {
-        const footerSections = document.querySelectorAll('.footer_section');
-        const footerToggles = document.querySelectorAll('.footer_toggle');
-        const DESKTOP_BREAKPOINT = 768;
+        const footerSections = Array.from(document.querySelectorAll('details.footer_section'));
+        const desktopQuery = window.matchMedia('(min-width: 768px)');
 
-        function setSectionState(section, isActive) {
-            const toggle = section.querySelector('.footer_toggle');
-            const list = section.querySelector('ul');
+        if (!footerSections.length) return;
 
-            section.classList.toggle('active', isActive);
+        function syncLayout() {
+            footerSections.forEach((section) => {
+                const summary = section.querySelector('summary');
 
-            if (toggle) {
-                toggle.setAttribute('aria-expanded', String(isActive));
-            }
-
-            if (list) {
-                list.setAttribute('aria-hidden', String(!isActive));
-                list.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach((element) => {
-                    if (isActive) {
-                        const previousTabindex = element.getAttribute('data-footer-tabindex');
-
-                        if (previousTabindex === '') {
-                            element.removeAttribute('tabindex');
-                        } else if (previousTabindex !== null) {
-                            element.setAttribute('tabindex', previousTabindex);
-                        }
-
-                        element.removeAttribute('data-footer-tabindex');
-                    } else {
-                        if (!element.hasAttribute('data-footer-tabindex')) {
-                            element.setAttribute('data-footer-tabindex', element.getAttribute('tabindex') || '');
-                        }
-
-                        element.setAttribute('tabindex', '-1');
-                    }
-                });
-            }
+                if (desktopQuery.matches) {
+                    section.open = true;
+                    summary?.setAttribute('tabindex', '-1');
+                } else {
+                    section.open = false;
+                    summary?.removeAttribute('tabindex');
+                }
+            });
         }
 
-        footerToggles.forEach((toggle) => {
-            toggle.addEventListener('click', () => {
-                if (window.innerWidth >= DESKTOP_BREAKPOINT) return;
+        footerSections.forEach((section) => {
+            const summary = section.querySelector('summary');
 
-                const section = toggle.closest('.footer_section');
-                const isActive = section.classList.contains('active');
+            summary?.addEventListener('click', (event) => {
+                if (desktopQuery.matches) event.preventDefault();
+            });
+
+            section.addEventListener('toggle', () => {
+                if (desktopQuery.matches || !section.open) return;
 
                 footerSections.forEach((item) => {
-                    setSectionState(item, false);
+                    if (item !== section) item.open = false;
                 });
-
-                setSectionState(section, !isActive);
             });
         });
 
-        function checkScreenSize() {
-            const shouldExpand = window.innerWidth >= DESKTOP_BREAKPOINT;
-
-            footerSections.forEach((section) => {
-                setSectionState(section, shouldExpand);
-            });
-        }
-
-        checkScreenSize();
-        window.addEventListener('resize', checkScreenSize);
+        syncLayout();
+        desktopQuery.addEventListener('change', syncLayout);
     });
 })();

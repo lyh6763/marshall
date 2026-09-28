@@ -1,20 +1,26 @@
 @charset "utf-8";
 
 :root {
-    --color-primary: #F2F4F5;
-    --color-accent: #D71920;
-    --color-accent-text: #FF3B40;
-    --color-signal: #00D4FF;
-    --color-numeral: rgba(0, 212, 255, 0.22);
-    --color-dark: #050505;
-    --color-bg: #050505;
-    --color-bg-soft: #14171A;
-    --color-bg-light: #0D1013;
-    --color-bg-footer: #030303;
-    --color-text: #F2F4F5;
-    --color-text-dark: #F2F4F5;
-    --color-text-muted: #8C9299;
-    --color-border: rgba(242, 244, 245, 0.14);
+    --color-primary: #F1E8D7;
+    --color-accent: #C8102E;
+    --color-accent-text: #FF5A62;
+    --color-signal: #D6B36A;
+    --color-brass: #D6B36A;
+    --color-brass-dark: #8D6D36;
+    --color-cream: #F1E8D7;
+    --color-vinyl: #090806;
+    --color-ink: #11100D;
+    --color-paper: #D8CBB5;
+    --color-numeral: rgba(214, 179, 106, 0.28);
+    --color-dark: #070604;
+    --color-bg: #070604;
+    --color-bg-soft: #17140F;
+    --color-bg-light: #100E0A;
+    --color-bg-footer: #030302;
+    --color-text: #EEE5D5;
+    --color-text-dark: #EEE5D5;
+    --color-text-muted: #AAA08F;
+    --color-border: rgba(241, 232, 215, 0.18);
     --color-white: #fff;
 
     --font-heading: 'Montserrat', sans-serif;
@@ -57,9 +63,9 @@ body {
     overflow-x: hidden;
     color: var(--color-text);
     background:
-        radial-gradient(circle at 82% 8%, rgba(215, 25, 32, 0.2), transparent 34rem),
-        radial-gradient(circle at 10% 34%, rgba(0, 212, 255, 0.12), transparent 28rem),
-        linear-gradient(180deg, #050505 0%, #0B0D10 48%, #050505 100%);
+        radial-gradient(circle at 82% 8%, rgba(200, 16, 46, 0.22), transparent 34rem),
+        radial-gradient(circle at 10% 34%, rgba(214, 179, 106, 0.1), transparent 28rem),
+        linear-gradient(180deg, #070604 0%, #12100C 48%, #070604 100%);
     font-family: var(--font-body);
     font-size: 1.6rem;
     line-height: 1.5;
@@ -111,6 +117,12 @@ p {
 :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 .screen_out {

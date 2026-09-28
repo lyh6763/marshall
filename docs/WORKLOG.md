@@ -2,6 +2,21 @@
 
 작업 흐름과 확인한 내용을 간단히 기록합니다.
 
+## 2026-09-28
+- 이미지 적합성 감사에서 청록색 Hero·텍스처, 회색 제품 컷, 음악 맥락이 약한 아티스트 컷을 교체 대상으로 분류
+- ImageGen 기본 도구로 Hero 1종과 Headphones / Speakers / Amplifiers 장면 3종을 제작하고 WebP 반응형 파생본 생성
+- 데스크톱 Hero를 초대형 타이포 중심으로, Gear Line을 3열 에디토리얼 그리드로 다시 구현
+- Edge headless 실브라우저에서 1440×1000 및 390×844 렌더링 캡처
+- 두 뷰포트에서 콘솔 오류 0건, Amplifiers 추천, 비교표 4행, 캐러셀 02 이동 확인
+- 리디자인 1단계로 정보 구조, 링크 무결성, 시맨틱, 기본 접근성을 정리
+- 로고 heading 중복을 제거하고 Hero를 문서의 유일한 `h1`으로 변경
+- 가짜 언어 선택과 placeholder 전용 스크립트를 제거
+- 외부 Swiper 의존성을 네이티브 scroll-snap 캐러셀로 대체
+- Footer를 `<details>`로 전환하고 데스크톱/모바일 상태 동기화 로직을 단순화
+- Marshall의 비닐, 황동 노브, 크림 패널에서 가져온 색상·표면 토큰 적용
+- Signal Journey, Gear Finder, 비교표, 제품 상세 3종을 순차 구현
+- Case Study와 무의존성 정적 검증기를 추가하고 `npm test` 통과
+
 ## 2026-06-12
 - 모바일/데스크톱 visual QA 진행
 - `<picture>`와 WebP `srcset`을 적용하고 이미지 wrapper 비율 문제 보정
