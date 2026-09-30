@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
-import { extname, join, resolve, dirname } from 'node:path';
+import { extname, join, resolve, dirname, relative } from 'node:path';
 
 const root = process.cwd();
 const failures = [];
@@ -21,8 +21,10 @@ const voidElements = new Set([
   'link', 'meta', 'param', 'source', 'track', 'wbr',
 ]);
 
+const referencedAssets = new Set();
+
 function report(file, message) {
-  failures.push(`${file.replace(`${root}\\`, '')}: ${message}`);
+  failures.push(`${relative(root, file).replaceAll('\\', '/')}: ${message}`);
 }
 
 function localPath(file, reference) {
@@ -79,12 +81,14 @@ for (const file of htmlFiles) {
 
   for (const match of source.matchAll(/<(?:img|script|link|source)[^>]+(?:src|href)="([^"]+)"[^>]*>/g)) {
     const target = localPath(file, match[1]);
+    if (target) referencedAssets.add(target);
     if (target && !existsSync(target)) report(file, `missing local asset ${match[1]}`);
   }
 
   for (const match of source.matchAll(/srcset="([^"]+)"/g)) {
     for (const candidate of match[1].split(',')) {
       const target = localPath(file, candidate.trim().split(/\s+/)[0]);
+      if (target) referencedAssets.add(target);
       if (target && !existsSync(target)) report(file, `missing srcset asset ${candidate.trim()}`);
     }
   }
@@ -100,6 +104,18 @@ for (const file of cssFiles) {
   const open = (source.match(/\{/g) ?? []).length;
   const close = (source.match(/\}/g) ?? []).length;
   if (open !== close) report(file, `unbalanced braces ${open}/${close}`);
+
+  for (const match of source.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)) {
+    const target = localPath(file, match[1]);
+    if (target) referencedAssets.add(target);
+    if (target && !existsSync(target)) report(file, `missing local asset ${match[1]}`);
+  }
+}
+
+// Every shipped stylesheet, script and image must be used by a page or stylesheet.
+for (const file of files) {
+  const folder = relative(root, file).split(/[\\/]/)[0];
+  if (['css', 'js', 'img'].includes(folder) && !referencedAssets.has(file)) report(file, 'unused asset (not referenced by any HTML or CSS)');
 }
 
 for (const file of jsFiles) {
