@@ -16,7 +16,7 @@ Marshall의 무대 에너지를 재해석한 비공식 독립 포트폴리오 �
 4. 기존 주소를 유지한 제품 상세 3종: 실제 제품 사진·사용 장면·핵심 사양·비적합 상황·공식 출처
 5. Case Study: 디자인 결정·출처 정책·실제 확인한 검증 결과
 
-Play / Listen / Discover 선택 카드, Signal Journey, 추천 질문, 비교표, 캐러셀은 현재 홈에서 제외했다. 이전 구현 파일은 보존한다.
+Play / Listen / Discover 선택 카드, Signal Journey, 추천 질문, 비교표, 캐러셀은 현재 홈에서 제외했다. 이전 구현 파일은 git 기록에만 남기고 저장소에서는 제거했다.
 
 ## 비주얼 정책
 
@@ -27,7 +27,7 @@ Play / Listen / Discover 선택 카드, Signal Journey, 추천 질문, 비교표
 
 ## 기술과 검증
 
-정적 HTML·CSS·Vanilla JS와 기존 상세 URL을 유지한다. 제품 카드 컨테이너 쿼리, 반응형 WebP, 화면 크기에 맞는 히어로 preload, 키보드 메뉴, 모션 감소 설정을 지원한다.
+정적 HTML·CSS·Vanilla JS와 기존 상세 URL을 유지한다. 제품 카드 컨테이너 쿼리, 반응형 WebP, 화면 크기에 맞는 히어로 preload, 키보드 메뉴, 모션 감소 설정을 지원한다. 어떤 페이지나 스타일에서도 쓰지 않는 CSS·JS·이미지가 있으면 `npm test`가 실패한다.
 
 검증: npm test, 390 / 768 / 1440 / 1920px 홈, 390 / 1440px 상세, 이미지·가로 넘침·스크립트 오류·주요 이동·모바일 키보드 메뉴·JavaScript 비활성 경로. 배포 후 Core Web Vitals는 미측정이며 개선 수치를 주장하지 않는다.
 

@@ -12,7 +12,7 @@ Marshall의 무대 에너지를 재해석한 비공식 독립 포트폴리오 �
 
 ## 기술과 확인
 
-HTML·CSS·Vanilla JS. 기본 검사: `npm test`. 로컬 서버 예시: `python -m http.server 4174 --bind 127.0.0.1`.
+HTML·CSS·Vanilla JS. 기본 검사: `npm test`. 로컬 서버 예시: `npx serve -l 4321 .`.
 
 390/768/1440/1920px 홈, 390/1440px 상세, 모바일 키보드 메뉴, 모션 감소, JavaScript 비활성 경로를 확인했습니다. 실측 전 성능 향상 수치는 제시하지 않습니다.
 
