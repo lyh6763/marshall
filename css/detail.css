@@ -38,6 +38,15 @@
     margin: 0 auto;
 }
 
+.eyebrow {
+    color: var(--color-signal);
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+}
+
 .detail_hero {
     display: grid;
     gap: 30px;
