@@ -19,7 +19,7 @@
     color: #191b1d;
     background: #f1f2f2;
 }
-.detail_light h2, .detail_light h3, .detail_light strong { color: #191b1d; }
+.detail_light h2, .detail_light strong { color: #191b1d; }
 .detail_light .eyebrow, .detail_light .detail_attribute span { color: #4e5960; }
 .detail_light .detail_section_header > p:last-child,
 .detail_light .detail_attribute p { color: #555d62; }

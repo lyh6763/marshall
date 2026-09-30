@@ -1,30 +1,21 @@
 @charset "utf-8";
 
 /* First-screen study: the audience is close enough to share the frame. */
-.stage_header,
-.stage_header.is-fixed {
+.stage_header {
     left: 0;
     width: 100%;
-    transform: none;
-    border: 0;
 }
-.stage_header .header_center,
-.stage_header.is-fixed .header_center {
+.stage_header .header_center {
     width: auto;
     height: 92px;
     margin: 0 4.2vw;
     border-bottom: 1px solid rgba(245, 247, 248, .28);
 }
-.stage_header .brand_logo,
-.stage_header.is-fixed .brand_logo {
+.stage_header .brand_logo {
     width: 150px;
     height: 40px;
 }
-.stage_header.is-fixed {
-    background: #101112;
-    box-shadow: none;
-    backdrop-filter: none;
-}
+.stage_header.is-fixed { background: #101112; }
 .stage_header.is-fixed .header_center { height: 72px; border-color: transparent; }
 .stage_header .nav_body a { color: #f6f7f7; }
 .stage_header .nav_body a:hover { color: #cbd5db; }
@@ -139,8 +130,7 @@
 }
 
 @media (min-width: 1024px) {
-    .stage_header nav,
-    .stage_header.is-fixed nav { right: 4.2vw; height: 92px; }
+    .stage_header nav { right: 4.2vw; height: 92px; }
     .stage_header.is-fixed nav { height: 72px; }
     .stage_header .nav_body ul { gap: clamp(24px, 3vw, 56px); }
     .stage_header .nav_body a { font-size: 1.4rem; letter-spacing: .06em; }
@@ -157,10 +147,8 @@
     .stage_heading h1 { font-size: clamp(12rem, 19vw, 20rem); }
 }
 @media (max-width: 599px) {
-    .stage_header .header_center,
-    .stage_header.is-fixed .header_center { margin-inline: 22px; height: 72px; }
-    .stage_header .brand_logo,
-    .stage_header.is-fixed .brand_logo { width: 122px; height: 33px; }
+    .stage_header .header_center { margin-inline: 22px; height: 72px; }
+    .stage_header .brand_logo { width: 122px; height: 33px; }
     .stage_hero { min-height: max(720px, 100svh); }
     .stage_scene img { object-position: center 35%; }
     .stage_shade {
