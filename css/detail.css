@@ -33,7 +33,7 @@ body {
     gap: 10px;
     color: var(--color-paper);
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -94,7 +94,7 @@ body {
     padding: 0 20px;
     color: var(--color-primary);
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -169,7 +169,7 @@ body {
 .detail_flow span {
     color: var(--color-brass);
     font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -314,7 +314,7 @@ body {
     padding: 14px 16px;
     color: var(--color-brass);
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;

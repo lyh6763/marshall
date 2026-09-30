@@ -4,7 +4,7 @@
     border-top: 1px solid rgba(255,255,255,.25);
     padding-top: 16px;
     color: #aeb4b8;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 .detail_hero { align-items: center; }
 .detail_hero h1 { overflow-wrap: anywhere; }
@@ -26,9 +26,9 @@
 .detail_light .detail_attribute { border-color: #cfd3d6; background: #fff; }
 .spec_grid { display: grid; gap: 12px; margin-top: 36px; }
 .spec_grid > div { border: 1px solid var(--color-border); padding: 22px; background: #1a1d1f; }
-.spec_grid dt { color: #bcc5cb; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.spec_grid dt { color: #bcc5cb; font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .spec_grid dd { margin-top: 12px; color: #f5f5f3; font-family: var(--font-heading); font-size: clamp(1.7rem, 2vw, 2.3rem); font-weight: 700; line-height: 1.35; }
-.detail_source { margin-top: 24px; color: #b5bbc0; font-size: 1.25rem; line-height: 1.7; }
+.detail_source { margin-top: 24px; color: #b5bbc0; font-size: 1.4rem; line-height: 1.7; }
 .detail_source a { color: #e0e5e8; text-decoration: underline; text-underline-offset: 4px; }
 .detail_related { grid-template-columns: repeat(1, minmax(0,1fr)); }
 .detail_related a:hover { border-color: #e0e5e8; }
