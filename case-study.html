@@ -3,70 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Marshall Live Signal Lab 리디자인 과정과 구현 결과를 정리한 포트폴리오 케이스 스터디">
-    <meta name="theme-color" content="#070604">
+    <meta name="description" content="Marshall Front Row — 무대의 현장감과 제품의 직관성을 함께 검토한 비공식 디자인 시안">
     <link rel="icon" href="img/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/detail.css">
-    <title>Case Study — Marshall Live Signal Lab</title>
+    <link rel="stylesheet" href="css/front-row.css">
+    <link rel="stylesheet" href="css/experience-detail.css">
+    <title>Case Study — Marshall Front Row</title>
 </head>
 <body>
     <a class="skip_link" href="#case-main">본문 바로가기</a>
-    <header class="detail_header">
-        <a class="detail_logo" href="index.html" aria-label="Marshall Live Signal Lab 홈">Marshall</a>
-        <a class="detail_back" href="index.html"><span aria-hidden="true">←</span> Live site</a>
-    </header>
+    <header class="detail_header"><a class="detail_logo" href="index.html" aria-label="Marshall 홈">Marshall</a><a class="detail_back" href="index.html">← 시안으로 돌아가기</a></header>
     <main class="detail_main" id="case-main">
         <section class="case_hero" aria-labelledby="case-title">
-            <p class="eyebrow">Portfolio case study · 2026</p>
-            <h1 id="case-title">From concept page to product journey</h1>
-            <p class="case_lead">강한 원페이지 비주얼을 유지하면서도 사용자가 장비를 발견하고, 비교하고, 상세 맥락까지 탐색할 수 있는 브랜드 경험으로 확장했습니다.</p>
-            <div class="case_metrics" aria-label="주요 개선 결과">
-                <div class="case_metric"><strong>0</strong><span>placeholder 링크</span></div>
-                <div class="case_metric"><strong>4</strong><span>새 캠페인 비주얼</span></div>
-                <div class="case_metric"><strong>3</strong><span>제품 상세 경험</span></div>
-                <div class="case_metric"><strong>0</strong><span>캐러셀 UI 의존성</span></div>
+            <p class="eyebrow">Independent design study · 2026</p>
+            <h1 id="case-title">Front Row</h1>
+            <p class="case_lead">무대 가까이의 열기를 느낀 뒤, 실제 제품을 바로 보고 탐색하는 Marshall 비공식 디자인 시안입니다. 분위기를 만드는 이미지와 제품을 설명하는 이미지의 역할을 다시 정리했습니다.</p>
+            <div class="case_metrics" aria-label="구현 범위">
+                <div class="case_metric"><strong>3</strong><span>실제 모델과 제품 사진</span></div>
+                <div class="case_metric"><strong>3</strong><span>상세 페이지 유지</span></div>
+                <div class="case_metric"><strong>4</strong><span>주요 화면 너비 검증</span></div>
+                <div class="case_metric"><strong>0</strong><span>가격·구매 기능</span></div>
             </div>
         </section>
-
         <section class="detail_section" aria-labelledby="case-problem">
-            <div class="detail_section_header"><p class="eyebrow">01 Problem</p><h2 id="case-problem">Beautiful, but no way forward</h2><p>기존 결과물은 반응형 이미지와 강한 분위기를 갖췄지만 17개의 가짜 링크, 제품 상세 흐름 부재, 범용적인 neon UI 때문에 실제 서비스와 포트폴리오 양쪽에서 설득력이 끊겼습니다.</p></div>
-            <div class="case_grid"><article class="case_card"><h3>Experience gap</h3><p>사용자는 제품군을 본 뒤 비교하거나 자신에게 맞는 장비를 고를 수 없었습니다.</p></article><article class="case_card"><h3>Brand gap</h3><p>cyan grid 중심의 표현이 Marshall의 비닐, 황동 노브, 크림 패널 같은 물성과 충분히 연결되지 않았습니다.</p></article></div>
+            <div class="detail_section_header"><p class="eyebrow">Problem</p><h2 id="case-problem">제품이 보이지 않는 제품 카드</h2><p>이전 시안에서는 제품명 옆에 사용 장면을 배치했지만, 제품 자체의 외관은 알 수 없었습니다. 붉은 조명과 크림색을 반복하면서 새로운 구도도 기존 분위기에 머물렀습니다.</p></div>
         </section>
-
         <section class="detail_section" aria-labelledby="case-direction">
-            <div class="detail_section_header"><p class="eyebrow">02 Direction</p><h2 id="case-direction">From circuit to crowd</h2><p>신호가 입력되고, 압력을 얻고, 공기를 움직여, 사람에게 흔적을 남긴다는 하나의 흐름으로 정보 구조와 모션을 통합했습니다.</p></div>
-            <ol class="case_list"><li>Hero와 Signal Journey를 하나의 서사로 연결</li><li>크림, 브라스, 비닐 블랙, Marshall red로 디자인 토큰 재정의</li><li>사용 환경과 우선 가치로 장비군을 추천하는 선택 도구 추가</li><li>드래그 외 버튼·키보드 조작이 가능한 네이티브 캐러셀 구현</li><li>제품군별 상세 페이지와 공식 카테고리 연결</li></ol>
+            <div class="detail_section_header"><p class="eyebrow">Direction</p><h2 id="case-direction">무대 다음에, 바로 제품</h2><p>방문자가 콘셉트를 해석하기 전에 제품을 알아볼 수 있도록 홈의 순서를 단순하게 바꿨습니다.</p></div>
+            <ol class="case_list"><li>가까운 관객 시점, 큰 타이포, 백색 조명의 무대 히어로</li><li>독립적인 선택 카드와 Signal Journey를 덜어내고 제품을 바로 배치</li><li>DSL40 Combo를 크게 소개한 뒤 Acton IV와 Monitor III A.N.C.를 나란히 소개</li><li>추천 질문과 서로 다른 장비군의 비교 체크박스를 제거하고 상세 링크 제공</li><li>제작·작은 공연장·Amplify 이야기를 간결한 공식 자료 링크로 제공</li></ol>
         </section>
-
         <section class="detail_section" aria-labelledby="case-art">
-            <div class="detail_section_header"><p class="eyebrow">03 Art direction</p><h2 id="case-art">Show the life around the gear</h2><p>회색 배경의 제품 컷과 청록색 스튜디오 이미지를 걷어내고, 백스테이지·리스닝룸·작은 클럽이라는 실제 사용 장면으로 교체했습니다. 모든 이미지는 비닐 블랙, 스테이지 레드, 브라스 조명을 공유합니다.</p></div>
+            <div class="detail_section_header"><p class="eyebrow">Images</p><h2 id="case-art">현장과 제품, 각각의 이미지</h2><p>히어로는 익명 연주자의 가상 공연 장면을 내장 ImageGen으로 제작했습니다. 백색 조명과 자연스러운 피부·옷감의 질감으로 기존의 붉은 조명과 따뜻한 색 보정을 벗어나도록 시도했습니다. 제품 영역은 공식 페이지의 실제 모델 사진을 사용했습니다.</p></div>
             <div class="case_visual_grid">
-                <figure class="case_visual case_visual_wide"><picture><source type="image/webp" srcset="img/hero-stage-v2-960.webp 960w, img/hero-stage-v2.webp 1774w"><img src="img/hero-stage-v2.jpg" alt="붉은 무대와 앰프 스택이 이어지는 백스테이지" width="1774" height="887" loading="lazy" decoding="async"></picture><figcaption>Hero · Backstage to stage</figcaption></figure>
-                <figure class="case_visual"><picture><source type="image/webp" srcset="img/headphones-live-v2-480.webp 480w, img/headphones-live-v2-900.webp 900w"><img src="img/headphones-live-v2.jpg" alt="헤드폰으로 사운드를 확인하는 뮤지션" width="900" height="900" loading="lazy" decoding="async"></picture><figcaption>Headphones · Focus</figcaption></figure>
-                <figure class="case_visual"><picture><source type="image/webp" srcset="img/speakers-home-v2-480.webp 480w, img/speakers-home-v2-900.webp 900w"><img src="img/speakers-home-v2.jpg" alt="턴테이블과 스피커가 있는 리스닝룸" width="900" height="900" loading="lazy" decoding="async"></picture><figcaption>Speakers · Room</figcaption></figure>
-                <figure class="case_visual"><picture><source type="image/webp" srcset="img/amplifiers-stage-v2-480.webp 480w, img/amplifiers-stage-v2-900.webp 900w"><img src="img/amplifiers-stage-v2.jpg" alt="기타리스트와 앰프가 있는 작은 공연장" width="900" height="900" loading="lazy" decoding="async"></picture><figcaption>Amplifiers · Pressure</figcaption></figure>
+                <figure class="case_visual case_visual_wide"><img src="img/front-row-white.webp" alt="백색 조명 아래 작은 클럽의 연주를 가까이서 보는 히어로 장면" width="1672" height="941" loading="lazy"><figcaption>Hero · 자체 생성 공연 장면</figcaption></figure>
+                <figure class="case_visual"><img src="img/product-dsl40-combo-1000.webp" alt="Marshall DSL40 Combo" width="1000" height="1000" loading="lazy"><figcaption><a href="https://www.marshall.com/us/en/product/dsl40-combo">DSL40 Combo · 사진: Marshall</a></figcaption></figure>
+                <figure class="case_visual"><img src="img/product-acton-iv-1000.webp" alt="Marshall Acton IV" width="960" height="960" loading="lazy"><figcaption><a href="https://www.marshall.com/us/en/product/acton-iv">Acton IV · 사진: Marshall</a></figcaption></figure>
+                <figure class="case_visual"><img src="img/product-monitor-iii-anc-1000.webp" alt="Marshall Monitor III A.N.C." width="1000" height="1000" loading="lazy"><figcaption><a href="https://www.marshall.com/us/en/product/monitor-iii-anc">Monitor III A.N.C. · 사진: Marshall</a></figcaption></figure>
             </div>
+            <p class="detail_source">공식 사진은 사용자가 승인한 로컬 검토용 시안에 사용했습니다. 이 시안을 공개 배포하지 않았으며, 공식 사진의 공개 사용 허락을 받았다는 뜻은 아닙니다.</p>
         </section>
-
-        <section class="detail_section" aria-labelledby="case-system">
-            <div class="detail_section_header"><p class="eyebrow">04 Visual system</p><h2 id="case-system">Tactile, loud, recognisable</h2><p>효과를 늘리기보다 앰프 패널, 인쇄물, 오래된 장비에서 가져온 제한된 재료를 반복해 브랜드 기억을 강화했습니다.</p></div>
-            <div class="token_grid" aria-label="핵심 색상 토큰"><div class="token_swatch">Vinyl black</div><div class="token_swatch">Stage red</div><div class="token_swatch">Brass</div><div class="token_swatch">Warm cream</div></div>
-        </section>
-
         <section class="detail_section" aria-labelledby="case-accessibility">
-            <div class="detail_section_header"><p class="eyebrow">05 Inclusive by default</p><h2 id="case-accessibility">The signal stays reachable</h2></div>
-            <div class="case_grid"><article class="case_card"><h3>Keyboard</h3><p>메뉴 포커스 트랩, 캐러셀 방향키·Home·End, 명시적인 이전·다음 버튼을 제공합니다.</p></article><article class="case_card"><h3>Progressive enhancement</h3><p>JavaScript가 없어도 내비게이션, Footer 링크, 가로 스크롤 콘텐츠가 사라지지 않습니다.</p></article><article class="case_card"><h3>Motion</h3><p>모션 감소 설정에서는 등장 효과, 진행선 전환, 부드러운 스크롤을 제거합니다.</p></article><article class="case_card"><h3>Semantics</h3><p>유일한 H1, main landmark, carousel·slide 이름, native details 구조를 사용합니다.</p></article></div>
-        </section>
-
-        <section class="detail_section" aria-labelledby="case-next">
-            <div class="detail_section_header"><p class="eyebrow">06 Result</p><h2 id="case-next">A portfolio piece that can be used</h2><p>결과물은 더 이상 한 장짜리 무드보드가 아닙니다. 방문자는 콘셉트를 이해하고, 장비를 추천받고, 비교한 뒤 상세 맥락과 공식 제품군까지 이동할 수 있습니다.</p></div>
-            <div class="detail_actions"><a class="detail_action detail_action_primary" href="index.html">완성된 사이트 보기</a><a class="detail_action" href="index.html#gear">제품 탐색 바로가기</a></div>
+            <div class="detail_section_header"><p class="eyebrow">Verification</p><h2 id="case-accessibility">현재 확인한 동작</h2><p>Edge에서 390·768·1440·1920px 홈 화면과 390·1440px 상세 페이지를 확인했습니다. 홈 화면의 이미지 누락, 가로 넘침, 페이지 스크립트 오류는 없었습니다.</p></div>
+            <ol class="case_list"><li>모바일 메뉴의 Enter 열기, Tab 순환, Escape 닫기와 포커스 복귀</li><li>앰프 앵커의 고정 헤더 간격과 세 제품 상세·목록 복귀 경로</li><li>모션 감소에서 히어로 이동 제거</li><li>JavaScript 비활성 상태에서 메뉴와 제품 상세 이동</li><li>모바일과 데스크톱에서 해당 히어로 이미지 한 개만 요청</li></ol>
+            <p class="detail_source">npm test 통과. 실제 사용자 테스트와 배포 후 Core Web Vitals 실측은 아직 수행하지 않았습니다.</p>
+            <div class="detail_actions"><a class="detail_action detail_action_primary" href="index.html">시안 보기</a><a class="detail_action" href="index.html#gear">제품 영역 보기</a></div>
         </section>
     </main>
-    <footer class="detail_footer">Designed and built as an unofficial portfolio study. Marshall is a trademark of its respective owner.</footer>
+    <footer class="detail_footer">Independent portfolio concept · Not operated by or affiliated with Marshall Group.</footer>
 </body>
 </html>

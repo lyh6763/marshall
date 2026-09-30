@@ -5,21 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>document.documentElement.classList.add('js');</script>
-    <meta name="description" content="Marshall Live Signal Lab - stage energy, studio control, loud sound.">
-    <meta name="theme-color" content="#070604">
+    <meta name="description" content="가까운 무대의 열기. Marshall의 앰프, 스피커, 헤드폰을 살펴보는 비공식 디자인 시안.">
+    <meta name="theme-color" content="#101112">
     <meta name="color-scheme" content="dark">
     <link rel="icon" href="img/logo.png" type="image/png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Marshall Live Signal Lab">
-    <meta property="og:description" content="앰프에서 시작된 소리. 무대를 지나 손 안으로. Marshall 브랜드를 재해석한 원페이지 시안.">
-    <meta property="og:image" content="img/hero-stage-v2.jpg">
+    <meta property="og:description" content="가까운 무대의 열기와 Marshall 앰프, 스피커, 헤드폰을 만나는 비공식 디자인 시안.">
+    <meta property="og:image" content="img/front-row-white.webp">
     <meta property="og:image:alt" content="Marshall Live Signal Lab 무대 콘셉트 비주얼">
     <meta property="og:locale" content="ko_KR">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Marshall Live Signal Lab">
-    <meta name="twitter:description" content="앰프에서 시작된 소리. 무대를 지나 손 안으로. Marshall 브랜드를 재해석한 원페이지 시안.">
-    <meta name="twitter:image" content="img/hero-stage-v2.jpg">
-    <link rel="preload" as="image" href="img/hero-stage-v2.webp" type="image/webp" fetchpriority="high">
+    <meta name="twitter:description" content="가까운 무대의 열기와 Marshall 앰프, 스피커, 헤드폰을 만나는 비공식 디자인 시안.">
+    <meta name="twitter:image" content="img/front-row-white.webp">
+    <link rel="preload" as="image" href="img/front-row-white-mobile.webp" media="(max-width: 599px)" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="img/front-row-white.webp" media="(min-width: 600px)" type="image/webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -29,13 +30,14 @@
     <link rel="stylesheet" href="css/marshall768.css">
     <link rel="stylesheet" href="css/marshall1024.css">
     <link rel="stylesheet" href="css/marshall1920.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/front-row.css">
+    <link rel="stylesheet" href="css/stage-header.css">
     <title>Marshall Live Signal Lab</title>
 </head>
 
 <body>
     <a class="skip_link" href="#main">본문 바로가기</a>
-    <header>
+    <header class="stage_header">
         <div class="header_center">
             <a class="brand_logo" href="#top" aria-label="Marshall Live Signal Lab 홈">Marshall</a>
             <button type="button" class="btn" aria-expanded="false" aria-controls="site-nav">
@@ -60,11 +62,10 @@
                 <div class="nav_body">
                     <p class="screen_out">메인 내비게이션</p>
                     <ul>
-                        <li><a href="#signal">Signal</a></li>
-                        <li><a href="#gear">Gear</a></li>
-                        <li><a href="#stage">Stage</a></li>
-                        <li><a href="#community">Community</a></li>
-                        <li><a href="case-study.html">Case Study</a></li>
+                        <li><a href="#product-amplifiers">Amplifiers</a></li>
+                        <li><a href="products/speakers.html">Speakers</a></li>
+                        <li><a href="products/headphones.html">Headphones</a></li>
+                        <li><a href="#community">Stories <span aria-hidden="true">↗</span></a></li>
                     </ul>
                 </div>
 
@@ -73,375 +74,85 @@
     </header>
 
     <main id="main">
-        <section class="header_visual" id="top" aria-labelledby="hero-title">
-            <div class="slogan">
-                <div class="hero_kicker">
-                    <p class="eyebrow">Live Signal Lab</p>
-                    <p><span>Since 1962</span><span>Bletchley → Everywhere</span></p>
-                </div>
-                <h1 id="hero-title">
-                    <span>Built to</span>
-                    <span class="hero_outline">move air</span>
-                </h1>
-                <div class="hero_bottom">
-                    <p>
-                        앰프에서 시작된 압력이 공기를 움직이고,<br>
-                        작은 방을 오늘 밤의 무대로 바꿉니다.
-                    </p>
-                    <div class="hero_actions">
-                        <a href="#signal" class="button_primary">신호 따라가기</a>
-                        <a href="#gear" class="button_secondary">장비 보기</a>
-                    </div>
-                </div>
-                <div class="hero_signal" aria-hidden="true">
-                    <span class="console_lamp"></span>
-                    <span>Signal active</span>
-                    <i></i>
-                    <strong>100 dB+</strong>
-                </div>
+        <section class="stage_hero" id="top" aria-labelledby="hero-title">
+            <picture class="stage_scene">
+                <source media="(max-width: 599px)" srcset="img/front-row-white-mobile.webp" width="640" height="920">
+                <img src="img/front-row-white.webp" alt="작은 클럽의 관객 바로 앞에서 기타를 연주하는 무대 장면" width="1672" height="941" fetchpriority="high" decoding="async">
+            </picture>
+            <div class="stage_shade" aria-hidden="true"></div>
+            <div class="stage_heading">
+                <p class="stage_eyebrow">Marshall <span aria-hidden="true">/</span> On stage</p>
+                <h1 id="hero-title"><span>Front</span><span>row.</span></h1>
+                <p class="stage_caption">무대 바로 앞.</p>
             </div>
-            <p class="hero_side_note" aria-hidden="true">Volume is a physical experience</p>
-        </section>
-
-        <section class="signal_section editorial_section" id="signal" data-signal-journey>
-            <div class="section_grid">
-                <div class="section_label scroll-fade-left">
-                    <span>01</span>
-                    <p>Signal Chain</p>
-                </div>
-                <div class="section_content scroll-fade-up">
-                    <p class="eyebrow">From amp to air</p>
-                    <h2>Plug in. Push volume. Let it move.</h2>
-                    <p>
-                        좋은 소리는 숫자로만 남지 않습니다. 손끝의 노브, 공기를 밀어내는 캐비닛,
-                        공연이 끝난 뒤에도 귀에 남는 잔향까지. Marshall은 그 순간을 위해 만들어졌습니다.
-                    </p>
-                    <div class="signal_journey">
-                        <div class="signal_progress" aria-hidden="true">
-                            <span>Signal path</span>
-                            <div class="signal_progress_track"><i></i></div>
-                            <strong data-signal-count>01 / 04</strong>
-                        </div>
-                        <ol class="signal_steps">
-                        <li data-signal-step aria-current="step">
-                            <span>Input</span>
-                            <strong>Pick a source</strong>
-                            <p>기타, 턴테이블, 플레이리스트. 시작점은 달라도 목표는 같습니다.</p>
-                        </li>
-                        <li data-signal-step>
-                            <span>Drive</span>
-                            <strong>Add pressure</strong>
-                            <p>작은 방에서도 무대처럼 느껴지는 밀도와 존재감을 더합니다.</p>
-                        </li>
-                        <li data-signal-step>
-                            <span>Air</span>
-                            <strong>Move the room</strong>
-                            <p>드라이버와 캐비닛이 전기 신호를 공기의 움직임으로 바꿉니다.</p>
-                        </li>
-                        <li data-signal-step>
-                            <span>Crowd</span>
-                            <strong>Leave a trace</strong>
-                            <p>좋은 소리는 재생이 끝난 뒤에도 사람과 공간, 다음 장면에 남습니다.</p>
-                        </li>
-                        </ol>
-                    </div>
-                </div>
+            <div class="stage_bottom">
+                <a class="stage_cta" href="#product-amplifiers"><span>앰프 살펴보기</span><span aria-hidden="true">↗</span></a>
+                <a class="stage_scroll" href="#gear"><span>제품 둘러보기</span><span aria-hidden="true">↓</span></a>
+                <a class="stage_concept" href="case-study.html" aria-label="비공식 포트폴리오 콘셉트 — 제작 이야기">Independent concept</a>
             </div>
         </section>
 
-        <section class="products_section editorial_section" id="gear">
-            <div class="section_intro scroll-fade-up">
-                <p class="eyebrow">Gear Line</p>
-                <h2>Built for the loud hours</h2>
-                <p>
-                    출근길, 작업실, 공연 전 리허설. 같은 로고라도 필요한 출력은 다릅니다.
-                    장비는 장면에 맞게 고르고, 볼륨은 조금 더 올립니다.
-                </p>
-            </div>
-
-            <form class="gear_finder scroll-fade-up" data-gear-finder aria-labelledby="finder-title">
-                <div class="finder_intro">
-                    <p class="eyebrow">Find your signal</p>
-                    <h3 id="finder-title">어디에서, 어떻게 크게 들을 건가요?</h3>
-                    <p>두 가지 조건을 선택하면 지금 장면에 가장 잘 맞는 장비군을 안내합니다.</p>
-                </div>
-                <div class="finder_fields">
-                    <label>
-                        <span>주 사용 환경</span>
-                        <select name="context">
-                            <option value="commute">이동과 출퇴근</option>
-                            <option value="home">집과 개인 공간</option>
-                            <option value="studio">작업실과 스튜디오</option>
-                            <option value="stage">리허설과 무대</option>
-                        </select>
-                    </label>
-                    <label>
-                        <span>가장 중요한 것</span>
-                        <select name="priority">
-                            <option value="portable">휴대성</option>
-                            <option value="focus">개인 몰입</option>
-                            <option value="room">공간을 채우는 소리</option>
-                            <option value="power">출력과 존재감</option>
-                        </select>
-                    </label>
-                    <button type="submit" class="button_primary">장비 찾기</button>
-                </div>
-                <div class="finder_result" data-finder-result role="status" aria-live="polite" tabindex="-1" hidden></div>
-            </form>
-
-            <div class="products">
-                <article class="product_card scroll-fade-up" id="product-headphones" data-product-card
-                    data-product="headphones" data-contexts="commute studio" data-priorities="portable focus">
-                    <div class="product_copy">
-                        <span>01</span>
-                        <p class="eyebrow">Personal Monitor</p>
-                        <h3>Headphones</h3>
-                        <strong>Close to the mix</strong>
-                        <p>
-                            지하철 소음 위로 올라오는 베이스라인. 귀 가까이에서 Marshall의 질감을 유지합니다.
-                        </p>
-                        <div class="product_actions">
-                            <a class="product_link" href="products/headphones.html">자세히 보기 <span aria-hidden="true">→</span></a>
-                            <label class="compare_toggle">
-                                <input type="checkbox" value="headphones" data-compare-input>
-                                <span>비교에 추가</span>
-                            </label>
-                        </div>
+        <section class="gear_section" id="gear" aria-labelledby="gear-title">
+            <span class="anchor_target" id="explore" aria-hidden="true"></span>
+            <div class="gear_intro">
+                <div><p class="gear_kicker">Marshall equipment</p><h2 id="gear-title">The gear.</h2></div>
+                <div class="gear_intro_side">
+                    <p>기타 앰프, 홈 스피커, 오버이어 헤드폰.</p>
+                    <div class="gear_shortcuts" role="navigation" aria-label="제품 바로가기">
+                        <a href="#product-amplifiers">앰프</a>
+                        <a href="#product-speakers">스피커</a>
+                        <a href="#product-headphones">헤드폰</a>
                     </div>
-                    <div class="product_media">
-                        <picture>
-                            <source type="image/webp"
-                                srcset="img/headphones-live-v2-480.webp 480w, img/headphones-live-v2-900.webp 900w"
-                                sizes="(min-width: 1024px) 31vw, (min-width: 768px) 42vw, calc(100vw - 32px)">
-                            <img src="img/headphones-live-v2.jpg" alt="백스테이지에서 헤드폰으로 사운드를 확인하는 뮤지션" width="900" height="900"
-                                loading="lazy" decoding="async">
-                        </picture>
-                    </div>
-                </article>
-
-                <article class="product_card product_card_reverse scroll-fade-up" id="product-speakers" data-product-card
-                    data-product="speakers" data-contexts="home studio" data-priorities="portable room">
-                    <div class="product_copy">
-                        <span>02</span>
-                        <p class="eyebrow">Room System</p>
-                        <h3>Speakers</h3>
-                        <strong>Pressure for the room</strong>
-                        <p>
-                            테이블 위의 작은 무대. 플레이 버튼 하나로 공간의 온도가 바뀝니다.
-                        </p>
-                        <div class="product_actions">
-                            <a class="product_link" href="products/speakers.html">자세히 보기 <span aria-hidden="true">→</span></a>
-                            <label class="compare_toggle">
-                                <input type="checkbox" value="speakers" data-compare-input>
-                                <span>비교에 추가</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="product_media">
-                        <picture>
-                            <source type="image/webp"
-                                srcset="img/speakers-home-v2-480.webp 480w, img/speakers-home-v2-900.webp 900w"
-                                sizes="(min-width: 1024px) 31vw, (min-width: 768px) 42vw, calc(100vw - 32px)">
-                            <img src="img/speakers-home-v2.jpg" alt="따뜻한 리스닝룸에서 턴테이블과 함께 놓인 홈 스피커" width="900" height="900"
-                                loading="lazy" decoding="async">
-                        </picture>
-                    </div>
-                </article>
-
-                <article class="product_card scroll-fade-up" id="product-amplifiers" data-product-card
-                    data-product="amplifiers" data-contexts="studio stage" data-priorities="room power">
-                    <div class="product_copy">
-                        <span>03</span>
-                        <p class="eyebrow">Stage Origin</p>
-                        <h3>Amplifiers</h3>
-                        <strong>The wall still speaks</strong>
-                        <p>
-                            모든 신호의 출발점. 노브를 돌리는 순간, Marshall은 가장 익숙한 얼굴로 돌아옵니다.
-                        </p>
-                        <div class="product_actions">
-                            <a class="product_link" href="products/amplifiers.html">자세히 보기 <span aria-hidden="true">→</span></a>
-                            <label class="compare_toggle">
-                                <input type="checkbox" value="amplifiers" data-compare-input>
-                                <span>비교에 추가</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="product_media">
-                        <picture>
-                            <source type="image/webp"
-                                srcset="img/amplifiers-stage-v2-480.webp 480w, img/amplifiers-stage-v2-900.webp 900w"
-                                sizes="(min-width: 1024px) 31vw, (min-width: 768px) 42vw, calc(100vw - 32px)">
-                            <img src="img/amplifiers-stage-v2.jpg" alt="붉은 조명의 작은 공연장에서 기타리스트와 앰프가 함께 보이는 장면" width="900" height="900"
-                                loading="lazy" decoding="async">
-                        </picture>
-                    </div>
-                </article>
-            </div>
-
-            <section class="compare_panel" data-compare-panel aria-labelledby="compare-title" hidden>
-                <div class="compare_header">
-                    <div>
-                        <p class="eyebrow">Quick compare</p>
-                        <h3 id="compare-title">장비군 비교</h3>
-                    </div>
-                    <button type="button" class="compare_clear" data-compare-clear>선택 초기화</button>
-                </div>
-                <div class="compare_content" data-compare-content></div>
-            </section>
-        </section>
-
-        <section class="artists_section culture_section" id="stage">
-            <div class="culture_banner scroll-fade-up">
-                <div class="culture_banner_text">
-                    <p class="eyebrow">Stage Mode</p>
-                    <h2>Lights up. Noise in. No soft launch.</h2>
-                    <p>
-                        좋은 장비는 뒤로 숨지 않습니다. 조명이 켜지고 첫 코드가 울리면,
-                        소리는 관객보다 먼저 방을 채웁니다.
-                    </p>
                 </div>
             </div>
 
-            <div class="culture_grid">
-                <article class="culture_card scroll-fade-left">
-                    <picture>
-                        <source type="image/webp" srcset="img/artist01-360.webp 360w, img/artist01-600.webp 600w"
-                            sizes="(min-width: 1024px) 260px, (min-width: 768px) 42vw, calc(100vw - 32px)">
-                        <img src="img/artist01.jpg" alt="무대 위 아티스트 이미지" width="600" height="600"
-                            loading="lazy" decoding="async">
-                    </picture>
-                    <div>
-                        <span>01</span>
-                        <h3>Soundcheck</h3>
-                        <p>짧은 리프, 긴 피드백. 공연 전 방 안의 공기를 먼저 맞춥니다.</p>
+            <article class="gear_feature" id="product-amplifiers" aria-labelledby="amp-title">
+                <a class="gear_photo gear_photo_amp" href="products/amplifiers.html" aria-label="DSL40 Combo 제품 상세">
+                    <img src="img/product-dsl40-combo-1000.webp" srcset="img/product-dsl40-combo-480.webp 480w, img/product-dsl40-combo-1000.webp 1000w" sizes="(min-width: 900px) 52vw, 92vw" alt="Marshall DSL40 Combo: 황동 조작 패널과 검은 그릴을 갖춘 기타 콤보 앰프" width="1000" height="1000" loading="lazy" decoding="async">
+                </a>
+                <div class="gear_feature_copy">
+                    <p class="gear_kicker">Amplifiers / 기타 앰프</p>
+                    <h3 id="amp-title">DSL40<br>Combo</h3>
+                    <p class="gear_description">클린부터 오버드라이브까지.<br>두 채널과 출력 전환으로 연습실과 작은 공연장에 맞춰 연주하세요.</p>
+                    <dl class="gear_specs"><div><dt>출력 전환</dt><dd>40 / 20<span>W</span></dd></div><div><dt>올밸브</dt><dd>2<span>채널</span></dd></div></dl>
+                    <a class="gear_link gear_link_solid" href="products/amplifiers.html">DSL40 자세히 보기 <span aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <div class="gear_pair">
+                <article class="gear_item" id="product-speakers" aria-labelledby="speaker-title">
+                    <a class="gear_photo" href="products/speakers.html" aria-label="Acton IV 제품 상세">
+                        <img src="img/product-acton-iv-1000.webp" srcset="img/product-acton-iv-480.webp 480w, img/product-acton-iv-1000.webp 960w" sizes="(min-width: 768px) 44vw, 92vw" alt="Marshall Acton IV: 상단 조작 노브와 전면 그릴이 보이는 검은색 홈 스피커" width="960" height="960" loading="lazy" decoding="async">
+                    </a>
+                    <div class="gear_item_copy">
+                        <p class="gear_kicker">Speakers / 홈 스피커</p>
+                        <h3 id="speaker-title">Acton IV</h3>
+                        <p class="gear_description">방 안에서 함께 듣는 음악.<br>Bluetooth와 AUX·RCA 입력으로 연결하세요.</p>
+                        <p class="gear_detail">콘센트 전원 · Bluetooth 5.3</p>
+                        <a class="gear_link" href="products/speakers.html">Acton IV 자세히 보기 <span aria-hidden="true">↗</span></a>
                     </div>
                 </article>
-                <article class="culture_card scroll-fade-right">
-                    <picture>
-                        <source type="image/webp" srcset="img/artist02-360.webp 360w, img/artist02-600.webp 600w"
-                            sizes="(min-width: 1024px) 260px, (min-width: 768px) 42vw, calc(100vw - 32px)">
-                        <img src="img/artist02.jpg" alt="공연 현장의 아티스트 이미지" width="600" height="600"
-                            loading="lazy" decoding="async">
-                    </picture>
-                    <div>
-                        <span>02</span>
-                        <h3>First hit</h3>
-                        <p>드럼이 들어오고, 앰프가 밀어붙이고, 객석은 바로 반응합니다.</p>
-                    </div>
-                </article>
-                <article class="culture_card scroll-fade-left">
-                    <picture>
-                        <source type="image/webp" srcset="img/headphones-live-v2-480.webp 480w, img/headphones-live-v2-900.webp 900w"
-                            sizes="(min-width: 1024px) 260px, (min-width: 768px) 42vw, calc(100vw - 32px)">
-                        <img src="img/headphones-live-v2.jpg" alt="공연 후 백스테이지에서 헤드폰으로 음악을 듣는 뮤지션" width="900" height="900"
-                            loading="lazy" decoding="async">
-                    </picture>
-                    <div>
-                        <span>03</span>
-                        <h3>Afterglow</h3>
-                        <p>공연이 끝나도 소리는 남습니다. 귀 안쪽, 티셔츠, 다음 플레이리스트에.</p>
-                    </div>
-                </article>
-                <article class="culture_card scroll-fade-right">
-                    <picture>
-                        <source type="image/webp" srcset="img/artist04-360.webp 360w, img/artist04-600.webp 600w"
-                            sizes="(min-width: 1024px) 260px, (min-width: 768px) 42vw, calc(100vw - 32px)">
-                        <img src="img/artist04.jpg" alt="공연 조명 아래의 아티스트 이미지" width="600" height="600"
-                            loading="lazy" decoding="async">
-                    </picture>
-                    <div>
-                        <span>04</span>
-                        <h3>Backline</h3>
-                        <p>무대 뒤에 쌓인 장비들. 오늘 밤의 볼륨은 거기서부터 시작됩니다.</p>
+                <article class="gear_item" id="product-headphones" aria-labelledby="headphone-title">
+                    <a class="gear_photo" href="products/headphones.html" aria-label="Monitor III A.N.C. 제품 상세">
+                        <img src="img/product-monitor-iii-anc-1000.webp" srcset="img/product-monitor-iii-anc-480.webp 480w, img/product-monitor-iii-anc-1000.webp 1000w" sizes="(min-width: 768px) 44vw, 92vw" alt="Marshall Monitor III A.N.C.: 타원형 이어컵과 패딩 헤드밴드가 보이는 검은색 오버이어 헤드폰" width="1000" height="1000" loading="lazy" decoding="async">
+                    </a>
+                    <div class="gear_item_copy">
+                        <p class="gear_kicker">Headphones / 오버이어 헤드폰</p>
+                        <h3 id="headphone-title">Monitor III A.N.C.</h3>
+                        <p class="gear_description">주변 소음을 줄이고, 음악에 집중하세요.<br>다 듣고 나면 접어서 가방 안으로.</p>
+                        <p class="gear_detail">ANC 사용 시 최대 70시간 · 접이식 구조</p>
+                        <a class="gear_link" href="products/headphones.html">Monitor III 자세히 보기 <span aria-hidden="true">↗</span></a>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section class="social_section editorial_section" id="community" aria-labelledby="community-title">
-            <div class="section_intro scroll-fade-up">
-                <p class="eyebrow">Community</p>
-                <h2 id="community-title">Keep the scene plugged in</h2>
-                <p>
-                    공연장 밖에서도 장면은 이어집니다. 새로운 밴드, 오래된 앰프, 방금 발견한 트랙까지.
-                    소리는 혼자 머물지 않습니다.
-                </p>
-            </div>
-
-            <div class="social_slider_wrap scroll-scale" data-carousel role="region"
-                aria-roledescription="캐러셀" aria-labelledby="community-title">
-                <div class="social_slider" data-carousel-track tabindex="0" role="group"
-                    aria-label="슬라이드 영역: 좌우 방향키로 이동">
-                    <article class="community_slide" data-carousel-slide role="group" aria-roledescription="슬라이드"
-                        aria-label="1 / 3">
-                        <picture>
-                            <source type="image/webp"
-                                srcset="img/social_heritage-480.webp 480w, img/social_heritage-741.webp 741w"
-                                sizes="(min-width: 1024px) 582px, (min-width: 768px) 48vw, calc(100vw - 32px)">
-                            <img src="img/social_heritage.jpg" alt="Marshall 헤리티지 콘텐츠 이미지" width="741"
-                                height="741" loading="lazy" decoding="async">
-                        </picture>
-                        <div class="community_text">
-                            <p class="eyebrow">Archive</p>
-                            <h3>Old amps, new hands</h3>
-                            <p>오래된 장비는 박물관보다 무대에서 더 잘 어울립니다.</p>
-                            <a href="https://www.marshall.com/us/en/backstage/heritage" class="more">헤리티지 보기</a>
-                        </div>
-                    </article>
-
-                    <article class="community_slide" data-carousel-slide role="group" aria-roledescription="슬라이드"
-                        aria-label="2 / 3">
-                        <picture>
-                            <source type="image/webp"
-                                srcset="img/social_story-480.webp 480w, img/social_story-741.webp 741w"
-                                sizes="(min-width: 1024px) 582px, (min-width: 768px) 48vw, calc(100vw - 32px)">
-                            <img src="img/social_story.jpg" alt="Marshall 스토리 콘텐츠 이미지" width="741" height="741"
-                                loading="lazy" decoding="async">
-                        </picture>
-                        <div class="community_text">
-                            <p class="eyebrow">Backstage</p>
-                            <h3>Stories from the wall</h3>
-                            <p>리허설 룸, 투어 밴, 작은 클럽. 소리가 지나간 자리를 따라갑니다.</p>
-                            <a href="https://www.marshall.com/us/en/backstage" class="more">스토리 보기</a>
-                        </div>
-                    </article>
-
-                    <article class="community_slide" data-carousel-slide role="group" aria-roledescription="슬라이드"
-                        aria-label="3 / 3">
-                        <picture>
-                            <source type="image/webp"
-                                srcset="img/social_community-480.webp 480w, img/social_community-741.webp 741w"
-                                sizes="(min-width: 1024px) 582px, (min-width: 768px) 48vw, calc(100vw - 32px)">
-                            <img src="img/social_community.jpg" alt="Marshall 커뮤니티 콘텐츠 이미지" width="741"
-                                height="741" loading="lazy" decoding="async">
-                        </picture>
-                        <div class="community_text">
-                            <p class="eyebrow">Scene</p>
-                            <h3>Turn up together</h3>
-                            <p>좋아하는 소리를 크게 틀어도 되는 사람들. 그게 커뮤니티입니다.</p>
-                            <a href="https://www.marshall.com/us/en/amplify" class="more">Amplify 보기</a>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="carousel_controls" aria-label="커뮤니티 콘텐츠 이동">
-                    <button type="button" class="carousel_button carousel_prev" data-carousel-prev disabled
-                        aria-label="이전 슬라이드">
-                        <span aria-hidden="true">←</span>
-                        <span>Prev</span>
-                    </button>
-                    <p class="carousel_status" aria-live="polite" aria-atomic="true">
-                        <span data-carousel-current>01</span>
-                        <span aria-hidden="true">/</span>
-                        <span class="screen_out">전체</span>
-                        <span data-carousel-total>03</span>
-                    </p>
-                    <button type="button" class="carousel_button carousel_next" data-carousel-next
-                        aria-label="다음 슬라이드">
-                        <span>Next</span>
-                        <span aria-hidden="true">→</span>
-                    </button>
-                </div>
+        <section class="stories_section" id="community" aria-labelledby="community-title">
+            <div class="stories_intro"><p class="gear_kicker">Stories</p><h2 id="community-title">무대 밖의<br>이야기.</h2><p>제작 현장과 작은 공연장,<br>음악을 이어가는 사람들.</p></div>
+            <div class="stories_list">
+                <a class="story_link" href="https://www.marshall.com/us/en/inside-the-factory"><span class="story_category">제작</span><div><h3>앰프가 만들어지는 곳</h3><p>Bletchley 공장의 제작 과정과 사람들.</p></div><span class="story_arrow" aria-hidden="true">↗</span></a>
+                <a class="story_link" id="stage" href="https://www.marshall.com/us/en/amplifiers/small-venues"><span class="story_category">공간</span><div><h3>작은 공연장에 맞는 앰프</h3><p>공간과 밴드 편성에 맞는 출력과 장비 선택.</p></div><span class="story_arrow" aria-hidden="true">↗</span></a>
+                <a class="story_link" href="https://www.marshall.com/us/en/amplify"><span class="story_category">문화</span><div><h3>독립 공연장 지원</h3><p>Marshall Amplify의 공연장 지원 활동.</p></div><span class="story_arrow" aria-hidden="true">↗</span></a>
             </div>
         </section>
     </main>
@@ -452,7 +163,7 @@
                 <div class="footer_logo">
                     <span class="screen_out">Marshall</span>
                 </div>
-                <p class="footer_top_text">live loud, stay plugged in</p>
+                <p class="footer_top_text">Amplifiers. Speakers. Headphones.</p>
             </div>
 
             <div class="footer_bottom">
@@ -503,15 +214,12 @@
                 </div>
             </div>
 
-            <p class="copyright">© 2026 Marshall Group AB. Concept site for study.</p>
+            <p class="copyright">Independent portfolio concept · Not operated by or affiliated with Marshall Group. Marshall is a trademark of its respective owner.</p>
         </div>
     </footer>
 
-    <script src="js/scroll-animations.js"></script>
-    <script src="js/signal-journey.js"></script>
-    <script src="js/gear-finder.js"></script>
-    <script src="js/carousel.js"></script>
     <script src="js/navigation.js"></script>
+    <script src="js/stage-header.js"></script>
     <script src="js/footer.js"></script>
 </body>
 
