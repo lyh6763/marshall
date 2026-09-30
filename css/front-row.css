@@ -27,7 +27,6 @@ body { background: #101112; }
     color: #191b1d;
     scroll-margin-top: 0;
 }
-.anchor_target { position: absolute; top: 0; }
 .gear_intro, .gear_feature, .gear_pair { max-width: 1560px; margin-inline: auto; }
 .gear_intro { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 50px; }
 .gear_kicker {
