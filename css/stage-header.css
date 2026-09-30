@@ -20,7 +20,6 @@
 .stage_header .nav_body a { color: #f6f7f7; }
 .stage_header .nav_body a:hover { color: #cbd5db; }
 .stage_header .nav_body a::after { background: #f6f7f7; }
-.stage_header .nav_body a span { margin-left: 6px; }
 .stage_header :focus-visible,
 .stage_hero :focus-visible { outline: 2px solid #f6f7f7; outline-offset: 6px; }
 
