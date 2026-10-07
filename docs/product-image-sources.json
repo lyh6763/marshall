@@ -1,0 +1,22 @@
+{
+  "checked": "2026-09-29",
+  "scope": "User approved official product photographs for local unpublished design study. This records source and approval scope, not a publication license.",
+  "status": "Removed from the site on 2026-10-07 and replaced by self-drawn SVG illustrations. Kept as a historical record of the earlier local study.",
+  "images": [
+    {
+      "slug": "dsl40-combo",
+      "name": "DSL40 Combo",
+      "url": "https://images.ctfassets.net/javen7msabdh/5byVkooySaaDccaoihMhac/ebc21c10d4244252e1554ee603971311/dsl40c-front-desktop-1.jpeg"
+    },
+    {
+      "slug": "monitor-iii-anc",
+      "name": "Monitor III A.N.C.",
+      "url": "https://images.ctfassets.net/javen7msabdh/7wk3JYIkqXdsKqhlowM5DE/c69e44ec2475bab697a55ffe63312893/monitor-iii-anc-front-hybrid.jpeg"
+    },
+    {
+      "slug": "acton-iv",
+      "name": "Acton IV",
+      "url": "https://images.ctfassets.net/javen7msabdh/4R3VYOza23CxNNdlK4WlPt/0be484bcfc6eaf07e0eead0180d2ccef/Acton-IV-Black-plp.jpg"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <!-- Unbranded combo amplifier illustration; simplified form, not a product photograph. -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#55585a"/>
+      <stop offset="1" stop-color="#323435"/>
+    </radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2b2d"/>
+      <stop offset="1" stop-color="#161718"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c9cdd0"/>
+      <stop offset="1" stop-color="#8d9295"/>
+    </linearGradient>
+    <pattern id="weave" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="#232426"/>
+      <rect width="7" height="14" fill="#2c2d2f"/>
+    </pattern>
+    <radialGradient id="shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#000" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="url(#bg)"/>
+  <ellipse cx="500" cy="792" rx="390" ry="34" fill="url(#shadow)"/>
+  <!-- handle -->
+  <rect x="418" y="222" width="164" height="40" rx="18" fill="#141516"/>
+  <rect x="404" y="246" width="26" height="28" rx="6" fill="#8d9295"/>
+  <rect x="570" y="246" width="26" height="28" rx="6" fill="#8d9295"/>
+  <!-- cabinet -->
+  <rect x="160" y="262" width="680" height="520" rx="28" fill="url(#body)"/>
+  <rect x="172" y="274" width="656" height="496" rx="20" fill="none" stroke="#3a3c3e" stroke-width="3"/>
+  <!-- control panel -->
+  <rect x="196" y="298" width="608" height="96" rx="8" fill="url(#panel)"/>
+  <rect x="196" y="298" width="608" height="8" rx="4" fill="#e3e6e8" opacity=".6"/>
+  <g fill="#151617">
+    <circle cx="246" cy="350" r="15"/><circle cx="296" cy="350" r="15"/><circle cx="346" cy="350" r="15"/>
+    <circle cx="416" cy="350" r="15"/><circle cx="466" cy="350" r="15"/><circle cx="516" cy="350" r="15"/>
+    <circle cx="566" cy="350" r="15"/><circle cx="636" cy="350" r="15"/><circle cx="686" cy="350" r="15"/>
+  </g>
+  <g stroke="#e9ecee" stroke-width="3" stroke-linecap="round">
+    <path d="M246 350l-7-9M296 350l3-11M346 350l9-6M416 350l-9-6M466 350l2-11M516 350l8-8M566 350l-4-10M636 350l10-4M686 350l-6-9"/>
+  </g>
+  <rect x="731" y="336" width="14" height="28" rx="4" fill="#151617"/>
+  <circle cx="772" cy="350" r="10" fill="#e3e6e8" stroke="#151617" stroke-width="4"/>
+  <!-- grille -->
+  <rect x="196" y="414" width="608" height="332" rx="12" fill="url(#weave)"/>
+  <rect x="196" y="414" width="608" height="332" rx="12" fill="none" stroke="#0f1011" stroke-width="6"/>
+  <!-- feet -->
+  <rect x="210" y="780" width="70" height="14" rx="5" fill="#0f1011"/>
+  <rect x="720" y="780" width="70" height="14" rx="5" fill="#0f1011"/>
+</svg>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js');</script>
+    <meta name="description" content="가까운 무대의 열기. Marshall의 앰프, 스피커, 헤드폰을 살펴보는 비공식 디자인 시안.">
+    <meta name="theme-color" content="#101112">
+    <meta name="color-scheme" content="dark">
+    <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Marshall Front Row">
+    <meta property="og:description" content="가까운 무대의 열기와 Marshall 앰프, 스피커, 헤드폰을 만나는 비공식 디자인 시안.">
+    <meta property="og:image" content="https://lyh6763.github.io/marshall/img/front-row-white.webp">
+    <meta property="og:image:alt" content="Marshall Front Row 무대 콘셉트 비주얼">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Marshall Front Row">
+    <meta name="twitter:description" content="가까운 무대의 열기와 Marshall 앰프, 스피커, 헤드폰을 만나는 비공식 디자인 시안.">
+    <meta name="twitter:image" content="https://lyh6763.github.io/marshall/img/front-row-white.webp">
+    <link rel="preload" as="image" href="img/front-row-white-mobile.webp" media="(max-width: 599px)" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="img/front-row-white.webp" media="(min-width: 600px)" type="image/webp" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/marshall.css">
+    <link rel="stylesheet" href="css/front-row.css">
+    <link rel="stylesheet" href="css/stage-header.css">
+    <title>Marshall Front Row</title>
+</head>
+
+<body>
+    <a class="skip_link" href="#main">본문 바로가기</a>
+    <header class="stage_header">
+        <div class="header_center">
+            <a class="brand_logo wordmark" href="#top" aria-label="Marshall Front Row 홈"><span class="wordmark_kicker">Marshall</span><span class="wordmark_name">Front Row</span></a>
+            <button type="button" class="btn" aria-expanded="false" aria-controls="site-nav">
+                <span class="screen_out">메뉴 열기</span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <nav id="site-nav" aria-label="주요 메뉴">
+            <div class="nav_wrap">
+                <div class="nav_header">
+                    <a class="brand_logo wordmark" href="#top" aria-label="Marshall Front Row 홈"><span class="wordmark_kicker">Marshall</span><span class="wordmark_name">Front Row</span></a>
+                    <button type="button" class="close_btn">
+                        <span class="screen_out">메뉴 닫기</span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <div class="nav_body">
+                    <p class="screen_out">메인 내비게이션</p>
+                    <ul>
+                        <li><a href="#product-amplifiers">Amplifiers</a></li>
+                        <li><a href="#product-speakers">Speakers</a></li>
+                        <li><a href="#product-headphones">Headphones</a></li>
+                        <li><a href="#community">Stories</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="stage_hero" id="top" aria-labelledby="hero-title">
+            <picture class="stage_scene">
+                <source media="(max-width: 599px)" srcset="img/front-row-white-mobile.webp" width="640" height="920">
+                <img src="img/front-row-white.webp" alt="작은 클럽의 관객 바로 앞에서 기타를 연주하는 무대 장면" width="1672" height="941" fetchpriority="high" decoding="async">
+            </picture>
+            <div class="stage_shade" aria-hidden="true"></div>
+            <div class="stage_heading">
+                <p class="stage_eyebrow">Live <span aria-hidden="true">/</span> Small club</p>
+                <h1 id="hero-title"><span>Front</span><span>row.</span></h1>
+                <p class="stage_caption">직접 연주하고, 함께 듣고, 혼자 듣는 소리.</p>
+            </div>
+            <div class="stage_bottom">
+                <a class="stage_cta" href="products/amplifiers.html"><span>앰프 살펴보기</span><span aria-hidden="true">→</span></a>
+                <a class="stage_scroll" href="#gear"><span>제품 둘러보기</span><span aria-hidden="true">↓</span></a>
+                <a class="stage_concept" href="case-study.html" aria-label="비공식 포트폴리오 콘셉트 — 제작 이야기">Independent concept</a>
+            </div>
+        </section>
+
+        <section class="gear_section" id="gear" aria-labelledby="gear-title">
+            <div class="gear_intro">
+                <div><p class="gear_kicker">Marshall equipment</p><h2 id="gear-title">The gear.</h2></div>
+                <div class="gear_intro_side">
+                    <p>기타 앰프, 홈 스피커, 오버이어 헤드폰.</p>
+                    <div class="gear_shortcuts" role="navigation" aria-label="제품 바로가기">
+                        <a href="#product-amplifiers">앰프</a>
+                        <a href="#product-speakers">스피커</a>
+                        <a href="#product-headphones">헤드폰</a>
+                    </div>
+                </div>
+            </div>
+
+            <article class="gear_feature" id="product-amplifiers" aria-labelledby="amp-title">
+                <a class="gear_photo gear_photo_amp" href="products/amplifiers.html" aria-label="DSL40 Combo 제품 상세">
+                    <img src="img/illust-combo-amp.svg" alt="DSL40 Combo를 단순화한 일러스트: 상단 조작 패널과 그릴을 갖춘 기타 콤보 앰프" width="1000" height="1000" loading="lazy" decoding="async">
+                </a>
+                <div class="gear_feature_copy">
+                    <p class="gear_kicker">Amplifiers / 기타 앰프</p>
+                    <h3 id="amp-title">DSL40<br>Combo</h3>
+                    <p class="gear_description">클린부터 오버드라이브까지.<br>두 채널과 출력 전환으로 연습실과 작은 공연장에 맞춰 연주하세요.</p>
+                    <dl class="gear_specs"><div><dt>출력 전환</dt><dd>40 / 20<span>W</span></dd></div><div><dt>올밸브</dt><dd>2<span>채널</span></dd></div></dl>
+                    <a class="gear_link gear_link_solid" href="products/amplifiers.html">DSL40 자세히 보기 <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <div class="gear_pair">
+                <article class="gear_item" id="product-speakers" aria-labelledby="speaker-title">
+                    <a class="gear_photo" href="products/speakers.html" aria-label="Acton IV 제품 상세">
+                        <img src="img/illust-home-speaker.svg" alt="Acton IV를 단순화한 일러스트: 상단 조작 노브와 전면 그릴이 있는 홈 스피커" width="1000" height="1000" loading="lazy" decoding="async">
+                    </a>
+                    <div class="gear_item_copy">
+                        <p class="gear_kicker">Speakers / 홈 스피커</p>
+                        <h3 id="speaker-title">Acton IV</h3>
+                        <p class="gear_description">방 안에서 함께 듣는 음악.<br>Bluetooth와 AUX·RCA 입력으로 연결하세요.</p>
+                        <p class="gear_detail">콘센트 전원 · Bluetooth 5.3</p>
+                        <a class="gear_link" href="products/speakers.html">Acton IV 자세히 보기 <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+                <article class="gear_item" id="product-headphones" aria-labelledby="headphone-title">
+                    <a class="gear_photo" href="products/headphones.html" aria-label="Monitor III A.N.C. 제품 상세">
+                        <img src="img/illust-headphones.svg" alt="Monitor III A.N.C.를 단순화한 일러스트: 타원형 이어컵과 헤드밴드가 있는 오버이어 헤드폰" width="1000" height="1000" loading="lazy" decoding="async">
+                    </a>
+                    <div class="gear_item_copy">
+                        <p class="gear_kicker">Headphones / 오버이어 헤드폰</p>
+                        <h3 id="headphone-title">Monitor III A.N.C.</h3>
+                        <p class="gear_description">주변 소음을 줄이고, 음악에 집중하세요.<br>다 듣고 나면 접어서 가방 안으로.</p>
+                        <p class="gear_detail">ANC 사용 시 최대 70시간 · 접이식 구조</p>
+                        <a class="gear_link" href="products/headphones.html">Monitor III 자세히 보기 <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="stories_section" id="community" aria-labelledby="community-title">
+            <div class="stories_intro"><p class="gear_kicker">Stories</p><h2 id="community-title">무대 밖의<br>이야기.</h2><p>제작 현장과 작은 공연장,<br>음악을 이어가는 사람들.</p></div>
+            <div class="stories_list">
+                <a class="story_link" href="https://www.marshall.com/us/en/inside-the-factory"><span class="story_category">제작</span><div><h3>앰프가 만들어지는 곳</h3><p>Bletchley 공장의 제작 과정과 사람들.</p></div><span class="story_arrow" aria-hidden="true">↗</span></a>
+                <a class="story_link" href="https://www.marshall.com/us/en/amplifiers/small-venues"><span class="story_category">공간</span><div><h3>작은 공연장에 맞는 앰프</h3><p>공간과 밴드 편성에 맞는 출력과 장비 선택.</p></div><span class="story_arrow" aria-hidden="true">↗</span></a>
+                <a class="story_link" href="https://www.marshall.com/us/en/amplify"><span class="story_category">문화</span><div><h3>독립 공연장 지원</h3><p>Marshall Amplify의 공연장 지원 활동.</p></div><span class="story_arrow" aria-hidden="true">↗</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer_center">
+            <div class="footer_top">
+                <p class="footer_logo wordmark"><span class="wordmark_kicker">Marshall</span><span class="wordmark_name">Front Row</span></p>
+                <p class="footer_top_text">Amplifiers. Speakers. Headphones.</p>
+            </div>
+
+            <div class="footer_bottom">
+                <details class="footer_section footer_company" open>
+                    <summary class="footer_toggle">
+                        Company
+                        <span class="dropdown_icon" aria-hidden="true"></span>
+                    </summary>
+                    <ul class="company_list" id="footer-company-list">
+                        <li><a href="https://www.marshall.com/us/en/about-marshall">Marshall 소개 <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://group.marshall.com/">Marshall Group <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://careers.marshall.com/">채용 <span aria-hidden="true">↗</span></a></li>
+                    </ul>
+                </details>
+
+                <details class="footer_section footer_customer" open>
+                    <summary class="footer_toggle">
+                        Support
+                        <span class="dropdown_icon" aria-hidden="true"></span>
+                    </summary>
+                    <ul class="customer_list" id="footer-customer-list">
+                        <li><a href="https://www.marshall.com/us/en/support/returns">반품 <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://www.marshall.com/us/en/support/track-order">배송 조회 <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://www.marshall.com/us/en/support/orders">주문 및 결제 <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://www.marshall.com/us/en/support/warranty">보증 및 수리 <span aria-hidden="true">↗</span></a></li>
+                    </ul>
+                </details>
+
+                <details class="footer_section footer_account" open>
+                    <summary class="footer_toggle">
+                        Account &amp; Gear
+                        <span class="dropdown_icon" aria-hidden="true"></span>
+                    </summary>
+                    <ul class="account_list" id="footer-account-list">
+                        <li><a href="https://www.marshall.com/us/en/register-products">제품 등록 <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://www.marshall.com/us/en/amplify">Amplify 멤버십 <span aria-hidden="true">↗</span></a></li>
+                    </ul>
+                </details>
+
+                <div class="footer_official">
+                    <h3>Project</h3>
+                    <a class="official_link" href="case-study.html">
+                        Case Study <span aria-hidden="true">→</span>
+                    </a><br>
+                    <a class="official_link" href="https://www.marshall.com/us/en">
+                        Marshall.com <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
+            </div>
+
+            <p class="copyright">Independent portfolio concept · Not operated by or affiliated with Marshall Group. Marshall is a trademark of its respective owner.</p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/stage-header.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+
+</html>
