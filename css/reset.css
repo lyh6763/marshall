@@ -55,6 +55,9 @@ body {
     font-family: var(--font-body);
     font-size: 1.6rem;
     line-height: 1.5;
+    /* Break Korean text between words, not syllables; only words longer than a line wrap. */
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 img,
@@ -94,10 +97,6 @@ h3,
 strong {
     font-family: var(--font-heading);
     color: var(--color-primary);
-}
-
-p {
-    word-break: keep-all;
 }
 
 :focus-visible {

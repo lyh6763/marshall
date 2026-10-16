@@ -358,6 +358,8 @@
 .case_visual img {
     display: block;
     width: 100%;
+    /* The height attribute would otherwise win over aspect-ratio and stretch the frame. */
+    height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
