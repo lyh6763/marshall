@@ -5,6 +5,7 @@
 ## 2026-10-16
 - 웹폰트 정리: 렌더링을 막던 구글 폰트 CSS와 preconnect를 다섯 페이지에서 제거. 영문 제목용 Anton·Montserrat(가변 500–800)는 라틴 서브셋 woff2 두 개(56KB)를 `fonts/`에 직접 호스팅하고 SIL OFL 라이선스를 함께 둠(`npm run fonts`로 다시 받기). 한글 본문은 Noto Sans KR 대신 시스템 글꼴 스택(`--font-system`) 사용. 쓰지 않던 Montserrat 600·Noto Sans KR 800 요청도 함께 사라짐
 - Lighthouse 모바일(로컬, 3회 중앙값) 홈 67→98, 앰프 상세 68→100, 홈 첫 화면 표시 5.33s→1.68s, 폰트 요청 16개 284KB→2개 56KB. 기록: [PERFORMANCE.md](PERFORMANCE.md). Case Study·README·기획서에 반영
+- 배포 후 라이브 측정(3회 중앙값): 홈 68→100, 앰프 상세 68→99, 홈 첫 화면 표시 5.12s→1.48s. Case Study·README·기획서의 수치를 라이브 기준으로 바꾸고 로컬 비교는 PERFORMANCE.md에 남김
 - `npm test`가 `fonts/`의 쓰지 않는 woff2도 검사
 - 한글 줄바꿈: `word-break: keep-all`을 `p`에서 `body`로 옮겨 상세·Case Study의 제목과 목록도 어절 단위로 줄바꿈
 - Case Study 이미지 그리드: `img`의 height 속성 때문에 `aspect-ratio`가 무시돼 제품 일러스트가 세로로 길게 잘리던 문제 수정(`height: auto`)
