@@ -53,11 +53,24 @@ case-study.html       제작 이야기
 css/                  reset(토큰) · marshall(헤더·메뉴·푸터) · front-row(홈·로고) · stage-header(첫 화면) · detail(상세)
 js/                   navigation(모바일 메뉴) · stage-header(고정 헤더·히어로 모션) · footer(푸터 접기)
 img/                  히어로 이미지, 제품 일러스트, 파비콘
+fonts/                영문 제목용 웹폰트(Anton, Montserrat 라틴 서브셋)와 OFL 라이선스
 scripts/validate.mjs  npm test 검사 스크립트
-docs/                 기획·출처·작업 기록, README 스크린샷
+scripts/fetch-fonts.mjs  npm run fonts — 웹폰트 다시 받기
+docs/                 기획·출처·작업 기록·성능 측정, README 스크린샷
 ```
 
-반응형 WebP, 화면 크기별 히어로 preload, 제품 카드 컨테이너 쿼리를 사용합니다.
+반응형 WebP, 화면 크기별 히어로 preload, 제품 카드 컨테이너 쿼리를 사용합니다. 웹폰트는 영문 제목용 두 파일(56KB)만 직접 호스팅하고, 한글은 기기의 시스템 글꼴을 씁니다.
+
+## 성능
+
+Lighthouse 모바일, 같은 로컬 서버에서 3회 측정한 중앙값입니다. 구글 폰트(한글 본문 글꼴 조각 16개, 284KB)를 걷어 내기 전과 후를 비교했습니다.
+
+| 페이지 | 변경 전 | 변경 후 | 첫 화면 표시(FCP) |
+| --- | ---: | ---: | --- |
+| 홈 | 67 | 98 | 5.33s → 1.68s |
+| 앰프 상세 | 68 | 100 | 5.01s → 1.54s |
+
+측정 조건과 원본 수치: [docs/PERFORMANCE.md](docs/PERFORMANCE.md)
 
 ## 실행과 검사
 
@@ -80,12 +93,12 @@ npm test
 - 로컬 링크·앵커·이미지·`srcset` 경로가 실제로 있는지
 - 모든 `img`에 `alt`, `width`, `height`가 있는지
 - CSS 중괄호 짝과 JS 문법
-- 어떤 페이지나 CSS에서도 쓰지 않는 css·js·img 파일이 없는지
+- 어떤 페이지나 CSS에서도 쓰지 않는 css·js·img 파일과 웹폰트(woff2)가 없는지
 
 ## 확인 범위와 한계
 
 - `npm test`, 320~1920px 화면, 모바일 키보드 메뉴, 모션 감소, JavaScript 비활성 경로를 확인했습니다.
-- 실제 사용자 테스트와 배포 후 Core Web Vitals 실측은 하지 않았습니다.
+- 성능 수치는 Lighthouse 실험실 측정입니다. 웹폰트 정리 후의 라이브 사이트 측정은 배포 뒤에 하고, 실제 사용자 테스트와 실사용 환경의 Core Web Vitals는 수집하지 않았습니다.
 - 제품 사양은 각 상세 페이지에 공식 출처와 확인일(2026-09-29)을 함께 적었습니다. 이후 바뀌었을 수 있습니다.
 
 ## 문서
@@ -94,7 +107,7 @@ npm test
 - [포트폴리오 요약](docs/PORTFOLIO.md)
 - [콘텐츠 출처](docs/CONTENT_SOURCES.md)
 - [제작 기록](docs/REFRESH_STUDY.md) · [헤더 시안 기록](docs/HEADER_STUDY.md)
-- [변경 기록](docs/CHANGELOG.md) · [작업 로그](docs/WORKLOG.md)
+- [변경 기록](docs/CHANGELOG.md) · [작업 로그](docs/WORKLOG.md) · [성능 측정](docs/PERFORMANCE.md)
 
 ## 고지
 

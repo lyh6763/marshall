@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "npm run validate",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "fonts": "node scripts/fetch-fonts.mjs"
   }
 }

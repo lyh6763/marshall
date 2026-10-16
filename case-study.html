@@ -7,9 +7,6 @@
     <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/detail.css">
     <link rel="stylesheet" href="css/front-row.css">
@@ -47,10 +44,16 @@
             </div>
             <p class="detail_source">제품 일러스트는 직접 그린 SVG이며 실제 제품과 세부가 다릅니다. 제품 사양은 각 상세 페이지에 공식 출처와 확인일을 함께 적었습니다.</p>
         </section>
+        <section class="detail_section" aria-labelledby="case-performance">
+            <div class="detail_section_header"><p class="eyebrow">Performance</p><h2 id="case-performance">첫 화면을 막던 웹폰트</h2><p>Lighthouse 모바일 측정에서 성능이 68점, 첫 화면 표시가 5초대였습니다. 스크립트 차단 시간은 0ms였고, 원인은 웹폰트였습니다. 다른 도메인에서 렌더링을 막는 구글 폰트 CSS를 받은 뒤, 한글 본문 글꼴 Noto Sans KR을 유니코드 조각 단위로 페이지마다 16개, 약 280KB 내려받고 있었습니다.</p></div>
+            <ol class="case_list"><li>한글은 기기의 시스템 글꼴(맑은 고딕, Apple SD Gothic Neo)로 바꿨습니다. 한글 제목은 Montserrat에 한글 글자가 없어 이미 시스템 글꼴로 표시되고 있었으므로, 제목과 본문의 한글 글꼴이 하나로 맞춰졌습니다.</li><li>영문 제목용 Anton과 Montserrat는 라틴 문자 범위만 담은 파일 두 개(56KB)를 직접 호스팅합니다. Montserrat는 쓰는 굵기 500·700·800을 가변 폰트 하나로 받습니다.</li><li>외부 도메인 연결이 사라져 preconnect와 렌더링 차단 폰트 CSS를 함께 걷어 냈습니다.</li></ol>
+            <dl class="spec_grid"><div><dt>성능 점수 · 홈 / 앰프 상세</dt><dd>67 → 98 / 68 → 100</dd></div><div><dt>첫 화면 표시(FCP) · 홈</dt><dd>5.33초 → 1.68초</dd></div><div><dt>가장 큰 요소 표시(LCP) · 홈</dt><dd>5.42초 → 2.19초</dd></div><div><dt>폰트 요청 · 홈</dt><dd>16개 284KB → 2개 56KB</dd></div></dl>
+            <p class="detail_source">로컬 정적 서버에서 Lighthouse 13.5 모바일 기본 설정으로 페이지당 3회 잰 중앙값입니다(2026-10-16). 변경 전 라이브 사이트도 홈·앰프 상세 모두 68점이었습니다(2026-10-15). 레이아웃 이동(CLS)은 전후 모두 0.001 이하입니다. 측정 조건과 원본 수치는 <a href="https://github.com/lyh6763/marshall/blob/main/docs/PERFORMANCE.md">성능 측정 기록 <span aria-hidden="true">↗</span></a>에 있습니다.</p>
+        </section>
         <section class="detail_section" aria-labelledby="case-accessibility">
             <div class="detail_section_header"><p class="eyebrow">Verification</p><h2 id="case-accessibility">현재 확인한 동작</h2><p>Edge에서 390·768·1440·1920px 홈 화면과 390·1440px 상세 페이지를 확인했습니다. 홈 화면의 이미지 누락, 가로 넘침, 페이지 스크립트 오류는 없었습니다.</p></div>
-            <ol class="case_list"><li>모바일 메뉴의 Enter 열기, Tab 순환, Escape 닫기와 포커스 복귀</li><li>앰프 앵커의 고정 헤더 간격과 세 제품 상세·목록 복귀 경로</li><li>모션 감소에서 히어로 이동 제거</li><li>JavaScript 비활성 상태에서 메뉴와 제품 상세 이동</li><li>모바일과 데스크톱에서 해당 히어로 이미지 한 개만 요청</li></ol>
-            <p class="detail_source">npm test 통과. 실제 사용자 테스트와 배포 후 Core Web Vitals 실측은 아직 수행하지 않았습니다.</p>
+            <ol class="case_list"><li>모바일 메뉴의 Enter 열기, Tab 순환, Escape 닫기와 포커스 복귀</li><li>앰프 앵커의 고정 헤더 간격과 세 제품 상세·목록 복귀 경로</li><li>모션 감소에서 히어로 이동 제거</li><li>JavaScript 비활성 상태에서 메뉴와 제품 상세 이동</li><li>모바일과 데스크톱에서 해당 히어로 이미지 한 개만 요청</li><li>320~1440px에서 한글 단어가 음절 중간에서 끊기지 않음</li></ol>
+            <p class="detail_source">npm test 통과. 성능 수치는 위 Performance 항목의 실험실 측정이며, 실제 사용자 테스트와 실사용 환경의 Core Web Vitals는 아직 수집하지 않았습니다.</p>
             <div class="detail_actions"><a class="detail_action detail_action_primary" href="index.html">시안 보기</a><a class="detail_action" href="index.html#gear">제품 영역 보기</a></div>
         </section>
     </main>

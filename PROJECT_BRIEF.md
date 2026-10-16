@@ -29,8 +29,8 @@ Play / Listen / Discover 선택 카드, Signal Journey, 추천 질문, 비교표
 
 ## 기술과 검증
 
-정적 HTML·CSS·Vanilla JS와 기존 상세 URL을 유지한다. 제품 카드 컨테이너 쿼리, 반응형 WebP, 화면 크기에 맞는 히어로 preload, 키보드 메뉴, 모션 감소 설정을 지원한다. 어떤 페이지나 스타일에서도 쓰지 않는 CSS·JS·이미지가 있으면 `npm test`가 실패한다.
+정적 HTML·CSS·Vanilla JS와 기존 상세 URL을 유지한다. 제품 카드 컨테이너 쿼리, 반응형 WebP, 화면 크기에 맞는 히어로 preload, 키보드 메뉴, 모션 감소 설정을 지원한다. 웹폰트는 영문 제목용 Anton·Montserrat 라틴 서브셋만 직접 호스팅하고 한글은 시스템 글꼴을 쓴다. 어떤 페이지나 스타일에서도 쓰지 않는 CSS·JS·이미지·웹폰트가 있으면 `npm test`가 실패한다.
 
-검증: npm test, 390 / 768 / 1440 / 1920px 홈, 390 / 1440px 상세, 이미지·가로 넘침·스크립트 오류·주요 이동·모바일 키보드 메뉴·JavaScript 비활성 경로. 배포 후 Core Web Vitals는 미측정이며 개선 수치를 주장하지 않는다.
+검증: npm test, 390 / 768 / 1440 / 1920px 홈, 390 / 1440px 상세, 이미지·가로 넘침·스크립트 오류·주요 이동·모바일 키보드 메뉴·JavaScript 비활성 경로. 성능은 Lighthouse 모바일 실험실 측정으로 웹폰트 정리 전후(홈 67→98, 앰프 상세 68→100, 로컬 3회 중앙값)를 [PERFORMANCE.md](docs/PERFORMANCE.md)에 기록했다. 정리 후 라이브 수치와 실사용 Core Web Vitals는 아직 없다.
 
 현재 제작·검증 기록: [REFRESH_STUDY.md](docs/REFRESH_STUDY.md).

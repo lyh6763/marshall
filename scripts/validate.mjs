@@ -112,10 +112,11 @@ for (const file of cssFiles) {
   }
 }
 
-// Every shipped stylesheet, script and image must be used by a page or stylesheet.
+// Every shipped stylesheet, script, image and web font must be used by a page or stylesheet.
 for (const file of files) {
   const folder = relative(root, file).split(/[\\/]/)[0];
-  if (['css', 'js', 'img'].includes(folder) && !referencedAssets.has(file)) report(file, 'unused asset (not referenced by any HTML or CSS)');
+  const shipped = ['css', 'js', 'img'].includes(folder) || (folder === 'fonts' && extname(file) === '.woff2');
+  if (shipped && !referencedAssets.has(file)) report(file, 'unused asset (not referenced by any HTML or CSS)');
 }
 
 for (const file of jsFiles) {
