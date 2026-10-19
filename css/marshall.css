@@ -379,7 +379,7 @@ html:not(.js) .nav_body a {
 
     .footer_bottom {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 42px;
         margin-top: 64px;
         padding-top: 48px;
