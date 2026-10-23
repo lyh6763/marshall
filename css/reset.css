@@ -20,19 +20,22 @@
 
 /* Neutral surfaces let stage light and the real hardware supply the colour. */
 :root {
-    --color-primary: #f5f5f3;
-    --color-accent: #fff;
-    --color-accent-text: #c6d6df;
-    --color-signal: #f5f5f3;
-    --color-brass: #d7d9d9;
-    --color-paper: #c7c9ca;
+    /* dark stage */
+    --color-primary: #f6f7f7;
     --color-bg: #101112;
     --color-bg-soft: #1c1e20;
-    --color-bg-footer: #101112;
     --color-text: #e8e9ea;
+    --color-text-soft: #d7d9d9;
     --color-text-muted: #b4b8ba;
+    --color-accent-text: #c6d6df;
     --color-border: rgba(255, 255, 255, 0.2);
+    --color-illust-bg: #414243;
+
+    /* light gear surfaces */
     --color-white: #fff;
+    --color-surface-light: #f1f2f2;
+    --color-ink: #17191b;
+    --color-ink-muted: #55595c;
 
     --font-system: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', 'Noto Sans KR', system-ui, sans-serif;
     --font-heading: 'Montserrat', var(--font-system);
@@ -146,7 +149,7 @@ strong {
     z-index: 1000;
     padding: 10px 18px;
     border-radius: 6px;
-    background: var(--color-accent);
+    background: var(--color-white);
     color: var(--color-bg);
     font-family: var(--font-body);
     font-weight: 700;

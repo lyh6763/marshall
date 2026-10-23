@@ -11,13 +11,13 @@
     margin: 0 4.2vw;
     border-bottom: 1px solid rgba(245, 247, 248, .28);
 }
-.stage_header.is-fixed { background: #101112; }
+.stage_header.is-fixed { background: var(--color-bg); }
 .stage_header.is-fixed .header_center { height: 72px; border-color: transparent; }
-.stage_header .nav_body a { color: #f6f7f7; }
+.stage_header .nav_body a { color: var(--color-primary); }
 .stage_header .nav_body a:hover { color: #cbd5db; }
-.stage_header .nav_body a::after { background: #f6f7f7; }
+.stage_header .nav_body a::after { background: var(--color-primary); }
 .stage_header :focus-visible,
-.stage_hero :focus-visible { outline: 2px solid #f6f7f7; outline-offset: 6px; }
+.stage_hero :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 6px; }
 
 .stage_hero {
     --stage-pan: 0px;
@@ -27,8 +27,8 @@
     min-height: 760px;
     min-height: max(720px, 100svh);
     overflow: hidden;
-    background: #101112;
-    color: #f6f7f7;
+    background: var(--color-bg);
+    color: var(--color-primary);
 }
 .stage_scene,
 .stage_scene img,
@@ -59,7 +59,7 @@
 }
 .stage_eyebrow span { padding-inline: 13px; color: #b4c3cc; }
 .stage_heading h1 {
-    color: #f6f7f7;
+    color: var(--color-primary);
     font-family: var(--font-display);
     font-size: clamp(14rem, 15.8vw, 29rem);
     font-weight: 400;
@@ -72,7 +72,7 @@
 .stage_caption {
     margin-top: 28px;
     margin-left: 6vw;
-    color: #f6f7f7;
+    color: var(--color-primary);
     font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: -.025em;
@@ -97,8 +97,8 @@
     justify-self: start;
     min-height: 52px;
     padding: 0 22px;
-    background: #f6f7f7;
-    color: #151719;
+    background: var(--color-primary);
+    color: var(--color-ink);
     font-size: 1.5rem;
     font-weight: 700;
     transition: background .2s ease, gap .2s ease;
@@ -134,10 +134,10 @@
 @media (max-width: 1023px) {
     .stage_header .header_center { height: 80px; }
     .stage_header .nav_wrap { width: 88%; }
-    .stage_header nav { background: #101214; }
+    .stage_header nav { background: var(--color-bg); }
     .stage_header .nav_body { margin-top: 12vh; }
     .stage_header .nav_body a { font-family: var(--font-display); font-weight: 400; letter-spacing: -.02em; }
-    .stage_header .btn span:not(.screen_out) { width: 26px; background: #f6f7f7; }
+    .stage_header .btn span:not(.screen_out) { width: 26px; background: var(--color-primary); }
     .stage_heading { padding-top: 24svh; }
     .stage_heading h1 { font-size: clamp(12rem, 19vw, 20rem); }
 }
@@ -148,7 +148,7 @@
     .stage_hero { min-height: max(540px, 100svh); }
     .stage_scene img { object-position: center 35%; }
     .stage_shade {
-        background: linear-gradient(180deg, rgba(8,10,12,.65), transparent 24%, rgba(8,10,12,.1) 43%, rgba(8,10,12,.87) 79%, #101112),
+        background: linear-gradient(180deg, rgba(8,10,12,.65), transparent 24%, rgba(8,10,12,.1) 43%, rgba(8,10,12,.87) 79%, var(--color-bg)),
             linear-gradient(90deg, rgba(8,10,12,.15), transparent);
     }
     .stage_heading {
@@ -183,7 +183,7 @@
 }
 /* The mobile menu remains a real navigation surface without scripting. */
 @media (max-width: 1023px) {
-    html:not(.js) .stage_header { position: relative; background: #101214; }
+    html:not(.js) .stage_header { position: relative; background: var(--color-bg); }
     html:not(.js) .stage_header .btn,
     html:not(.js) .stage_header .nav_header { display: none; }
     html:not(.js) .stage_header nav { position: static; display: block; opacity: 1; visibility: visible; pointer-events: auto; }

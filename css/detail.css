@@ -16,7 +16,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: var(--color-paper);
+    color: var(--color-text-soft);
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-weight: 800;
@@ -37,7 +37,7 @@
 }
 
 .eyebrow {
-    color: var(--color-signal);
+    color: var(--color-primary);
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 700;
@@ -80,7 +80,7 @@
 .detail_product {
     min-width: 0;
     margin: 0;
-    background: #414243;
+    background: var(--color-illust-bg);
 }
 
 .detail_product img {
@@ -103,7 +103,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    border: 1px solid var(--color-brass);
+    border: 1px solid var(--color-text-soft);
     padding: 0 20px;
     color: var(--color-primary);
     font-family: var(--font-heading);
@@ -116,13 +116,13 @@
 .detail_action_primary {
     border-color: var(--color-primary);
     background: var(--color-primary);
-    color: #151719;
+    color: var(--color-ink);
 }
 
 .detail_action:hover {
     border-color: #d6dcdf;
     background: #d6dcdf;
-    color: #151719;
+    color: var(--color-ink);
 }
 
 /* sections */
@@ -163,7 +163,7 @@
 .detail_related a {
     border: 1px solid var(--color-border);
     padding: 22px;
-    background: rgba(241, 232, 215, 0.025);
+    background: rgba(255, 255, 255, 0.025);
 }
 
 .detail_related a:hover {
@@ -171,7 +171,7 @@
 }
 
 .detail_attribute span {
-    color: var(--color-brass);
+    color: var(--color-text-soft);
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 800;
@@ -198,13 +198,13 @@
 .detail_light {
     margin-inline: -6vw;
     padding-inline: 6vw;
-    color: #191b1d;
-    background: #f1f2f2;
+    color: var(--color-ink);
+    background: var(--color-surface-light);
 }
 
 .detail_light h2,
 .detail_light strong {
-    color: #191b1d;
+    color: var(--color-ink);
 }
 
 .detail_light .eyebrow,
@@ -214,12 +214,12 @@
 
 .detail_light .detail_section_header > p:last-child,
 .detail_light .detail_attribute p {
-    color: #555d62;
+    color: var(--color-ink-muted);
 }
 
 .detail_light .detail_attribute {
     border-color: #cfd3d6;
-    background: #fff;
+    background: var(--color-white);
 }
 
 /* specs and sources */
@@ -232,7 +232,7 @@
 .spec_grid > div {
     border: 1px solid var(--color-border);
     padding: 22px;
-    background: #1a1d1f;
+    background: var(--color-bg-soft);
 }
 
 .spec_grid dt {
@@ -246,7 +246,7 @@
 
 .spec_grid dd {
     margin-top: 12px;
-    color: #f5f5f3;
+    color: var(--color-primary);
     font-family: var(--font-heading);
     font-size: clamp(1.7rem, 2vw, 2.3rem);
     font-weight: 700;
@@ -305,12 +305,12 @@
 .case_metric {
     border: 1px solid var(--color-border);
     padding: 22px;
-    background: rgba(241, 232, 215, 0.025);
+    background: rgba(255, 255, 255, 0.025);
 }
 
 .case_metric strong {
     display: block;
-    color: var(--color-brass);
+    color: var(--color-text-soft);
     font-family: var(--font-display);
     font-size: 4.8rem;
     line-height: 1;
@@ -340,7 +340,7 @@
     left: 0;
     width: 8px;
     height: 2px;
-    background: var(--color-brass);
+    background: var(--color-text-soft);
 }
 
 .case_visual_grid {
@@ -371,7 +371,7 @@
 .case_visual figcaption {
     border-top: 1px solid var(--color-border);
     padding: 14px 16px;
-    color: var(--color-brass);
+    color: var(--color-text-soft);
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 800;
