@@ -194,10 +194,10 @@
     line-height: 1.65;
 }
 
-/* Light band for the "best fit" section */
+/* Light band for the "best fit" section: full bleed at every width, content kept on the main column. */
 .detail_light {
-    margin-inline: -6vw;
-    padding-inline: 6vw;
+    margin-inline: calc(50% - 50vw);
+    padding-inline: calc(50vw - 50%);
     color: var(--color-ink);
     background: var(--color-surface-light);
 }
