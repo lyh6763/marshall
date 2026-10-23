@@ -41,6 +41,7 @@ Marshall의 무대 에너지를 재해석한 **비공식** 포트폴리오 디�
 - 본문·링크·메뉴 14px 이상, 라벨 12~13px 이상
 - 외부 링크는 ↗로 표시하고, 장식용 화살표는 화면 낭독기에서 숨김
 - 작은 휴대폰(320×568)에서도 첫 화면에 CTA 버튼 노출
+- 한국형 웹 콘텐츠 접근성 지침 2.2(KWCAG 2.2) 33개 검사항목 점검 결과와 고친 내용: [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)
 
 ## 기술
 
@@ -108,6 +109,7 @@ npm test
 - [콘텐츠 출처](docs/CONTENT_SOURCES.md)
 - [제작 기록](docs/REFRESH_STUDY.md) · [헤더 시안 기록](docs/HEADER_STUDY.md)
 - [변경 기록](docs/CHANGELOG.md) · [작업 로그](docs/WORKLOG.md) · [성능 측정](docs/PERFORMANCE.md)
+- [접근성 점검(KWCAG 2.2)](docs/ACCESSIBILITY.md)
 
 ## 고지
 

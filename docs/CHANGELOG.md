@@ -2,6 +2,15 @@
 
 프로젝트의 주요 변경 사항을 기록합니다.
 
+## 2026-10-23
+- 색 토큰 정리: 붉은·크림 테마 때 이름인 `--color-brass`·`--color-paper`·`--color-signal`과 같은 값을 겹쳐 둔 `--color-accent`·`--color-bg-footer`를 없애고 역할 이름(`--color-text-soft`, `--color-illust-bg`, `--color-surface-light`, `--color-ink`, `--color-ink-muted`)으로 바꿈. 거의 같은 흰색(#f5f5f3·#f6f7f7)은 #f6f7f7로, 짙은 글자색 4가지는 #17191b로 합치고, 반복되던 밝은 바탕색을 토큰으로 씀. 한 번만 쓰는 회색은 그대로 둠. 상세 페이지 제품 목록 링크 글자는 #c7c9ca에서 #d7d9d9로 조금 밝아짐
+- 상세 페이지·Case Study 카드에 남아 있던 크림색 바탕(`rgba(241, 232, 215, .025)`)을 중성 흰색으로 바꿈
+- 상세 페이지 "Best fit" 밝은 띠: 모바일 열 폭(88vw)에만 맞던 `-6vw` 여백 때문에 약 1340px부터 띠가 화면 끝에 닿지 않던 문제 수정. 가운데 기준으로 화면 끝까지 넓히고 내용은 본문 폭에 맞춤. 넓은 화면에서는 띠가 스크롤바 폭의 절반(Windows에서 7.5px)씩 문서 밖으로 나가며 `body`의 `overflow-x: hidden`이 잘라 냄
+- 홈 DSL40 사양의 항목 이름 "올밸브"가 값 "2채널"과 맞지 않아 "채널 구성"으로 바꾸고, 올밸브는 설명 문장으로 옮김
+- 로고 워드마크의 두 `span` 사이에 공백을 넣어 보이는 글자를 "Marshall Front Row"로 맞춤(다섯 페이지). Case Study 구현 범위 묶음에 `role="group"` 추가. [접근성 점검](ACCESSIBILITY.md)의 개선 권장 두 항목을 반영한 것으로, axe 재검사는 하지 않아 미확인
+- 상세 페이지 3종과 Case Study에 공유 메타(`og:*`, `twitter:card`)와 `theme-color`·`color-scheme` 추가. 공유 이미지는 홈과 같은 히어로 WebP
+- 확인: 각 커밋 상태에서 `npm test` 통과. 앱 내장 브라우저로 상세 페이지 밝은 띠(390·1440·1920px), 홈 색 계산값, 홈·메뉴·푸터·상세의 로고 모양을 확인했고 콘솔 오류 없음
+
 ## 2026-10-16
 - 웹폰트 정리: 렌더링을 막던 구글 폰트 CSS와 preconnect를 다섯 페이지에서 제거. 영문 제목용 Anton·Montserrat(가변 500–800)는 라틴 서브셋 woff2 두 개(56KB)를 `fonts/`에 직접 호스팅하고 SIL OFL 라이선스를 함께 둠(`npm run fonts`로 다시 받기). 한글 본문은 Noto Sans KR 대신 시스템 글꼴 스택(`--font-system`) 사용. 쓰지 않던 Montserrat 600·Noto Sans KR 800 요청도 함께 사라짐
 - Lighthouse 모바일(로컬, 3회 중앙값) 홈 67→98, 앰프 상세 68→100, 홈 첫 화면 표시 5.33s→1.68s, 폰트 요청 16개 284KB→2개 56KB. 기록: [PERFORMANCE.md](PERFORMANCE.md). Case Study·README·기획서에 반영
