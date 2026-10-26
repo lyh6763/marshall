@@ -2,6 +2,8 @@
 
 Marshall의 무대 에너지를 재해석한 **비공식** 포트폴리오 디자인 시안입니다. Marshall Group이 운영하거나 제휴한 사이트가 아닙니다.
 
+AI 코딩 도구 Claude Code와 함께 만들었습니다. 방향(Live Signal Lab에서 Front Row로 다시 정리, 붉은 조명·크림색에서 중성색으로)과 이용허락이 없는 공식 사진·로고를 지우고 직접 만든 이미지로 바꾸는 결정은 직접 했고, 화면을 직접 보며 깨짐·어색한 디자인·문구를 찾아 고치게 했습니다. 코드 구현과 측정은 Claude Code가 했습니다. 웹폰트 정리(성능 68 → 100)는 검토 보고서의 제안을 보고 고치기로 정한 뒤, 전후 수치를 확인하고 반영했습니다.
+
 **사이트** https://lyh6763.github.io/marshall/ · **제작 이야기** [Case Study](https://lyh6763.github.io/marshall/case-study.html)
 
 ![첫 화면: 작은 클럽 공연을 맨 앞줄에서 보는 장면 위에 FRONT ROW 타이포와 앰프 살펴보기 버튼](docs/screenshots/home-desktop.png)
