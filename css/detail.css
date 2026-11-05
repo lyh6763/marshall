@@ -20,8 +20,6 @@
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
 }
 
 .detail_main {
@@ -41,8 +39,17 @@
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 700;
-    letter-spacing: 0.11em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+}
+
+/* Labels in sections and on the case study are Korean, so they skip the caps treatment. */
+.detail_section .eyebrow,
+.case_hero .eyebrow {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    letter-spacing: 0;
 }
 
 /* hero */
@@ -109,8 +116,6 @@
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
 }
 
 .detail_action_primary {
@@ -136,14 +141,17 @@
 }
 
 .detail_section h2 {
-    margin-top: 8px;
-    font-size: clamp(3.8rem, 10vw, 7.2rem);
-    line-height: 0.96;
-    text-transform: uppercase;
+    font-size: var(--size-section-title);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.detail_section .eyebrow + h2 {
+    margin-top: 12px;
 }
 
 .detail_section_header > p:last-child {
-    margin-top: 20px;
+    margin-top: 14px;
     color: var(--color-text-muted);
     line-height: 1.75;
 }
@@ -175,15 +183,21 @@
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
 }
 
-.detail_attribute strong,
-.detail_related strong {
+.detail_attribute strong {
     display: block;
     margin-top: 8px;
     font-size: 2rem;
+}
+
+.detail_related strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
     text-transform: uppercase;
 }
 
@@ -207,7 +221,6 @@
     color: var(--color-ink);
 }
 
-.detail_light .eyebrow,
 .detail_light .detail_attribute span {
     color: #4e5960;
 }
@@ -240,8 +253,6 @@
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 800;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
 }
 
 .spec_grid dd {
@@ -282,9 +293,11 @@
 .case_hero h1 {
     max-width: 980px;
     margin-top: 12px;
+    font-family: var(--font-display);
     font-size: clamp(5rem, 13vw, 11rem);
-    line-height: 0.88;
-    letter-spacing: -0.055em;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.025em;
     text-transform: uppercase;
 }
 
@@ -375,8 +388,6 @@
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
 }
 
 @media screen and (min-width: 768px) {

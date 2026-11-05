@@ -37,7 +37,7 @@
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 700;
-    letter-spacing: .11em;
+    letter-spacing: .1em;
     text-transform: uppercase;
 }
 .gear_intro h2 {
@@ -52,9 +52,6 @@
 }
 .gear_intro_side { padding-bottom: 3px; }
 .gear_intro_side > p { color: var(--color-ink-muted); font-size: 1.4rem; }
-.gear_shortcuts { display: flex; flex-wrap: wrap; gap: 6px 24px; margin-top: 16px; }
-.gear_shortcuts a { display: inline-flex; align-items: center; min-height: 44px; font-size: 1.4rem; font-weight: 700; border-bottom: 1px solid #6f7477; }
-.gear_shortcuts a:hover { border-bottom-color: var(--color-ink); }
 .gear_feature { display: grid; grid-template-columns: 1.14fr 1fr; align-items: stretch; background: var(--color-white); }
 .gear_feature, .gear_item { scroll-margin-top: 14px; }
 .gear_photo { display: block; overflow: hidden; background: var(--color-illust-bg); }
@@ -89,13 +86,13 @@
 .gear_item .gear_photo { aspect-ratio: 1.28; }
 .gear_item .gear_photo img { object-position: center 65%; }
 .gear_item_copy { display: flex; flex-direction: column; align-items: flex-start; flex: 1; padding: 34px 38px 26px; }
-.gear_item h3 { margin-top: 18px; color: var(--color-ink); font-family: var(--font-heading); font-size: clamp(2.7rem, 3vw, 4.6rem); line-height: 1.12; font-weight: 800; letter-spacing: -.055em; }
+.gear_item h3 { margin-top: 18px; color: var(--color-ink); font-family: var(--font-display); font-size: clamp(3.6rem, 3.6vw, 5.6rem); line-height: 1.05; font-weight: 400; letter-spacing: -.025em; text-transform: uppercase; }
 .gear_item .gear_description { max-width: none; margin-top: 18px; }
 .gear_detail { margin-top: 20px; color: #6b7073; font-size: 1.4rem; }
 .gear_item .gear_link { width: 100%; margin-top: auto; padding-top: 20px; }
 @container (min-width: 600px) { .gear_item_copy { padding: 42px 50px 30px; } }
 .stories_section { max-width: 1800px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 9vw; margin-inline: auto; padding: 104px 4.2vw 116px; scroll-margin-top: 0; }
-.stories_intro h2 { margin-top: 22px; font-size: clamp(3.8rem,4.1vw,6.6rem); line-height: 1.15; letter-spacing: -.055em; }
+.stories_intro h2 { margin-top: 18px; font-size: var(--size-section-title); line-height: 1.2; letter-spacing: -.02em; }
 .stories_intro > p:last-child { margin-top: 26px; color: var(--color-text-muted); font-size: 1.4rem; line-height: 1.85; }
 .stories_list { border-top: 1px solid #686c6e; }
 .story_link { display: grid; grid-template-columns: 36px 1fr 30px; align-items: start; gap: 18px; padding: 30px 0; border-bottom: 1px solid #3d4144; }
@@ -106,7 +103,7 @@
 .story_link:hover h3 { text-decoration: underline; text-underline-offset: 7px; }
 .story_link:hover .story_arrow { transform: translate(2px,-2px); }
 footer { border-top: 1px solid #363a3d; }
-.footer_top_text { font-size: 1.3rem; letter-spacing: .08em; }
+.footer_top_text { font-size: 1.3rem; letter-spacing: .1em; }
 .copyright { font-size: 1.2rem; }
 
 @media (max-width: 899px) {
@@ -130,20 +127,18 @@ footer { border-top: 1px solid #363a3d; }
     .gear_intro { margin-bottom: 28px; }
     .gear_intro h2 { font-size: 7.4rem; margin-top: 14px; }
     .gear_intro_side > p { font-size: 1.4rem; }
-    .gear_shortcuts { margin-top: 10px; gap: 22px; }
     .gear_feature_copy { padding: 28px 24px; }
     .gear_feature h3 { font-size: clamp(5.2rem, 12vw, 7rem); margin-top: 20px; }
     .gear_feature h3 br { display: block; }
     .gear_description { font-size: 1.45rem; margin-top: 20px; }
     .gear_specs { margin: 24px 0; gap: 32px; }
     .gear_pair { grid-template-columns: 1fr; gap: 22px; margin-top: 22px; }
-    .gear_item h3 { font-size: clamp(2.7rem, 7vw, 4rem); }
+    .gear_item h3 { font-size: clamp(3.4rem, 9vw, 4.4rem); }
     .gear_item .gear_photo { aspect-ratio: 1.15; }
     .gear_item_copy { padding: 28px 24px 22px; }
     .gear_detail { font-size: 1.3rem; }
     .gear_link { font-size: 1.4rem; gap: 20px; }
     .stories_section { grid-template-columns: 1fr; padding: 62px 22px 70px; gap: 36px; }
-    .stories_intro h2 { font-size: 4.6rem; }
     .stories_intro > p:last-child { margin-top: 18px; }
     .story_link { padding: 24px 0; }
 }

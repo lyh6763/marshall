@@ -42,6 +42,9 @@
     --font-body: var(--font-system);
     --font-display: 'Anton', sans-serif;
 
+    /* Korean section titles: the system font has no condensed cut, so they stay smaller than Anton titles. */
+    --size-section-title: clamp(3.2rem, 4vw, 4.4rem);
+
     --container-mobile: min(88vw, 560px);
     --container-tablet: min(88vw, 900px);
     --container-desktop: min(90vw, 1180px);

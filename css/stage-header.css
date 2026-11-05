@@ -60,7 +60,7 @@
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 700;
-    letter-spacing: .19em;
+    letter-spacing: .1em;
     text-transform: uppercase;
 }
 .stage_eyebrow span { padding-inline: 13px; color: #b4c3cc; }
@@ -135,7 +135,7 @@
     .stage_header nav { right: 4.2vw; height: 92px; }
     .stage_header.is-fixed nav { height: 72px; }
     .stage_header .nav_body ul { gap: clamp(24px, 3vw, 56px); }
-    .stage_header .nav_body a { font-size: 1.4rem; letter-spacing: .06em; }
+    .stage_header .nav_body a { font-size: 1.4rem; letter-spacing: .1em; }
     .stage_header .nav_body li:last-child { margin-left: 36px; }
 }
 @media (max-width: 1023px) {
@@ -164,7 +164,7 @@
         padding: 0;
         max-width: calc(100% - 44px);
     }
-    .stage_eyebrow { margin-bottom: 18px; font-size: 1.2rem; letter-spacing: .15em; }
+    .stage_eyebrow { margin-bottom: 18px; font-size: 1.2rem; }
     .stage_eyebrow span { padding-inline: 8px; }
     .stage_heading h1 { font-size: clamp(9rem, 26vw, 15rem); }
     .stage_heading h1 span:last-child { margin-left: 12vw; }
