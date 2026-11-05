@@ -150,83 +150,151 @@
     line-height: 1.75;
 }
 
-.detail_attributes,
+/* Good for / think again: two columns of equal weight, so the honest one is not buried. */
+.fit_columns {
+    display: grid;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.fit_col {
+    border-top: 3px solid var(--color-primary);
+    padding-top: 16px;
+}
+
+.fit_col h3 {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.fit_list li {
+    margin-top: 24px;
+}
+
+.fit_list strong {
+    display: block;
+    font-size: clamp(2rem, 2vw, 2.4rem);
+    line-height: 1.35;
+}
+
+.fit_list p {
+    margin-top: 8px;
+    max-width: 44rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+}
+
+/* The spec is the one sheet of paper on the dark stage, ruled like a band's tech rider. */
+.rider {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.rider_sheet {
+    padding: clamp(24px, 4.4vw, 56px);
+    background: var(--color-surface-light);
+    color: var(--color-ink);
+}
+
+.rider_head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px 32px;
+}
+
+.rider_sheet h2 {
+    color: var(--color-ink);
+}
+
+.rider_sheet .eyebrow {
+    color: var(--color-ink-muted);
+}
+
+.rider_model {
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: var(--size-section-title);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+.rider_table {
+    margin-top: 28px;
+    border-block: 3px solid var(--color-ink);
+}
+
+.rider_table > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px 24px;
+    padding: 16px 0;
+}
+
+.rider_table > div + div {
+    border-top: 1px solid #b4b8ba;
+}
+
+.rider_table dt {
+    color: var(--color-ink-muted);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.rider_table dd {
+    color: var(--color-ink);
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 2vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.rider_sheet .detail_source {
+    color: var(--color-ink-muted);
+}
+
+.rider_sheet .detail_source a {
+    color: var(--color-ink);
+}
+
+/* Other models: names under a heavy rule, no boxes. */
 .detail_related {
     display: grid;
-    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
     margin-top: 36px;
 }
 
-.detail_related {
-    grid-template-columns: minmax(0, 1fr);
-}
-
-.detail_attribute,
 .detail_related a {
-    border: 1px solid var(--color-border);
-    padding: 22px;
-    background: rgba(255, 255, 255, 0.025);
-}
-
-.detail_related a:hover {
-    border-color: #e0e5e8;
-}
-
-.detail_attribute span {
-    color: var(--color-text-soft);
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    font-weight: 800;
-}
-
-.detail_attribute strong {
     display: block;
-    margin-top: 8px;
-    font-size: 2rem;
+    border-top: 3px solid var(--color-primary);
+    padding-top: 16px;
+}
+
+.detail_related a:hover strong {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
 }
 
 .detail_related strong {
     display: block;
     font-family: var(--font-display);
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.01em;
     text-transform: uppercase;
 }
 
-.detail_attribute p,
 .detail_related p {
-    margin-top: 10px;
+    margin-top: 8px;
     color: var(--color-text-muted);
     line-height: 1.65;
-}
-
-/* Light band for the "best fit" section: full bleed at every width, content kept on the main column. */
-.detail_light {
-    margin-inline: calc(50% - 50vw);
-    padding-inline: calc(50vw - 50%);
-    color: var(--color-ink);
-    background: var(--color-surface-light);
-}
-
-.detail_light h2,
-.detail_light strong {
-    color: var(--color-ink);
-}
-
-.detail_light .detail_attribute span {
-    color: #4e5960;
-}
-
-.detail_light .detail_section_header > p:last-child,
-.detail_light .detail_attribute p {
-    color: var(--color-ink-muted);
-}
-
-.detail_light .detail_attribute {
-    border-color: #cfd3d6;
-    background: var(--color-white);
 }
 
 /* specs and sources */
@@ -391,13 +459,15 @@
         padding: 70px 0 100px;
     }
 
-    .detail_attributes {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
+    .fit_columns,
     .detail_related,
     .spec_grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rider_table > div {
+        grid-template-columns: 200px minmax(0, 1fr);
+        align-items: baseline;
     }
 
     .case_metrics {
