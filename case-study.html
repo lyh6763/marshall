@@ -28,13 +28,14 @@
         <section class="case_hero" aria-labelledby="case-title">
             <p class="eyebrow">비공식 디자인 시안 · 2026</p>
             <h1 id="case-title">Front Row</h1>
-            <p class="case_lead">무대 가까이의 열기를 느낀 뒤, 실제 제품을 바로 보고 탐색하는 Marshall 비공식 디자인 시안입니다. 분위기를 만드는 이미지와 제품을 설명하는 이미지의 역할을 다시 정리했습니다.</p>
-            <div class="case_metrics" role="group" aria-label="구현 범위">
-                <div class="case_metric"><strong>3</strong><span>실제 모델 · 가상 사진</span></div>
-                <div class="case_metric"><strong>3</strong><span>상세 페이지 유지</span></div>
-                <div class="case_metric"><strong>4</strong><span>주요 화면 너비 검증</span></div>
-                <div class="case_metric"><strong>0</strong><span>가격·구매 기능</span></div>
+            <p class="case_lead">무대 가까이의 열기를 느낀 뒤, 실제 제품을 바로 보고 탐색하는 Marshall 비공식 디자인 시안입니다. 분위기를 만드는 이미지와 제품을 설명하는 이미지의 역할을 다시 정리했습니다. 세 제품의 상세 페이지까지 만들었고, 가격과 구매 기능은 없습니다.</p>
+            <div class="case_metrics" role="group" aria-label="주요 결과">
+                <div class="case_metric"><strong>68 → 100</strong><span>홈 성능 점수 (Lighthouse 모바일)</span></div>
+                <div class="case_metric"><strong>5.12 → 1.48</strong><span>홈 첫 화면 표시, 초</span></div>
+                <div class="case_metric"><strong>284 → 56</strong><span>홈 폰트 전송량, KB</span></div>
+                <div class="case_metric"><strong>0</strong><span>KWCAG 2.2 33개 항목 중 미흡 (<time datetime="2026-10-19">2026-10-19</time> 점검)</span></div>
             </div>
+            <p class="detail_source">성능과 폰트 수치는 2026-10-16 웹폰트 정리 전후 값입니다. 자세한 내용은 아래 성능 항목에 있습니다.</p>
         </section>
         <section class="detail_section" aria-labelledby="case-problem">
             <div class="detail_section_header"><p class="eyebrow">문제</p><h2 id="case-problem">제품이 보이지 않는 제품 카드</h2><p>이전 시안에서는 제품명 옆에 사용 장면을 배치했지만, 제품 자체의 외관은 알 수 없었습니다. 붉은 조명과 크림색을 반복하면서 새로운 구도도 기존 분위기에 머물렀습니다.</p></div>
@@ -57,7 +58,7 @@
             <div class="detail_section_header"><p class="eyebrow">성능</p><h2 id="case-performance">첫 화면을 막던 웹폰트</h2><p>Lighthouse 모바일 측정에서 성능이 68점, 첫 화면 표시가 5초대였습니다. 스크립트 차단 시간은 0ms였고, 원인은 웹폰트였습니다. 다른 도메인에서 렌더링을 막는 구글 폰트 CSS를 받은 뒤, 한글 본문 글꼴 Noto Sans KR을 유니코드 조각 단위로 페이지마다 16개, 약 280KB 내려받고 있었습니다.</p></div>
             <ol class="case_list"><li>한글은 기기의 시스템 글꼴(맑은 고딕, Apple SD Gothic Neo)로 바꿨습니다. 한글 제목은 Montserrat에 한글 글자가 없어 이미 시스템 글꼴로 표시되고 있었으므로, 제목과 본문의 한글 글꼴이 하나로 맞춰졌습니다.</li><li>영문 제목용 Anton과 Montserrat는 라틴 문자 범위만 담은 파일 두 개(56KB)를 직접 호스팅합니다. Montserrat는 쓰는 굵기 500·700·800을 가변 폰트 하나로 받습니다.</li><li>외부 도메인 연결이 사라져 preconnect와 렌더링 차단 폰트 CSS를 함께 걷어 냈습니다.</li></ol>
             <dl class="spec_grid"><div><dt>성능 점수 · 홈 / 앰프 상세</dt><dd>68 → 100 / 68 → 99</dd></div><div><dt>첫 화면 표시(FCP) · 홈</dt><dd>5.12초 → 1.48초</dd></div><div><dt>가장 큰 요소 표시(LCP) · 홈</dt><dd>5.12초 → 1.53초</dd></div><div><dt>폰트 요청 · 홈</dt><dd>16개 284KB → 2개 56KB</dd></div></dl>
-            <p class="detail_source">배포된 사이트에서 Lighthouse 13.5 모바일 기본 설정으로 페이지당 3회 잰 중앙값입니다(변경 전 2026-10-15, 변경 후 2026-10-16). 배포 전 로컬 서버 비교에서도 홈 67 → 98, 앰프 상세 68 → 100으로 같은 결과였습니다. 레이아웃 이동(CLS)은 전후 모두 0.001 이하입니다. 측정 조건과 원본 수치는 <a href="https://github.com/lyh6763/marshall/blob/main/docs/PERFORMANCE.md">성능 측정 기록 <span aria-hidden="true">↗</span></a>에 있습니다.</p>
+            <p class="detail_source">배포된 사이트에서 Lighthouse 13.5 모바일 기본 설정으로 페이지당 3회 잰 중앙값입니다(변경 전 2026-10-15, 변경 후 2026-10-16). 배포 전 로컬 서버 비교에서도 홈 67 → 98, 앰프 상세 68 → 100으로 같은 결과였습니다. 레이아웃 이동(CLS)은 전후 모두 0.001 이하입니다. 2026-11-05 제품 사진을 바꾼 뒤에는 홈 전송량이 376KB로 늘었고, 성능은 3회 중앙값 100을 유지했습니다. 측정 조건과 원본 수치는 <a href="https://github.com/lyh6763/marshall/blob/main/docs/PERFORMANCE.md">성능 측정 기록 <span aria-hidden="true">↗</span></a>에 있습니다.</p>
         </section>
         <section class="detail_section" aria-labelledby="case-accessibility">
             <div class="detail_section_header"><p class="eyebrow">검증</p><h2 id="case-accessibility">현재 확인한 동작</h2><p>Edge에서 390·768·1440·1920px 홈 화면과 390·1440px 상세 페이지를 확인했습니다. 홈 화면의 이미지 누락, 가로 넘침, 페이지 스크립트 오류는 없었습니다.</p></div>
@@ -66,6 +67,6 @@
             <div class="detail_actions"><a class="detail_action detail_action_primary" href="index.html">시안 보기</a><a class="detail_action" href="index.html#gear">제품 영역 보기</a></div>
         </section>
     </main>
-    <footer class="detail_footer">Independent portfolio concept · Not operated by or affiliated with Marshall Group.</footer>
+    <footer class="detail_footer">비공식 포트폴리오 시안입니다. Marshall Group이 운영하거나 제휴한 사이트가 아니며, Marshall은 해당 소유자의 상표입니다.</footer>
 </body>
 </html>

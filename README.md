@@ -17,7 +17,7 @@ AI 코딩 도구 Claude Code와 함께 만들었습니다. 방향(Live Signal La
 | 첫 화면 | 관객 시점의 공연 장면, 큰 타이포, 제품 카테고리 메뉴 |
 | The Gear | DSL40 Combo(기타 앰프)를 크게, Acton IV(홈 스피커)와 Monitor III A.N.C.(헤드폰)를 나란히 소개 |
 | 제품 상세 3종 | 사용 장면, 핵심 사양, 맞지 않는 상황("다시 생각할 때"), 공식 출처와 확인일 |
-| Stories | 앰프 제작·작은 공연장·Amplify 공식 자료로 연결 |
+| Stories | 앰프 제작·작은 공연장·Amplify 공식 자료를 요약한 글과 링크 |
 | Case Study | 디자인 결정, 이미지·출처 정책, 검증 결과 |
 
 <p>
@@ -54,7 +54,7 @@ index.html            홈
 products/             제품 상세 3종 (amplifiers, speakers, headphones)
 case-study.html       제작 이야기
 css/                  reset(토큰) · marshall(헤더·메뉴·푸터) · front-row(홈·로고) · stage-header(첫 화면) · detail(상세)
-js/                   navigation(모바일 메뉴) · stage-header(고정 헤더·히어로 모션) · footer(푸터 접기)
+js/                   navigation(모바일 메뉴) · stage-header(고정 헤더·히어로 모션)
 img/                  히어로 이미지, 제품 가상 사진, 파비콘
 fonts/                영문 제목용 웹폰트(Anton, Montserrat 라틴 서브셋)와 OFL 라이선스
 scripts/validate.mjs  npm test 검사 스크립트

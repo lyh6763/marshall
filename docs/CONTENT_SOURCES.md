@@ -10,9 +10,9 @@
 
 | 이야기 카드 | 공식 도착 페이지 | 카드의 주제 |
 | --- | --- | --- |
-| 앰프가 만들어지는 곳 | [Inside the Amplifier Factory](https://www.marshall.com/us/en/inside-the-factory) | Bletchley 공장의 제작 과정과 사람 |
-| 작은 공연장에 맞는 소리 | [Amplifiers for small venues](https://www.marshall.com/us/en/amplifiers/small-venues) | 작은 무대의 앰프 선택과 출력 |
-| 공연장의 다음 밤을 위해 | [Amplify](https://www.marshall.com/us/en/amplify) | 독립 공연장 지원 |
+| 앰프가 만들어지는 곳 | [Inside the Amplifier Factory](https://www.marshall.com/us/en/inside-the-factory) | 1962년 런던 Hanwell에서 시작, 1960년대 후반 Bletchley로 이전, 외함·섀시·회로·커버링·조립 공정, 테스터가 기타를 연결해 점검. 확인일 2026-11-06 |
+| 작은 공연장에 맞는 앰프 | [Amplifiers for small venues](https://www.marshall.com/us/en/amplifiers/small-venues) | 휴대성·힘·다양한 소리, 작은 크기·톤 조절·내장 이펙트, 공간을 압도하지 않는 소리, 목록에 DSL40 Combo. 구체적 와트 수치와 마이킹 내용은 이 페이지에 없음. 확인일 2026-11-06 |
+| 독립 공연장 지원 | [Amplify](https://www.marshall.com/us/en/amplify) | 가입비 없는 멤버십, marshall.com 주문액의 1%가 독립 공연장 지원에 쓰임, 지원에는 장비·지역 공연 후원·공연장 협력이 포함됨. 확인일 2026-11-06 |
 
 ## 비주얼
 
@@ -24,4 +24,4 @@
 
 이전 단계(2026-09-29~10-06)에는 사용자 승인에 따라 공식 제품 사진을 로컬 검토용으로 썼고, 공개 배포 이용허락이 없어 2026-10-07 자체 SVG 일러스트로 교체했고, 2026-11-05 위 가상 사진으로 다시 바꿨다. 당시 원본 URL은 [제품 이미지 매니페스트](product-image-sources.json)에 기록으로 남긴다.
 
-이전 `scene-personal`, `scene-room`, `scene-stage` 장면과 붉은 조명의 `front-row-hero`는 2026-09-30 저장소에서 제거했다(비공개 작업 저장소에 보관). 이야기 영역은 사진이나 인물 대신 주제와 일치하는 공식 자료 텍스트 링크를 제공한다.
+이전 `scene-personal`, `scene-room`, `scene-stage` 장면과 붉은 조명의 `front-row-hero`는 2026-09-30 저장소에서 제거했다(비공개 작업 저장소에 보관). 이야기 영역은 사진이나 인물 대신 공식 자료를 자기 말로 요약한 글과 링크를 제공한다.
