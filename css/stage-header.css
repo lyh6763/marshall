@@ -11,7 +11,7 @@
     margin: 0 4.2vw;
     border-bottom: 1px solid rgba(245, 247, 248, .28);
 }
-.stage_header.is-fixed { background: var(--color-bg); }
+.stage_header.is-fixed { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
 .stage_header.is-fixed .header_center { height: 72px; border-color: transparent; }
 .stage_header .nav_body a { color: var(--color-primary); }
 .stage_header .nav_body a:hover { color: #cbd5db; }
