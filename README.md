@@ -21,8 +21,8 @@ AI 코딩 도구 Claude Code와 함께 만들었습니다. 방향(Live Signal La
 | Case Study | 디자인 결정, 이미지·출처 정책, 검증 결과 |
 
 <p>
-  <img src="docs/screenshots/gear-desktop.png" alt="제품 영역: THE GEAR 제목 아래 DSL40 Combo 앰프 일러스트와 사양" width="49%">
-  <img src="docs/screenshots/detail-desktop.png" alt="Monitor III A.N.C. 상세 페이지: 제품명과 설명, 헤드폰 일러스트" width="49%">
+  <img src="docs/screenshots/gear-desktop.png" alt="제품 영역: THE GEAR 제목 아래 무대 위 앰프 가상 사진과 DSL40 Combo 소개" width="49%">
+  <img src="docs/screenshots/detail-desktop.png" alt="Monitor III A.N.C. 상세 페이지: 제품명과 설명, 가방 위 헤드폰 가상 사진" width="49%">
 </p>
 <p>
   <img src="docs/screenshots/home-mobile.png" alt="모바일 첫 화면: 텍스트 로고, LIVE / SMALL CLUB 라벨, FRONT ROW 제목, 앰프 살펴보기 버튼" width="260">
