@@ -397,6 +397,10 @@
     margin-top: 8px;
 }
 
+.case_metric time {
+    white-space: nowrap;
+}
+
 .case_metric span,
 .case_list {
     color: var(--color-text-muted);
