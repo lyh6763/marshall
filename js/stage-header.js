@@ -6,6 +6,10 @@
     if (!header && !hero) return;
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // 스크롤 연동 CSS를 지원하면 첫 화면 움직임은 stage-header.css의 animation-timeline이 맡는다.
+    // 이때 스크립트는 머리글 고정(position이 바뀌어 CSS 애니메이션으로 옮길 수 없음)만 처리한다.
+    const cssDrivesHero = Boolean(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'));
+    const heroByScript = hero && !cssDrivesHero;
     let frame = 0;
 
     function renderHeader() {
@@ -30,12 +34,14 @@
 
     function schedule() {
         if (header) renderHeader();
-        if (hero && !frame) frame = window.requestAnimationFrame(render);
+        if (heroByScript && !frame) frame = window.requestAnimationFrame(render);
     }
 
     window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    reducedMotion.addEventListener('change', schedule);
+    if (heroByScript) {
+        window.addEventListener('resize', schedule);
+        reducedMotion.addEventListener('change', schedule);
+    }
     if (header) renderHeader();
-    if (hero) render();
+    if (heroByScript) render();
 })();

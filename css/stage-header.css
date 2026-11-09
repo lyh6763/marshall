@@ -209,6 +209,22 @@
     html:not(.js) .stage_header .nav_body li { border: 0; }
     html:not(.js) .stage_header .nav_body a { padding-block: 12px; font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 0; }
 }
+/* 첫 화면 사진·제목의 스크롤 움직임. 스크롤 연동 CSS를 지원하면 문서 스크롤에 직접 묶고, stage-header.js는 머리글 고정만 맡는다.
+   값은 이전 스크립트와 같다: 스크롤 1px마다 사진은 0.035px(최대 24px) 내려가고 제목은 0.065px(최대 44px) 올라간다.
+   24 ÷ 0.035 = 685.71px, 44 ÷ 0.065 = 676.92px에서 최댓값에 닿고 그 뒤로는 그대로다. */
+@property --stage-pan { syntax: '<length>'; inherits: true; initial-value: 0px; }
+@property --stage-rise { syntax: '<length>'; inherits: true; initial-value: 0px; }
+@keyframes stage-pan { from { --stage-pan: 0px; } to { --stage-pan: 24px; } }
+@keyframes stage-rise { from { --stage-rise: 0px; } to { --stage-rise: -44px; } }
+@supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .stage_hero {
+            animation: stage-pan linear both, stage-rise linear both;
+            animation-timeline: scroll(root block), scroll(root block);
+            animation-range: 0px calc(24px / 0.035), 0px calc(44px / 0.065);
+        }
+    }
+}
 @media (prefers-reduced-motion: reduce) {
     .stage_scene, .stage_heading { transform: none; }
     .stage_cta, .stage_header, .stage_header * { transition: none; }
