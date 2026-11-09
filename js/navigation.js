@@ -1,241 +1,48 @@
 (function () {
     'use strict';
 
-    const BREAKPOINT = 1024;
-    const NAV_OPEN_CLASS = 'is-open';
-    const NAV_VISIBLE_CLASS = 'is-visible';
-    const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    // 좁은 화면 전체 화면 메뉴는 네이티브 모달 dialog다.
+    // 배경 비활성(inert)·포커스 가두기·Escape 닫기·닫을 때 포커스 복귀는 브라우저가,
+    // 여닫는 페이드와 뒤 페이지 스크롤 잠금은 CSS(@starting-style, :has)가 맡는다.
+    // 여기서는 여닫기 연결과 버튼의 aria-expanded만 맞춘다.
 
-    const isDesktop = () => window.innerWidth >= BREAKPOINT;
-    const isMobile = () => !isDesktop();
+    const DESKTOP = window.matchMedia('(min-width: 1024px)');
 
-    function getFocusableElements(container) {
-        return Array.from(container.querySelectorAll(FOCUSABLE_SELECTOR)).filter((element) => {
-            if (element.hasAttribute('disabled')) return false;
-            return element.getAttribute('aria-hidden') !== 'true';
-        });
+    // dialog를 지원하지 않는 아주 오래된 브라우저는 스크립트가 없을 때처럼 메뉴를 본문 흐름에 펼친다.
+    if (typeof HTMLDialogElement !== 'function' || typeof HTMLDialogElement.prototype.showModal !== 'function') {
+        document.documentElement.classList.remove('js');
+        return;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        const nav = document.querySelector('nav');
-        const menuBtn = document.querySelector('.header_center .btn');
-        const closeBtn = document.querySelector('.nav_wrap .close_btn');
-        const menuPanel = nav?.querySelector('.nav_wrap');
+        const dialog = document.getElementById('menu-dialog');
+        const openButton = document.querySelector('.header_center .btn');
+        const closeButton = dialog?.querySelector('.close_btn');
+        if (!dialog || !openButton || !closeButton) return;
 
-        if (!nav || !menuBtn || !closeBtn || !menuPanel) return;
+        const setExpanded = (expanded) => openButton.setAttribute('aria-expanded', String(expanded));
 
-        let isMenuOpen = false;
-        let lastFocused = null;
-        let closeTimer = null;
-        let closeTransitionHandler = null;
-        let openFrame = null;
-        let previousBodyOverflow = '';
-        const backgroundStates = new Map();
-
-        function clearOpenFrame() {
-            if (openFrame !== null) window.cancelAnimationFrame(openFrame);
-            openFrame = null;
-        }
-
-        function setBackgroundInert(inactive) {
-            if (!inactive) {
-                backgroundStates.forEach((wasInert, element) => {
-                    element.inert = wasInert;
-                });
-                backgroundStates.clear();
-                return;
-            }
-
-            // 메뉴의 조상은 유지하고, 각 단계에서 메뉴 바깥의 형제만 비활성화한다.
-            let branch = nav;
-            while (branch && branch !== document.body) {
-                const parent = branch.parentElement;
-                if (!parent) break;
-                Array.from(parent.children).forEach((element) => {
-                    if (element === branch || !(element instanceof HTMLElement)) return;
-                    if (['SCRIPT', 'STYLE', 'LINK', 'META'].includes(element.tagName)) return;
-                    if (!backgroundStates.has(element)) backgroundStates.set(element, element.inert);
-                    element.inert = true;
-                });
-                branch = parent;
-            }
-        }
-
-        function syncA11y() {
-            const navVisible = isDesktop() || (isMobile() && isMenuOpen);
-            menuBtn.setAttribute('aria-expanded', String(isMenuOpen && isMobile()));
-            nav.setAttribute('aria-hidden', String(!navVisible));
-            // nav 랜드마크를 보존하고 안쪽 컨테이너에만 모달 의미를 부여한다.
-            if (isMenuOpen && isMobile()) {
-                menuPanel.setAttribute('role', 'dialog');
-                menuPanel.setAttribute('aria-modal', 'true');
-                menuPanel.setAttribute('aria-label', '주요 메뉴');
-            } else {
-                menuPanel.removeAttribute('role');
-                menuPanel.removeAttribute('aria-modal');
-                menuPanel.removeAttribute('aria-label');
-            }
-        }
-
-        function openMenu() {
-            if (!isMobile() || isMenuOpen) return;
-            window.clearTimeout(closeTimer);
-            closeTimer = null;
-            clearOpenFrame();
-            if (closeTransitionHandler) {
-                nav.removeEventListener('transitionend', closeTransitionHandler);
-                closeTransitionHandler = null;
-            }
-
-            isMenuOpen = true;
-            lastFocused = document.activeElement;
-            previousBodyOverflow = document.body.style.overflow;
-
-            nav.classList.add(NAV_OPEN_CLASS);
-            openFrame = window.requestAnimationFrame(() => {
-                openFrame = null;
-                if (!isMenuOpen || !isMobile()) return;
-                nav.classList.add(NAV_VISIBLE_CLASS);
-                closeBtn.focus({ preventScroll: true });
-                setBackgroundInert(true);
-            });
-
-            document.body.style.overflow = 'hidden';
-            syncA11y();
-
-            document.addEventListener('keydown', onKeydown);
-            document.addEventListener('keydown', trapFocus);
-        }
-
-        function finishClose() {
-            window.clearTimeout(closeTimer);
-            if (closeTransitionHandler) nav.removeEventListener('transitionend', closeTransitionHandler);
-            nav.classList.remove(NAV_OPEN_CLASS);
-            closeTransitionHandler = null;
-            closeTimer = null;
-        }
-
-        function closeMenu({ restoreFocus = true } = {}) {
-            if (!isMobile() || !isMenuOpen) return;
-            isMenuOpen = false;
-            clearOpenFrame();
-            setBackgroundInert(false);
-
-            if (restoreFocus) {
-                const target = lastFocused || menuBtn;
-                if (target && typeof target.focus === 'function') {
-                    target.focus({ preventScroll: true });
-                }
-            }
-
-            nav.classList.remove(NAV_VISIBLE_CLASS);
-            document.body.style.overflow = previousBodyOverflow;
-            syncA11y();
-
-            document.removeEventListener('keydown', onKeydown);
-            document.removeEventListener('keydown', trapFocus);
-
-            if (closeTransitionHandler) {
-                nav.removeEventListener('transitionend', closeTransitionHandler);
-            }
-
-            closeTransitionHandler = (event) => {
-                if (event.target !== nav) return;
-                finishClose();
-            };
-
-            nav.addEventListener('transitionend', closeTransitionHandler);
-
-            window.clearTimeout(closeTimer);
-            closeTimer = window.setTimeout(finishClose, 350);
-        }
-
-        function toggleMenu() {
-            if (isMenuOpen) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        }
-
-        function onKeydown(event) {
-            if (event.key === 'Escape') {
-                closeMenu();
-            }
-        }
-
-        function trapFocus(event) {
-            if (event.key !== 'Tab' || !isMenuOpen || !isMobile()) return;
-
-            const focusables = getFocusableElements(nav);
-            if (!focusables.length) return;
-
-            const first = focusables[0];
-            const last = focusables[focusables.length - 1];
-
-            if (!nav.contains(document.activeElement)) {
-                event.preventDefault();
-                (event.shiftKey ? last : first).focus();
-            } else if (event.shiftKey && document.activeElement === first) {
-                event.preventDefault();
-                last.focus();
-            } else if (!event.shiftKey && document.activeElement === last) {
-                event.preventDefault();
-                first.focus();
-            }
-        }
-
-        menuBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            toggleMenu();
+        openButton.addEventListener('click', () => {
+            if (DESKTOP.matches || dialog.open) return;
+            dialog.showModal();
+            setExpanded(true);
         });
 
-        closeBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            closeMenu();
+        closeButton.addEventListener('click', () => dialog.close());
+
+        // 메뉴 안 링크를 누르면 닫는다. 앵커 이동은 클릭 처리가 끝난 뒤(닫힌 뒤)에 일어난다.
+        dialog.addEventListener('click', (event) => {
+            if (event.target instanceof Element && event.target.closest('a[href]')) dialog.close();
         });
 
-        nav.addEventListener('click', (event) => {
-            const link = event.target.closest('a');
-            if (link && isMobile() && isMenuOpen) {
-                closeMenu({ restoreFocus: false });
-            }
-        });
+        // 닫기 버튼·링크·Escape 어느 경로로 닫혀도 버튼 상태를 맞춘다.
+        dialog.addEventListener('close', () => setExpanded(false));
 
-        let resizeTimer = null;
-        window.addEventListener('resize', () => {
-            window.clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(() => {
-                const wasMenuOpen = isMenuOpen;
-                const focusWasInMenu = nav.contains(document.activeElement);
-                if (isDesktop()) {
-                    isMenuOpen = false;
-                    window.clearTimeout(closeTimer);
-                    closeTimer = null;
-                    clearOpenFrame();
-                    setBackgroundInert(false);
-                    document.removeEventListener('keydown', onKeydown);
-                    document.removeEventListener('keydown', trapFocus);
-                    if (closeTransitionHandler) {
-                        nav.removeEventListener('transitionend', closeTransitionHandler);
-                        closeTransitionHandler = null;
-                    }
-                    nav.classList.remove(NAV_OPEN_CLASS, NAV_VISIBLE_CLASS);
-                    if (wasMenuOpen) document.body.style.overflow = previousBodyOverflow;
-                } else if (!isMenuOpen) {
-                    nav.classList.remove(NAV_OPEN_CLASS, NAV_VISIBLE_CLASS);
-                }
-                syncA11y();
-                if (focusWasInMenu && !isMenuOpen && (wasMenuOpen || isMobile())) {
-                    const target = isDesktop() ? nav.querySelector('.nav_body a') : menuBtn;
-                    target?.focus({ preventScroll: true });
-                }
-            }, 200);
+        // 넓은 화면으로 바뀌면 전체 화면 메뉴를 닫는다. 메뉴 버튼은 그때 숨으므로 포커스는 가로 메뉴 첫 링크로 옮긴다.
+        DESKTOP.addEventListener('change', (event) => {
+            if (!event.matches || !dialog.open) return;
+            dialog.close();
+            document.querySelector('#site-nav a')?.focus({ preventScroll: true });
         });
-
-        if (isDesktop()) {
-            nav.classList.remove(NAV_OPEN_CLASS, NAV_VISIBLE_CLASS);
-        }
-        syncA11y();
     });
 })();

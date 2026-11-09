@@ -140,8 +140,8 @@
 .stage_concept:hover { text-decoration-thickness: 2px; }
 
 @media (min-width: 1024px) {
-    .stage_header nav { right: 4.2vw; height: 92px; }
-    .stage_header.is-fixed nav { height: 72px; }
+    .stage_header .site_nav { right: 4.2vw; height: 92px; }
+    .stage_header.is-fixed .site_nav { height: 72px; }
     .stage_header .nav_body ul { gap: clamp(24px, 3vw, 56px); }
     .stage_header .nav_body a { font-size: 1.4rem; letter-spacing: .1em; }
     .stage_header .nav_body li:last-child { margin-left: 36px; }
@@ -149,7 +149,7 @@
 @media (max-width: 1023px) {
     .stage_header .header_center { height: 80px; }
     .stage_header .nav_wrap { width: 88%; }
-    .stage_header nav { background: var(--color-bg); }
+    .stage_header .menu_dialog { background: var(--color-bg); }
     .stage_header .nav_body { margin-top: 12vh; }
     .stage_header .nav_body a { font-family: var(--font-display); font-weight: 400; letter-spacing: -.02em; }
     .stage_header .btn span:not(.screen_out) { width: 26px; background: var(--color-primary); }
@@ -202,7 +202,7 @@
     html:not(.js) .stage_header { position: relative; background: var(--color-bg); }
     html:not(.js) .stage_header .btn,
     html:not(.js) .stage_header .nav_header { display: none; }
-    html:not(.js) .stage_header nav { position: static; display: block; opacity: 1; visibility: visible; pointer-events: auto; }
+    html:not(.js) .stage_header .site_nav { position: static; display: block; opacity: 1; visibility: visible; pointer-events: auto; }
     html:not(.js) .stage_header .nav_wrap { min-height: 0; padding: 12px 0 20px; }
     html:not(.js) .stage_header .nav_body { margin: 0; }
     html:not(.js) .stage_header .nav_body ul { display: flex; flex-wrap: wrap; gap: 4px 20px; }

@@ -48,28 +48,48 @@ header.is-fixed {
     background: var(--color-primary);
 }
 
-/* navigation */
-nav {
+/* navigation: 넓은 화면의 가로 메뉴. 좁은 화면에서는 아래 전체 화면 메뉴가 대신한다. */
+.site_nav {
+    display: none;
+    color: var(--color-primary);
+}
+
+/* 좁은 화면의 전체 화면 메뉴(네이티브 모달 dialog). 기본 dialog 상자 모양을 걷어 화면을 덮는다.
+   여닫는 페이드는 @starting-style과 display·overlay 전환으로 CSS가 맡는다. */
+.menu_dialog {
     position: fixed;
     inset: 0;
-    z-index: 100;
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow-y: auto;
+    background: transparent;
     color: var(--color-primary);
-    transition: opacity var(--transition-normal), visibility 0s linear 0.3s;
+    opacity: 0;
+    transition: opacity var(--transition-normal), overlay var(--transition-normal) allow-discrete, display var(--transition-normal) allow-discrete;
 }
 
-nav.is-open {
-    display: block;
-}
-
-nav.is-open.is-visible {
+.menu_dialog[open] {
     opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: opacity var(--transition-normal), visibility 0s linear 0s;
+}
+
+@starting-style {
+    .menu_dialog[open] {
+        opacity: 0;
+    }
+}
+
+.menu_dialog::backdrop {
+    background: transparent;
+}
+
+/* 메뉴가 열려 있는 동안 뒤 페이지가 스크롤되지 않게 한다 */
+body:has(.menu_dialog[open]) {
+    overflow: hidden;
 }
 
 .nav_wrap {
@@ -169,7 +189,7 @@ html:not(.js) .nav_header {
     display: none;
 }
 
-html:not(.js) nav {
+html:not(.js) .site_nav {
     position: static;
     display: block;
     opacity: 1;
@@ -215,16 +235,18 @@ html:not(.js) .nav_body a {
         display: none;
     }
 
-    nav {
+    .site_nav {
         position: absolute;
         inset: 0 0 auto auto;
         width: auto;
+        /* 스크립트가 없을 때의 display: block보다 앞서 가로 배치를 유지한다(이전과 같은 우선순위) */
         display: flex !important;
         align-items: center;
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transition: none;
+    }
+
+    /* 넓은 화면에서는 전체 화면 메뉴를 쓰지 않는다(스크립트도 열지 않고, 넓어지면 닫는다) */
+    .menu_dialog {
+        display: none;
     }
 
     .nav_wrap {

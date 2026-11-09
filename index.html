@@ -35,7 +35,7 @@
     <header class="stage_header">
         <div class="header_center">
             <a class="brand_logo wordmark" href="#top" aria-label="Marshall Front Row 홈"><span class="wordmark_kicker">Marshall</span> <span class="wordmark_name">Front Row</span></a>
-            <button type="button" class="btn" aria-expanded="false" aria-controls="site-nav">
+            <button type="button" class="btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu-dialog">
                 <span class="screen_out">메뉴 열기</span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -43,19 +43,10 @@
             </button>
         </div>
 
-        <nav id="site-nav" aria-label="주요 메뉴">
+        <!-- 넓은 화면과 스크립트가 없을 때 보이는 가로 메뉴 -->
+        <nav id="site-nav" class="site_nav" aria-label="주요 메뉴">
             <div class="nav_wrap">
-                <div class="nav_header">
-                    <a class="brand_logo wordmark" href="#top" aria-label="Marshall Front Row 홈"><span class="wordmark_kicker">Marshall</span> <span class="wordmark_name">Front Row</span></a>
-                    <button type="button" class="close_btn">
-                        <span class="screen_out">메뉴 닫기</span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </button>
-                </div>
-
                 <div class="nav_body">
-                    <p class="screen_out">메인 내비게이션</p>
                     <ul>
                         <li><a href="#product-amplifiers">Amplifiers</a></li>
                         <li><a href="#product-speakers">Speakers</a></li>
@@ -63,9 +54,32 @@
                         <li><a href="#community">Stories</a></li>
                     </ul>
                 </div>
-
             </div>
         </nav>
+
+        <!-- 좁은 화면의 전체 화면 메뉴. 네이티브 모달 dialog라 배경 비활성·포커스 가두기·Escape 닫기를 브라우저가 맡는다.
+             링크는 위 가로 메뉴와 같게 유지한다(어느 때든 둘 중 하나만 화면과 접근성 트리에 있다). -->
+        <dialog id="menu-dialog" class="menu_dialog" aria-label="주요 메뉴">
+            <div class="nav_wrap">
+                <div class="nav_header">
+                    <a class="brand_logo wordmark" href="#top" aria-label="Marshall Front Row 홈"><span class="wordmark_kicker">Marshall</span> <span class="wordmark_name">Front Row</span></a>
+                    <button type="button" class="close_btn" autofocus>
+                        <span class="screen_out">메뉴 닫기</span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <nav class="nav_body" aria-label="주요 메뉴">
+                    <ul>
+                        <li><a href="#product-amplifiers">Amplifiers</a></li>
+                        <li><a href="#product-speakers">Speakers</a></li>
+                        <li><a href="#product-headphones">Headphones</a></li>
+                        <li><a href="#community">Stories</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </dialog>
     </header>
 
     <main id="main">
