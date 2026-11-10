@@ -6,7 +6,7 @@ const failures = [];
 
 function walk(directory) {
   return readdirSync(directory).flatMap((name) => {
-    if (name === '.git' || name === 'node_modules') return [];
+    if (name === '.git' || name === 'node_modules' || name === '_site') return [];
     const file = join(directory, name);
     return statSync(file).isDirectory() ? walk(file) : [file];
   });

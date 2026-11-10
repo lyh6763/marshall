@@ -9,6 +9,7 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint . --max-warnings 0",
     "lint:css": "stylelint \"css/**/*.css\" --max-warnings 0 --cache --cache-location node_modules/.cache/stylelint",
+    "build": "node scripts/build-site.mjs",
     "fonts": "node scripts/fetch-fonts.mjs"
   },
   "devDependencies": {
