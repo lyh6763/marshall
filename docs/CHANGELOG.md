@@ -3,6 +3,7 @@
 프로젝트의 주요 변경 사항을 기록합니다.
 
 ## 2026-11-09
+- 히어로 사진·제목 이동을 지원 브라우저에서 CSS `animation-timeline: scroll(root block)`으로 처리. 미지원 브라우저는 기존 JS, 모션 감소에서는 이동 없음. 고정 머리글의 임계점 처리는 JS에 남김. 기존 이동값과의 비교를 확인했으며 새 LCP·INP 수치는 측정하지 않음.
 - 모바일 메뉴: 직접 만든 모달(배경 `inert`, 포커스 가두기, Escape 처리, 스크롤 잠금을 모두 스크립트로)을 네이티브 `<dialog>`로 바꿈. 넓은 화면과 스크립트가 없을 때는 가로 메뉴 `.site_nav`, 좁은 화면에서는 전체 화면 `.menu_dialog`를 씀. 여닫는 페이드는 `@starting-style`, 스크롤 잠금은 `body:has(.menu_dialog[open])`로 CSS가 맡고, `navigation.js`는 241줄에서 48줄로 줄어 여닫기 연결과 `aria-expanded`만 맞춤. 데스크톱·모바일 닫힘·JS 없음 화면은 이전과 픽셀이 같고, 열린 메뉴는 배치·글꼴·색이 같으며 dialog가 최상위 층에 그려져 글자 가장자리 다듬기만 회색조로 바뀜. KWCAG 기록([ACCESSIBILITY.md](ACCESSIBILITY.md))의 메뉴 항목을 다시 확인해 고침
 - Stories: 이야기 세 편을 `<ul role="list">` 목록으로 묶어 화면 낭독기가 목록으로 알리게 함(화면은 그대로)
 

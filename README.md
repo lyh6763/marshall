@@ -47,22 +47,26 @@ AI 코딩 도구 Claude Code와 함께 만들었습니다. 방향(Live Signal La
 
 ## 기술
 
-HTML · CSS · Vanilla JS. 빌드 도구 없이 정적 파일로 배포합니다.
+HTML · CSS · Vanilla JS. 번들러 없이 정적 파일을 만들고, 배포용 파일만 `_site/`로 모읍니다.
 
 ```text
 index.html            홈
 products/             제품 상세 3종 (amplifiers, speakers, headphones)
 case-study.html       제작 이야기
+404.html              없는 페이지 안내(noindex, 프로젝트 경로 기준 복구 링크)
 css/                  reset(토큰) · marshall(헤더·메뉴·푸터) · front-row(홈·로고) · stage-header(첫 화면) · detail(상세)
-js/                   navigation(모바일 메뉴) · stage-header(고정 헤더·히어로 모션)
+js/                   navigation(모바일 메뉴) · stage-header(고정 헤더·스크롤 연동 CSS 미지원 시 히어로 모션)
 img/                  히어로 이미지, 제품 가상 사진, 파비콘
 fonts/                영문 제목용 웹폰트(Anton, Montserrat 라틴 서브셋)와 OFL 라이선스
 scripts/validate.mjs  npm test 검사 스크립트
 scripts/fetch-fonts.mjs  npm run fonts — 웹폰트 다시 받기
+scripts/build-site.mjs  npm run build — 배포용 파일 모음·로컬 참조 검사
+scripts/stamp-assets.mjs  npm run assets:stamp — CSS·JS 내용 해시 갱신
 docs/                 기획·출처·작업 기록·성능 측정, README 스크린샷
 ```
 
 반응형 WebP, 화면 크기별 히어로 preload, 제품 카드 컨테이너 쿼리를 사용합니다. 웹폰트는 영문 제목용 두 파일(56KB)만 직접 호스팅하고, 한글은 기기의 시스템 글꼴을 씁니다.
+히어로 사진·제목의 스크롤 연동 이동은 `animation-timeline: scroll(root block)`으로 처리합니다. 지원하지 않는 브라우저에서는 기존 JS를 사용하고, 모션 감소에서는 움직임을 끕니다. 고정 헤더의 임계점 처리는 JS에 남아 있습니다.
 
 ## 성능
 
@@ -88,7 +92,11 @@ npx serve -l 4321 .
 검사:
 
 ```bash
+npm ci
+npm run lint
 npm test
+npm run build
+npm run assets:stamp # CSS·JS 수정 후 HTML의 ?v= 갱신
 ```
 
 `npm test`는 다음을 확인합니다.
@@ -99,6 +107,15 @@ npm test
 - 모든 `img`에 `alt`, `width`, `height`가 있는지
 - CSS 중괄호 짝과 JS 문법
 - 어떤 페이지나 CSS에서도 쓰지 않는 css·js·img 파일과 웹폰트(woff2)가 없는지
+- CSS·JS의 `?v=`가 실제 파일 SHA-256 앞 8자와 같은지(`.gitattributes`로 LF 고정)
+
+린트는 ESLint와 Stylelint recommended를 사용하며 경고도 실패로 처리합니다. TypeScript와 별도 포매터는 사용하지 않습니다.
+
+## 배포 흐름
+
+이 브랜치의 `.github/workflows/deploy.yml`은 `npm ci` → lint → 정적 검사 → `_site/` 생성 → Pages 배포 순서입니다. PR에서는 검사와 사이트 생성까지만 실행하고, 배포는 main 푸시 또는 main에서의 수동 실행으로 제한합니다.
+`_site/`에는 HTML·CSS·JS·이미지·글꼴만 들어가고, 문서·스크립트·패키지 파일·로컬 설정은 빠집니다.
+실제 Pages 설정을 legacy에서 Actions로 바꾸고 이 브랜치를 푸시하는 일은 사용자의 별도 배포 요청 뒤에 진행합니다.
 
 ## 확인 범위와 한계
 
