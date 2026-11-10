@@ -6,6 +6,16 @@
   "scripts": {
     "test": "npm run validate",
     "validate": "node scripts/validate.mjs",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint . --max-warnings 0",
+    "lint:css": "stylelint \"css/**/*.css\" --max-warnings 0 --cache --cache-location node_modules/.cache/stylelint",
     "fonts": "node scripts/fetch-fonts.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "stylelint": "^17.16.0",
+    "stylelint-config-recommended": "^18.0.0"
   }
 }
