@@ -3,6 +3,8 @@ import { extname, join, resolve, dirname, relative } from 'node:path';
 
 const root = process.cwd();
 const failures = [];
+// og:image·og:url·canonical처럼 배포 주소로 적은 참조는 저장소 안 파일로 바꿔 검사한다.
+const SITE_URL = 'https://lyh6763.github.io/marshall/';
 
 function walk(directory) {
   return readdirSync(directory).flatMap((name) => {
@@ -29,6 +31,7 @@ function report(file, message) {
 
 function localPath(file, reference) {
   const clean = reference.split('#')[0].split('?')[0];
+  if (clean.startsWith(SITE_URL)) return resolve(root, clean.slice(SITE_URL.length) || 'index.html');
   if (!clean || /^(?:https?:|mailto:|tel:|data:)/.test(clean)) return null;
   return clean.startsWith('/') ? resolve(root, `.${clean}`) : resolve(dirname(file), clean);
 }
@@ -83,6 +86,13 @@ for (const file of htmlFiles) {
     const target = localPath(file, match[1]);
     if (target) referencedAssets.add(target);
     if (target && !existsSync(target)) report(file, `missing local asset ${match[1]}`);
+  }
+
+  for (const match of source.matchAll(/<meta\b[^>]*\bcontent="([^"]+)"[^>]*>/g)) {
+    if (!match[1].startsWith(SITE_URL)) continue;
+    const target = localPath(file, match[1]);
+    referencedAssets.add(target);
+    if (!existsSync(target)) report(file, `missing local asset ${match[1]}`);
   }
 
   for (const match of source.matchAll(/srcset="([^"]+)"/g)) {
