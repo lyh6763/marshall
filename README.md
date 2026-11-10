@@ -113,9 +113,9 @@ npm run assets:stamp # CSS·JS 수정 후 HTML의 ?v= 갱신
 
 ## 배포 흐름
 
-이 브랜치의 `.github/workflows/deploy.yml`은 `npm ci` → lint → 정적 검사 → `_site/` 생성 → Pages 배포 순서입니다. PR에서는 검사와 사이트 생성까지만 실행하고, 배포는 main 푸시 또는 main에서의 수동 실행으로 제한합니다.
+`.github/workflows/deploy.yml`은 `npm ci` → lint → 정적 검사 → `_site/` 생성 → Pages 배포 순서입니다. PR에서는 검사와 사이트 생성까지만 실행하고, 배포는 main 푸시 또는 main에서의 수동 실행으로 제한합니다.
 `_site/`에는 HTML·CSS·JS·이미지·글꼴만 들어가고, 문서·스크립트·패키지 파일·로컬 설정은 빠집니다.
-실제 Pages 설정을 legacy에서 Actions로 바꾸고 이 브랜치를 푸시하는 일은 사용자의 별도 배포 요청 뒤에 진행합니다.
+GitHub Pages의 배포 소스는 GitHub Actions입니다. 저장소 루트 전체를 공개하는 legacy 배포 대신 검사를 통과한 `_site/` 산출물만 올립니다.
 
 ## 확인 범위와 한계
 
