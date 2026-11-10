@@ -1,0 +1,16 @@
+# 의존성
+node_modules/
+
+# 환경 변수(비밀 값이 들어갈 수 있음)
+.env*
+
+# 로그와 운영체제 파일
+*.log
+.DS_Store
+Thumbs.db
+
+# 개인 Claude Code 권한 설정(launch.json은 추적)
+.claude/settings.local.json
+
+# 배포용으로 모은 사이트(node scripts/build-site.mjs)
+_site/
