@@ -90,6 +90,8 @@ function checkReference(file, reference) {
     let target;
     if (clean.startsWith(SITE_URL)) {
         target = join(out, decodeURI(clean.slice(SITE_URL.length)));
+    } else if (clean.startsWith('/marshall/')) {
+        target = join(out, decodeURI(clean.slice('/marshall/'.length)));
     } else if (/^[a-z][a-z\d+.-]*:/i.test(clean) || clean.startsWith('//')) {
         return; // 외부 주소, mailto:, data: 등
     } else if (clean.startsWith('/')) {

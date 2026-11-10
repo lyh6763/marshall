@@ -1,8 +1,9 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { extname, join, resolve, dirname, relative } from 'node:path';
+import { findAssetVersionProblems } from './stamp-assets.mjs';
 
 const root = process.cwd();
-const failures = [];
+const failures = findAssetVersionProblems(root);
 // og:image·og:url·canonical처럼 배포 주소로 적은 참조는 저장소 안 파일로 바꿔 검사한다.
 const SITE_URL = 'https://lyh6763.github.io/marshall/';
 
@@ -32,6 +33,7 @@ function report(file, message) {
 function localPath(file, reference) {
   const clean = reference.split('#')[0].split('?')[0];
   if (clean.startsWith(SITE_URL)) return resolve(root, clean.slice(SITE_URL.length) || 'index.html');
+  if (clean.startsWith('/marshall/')) return resolve(root, clean.slice('/marshall/'.length) || 'index.html');
   if (!clean || /^(?:https?:|mailto:|tel:|data:)/.test(clean)) return null;
   return clean.startsWith('/') ? resolve(root, `.${clean}`) : resolve(dirname(file), clean);
 }
