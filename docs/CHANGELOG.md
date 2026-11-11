@@ -5,6 +5,16 @@
 ## 2026-11-11
 - 라이브 재측정: 11/09 메뉴 `<dialog>`·스크롤 타임라인, 11/10 메타·404·`?v=`·Actions 배포 뒤 다섯 페이지를 페이지당 3회 쟀다. 성능 98~100, 접근성·권장사항·SEO 100. 배터리 상태라 측정 중 CPU 지수가 떨어진 회차가 있다. 조건과 회차별 값은 [PERFORMANCE.md](PERFORMANCE.md)
 
+## 2026-11-10
+- 배포: GitHub 기본 Pages가 main을 검사 없이 바로 배포하던 방식(legacy)을 GitHub Actions로 바꿈. 워크플로 순서는 `npm ci` → `npm run lint` → `npm test` → `scripts/build-site.mjs` → Pages 배포이고, PR에서는 검사만 함. 배포 때 저장소 Pages 소스를 Actions(`build_type=workflow`)로 전환([실행 42762948685](https://github.com/lyh6763/marshall/actions/runs/42762948685) 성공)
+- 배포 파일 모으기: `npm run build`(`scripts/build-site.mjs`)가 HTML과 css·js·img·fonts만 `_site/`로 모음. 모든 로컬 참조(href·src·srcset, 배포 주소로 적은 메타, CSS `url()`)가 그 안에 있는지 검사해 없으면 실패함. 전에는 기본 Pages가 `docs/*.md`·`scripts/`·`package.json`까지 공개했음
+- 린트: ESLint 10(`js/`는 브라우저 스크립트, `*.mjs`는 Node 모듈)과 Stylelint 17(`stylelint-config-recommended`)을 들임. `npm run lint`는 경고도 실패로 봄. 찾은 1건(화면 밖 텍스트의 폐기된 `clip`)을 고침(화면은 같음). `no-descending-specificity`는 화면에 영향 없는 순서 경고 14건이라 끄고 이유를 설정에 적음
+- 메타: 다섯 페이지에 `og:url`과 canonical을 넣음. 공유 이미지를 히어로 WebP(1672×941)에서 같은 사진의 1200×630 JPG(83KB)로 바꾸고 크기와 대체 텍스트를 지정함
+- 404: 잘못된 하위 주소에서도 404 페이지의 자산과 홈 링크가 열리도록 프로젝트 기준 경로를 씀
+- 캐시: CSS·JS 주소의 `?v=`를 파일 내용 해시로 고정함(`npm run assets:stamp`). 검사 스크립트가 해시가 맞는지 확인해, 갱신을 잊으면 실패함. Windows와 CI가 같은 해시를 내도록 CSS·JS 줄바꿈을 LF로 고정함(`.gitattributes`)
+- `.gitignore` 추가(`node_modules/`, `_site/`, `.env*`, 로그, 운영체제 파일, 개인 Claude Code 설정)
+- 문서: README와 접근성 기록을 위 배포·검사 흐름에 맞춤
+
 ## 2026-11-09
 - 히어로 사진·제목 이동을 지원 브라우저에서 CSS `animation-timeline: scroll(root block)`으로 처리. 미지원 브라우저는 기존 JS, 모션 감소에서는 이동 없음. 고정 머리글의 임계점 처리는 JS에 남김. 기존 이동값과의 비교를 확인했으며 새 LCP·INP 수치는 측정하지 않음.
 - 모바일 메뉴: 직접 만든 모달(배경 `inert`, 포커스 가두기, Escape 처리, 스크롤 잠금을 모두 스크립트로)을 네이티브 `<dialog>`로 바꿈. 넓은 화면과 스크립트가 없을 때는 가로 메뉴 `.site_nav`, 좁은 화면에서는 전체 화면 `.menu_dialog`를 씀. 여닫는 페이드는 `@starting-style`, 스크롤 잠금은 `body:has(.menu_dialog[open])`로 CSS가 맡고, `navigation.js`는 241줄에서 48줄로 줄어 여닫기 연결과 `aria-expanded`만 맞춤. 데스크톱·모바일 닫힘·JS 없음 화면은 이전과 픽셀이 같고, 열린 메뉴는 배치·글꼴·색이 같으며 dialog가 최상위 층에 그려져 글자 가장자리 다듬기만 회색조로 바뀜. KWCAG 기록([ACCESSIBILITY.md](ACCESSIBILITY.md))의 메뉴 항목을 다시 확인해 고침
