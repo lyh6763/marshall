@@ -18,24 +18,45 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Neutral surfaces let stage light and the real hardware supply the colour. */
+/* Neutral surfaces let stage light and the real hardware supply the colour.
+   투명도를 붙여 쓰는 색은 쉼표로 구분한 채널 토큰(-rgb)으로 rgba(var(--…-rgb), 0.N)처럼 쓴다.
+   공백 표기 rgb(r g b / a)와 color-mix()는 레거시 색이 아니어서, 그러데이션에서 transparent 등
+   다른 색과 섞일 때 Oklab으로 보간되어 계산값은 같아도 픽셀이 미세하게 달라진다(2026-11-19 확인). */
 :root {
+    --color-white-rgb: 255, 255, 255;
+
     /* dark stage */
     --color-primary: #f6f7f7;
+    --color-primary-hover: #cbd5db;
     --color-bg: #101112;
     --color-bg-soft: #1c1e20;
     --color-text: #e8e9ea;
     --color-text-soft: #d7d9d9;
     --color-text-muted: #b4b8ba;
     --color-accent-text: #c6d6df;
-    --color-border: rgba(255, 255, 255, 0.2);
+    --color-border: rgba(var(--color-white-rgb), 0.2);
+    --color-border-footer: #363a3d;
     --color-photo-bg: #08090a;
+    --color-shade-rgb: 8, 10, 12;
+    --color-focus-ring: #2671ca;
+
+    /* first screen: header line and labels laid over the stage photo */
+    --color-stage-line-rgb: 245, 247, 248;
+    --color-stage-eyebrow: #b4c3cc;
+    --color-stage-notice: #bac0c3;
+
+    /* product detail pages */
+    --color-detail-notice: #aeb4b8;
+    --color-detail-source: #b5bbc0;
+    --color-detail-source-link: #e0e5e8;
+    --color-detail-action-hover: #d6dcdf;
 
     /* light gear surfaces */
-    --color-white: #fff;
+    --color-white: rgb(var(--color-white-rgb));
     --color-surface-light: #f1f2f2;
     --color-ink: #17191b;
     --color-ink-muted: #55595c;
+    --color-ink-rule: #b4b8ba;
 
     --font-system: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', 'Noto Sans KR', system-ui, sans-serif;
     --font-heading: 'Montserrat', var(--font-system);
@@ -120,7 +141,7 @@ strong {
 }
 
 :focus-visible {
-    outline: 3px solid #2671ca;
+    outline: 3px solid var(--color-focus-ring);
     outline-offset: 5px;
 }
 

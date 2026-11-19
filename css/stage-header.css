@@ -9,12 +9,12 @@
     width: auto;
     height: 92px;
     margin: 0 4.2vw;
-    border-bottom: 1px solid rgba(245, 247, 248, .28);
+    border-bottom: 1px solid rgba(var(--color-stage-line-rgb), .28);
 }
 .stage_header.is-fixed { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
 .stage_header.is-fixed .header_center { height: 72px; border-color: transparent; }
 .stage_header .nav_body a { color: var(--color-primary); }
-.stage_header .nav_body a:hover { color: #cbd5db; }
+.stage_header .nav_body a:hover { color: var(--color-primary-hover); }
 .stage_header .nav_body a::after { background: var(--color-primary); }
 .stage_header :focus-visible,
 .stage_hero :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 6px; }
@@ -41,8 +41,8 @@
 }
 .stage_shade {
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(8, 10, 12, .75), transparent 24%, transparent 62%, rgba(8, 10, 12, .94)),
-        linear-gradient(90deg, rgba(8, 10, 12, .45), transparent 68%);
+    background: linear-gradient(180deg, rgba(var(--color-shade-rgb), .75), transparent 24%, transparent 62%, rgba(var(--color-shade-rgb), .94)),
+        linear-gradient(90deg, rgba(var(--color-shade-rgb), .45), transparent 68%);
 }
 .stage_heading {
     position: relative;
@@ -63,7 +63,7 @@
     letter-spacing: .1em;
     text-transform: uppercase;
 }
-.stage_eyebrow span { padding-inline: 13px; color: #b4c3cc; }
+.stage_eyebrow span { padding-inline: 13px; color: var(--color-stage-eyebrow); }
 .stage_heading h1 {
     color: var(--color-primary);
     font-family: var(--font-display);
@@ -93,7 +93,7 @@
     grid-template-columns: 1fr auto 1fr;
     align-items: end;
     gap: 24px;
-    border-top: 1px solid rgba(245, 247, 248, .3);
+    border-top: 1px solid rgba(var(--color-stage-line-rgb), .3);
     padding-top: 22px;
 }
 .stage_cta {
@@ -111,7 +111,7 @@
     transition: background .2s ease, gap .2s ease;
 }
 .stage_cta > span:last-child { font-size: 2.4rem; font-weight: 400; }
-.stage_cta:hover { gap: 48px; background: #cbd5db; }
+.stage_cta:hover { gap: 48px; background: var(--color-primary-hover); }
 .stage_scroll {
     display: inline-flex;
     align-items: center;
@@ -128,7 +128,7 @@
     justify-self: end;
     align-self: center;
 }
-.stage_notice { color: #bac0c3; font-size: 1.3rem; }
+.stage_notice { color: var(--color-stage-notice); font-size: 1.3rem; }
 .stage_concept {
     padding-block: 12px;
     font-size: 1.4rem;
@@ -162,8 +162,8 @@
     /* Short phones keep the CTA on the first screen; the heading is anchored to the bottom. */
     .stage_scene img { object-position: center 35%; }
     .stage_shade {
-        background: linear-gradient(180deg, rgba(8,10,12,.65), transparent 24%, rgba(8,10,12,.1) 43%, rgba(8,10,12,.87) 79%, var(--color-bg)),
-            linear-gradient(90deg, rgba(8,10,12,.15), transparent);
+        background: linear-gradient(180deg, rgba(var(--color-shade-rgb), .65), transparent 24%, rgba(var(--color-shade-rgb), .1) 43%, rgba(var(--color-shade-rgb), .87) 79%, var(--color-bg)),
+            linear-gradient(90deg, rgba(var(--color-shade-rgb), .15), transparent);
     }
     .stage_heading {
         position: absolute;
