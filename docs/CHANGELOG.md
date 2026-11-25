@@ -2,6 +2,10 @@
 
 프로젝트의 주요 변경 사항을 기록합니다.
 
+## 2026-11-25
+- CSS 계층: `@layer reset, tokens, base, components, utilities` 순서를 `css/reset.css` 맨 위에서 정함. reset.css 안을 초기화(reset)·토큰(tokens)·문서 기본값(base)·본문 바로가기(components)·`.screen_out`(utilities)으로 나누고, marshall·detail·front-row·stage-header는 파일 전체를 components 계층에 넣음. 선언은 그대로이고 위치와 들여쓰기만 바뀜(`git diff -w`로 보면 감싼 파일은 3줄씩)
+- 검증: 네 너비 × 6쪽 전체 화면과 상태 화면 48장, 1440·375px 6쪽의 모든 요소(`::before`·`::after` 포함) 계산값 전체, 같은 두 폭에서 Tab 포커스 순서와 포커스된 요소의 계산값을 전후로 비교해 모두 같음(기준을 두 번 찍어 48/48·12/12·12/12 재현성 먼저 확인). 미리보기에서 스타일시트에 계층 규칙이 실제로 들어간 것도 확인함. 린트·검사·빌드 통과, CSS `?v=` 해시 갱신
+
 ## 2026-11-19
 - 색 토큰: CSS에 직접 쓴 색 24곳(detail 7, front-row 3, reset 1, stage-header 13)을 `css/reset.css` 토큰으로 바꿈. 새 토큰은 hover(`--color-primary-hover`, `--color-detail-action-hover`), 초점 링, 푸터 선, 첫 화면 라벨·고지, 상세 고지·출처·출처 링크, 밝은 지면의 표 구분선, 채널 토큰 3개(`--color-white-rgb`, `--color-shade-rgb`, `--color-stage-line-rgb`). 값은 모두 그대로라 화면은 같음
 - 채널 토큰은 쉼표 구분(`8, 10, 12`)으로 두고 `rgba(var(--…-rgb), a)`로 씀. 공백 표기 `rgb(… / a)`는 레거시 색이 아니어서 `transparent`와 섞이는 그러데이션이 다른 색 공간으로 보간돼, 계산값은 같은데 첫 화면 14장에서 채널 합 8 이하의 픽셀 차이가 났음

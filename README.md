@@ -54,7 +54,7 @@ index.html            홈
 products/             제품 상세 3종 (amplifiers, speakers, headphones)
 case-study.html       제작 이야기
 404.html              없는 페이지 안내(noindex, 프로젝트 경로 기준 복구 링크)
-css/                  reset(토큰) · marshall(헤더·메뉴·푸터) · front-row(홈·로고) · stage-header(첫 화면) · detail(상세)
+css/                  reset(계층 순서·토큰·기본값) · marshall(헤더·메뉴·푸터) · front-row(홈·로고) · stage-header(첫 화면) · detail(상세)
 js/                   navigation(모바일 메뉴) · stage-header(고정 헤더·스크롤 연동 CSS 미지원 시 히어로 모션)
 img/                  히어로 이미지, 제품 가상 사진, 파비콘
 fonts/                영문 제목용 웹폰트(Anton, Montserrat 라틴 서브셋)와 OFL 라이선스
@@ -69,6 +69,8 @@ docs/                 기획·출처·작업 기록·성능 측정, README 스�
 히어로 사진·제목의 스크롤 연동 이동은 `animation-timeline: scroll(root block)`으로 처리합니다. 지원하지 않는 브라우저에서는 기존 JS를 사용하고, 모션 감소에서는 움직임을 끕니다. 고정 헤더의 임계점 처리는 JS에 남아 있습니다.
 
 색은 모두 `css/reset.css`의 토큰을 거칩니다(2026-11-19, 스타일 파일에 직접 쓴 색 24곳 → 0곳). 첫 화면 사진 위의 선·라벨, 상세 페이지의 고지·출처·버튼 hover처럼 쓰는 자리가 정해진 색은 그 자리 이름으로 토큰을 두었습니다. 투명도를 붙여 쓰는 색은 쉼표로 구분한 채널 토큰(`--color-shade-rgb: 8, 10, 12`)으로 `rgba(var(--color-shade-rgb), .75)`처럼 씁니다. 처음에는 공백 표기 `rgb(var(--color-shade-rgb) / .75)`로 바꿨는데, 계산값은 같은데도 첫 화면 그늘 그러데이션의 픽셀이 미세하게 달라졌습니다. 공백 표기는 레거시 색이 아니어서 `transparent`와 섞일 때 브라우저가 sRGB가 아닌 색 공간(Oklab)으로 보간하기 때문입니다. 바꾸기 전후로 네 너비의 6쪽 전체 화면과 상태 화면(본문 바로가기·이야기 링크 초점, 고정 머리글, 메뉴·버튼 hover, 좁은 화면 메뉴 대화상자) 48장이 픽셀까지 같았고, 1440px 6쪽에서 모든 요소와 `::before`·`::after`의 색 계산값도 같았습니다. HTML의 `theme-color` 메타는 CSS 변수를 쓸 수 없어 값을 그대로 둡니다.
+
+CSS는 캐스케이드 계층 `@layer reset, tokens, base, components, utilities`로 나눕니다(2026-11-25). 순서 선언은 모든 페이지가 맨 먼저 읽는 `css/reset.css` 맨 위에 한 번만 둡니다. 같은 파일 안에서 브라우저 기본값 초기화는 reset, 색·글꼴 토큰은 tokens, 문서의 글자·제목·키보드 포커스 기본값은 base, 본문 바로가기는 components, 화면에서만 숨기는 글(`.screen_out`)은 utilities에 넣었습니다. 나머지 네 파일은 파일 전체가 components 계층이라 지금처럼 읽는 순서대로 겹칩니다. 뒤 계층은 선택자 우선순위와 상관없이 앞 계층을 이기므로, 넣기 전에 기본값보다 우선순위가 낮은 컴포넌트 규칙(`*`·`:where()` 선택자, 타입 선택자만 쓴 포커스 규칙, 토큰을 다시 정의하는 규칙)이 없는지 먼저 찾았습니다. 바꾸기 전후로 네 너비의 6쪽 전체 화면과 상태 화면 48장이 픽셀까지 같았고, 1440·375px 6쪽에서 모든 요소와 `::before`·`::after`의 계산값 전체, Tab으로 옮겨 간 포커스 순서와 그 요소의 계산값도 같았습니다(기준을 두 번 찍어 재현성 먼저 확인). `@layer`를 모르는 브라우저(Chrome 99·Firefox 97·Safari 15.4 이전, 2022년 초 이전 판)에서는 계층 안 스타일이 적용되지 않아 HTML 기본 모양으로 보입니다.
 
 ## 성능
 
