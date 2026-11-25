@@ -1,294 +1,297 @@
 @charset "utf-8";
 
-/* Shared shell: header, navigation and footer structure.
-   Stage-specific sizing and colour live in stage-header.css and front-row.css. */
+/* 계층: components. 계층 순서는 reset.css 맨 위에서 정한다. */
+@layer components {
+    /* Shared shell: header, navigation and footer structure.
+       Stage-specific sizing and colour live in stage-header.css and front-row.css. */
 
-/* header */
-header {
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    transition: background var(--transition-normal);
-}
-
-header.is-fixed {
-    position: fixed;
-}
-
-.header_center {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: height var(--transition-normal);
-}
-
-.btn,
-.close_btn {
-    width: 44px;
-    height: 44px;
-}
-
-.btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-}
-
-.close_btn {
-    display: grid;
-    place-items: center;
-}
-
-.btn span:not(.screen_out) {
-    width: 30px;
-    height: 2px;
-    display: block;
-    background: var(--color-primary);
-}
-
-/* navigation: 넓은 화면의 가로 메뉴. 좁은 화면에서는 아래 전체 화면 메뉴가 대신한다. */
-.site_nav {
-    display: none;
-    color: var(--color-primary);
-}
-
-/* 좁은 화면의 전체 화면 메뉴(네이티브 모달 dialog). 기본 dialog 상자 모양을 걷어 화면을 덮는다.
-   여닫는 페이드는 @starting-style과 display·overlay 전환으로 CSS가 맡는다. */
-.menu_dialog {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    max-height: none;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    overflow-y: auto;
-    background: transparent;
-    color: var(--color-primary);
-    opacity: 0;
-    transition: opacity var(--transition-normal), overlay var(--transition-normal) allow-discrete, display var(--transition-normal) allow-discrete;
-}
-
-.menu_dialog[open] {
-    opacity: 1;
-}
-
-@starting-style {
-    .menu_dialog[open] {
-        opacity: 0;
-    }
-}
-
-.menu_dialog::backdrop {
-    background: transparent;
-}
-
-/* 메뉴가 열려 있는 동안 뒤 페이지가 스크롤되지 않게 한다 */
-body:has(.menu_dialog[open]) {
-    overflow: hidden;
-}
-
-.nav_wrap {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 26px 0 40px;
-}
-
-.nav_header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.close_btn span:not(.screen_out) {
-    grid-area: 1 / 1;
-    width: 30px;
-    height: 2px;
-    display: block;
-    background: var(--color-primary);
-}
-
-.close_btn span:not(.screen_out):nth-of-type(2) {
-    transform: rotate(45deg);
-}
-
-.close_btn span:not(.screen_out):nth-of-type(3) {
-    transform: rotate(-45deg);
-}
-
-.nav_body li {
-    border-bottom: 1px solid var(--color-border);
-}
-
-.nav_body a {
-    display: block;
-    padding: 22px 0;
-    font-family: var(--font-heading);
-    font-size: clamp(3.2rem, 12vw, 6.4rem);
-    font-weight: 800;
-    line-height: 1;
-    text-transform: uppercase;
-}
-
-/* footer: the project's exit, not a copy of the brand's site map */
-footer {
-    background: var(--color-bg);
-    color: var(--color-primary);
-}
-
-.footer_center {
-    display: grid;
-    gap: 24px;
-    max-width: calc(1560px + 8.4vw);
-    margin: 0 auto;
-    padding: 56px 22px 32px;
-}
-
-.footer_links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 32px;
-}
-
-.footer_links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 44px;
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.footer_links a:hover {
-    text-decoration: underline;
-    text-underline-offset: 5px;
-}
-
-.copyright {
-    border-top: 1px solid var(--color-border);
-    padding-top: 20px;
-    color: var(--color-text-muted);
-    font-size: 1.3rem;
-    line-height: 1.7;
-}
-
-/* Without scripting the navigation stays in the page flow. */
-html:not(.js) header {
-    position: relative;
-    background: var(--color-bg);
-}
-
-html:not(.js) .header_center .btn,
-html:not(.js) .nav_header {
-    display: none;
-}
-
-html:not(.js) .site_nav {
-    position: static;
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    background: var(--color-bg);
-}
-
-html:not(.js) .nav_wrap {
-    min-height: auto;
-    padding: 0 0 20px;
-}
-
-html:not(.js) .nav_body ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-}
-
-html:not(.js) .nav_body li {
-    border-bottom: 0;
-}
-
-html:not(.js) .nav_body a {
-    padding: 8px 0;
-    font-size: 1.4rem;
-}
-
-@media screen and (min-width: 768px) {
-    .footer_center {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        padding-inline: 4.2vw;
-    }
-
-    .copyright {
-        grid-column: 1 / -1;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .btn {
-        display: none;
-    }
-
-    .site_nav {
+    /* header */
+    header {
         position: absolute;
-        inset: 0 0 auto auto;
-        width: auto;
-        /* 스크립트가 없을 때의 display: block보다 앞서 가로 배치를 유지한다(이전과 같은 우선순위) */
-        display: flex !important;
-        align-items: center;
+        top: 0;
+        z-index: 100;
+        transition: background var(--transition-normal);
     }
 
-    /* 넓은 화면에서는 전체 화면 메뉴를 쓰지 않는다(스크립트도 열지 않고, 넓어지면 닫는다) */
-    .menu_dialog {
+    header.is-fixed {
+        position: fixed;
+    }
+
+    .header_center {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: height var(--transition-normal);
+    }
+
+    .btn,
+    .close_btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+    }
+
+    .close_btn {
+        display: grid;
+        place-items: center;
+    }
+
+    .btn span:not(.screen_out) {
+        width: 30px;
+        height: 2px;
+        display: block;
+        background: var(--color-primary);
+    }
+
+    /* navigation: 넓은 화면의 가로 메뉴. 좁은 화면에서는 아래 전체 화면 메뉴가 대신한다. */
+    .site_nav {
         display: none;
+        color: var(--color-primary);
+    }
+
+    /* 좁은 화면의 전체 화면 메뉴(네이티브 모달 dialog). 기본 dialog 상자 모양을 걷어 화면을 덮는다.
+       여닫는 페이드는 @starting-style과 display·overlay 전환으로 CSS가 맡는다. */
+    .menu_dialog {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        max-height: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow-y: auto;
+        background: transparent;
+        color: var(--color-primary);
+        opacity: 0;
+        transition: opacity var(--transition-normal), overlay var(--transition-normal) allow-discrete, display var(--transition-normal) allow-discrete;
+    }
+
+    .menu_dialog[open] {
+        opacity: 1;
+    }
+
+    @starting-style {
+        .menu_dialog[open] {
+            opacity: 0;
+        }
+    }
+
+    .menu_dialog::backdrop {
+        background: transparent;
+    }
+
+    /* 메뉴가 열려 있는 동안 뒤 페이지가 스크롤되지 않게 한다 */
+    body:has(.menu_dialog[open]) {
+        overflow: hidden;
     }
 
     .nav_wrap {
-        min-height: auto;
-        flex-direction: row;
-        align-items: center;
-        gap: 28px;
-        margin: 0;
-        padding: 0;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 26px 0 40px;
     }
 
     .nav_header {
-        display: none;
-    }
-
-    .nav_body ul {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+    }
+
+    .close_btn span:not(.screen_out) {
+        grid-area: 1 / 1;
+        width: 30px;
+        height: 2px;
+        display: block;
+        background: var(--color-primary);
+    }
+
+    .close_btn span:not(.screen_out):nth-of-type(2) {
+        transform: rotate(45deg);
+    }
+
+    .close_btn span:not(.screen_out):nth-of-type(3) {
+        transform: rotate(-45deg);
     }
 
     .nav_body li {
-        border-bottom: 0;
+        border-bottom: 1px solid var(--color-border);
     }
 
     .nav_body a {
+        display: block;
+        padding: 22px 0;
+        font-family: var(--font-heading);
+        font-size: clamp(3.2rem, 12vw, 6.4rem);
+        font-weight: 800;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    /* footer: the project's exit, not a copy of the brand's site map */
+    footer {
+        background: var(--color-bg);
+        color: var(--color-primary);
+    }
+
+    .footer_center {
+        display: grid;
+        gap: 24px;
+        max-width: calc(1560px + 8.4vw);
+        margin: 0 auto;
+        padding: 56px 22px 32px;
+    }
+
+    .footer_links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 32px;
+    }
+
+    .footer_links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .footer_links a:hover {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+    }
+
+    .copyright {
+        border-top: 1px solid var(--color-border);
+        padding-top: 20px;
+        color: var(--color-text-muted);
+        font-size: 1.3rem;
+        line-height: 1.7;
+    }
+
+    /* Without scripting the navigation stays in the page flow. */
+    html:not(.js) header {
         position: relative;
+        background: var(--color-bg);
+    }
+
+    html:not(.js) .header_center .btn,
+    html:not(.js) .nav_header {
+        display: none;
+    }
+
+    html:not(.js) .site_nav {
+        position: static;
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        background: var(--color-bg);
+    }
+
+    html:not(.js) .nav_wrap {
+        min-height: auto;
+        padding: 0 0 20px;
+    }
+
+    html:not(.js) .nav_body ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+    }
+
+    html:not(.js) .nav_body li {
+        border-bottom: 0;
+    }
+
+    html:not(.js) .nav_body a {
         padding: 8px 0;
+        font-size: 1.4rem;
     }
 
-    .nav_body a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 2px;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform var(--transition-normal);
+    @media screen and (min-width: 768px) {
+        .footer_center {
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding-inline: 4.2vw;
+        }
+
+        .copyright {
+            grid-column: 1 / -1;
+        }
     }
 
-    .nav_body a:hover::after {
-        transform: scaleX(1);
+    @media screen and (min-width: 1024px) {
+        .btn {
+            display: none;
+        }
+
+        .site_nav {
+            position: absolute;
+            inset: 0 0 auto auto;
+            width: auto;
+            /* 스크립트가 없을 때의 display: block보다 앞서 가로 배치를 유지한다(이전과 같은 우선순위) */
+            display: flex !important;
+            align-items: center;
+        }
+
+        /* 넓은 화면에서는 전체 화면 메뉴를 쓰지 않는다(스크립트도 열지 않고, 넓어지면 닫는다) */
+        .menu_dialog {
+            display: none;
+        }
+
+        .nav_wrap {
+            min-height: auto;
+            flex-direction: row;
+            align-items: center;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav_header {
+            display: none;
+        }
+
+        .nav_body ul {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav_body li {
+            border-bottom: 0;
+        }
+
+        .nav_body a {
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav_body a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-normal);
+        }
+
+        .nav_body a:hover::after {
+            transform: scaleX(1);
+        }
     }
 }

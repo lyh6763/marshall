@@ -1,231 +1,234 @@
 @charset "utf-8";
 
-/* First-screen study: the audience is close enough to share the frame. */
-.stage_header {
-    left: 0;
-    width: 100%;
-}
-.stage_header .header_center {
-    width: auto;
-    height: 92px;
-    margin: 0 4.2vw;
-    border-bottom: 1px solid rgba(var(--color-stage-line-rgb), .28);
-}
-.stage_header.is-fixed { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
-.stage_header.is-fixed .header_center { height: 72px; border-color: transparent; }
-.stage_header .nav_body a { color: var(--color-primary); }
-.stage_header .nav_body a:hover { color: var(--color-primary-hover); }
-.stage_header .nav_body a::after { background: var(--color-primary); }
-.stage_header :focus-visible,
-.stage_hero :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 6px; }
+/* 계층: components. 계층 순서는 reset.css 맨 위에서 정한다. */
+@layer components {
+    /* First-screen study: the audience is close enough to share the frame. */
+    .stage_header {
+        left: 0;
+        width: 100%;
+    }
+    .stage_header .header_center {
+        width: auto;
+        height: 92px;
+        margin: 0 4.2vw;
+        border-bottom: 1px solid rgba(var(--color-stage-line-rgb), .28);
+    }
+    .stage_header.is-fixed { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+    .stage_header.is-fixed .header_center { height: 72px; border-color: transparent; }
+    .stage_header .nav_body a { color: var(--color-primary); }
+    .stage_header .nav_body a:hover { color: var(--color-primary-hover); }
+    .stage_header .nav_body a::after { background: var(--color-primary); }
+    .stage_header :focus-visible,
+    .stage_hero :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 6px; }
 
-.stage_hero {
-    --stage-pan: 0px;
-    --stage-rise: 0px;
-    position: relative;
-    isolation: isolate;
-    min-height: 760px;
-    min-height: max(540px, 100svh);
-    overflow: hidden;
-    background: var(--color-bg);
-    color: var(--color-primary);
-}
-.stage_scene,
-.stage_scene img,
-.stage_shade { position: absolute; inset: 0; width: 100%; height: 100%; }
-.stage_scene { max-width: none; transform: translateY(var(--stage-pan)) scale(1.035); }
-.stage_scene img { max-width: none; object-fit: cover; object-position: 62% 42%; }
-/* Windows wider than the photo crop it top and bottom: keep the face below the header line. */
-@media (min-aspect-ratio: 17/9) {
-    .stage_scene img { object-position: 62% 12%; }
-}
-.stage_shade {
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(var(--color-shade-rgb), .75), transparent 24%, transparent 62%, rgba(var(--color-shade-rgb), .94)),
-        linear-gradient(90deg, rgba(var(--color-shade-rgb), .45), transparent 68%);
-}
-.stage_heading {
-    position: relative;
-    width: fit-content;
-    max-width: 92%;
-    margin-left: 4.2vw;
-    /* Below 900px of height the top space and the title shrink together, so the
-       bottom bar stays on the first screen in short laptop windows. */
-    padding-top: clamp(116px, min(22svh, calc(32svh - 90px)), 255px);
-    padding-bottom: 133px; /* bottom bar 105px + gap 28px */
-    transform: translateY(var(--stage-rise));
-}
-.stage_eyebrow {
-    margin-bottom: 26px;
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-}
-.stage_eyebrow span { padding-inline: 13px; color: var(--color-stage-eyebrow); }
-.stage_heading h1 {
-    color: var(--color-primary);
-    font-family: var(--font-display);
-    font-size: clamp(14rem, 15.8vw, 29rem);
-    font-size: clamp(12rem, min(15.8vw, calc(38svh - 79px)), 29rem);
-    font-weight: 400;
-    line-height: .89;
-    letter-spacing: -.045em;
-    text-transform: uppercase;
-}
-.stage_heading h1 span { display: block; }
-.stage_heading h1 span:last-child { margin-left: 6vw; }
-.stage_caption {
-    margin-top: 28px;
-    margin-left: 6vw;
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: -.025em;
-}
-.stage_bottom {
-    position: absolute;
-    right: 4.2vw;
-    bottom: 30px;
-    left: 4.2vw;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: end;
-    gap: 24px;
-    border-top: 1px solid rgba(var(--color-stage-line-rgb), .3);
-    padding-top: 22px;
-}
-.stage_cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 34px;
-    justify-self: start;
-    min-height: 52px;
-    padding: 0 22px;
-    background: var(--color-primary);
-    color: var(--color-ink);
-    font-size: 1.5rem;
-    font-weight: 700;
-    transition: background .2s ease, gap .2s ease;
-}
-.stage_cta > span:last-child { font-size: 2.4rem; font-weight: 400; }
-.stage_cta:hover { gap: 48px; background: var(--color-primary-hover); }
-.stage_scroll {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    min-height: 52px;
-    font-size: 1.4rem;
-}
-.stage_scroll > span:last-child { font-size: 2rem; }
-.stage_scroll:hover span:first-child { text-decoration: underline; text-underline-offset: 5px; }
-.stage_side {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    justify-self: end;
-    align-self: center;
-}
-.stage_notice { color: var(--color-stage-notice); font-size: 1.3rem; }
-.stage_concept {
-    padding-block: 12px;
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 5px;
-    white-space: nowrap;
-}
-.stage_concept:hover { text-decoration-thickness: 2px; }
-
-@media (min-width: 1024px) {
-    .stage_header .site_nav { right: 4.2vw; height: 92px; }
-    .stage_header.is-fixed .site_nav { height: 72px; }
-    .stage_header .nav_body ul { gap: clamp(24px, 3vw, 56px); }
-    .stage_header .nav_body a { font-size: 1.4rem; letter-spacing: .1em; }
-    .stage_header .nav_body li:last-child { margin-left: 36px; }
-}
-@media (max-width: 1023px) {
-    .stage_header .header_center { height: 80px; }
-    .stage_header .nav_wrap { width: 88%; }
-    .stage_header .menu_dialog { background: var(--color-bg); }
-    .stage_header .nav_body { margin-top: 12vh; }
-    .stage_header .nav_body a { font-family: var(--font-display); font-weight: 400; letter-spacing: -.02em; }
-    .stage_header .btn span:not(.screen_out) { width: 26px; background: var(--color-primary); }
-    .stage_heading { padding-top: max(104px, min(24svh, calc(36svh - 120px))); }
-    .stage_heading h1 { font-size: clamp(12rem, 19vw, 20rem); font-size: clamp(12rem, min(19vw, calc(38svh - 79px)), 20rem); }
-}
-@media (max-width: 599px) {
-    .stage_header .header_center { margin-inline: 22px; height: 72px; }
-    .stage_header .wordmark_name { font-size: 2.4rem; }
-    /* Short phones keep the CTA on the first screen; the heading is anchored to the bottom. */
-    .stage_scene img { object-position: center 35%; }
+    .stage_hero {
+        --stage-pan: 0px;
+        --stage-rise: 0px;
+        position: relative;
+        isolation: isolate;
+        min-height: 760px;
+        min-height: max(540px, 100svh);
+        overflow: hidden;
+        background: var(--color-bg);
+        color: var(--color-primary);
+    }
+    .stage_scene,
+    .stage_scene img,
+    .stage_shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .stage_scene { max-width: none; transform: translateY(var(--stage-pan)) scale(1.035); }
+    .stage_scene img { max-width: none; object-fit: cover; object-position: 62% 42%; }
+    /* Windows wider than the photo crop it top and bottom: keep the face below the header line. */
+    @media (min-aspect-ratio: 17/9) {
+        .stage_scene img { object-position: 62% 12%; }
+    }
     .stage_shade {
-        background: linear-gradient(180deg, rgba(var(--color-shade-rgb), .65), transparent 24%, rgba(var(--color-shade-rgb), .1) 43%, rgba(var(--color-shade-rgb), .87) 79%, var(--color-bg)),
-            linear-gradient(90deg, rgba(var(--color-shade-rgb), .15), transparent);
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(var(--color-shade-rgb), .75), transparent 24%, transparent 62%, rgba(var(--color-shade-rgb), .94)),
+            linear-gradient(90deg, rgba(var(--color-shade-rgb), .45), transparent 68%);
     }
     .stage_heading {
-        position: absolute;
-        bottom: 167px;
-        margin-left: 22px;
-        padding: 0;
-        max-width: calc(100% - 44px);
+        position: relative;
+        width: fit-content;
+        max-width: 92%;
+        margin-left: 4.2vw;
+        /* Below 900px of height the top space and the title shrink together, so the
+           bottom bar stays on the first screen in short laptop windows. */
+        padding-top: clamp(116px, min(22svh, calc(32svh - 90px)), 255px);
+        padding-bottom: 133px; /* bottom bar 105px + gap 28px */
+        transform: translateY(var(--stage-rise));
     }
-    .stage_eyebrow { margin-bottom: 18px; font-size: 1.2rem; }
-    .stage_eyebrow span { padding-inline: 8px; }
-    .stage_heading h1 { font-size: clamp(9rem, 26vw, 15rem); }
-    .stage_heading h1 span:last-child { margin-left: 12vw; }
-    .stage_caption { margin-top: 19px; margin-left: 12vw; font-size: 1.4rem; }
+    .stage_eyebrow {
+        margin-bottom: 26px;
+        font-family: var(--font-heading);
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+    }
+    .stage_eyebrow span { padding-inline: 13px; color: var(--color-stage-eyebrow); }
+    .stage_heading h1 {
+        color: var(--color-primary);
+        font-family: var(--font-display);
+        font-size: clamp(14rem, 15.8vw, 29rem);
+        font-size: clamp(12rem, min(15.8vw, calc(38svh - 79px)), 29rem);
+        font-weight: 400;
+        line-height: .89;
+        letter-spacing: -.045em;
+        text-transform: uppercase;
+    }
+    .stage_heading h1 span { display: block; }
+    .stage_heading h1 span:last-child { margin-left: 6vw; }
+    .stage_caption {
+        margin-top: 28px;
+        margin-left: 6vw;
+        color: var(--color-primary);
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: -.025em;
+    }
     .stage_bottom {
-        right: 22px;
-        bottom: 20px;
-        left: 22px;
-        grid-template-columns: 1fr auto;
-        gap: 9px 16px;
-        padding-top: 18px;
+        position: absolute;
+        right: 4.2vw;
+        bottom: 30px;
+        left: 4.2vw;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: end;
+        gap: 24px;
+        border-top: 1px solid rgba(var(--color-stage-line-rgb), .3);
+        padding-top: 22px;
     }
-    .stage_cta { min-height: 48px; padding-inline: 17px; gap: 20px; font-size: 1.4rem; }
-    .stage_scroll { min-height: 48px; font-size: 1.3rem; gap: 10px; }
-    .stage_side { grid-column: 1 / -1; justify-self: stretch; justify-content: space-between; }
-    .stage_notice { padding-top: 9px; font-size: 1.2rem; }
-    .stage_concept { padding-block: 9px 0; }
-    .stage_cta, .stage_scroll { white-space: nowrap; }
-}
-@media (max-width: 359px) {
-    .stage_bottom { column-gap: 10px; }
-    .stage_cta { padding-inline: 13px; gap: 10px; }
-    .stage_scroll { gap: 8px; }
-}
-/* The mobile menu remains a real navigation surface without scripting. */
-@media (max-width: 1023px) {
-    html:not(.js) .stage_header { position: relative; background: var(--color-bg); }
-    html:not(.js) .stage_header .btn,
-    html:not(.js) .stage_header .nav_header { display: none; }
-    html:not(.js) .stage_header .site_nav { position: static; display: block; opacity: 1; visibility: visible; pointer-events: auto; }
-    html:not(.js) .stage_header .nav_wrap { min-height: 0; padding: 12px 0 20px; }
-    html:not(.js) .stage_header .nav_body { margin: 0; }
-    html:not(.js) .stage_header .nav_body ul { display: flex; flex-wrap: wrap; gap: 4px 20px; }
-    html:not(.js) .stage_header .nav_body li { border: 0; }
-    html:not(.js) .stage_header .nav_body a { padding-block: 12px; font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 0; }
-}
-/* 첫 화면 사진·제목의 스크롤 움직임. 스크롤 연동 CSS를 지원하면 문서 스크롤에 직접 묶고, stage-header.js는 머리글 고정만 맡는다.
-   값은 이전 스크립트와 같다: 스크롤 1px마다 사진은 0.035px(최대 24px) 내려가고 제목은 0.065px(최대 44px) 올라간다.
-   24 ÷ 0.035 = 685.71px, 44 ÷ 0.065 = 676.92px에서 최댓값에 닿고 그 뒤로는 그대로다. */
-@property --stage-pan { syntax: '<length>'; inherits: true; initial-value: 0px; }
-@property --stage-rise { syntax: '<length>'; inherits: true; initial-value: 0px; }
-@keyframes stage-pan { from { --stage-pan: 0px; } to { --stage-pan: 24px; } }
-@keyframes stage-rise { from { --stage-rise: 0px; } to { --stage-rise: -44px; } }
-@supports (animation-timeline: scroll()) {
-    @media (prefers-reduced-motion: no-preference) {
-        .stage_hero {
-            animation: stage-pan linear both, stage-rise linear both;
-            animation-timeline: scroll(root block), scroll(root block);
-            animation-range: 0px calc(24px / 0.035), 0px calc(44px / 0.065);
+    .stage_cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 34px;
+        justify-self: start;
+        min-height: 52px;
+        padding: 0 22px;
+        background: var(--color-primary);
+        color: var(--color-ink);
+        font-size: 1.5rem;
+        font-weight: 700;
+        transition: background .2s ease, gap .2s ease;
+    }
+    .stage_cta > span:last-child { font-size: 2.4rem; font-weight: 400; }
+    .stage_cta:hover { gap: 48px; background: var(--color-primary-hover); }
+    .stage_scroll {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        min-height: 52px;
+        font-size: 1.4rem;
+    }
+    .stage_scroll > span:last-child { font-size: 2rem; }
+    .stage_scroll:hover span:first-child { text-decoration: underline; text-underline-offset: 5px; }
+    .stage_side {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-self: end;
+        align-self: center;
+    }
+    .stage_notice { color: var(--color-stage-notice); font-size: 1.3rem; }
+    .stage_concept {
+        padding-block: 12px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        white-space: nowrap;
+    }
+    .stage_concept:hover { text-decoration-thickness: 2px; }
+
+    @media (min-width: 1024px) {
+        .stage_header .site_nav { right: 4.2vw; height: 92px; }
+        .stage_header.is-fixed .site_nav { height: 72px; }
+        .stage_header .nav_body ul { gap: clamp(24px, 3vw, 56px); }
+        .stage_header .nav_body a { font-size: 1.4rem; letter-spacing: .1em; }
+        .stage_header .nav_body li:last-child { margin-left: 36px; }
+    }
+    @media (max-width: 1023px) {
+        .stage_header .header_center { height: 80px; }
+        .stage_header .nav_wrap { width: 88%; }
+        .stage_header .menu_dialog { background: var(--color-bg); }
+        .stage_header .nav_body { margin-top: 12vh; }
+        .stage_header .nav_body a { font-family: var(--font-display); font-weight: 400; letter-spacing: -.02em; }
+        .stage_header .btn span:not(.screen_out) { width: 26px; background: var(--color-primary); }
+        .stage_heading { padding-top: max(104px, min(24svh, calc(36svh - 120px))); }
+        .stage_heading h1 { font-size: clamp(12rem, 19vw, 20rem); font-size: clamp(12rem, min(19vw, calc(38svh - 79px)), 20rem); }
+    }
+    @media (max-width: 599px) {
+        .stage_header .header_center { margin-inline: 22px; height: 72px; }
+        .stage_header .wordmark_name { font-size: 2.4rem; }
+        /* Short phones keep the CTA on the first screen; the heading is anchored to the bottom. */
+        .stage_scene img { object-position: center 35%; }
+        .stage_shade {
+            background: linear-gradient(180deg, rgba(var(--color-shade-rgb), .65), transparent 24%, rgba(var(--color-shade-rgb), .1) 43%, rgba(var(--color-shade-rgb), .87) 79%, var(--color-bg)),
+                linear-gradient(90deg, rgba(var(--color-shade-rgb), .15), transparent);
+        }
+        .stage_heading {
+            position: absolute;
+            bottom: 167px;
+            margin-left: 22px;
+            padding: 0;
+            max-width: calc(100% - 44px);
+        }
+        .stage_eyebrow { margin-bottom: 18px; font-size: 1.2rem; }
+        .stage_eyebrow span { padding-inline: 8px; }
+        .stage_heading h1 { font-size: clamp(9rem, 26vw, 15rem); }
+        .stage_heading h1 span:last-child { margin-left: 12vw; }
+        .stage_caption { margin-top: 19px; margin-left: 12vw; font-size: 1.4rem; }
+        .stage_bottom {
+            right: 22px;
+            bottom: 20px;
+            left: 22px;
+            grid-template-columns: 1fr auto;
+            gap: 9px 16px;
+            padding-top: 18px;
+        }
+        .stage_cta { min-height: 48px; padding-inline: 17px; gap: 20px; font-size: 1.4rem; }
+        .stage_scroll { min-height: 48px; font-size: 1.3rem; gap: 10px; }
+        .stage_side { grid-column: 1 / -1; justify-self: stretch; justify-content: space-between; }
+        .stage_notice { padding-top: 9px; font-size: 1.2rem; }
+        .stage_concept { padding-block: 9px 0; }
+        .stage_cta, .stage_scroll { white-space: nowrap; }
+    }
+    @media (max-width: 359px) {
+        .stage_bottom { column-gap: 10px; }
+        .stage_cta { padding-inline: 13px; gap: 10px; }
+        .stage_scroll { gap: 8px; }
+    }
+    /* The mobile menu remains a real navigation surface without scripting. */
+    @media (max-width: 1023px) {
+        html:not(.js) .stage_header { position: relative; background: var(--color-bg); }
+        html:not(.js) .stage_header .btn,
+        html:not(.js) .stage_header .nav_header { display: none; }
+        html:not(.js) .stage_header .site_nav { position: static; display: block; opacity: 1; visibility: visible; pointer-events: auto; }
+        html:not(.js) .stage_header .nav_wrap { min-height: 0; padding: 12px 0 20px; }
+        html:not(.js) .stage_header .nav_body { margin: 0; }
+        html:not(.js) .stage_header .nav_body ul { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+        html:not(.js) .stage_header .nav_body li { border: 0; }
+        html:not(.js) .stage_header .nav_body a { padding-block: 12px; font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 0; }
+    }
+    /* 첫 화면 사진·제목의 스크롤 움직임. 스크롤 연동 CSS를 지원하면 문서 스크롤에 직접 묶고, stage-header.js는 머리글 고정만 맡는다.
+       값은 이전 스크립트와 같다: 스크롤 1px마다 사진은 0.035px(최대 24px) 내려가고 제목은 0.065px(최대 44px) 올라간다.
+       24 ÷ 0.035 = 685.71px, 44 ÷ 0.065 = 676.92px에서 최댓값에 닿고 그 뒤로는 그대로다. */
+    @property --stage-pan { syntax: '<length>'; inherits: true; initial-value: 0px; }
+    @property --stage-rise { syntax: '<length>'; inherits: true; initial-value: 0px; }
+    @keyframes stage-pan { from { --stage-pan: 0px; } to { --stage-pan: 24px; } }
+    @keyframes stage-rise { from { --stage-rise: 0px; } to { --stage-rise: -44px; } }
+    @supports (animation-timeline: scroll()) {
+        @media (prefers-reduced-motion: no-preference) {
+            .stage_hero {
+                animation: stage-pan linear both, stage-rise linear both;
+                animation-timeline: scroll(root block), scroll(root block);
+                animation-range: 0px calc(24px / 0.035), 0px calc(44px / 0.065);
+            }
         }
     }
-}
-@media (prefers-reduced-motion: reduce) {
-    .stage_scene, .stage_heading { transform: none; }
-    .stage_cta, .stage_header, .stage_header * { transition: none; }
+    @media (prefers-reduced-motion: reduce) {
+        .stage_scene, .stage_heading { transform: none; }
+        .stage_cta, .stage_header, .stage_header * { transition: none; }
+    }
 }
